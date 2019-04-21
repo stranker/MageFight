@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class MovementBehavior : MonoBehaviour {
 
+    [Header("Movement stats")]
     public float floorSpeed;
     public float airSpeed;
     public float jumpForce;
+
     private Vector2 velocity;
     private InputManager input;
     private Rigidbody2D rd;
