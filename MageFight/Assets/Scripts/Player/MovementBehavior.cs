@@ -9,6 +9,7 @@ public class MovementBehavior : MonoBehaviour {
     public float floorSpeed;
     public float airSpeed;
     public float jumpForce;
+    public Transform crosshair;
 
     private Vector2 velocity;
     private InputManager input;
@@ -34,11 +35,15 @@ public class MovementBehavior : MonoBehaviour {
             velocity.x = Input.GetAxis(input.movementAxisX);
         else
             velocity.x = 0;
+
         if (Input.GetButtonDown(input.jumpButton) && onFloor)
         {
             onFloor = !onFloor;
             rd.velocity = new Vector2(0,jumpForce);
         }
+        Vector2Int aimDirection = new Vector2Int((int)Input.GetAxis(input.aimAxisX) == 0 ? (int)transform.localScale.x : (int)Input.GetAxis(input.aimAxisX), (int)Input.GetAxis(input.aimAxisY));
+        float crossAngle = Vector2.SignedAngle(Vector2.right, aimDirection);
+        crosshair.eulerAngles = new Vector3(crosshair.eulerAngles.x, transform.localScale.x == 1f ? 0 : 180, transform.localScale.x == 1f ? crossAngle : -crossAngle);
     }
 
     private void Movement()
@@ -50,6 +55,19 @@ public class MovementBehavior : MonoBehaviour {
         else
         {
             rd.velocity = new Vector2(velocity.x * airSpeed * Time.deltaTime, rd.velocity.y);
+        }
+        CheckFlipDirection();
+    }
+
+    private void CheckFlipDirection()
+    {
+        if (velocity.x > 0)
+        {
+            transform.localScale = new Vector2(1, 1);
+        }
+        else if (velocity.x < 0)
+        {
+            transform.localScale = new Vector2(-1, 1);
         }
     }
 
