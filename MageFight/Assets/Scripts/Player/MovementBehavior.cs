@@ -12,6 +12,7 @@ public class MovementBehavior : MonoBehaviour {
     private InputManager input;
     private Rigidbody2D rd;
     private bool onFloor = false;
+    private bool canMove = true;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +28,10 @@ public class MovementBehavior : MonoBehaviour {
 
     private void GetInput()
     {
-        velocity.x = Input.GetAxis(input.movementAxisX);
+        if (canMove)
+            velocity.x = Input.GetAxis(input.movementAxisX);
+        else
+            velocity.x = 0;
         if (Input.GetButtonDown(input.jumpButton) && onFloor)
         {
             onFloor = !onFloor;
@@ -47,6 +51,10 @@ public class MovementBehavior : MonoBehaviour {
         }
     }
 
+    public void SetCanMove(bool val)
+    {
+        canMove = val;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

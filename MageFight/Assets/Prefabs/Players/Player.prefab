@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4870659556698464}
   - component: {fileID: 114740163679365256}
   - component: {fileID: 114656719760944332}
+  - component: {fileID: 114752730564265064}
   - component: {fileID: 61427620941898776}
   - component: {fileID: 50135385551731502}
   m_Layer: 0
@@ -168,6 +169,19 @@ MonoBehaviour:
   secondSkillButton: P1_SecondSkill
   thirdSkillButton: P1_ThirdSkill
   pauseButton: 
+--- !u!114 &114752730564265064
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1901810319538748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8049b95f63ca44a873eea08a190333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 0
 --- !u!212 &212058338641943732
 SpriteRenderer:
   m_ObjectHideFlags: 1
