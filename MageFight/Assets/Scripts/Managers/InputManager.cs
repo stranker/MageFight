@@ -5,14 +5,14 @@ using UnityEngine;
 public class InputManager : MonoBehaviour {
 
     #region Input
-    public string jumpButton; // R1 (Bumper)
-    public string blockButton; // X / A Button?
+    public string jumpButton; // X?
+    public string blockButton; // ?
+    public string dodgeButton; // R1?
     public string movementAxisX; // L Stick
-    public string aimAxisY; // R Stick
-    public string aimAxisX; // R Stick
-    public string firstSkillButton; // L1 (Bumper)
-    public string secondSkillButton; // L2 (Trigger)
-    public string thirdSkillButton; // R2 (Trigger)
+    public string aimAxisY; // L Stick
+    public string firstSkillButton; // Cuadrado ? 
+    public string secondSkillButton; // Circulo ?
+    public string thirdSkillButton; // Triangulo ?
     public string pauseButton; // Start
     #endregion
 }
