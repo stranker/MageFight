@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 167666004}
   - component: {fileID: 167666003}
   - component: {fileID: 167666000}
+  - component: {fileID: 167666006}
   - component: {fileID: 167666002}
   - component: {fileID: 167666001}
   m_Layer: 0
@@ -162,10 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c51fa8678ea7cf4893208be052a5599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySpells:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  spellManager: {fileID: 167666006}
   crosshair: {fileID: 1322098429}
 --- !u!50 &167666001
 Rigidbody2D:
@@ -264,6 +262,21 @@ MonoBehaviour:
   secondSkillButton: P1_SecondSkill
   thirdSkillButton: P1_ThirdSkill
   pauseButton: 
+--- !u!114 &167666006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 167665999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14aaa0004897a5d48b77288785e71cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySpells:
+  - {fileID: 114215051418319208, guid: 8629da05b12b3ee44801a33890179dd7, type: 2}
+  - {fileID: 114215051418319208, guid: 8629da05b12b3ee44801a33890179dd7, type: 2}
+  - {fileID: 114215051418319208, guid: 8629da05b12b3ee44801a33890179dd7, type: 2}
 --- !u!1 &874632542
 GameObject:
   m_ObjectHideFlags: 0
