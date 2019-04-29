@@ -10,7 +10,7 @@ public class MovementBehavior : MonoBehaviour {
     public float airSpeed;
     public float jumpForce;
 
-    private Vector2 velocity;
+    public Vector2 velocity;
     private InputManager input;
     private Rigidbody2D rd;
     private bool onFloor = false;

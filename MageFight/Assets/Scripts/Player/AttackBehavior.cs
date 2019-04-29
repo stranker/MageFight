@@ -8,11 +8,13 @@ public class AttackBehavior : MonoBehaviour {
     [Header("Spell Manager")]
     public SpellsManager spellManager;
 
-    private bool onAttackMode = false;    
+    public bool onAttackMode = false;
 
     private InputManager input;
-    private MovementBehavior movement;    
+    private MovementBehavior movement;
     public Transform crosshair;
+    private float timer;
+    public float attackModeTime = 0.5f;
 
     // Use this for initialization
     void Start () {
@@ -21,14 +23,20 @@ public class AttackBehavior : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {        
+    void Update () {
         GetInput();
         if (onAttackMode)
         {
+            timer += Time.deltaTime;
+            if (timer >= attackModeTime)
+            {
+                onAttackMode = !onAttackMode;
+                timer = 0;
+            }
             int upDir = (int)Input.GetAxis(input.aimAxisY);
             int fwDir = (int)Input.GetAxis(input.movementAxisX);
             Vector2 aimDirection = new Vector2(fwDir,upDir);
-            float crossAngle = Vector2.SignedAngle(Vector2.right, aimDirection);            
+            float crossAngle = Vector2.SignedAngle(Vector2.right, aimDirection);
             crosshair.eulerAngles = new Vector3(crosshair.eulerAngles.x, transform.localScale.x == 1f ? 0 : 180, transform.localScale.x == 1f ? crossAngle : -crossAngle);
         }
     }
@@ -42,23 +50,30 @@ public class AttackBehavior : MonoBehaviour {
 
     private void ThrowSpell(int spellIndex)
     {
-        onAttackMode = !onAttackMode;
-        movement.SetCanMove(true);
-        Vector3 dir = crosshair.right * (transform.localScale.x == 1f ? 1 : -1);
-        spellManager.InvokeSpell(spellIndex,transform.position,dir);
-        print("Throwing spell");
+        if (!onAttackMode)
+        {
+            onAttackMode = !onAttackMode;
+            movement.SetCanMove(true);
+            Vector3 dir = crosshair.right * (transform.localScale.x == 1f ? 1 : -1);
+            spellManager.InvokeSpell(spellIndex, transform.position, dir);
+            print("Throwing spell");
+        }
     }
 
     private void InvokeSpell(int spellIndex)
     {
-        onAttackMode = !onAttackMode;
-        movement.SetCanMove(false);        
-        print("Invoking spell");
+        if (!onAttackMode)
+        {
+            onAttackMode = !onAttackMode;
+            movement.SetCanMove(false);
+            print("Invoking spell");
+        }
+
     }
     private void GetSpellsInputs(String input,int spellIndex)
     {
         if(Input.GetButtonDown(input))
-        {            
+        {
             if(spellManager.GetSpellCastType(spellIndex) == Spell.CastType.OneTap)
             {
                 ThrowSpell(spellIndex);
@@ -68,7 +83,7 @@ public class AttackBehavior : MonoBehaviour {
                 InvokeSpell(spellIndex);
             }
         }
-        if(Input.GetButtonUp(input) && spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
+        if (Input.GetButtonUp(input) && spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
         {
             ThrowSpell(spellIndex);
         }
