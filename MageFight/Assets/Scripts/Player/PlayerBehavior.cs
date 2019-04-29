@@ -5,23 +5,29 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour {
 
-    [Header("Player stats")]
+
     public int health;
     public int maxHealth;
-
-
-    private void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update () {
-	}
+    public bool isAlive = true;
+    public Transform headPos;
+    public DamagePopUp popText;
 
 
     public void TakeDamage(int val)
     {
-        health -= val;
+        if (isAlive)
+        {
+            health -= val;
+            GameObject pop = Instantiate(popText.gameObject, headPos.position, Quaternion.identity, transform.parent);
+            pop.GetComponent<DamagePopUp>().SetDamage(val);
+            if (health <= 0)
+            {
+                isAlive = !isAlive;
+                GetComponent<AttackBehavior>().enabled = false;
+                GetComponent<MovementBehavior>().enabled = false;
+                GetComponentInChildren<SpriteRenderer>().enabled = false;
+            }
+        }
     }
 
 }

@@ -8,8 +8,7 @@ public class MeleeSpell : Spell {
     protected Rigidbody2D rd;
     private float angle;
 
-    // Use this for initialization
-    void Start () {
+    void Start() {
         rd = GetComponent<Rigidbody2D>();
         rd.velocity = travelVelocity * dir;
     }

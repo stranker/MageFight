@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   travelVelocity: 20
   castVelocity: 0
-  damage: 0
+  damage: 10
   cooldown: 0
   lifeTime: 3
   castType: 0
