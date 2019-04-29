@@ -16,8 +16,6 @@ public abstract class Spell : MonoBehaviour {
     public float cooldown;
     public float lifeTime;
     public CastType castType;
-    protected Vector2 velocity;
-    protected Rigidbody2D rd;
 
     protected bool invoked = false;
     protected Vector3 dir;
@@ -25,10 +23,4 @@ public abstract class Spell : MonoBehaviour {
 
     public abstract void InvokeSpell(Vector3 direction);
     public CastType GetCastType() { return castType; }
-
-    private void Start()
-    {
-        rd = GetComponent<Rigidbody2D>();
-        rd.velocity = travelVelocity * dir;
-    }
 }

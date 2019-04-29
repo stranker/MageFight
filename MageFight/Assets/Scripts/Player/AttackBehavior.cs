@@ -12,7 +12,6 @@ public class AttackBehavior : MonoBehaviour {
 
     private InputManager input;
     private MovementBehavior movement;
-    public Transform crosshair;
     private float timer;
     public float attackModeTime = 0.5f;
     public Vector2 aimDirection;
@@ -42,7 +41,6 @@ public class AttackBehavior : MonoBehaviour {
         int upDir = (int)Input.GetAxis(input.aimAxisY);
         int fwDir = Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f ? (int)transform.localScale.x : 0;
         aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
-        print(aimDirection);
         GetSpellsInputs(input.firstSkillButton, 0);
         GetSpellsInputs(input.secondSkillButton, 1);
         GetSpellsInputs(input.thirdSkillButton, 2);
