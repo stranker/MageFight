@@ -3,18 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FireBall : Spell {
-	
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         if(invoked)
         {
             if(timer < lifeTime)
-            {
                 timer += Time.deltaTime;
-                print(dir);
-                transform.position += dir * travelVelocity * Time.deltaTime;
-            }
             else
                 Destroy(gameObject);
         }

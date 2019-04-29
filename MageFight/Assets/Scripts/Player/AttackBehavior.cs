@@ -15,6 +15,7 @@ public class AttackBehavior : MonoBehaviour {
     public Transform crosshair;
     private float timer;
     public float attackModeTime = 0.5f;
+    public Vector2 aimDirection;
 
     // Use this for initialization
     void Start () {
@@ -33,16 +34,15 @@ public class AttackBehavior : MonoBehaviour {
                 onAttackMode = !onAttackMode;
                 timer = 0;
             }
-            int upDir = (int)Input.GetAxis(input.aimAxisY);
-            int fwDir = (int)Input.GetAxis(input.movementAxisX);
-            Vector2 aimDirection = new Vector2(fwDir,upDir);
-            float crossAngle = Vector2.SignedAngle(Vector2.right, aimDirection);
-            crosshair.eulerAngles = new Vector3(crosshair.eulerAngles.x, transform.localScale.x == 1f ? 0 : 180, transform.localScale.x == 1f ? crossAngle : -crossAngle);
         }
     }
 
     private void GetInput()
     {
+        int upDir = (int)Input.GetAxis(input.aimAxisY);
+        int fwDir = Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f ? (int)transform.localScale.x : 0;
+        aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
+        print(aimDirection);
         GetSpellsInputs(input.firstSkillButton, 0);
         GetSpellsInputs(input.secondSkillButton, 1);
         GetSpellsInputs(input.thirdSkillButton, 2);
@@ -54,7 +54,7 @@ public class AttackBehavior : MonoBehaviour {
         {
             onAttackMode = !onAttackMode;
             movement.SetCanMove(true);
-            Vector3 dir = crosshair.right * (transform.localScale.x == 1f ? 1 : -1);
+            Vector3 dir = aimDirection.normalized;
             spellManager.InvokeSpell(spellIndex, transform.position, dir);
             print("Throwing spell");
         }
@@ -74,11 +74,11 @@ public class AttackBehavior : MonoBehaviour {
     {
         if(Input.GetButtonDown(input))
         {
-            if(spellManager.GetSpellCastType(spellIndex) == Spell.CastType.OneTap)
+            if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.OneTap)
             {
                 ThrowSpell(spellIndex);
             }
-            else if(spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
+            else if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
             {
                 InvokeSpell(spellIndex);
             }
