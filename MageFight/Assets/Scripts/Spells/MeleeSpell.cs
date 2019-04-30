@@ -13,8 +13,9 @@ public class MeleeSpell : Spell {
         rd.velocity = travelVelocity * dir;
     }
 
-    public override void InvokeSpell(Vector3 direction)
+    public override void InvokeSpell(Vector3 direction, GameObject owner)
     {
+        mageOwner = owner;
         invoked = !invoked;
         dir = direction;
         angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

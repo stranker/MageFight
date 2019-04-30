@@ -25,12 +25,12 @@ public class SpellsManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
     }
-    public void InvokeSpell(int index,Vector3 startPosition,Vector3 direction)
+    public void InvokeSpell(int index, Vector3 startPosition, Vector3 direction, GameObject owner)
     {
         if(!spells[index])
         {
             spells[index] = Instantiate(inventorySpells[index], startPosition, Quaternion.identity);
-            spells[index].InvokeSpell(direction);
+            spells[index].InvokeSpell(direction,owner);
         }
     }
     public Spell.CastType GetSpellCastType(int index)

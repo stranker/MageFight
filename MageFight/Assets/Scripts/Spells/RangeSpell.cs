@@ -13,10 +13,11 @@ public class RangeSpell : Spell {
         rd.velocity = travelVelocity * dir;
     }
 
-    public override void InvokeSpell(Vector3 direction)
+    public override void InvokeSpell(Vector3 direction, GameObject owner)
     {
         if(!invoked)
         {
+            mageOwner = owner;
             dir = direction;
             invoked = !invoked;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

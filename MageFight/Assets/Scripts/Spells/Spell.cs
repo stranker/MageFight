@@ -16,28 +16,22 @@ public abstract class Spell : MonoBehaviour {
     public float cooldown;
     public float lifeTime;
     public CastType castType;
-    private bool activated = false;
+    public GameObject mageOwner;
 
     protected bool invoked = false;
     protected Vector3 dir;
     protected float timer = 0f;
 
-    public abstract void InvokeSpell(Vector3 direction);
+    public abstract void InvokeSpell(Vector3 direction, GameObject owner);
     public CastType GetCastType() { return castType; }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Player" && !activated)
-        {
-            activated = !activated;
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && activated)
+        if (collision.tag == "Player" && collision.gameObject != mageOwner)
         {
             collision.GetComponent<PlayerBehavior>().TakeDamage(damage);
+            Destroy(gameObject);
         }
     }
 

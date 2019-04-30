@@ -15,6 +15,7 @@ public class AttackBehavior : MonoBehaviour {
     private float timer;
     public float attackModeTime = 0.5f;
     public Vector2 aimDirection;
+    public Transform handPos;
 
     // Use this for initialization
     void Start () {
@@ -53,7 +54,7 @@ public class AttackBehavior : MonoBehaviour {
             onAttackMode = !onAttackMode;
             movement.SetCanMove(true);
             Vector3 dir = aimDirection.normalized;
-            spellManager.InvokeSpell(spellIndex, transform.position, dir);
+            spellManager.InvokeSpell(spellIndex, handPos.position, dir, gameObject);
             print("Throwing spell");
         }
     }

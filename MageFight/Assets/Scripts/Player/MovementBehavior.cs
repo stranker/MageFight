@@ -16,8 +16,12 @@ public class MovementBehavior : MonoBehaviour {
     private bool onFloor = false;
     private bool canMove = true;
 
-	// Use this for initialization
-	void Start () {
+    private bool knockback = false;
+    public float timer;
+    public float knockbackTime = 1;
+
+    // Use this for initialization
+    void Start () {
         rd = GetComponent<Rigidbody2D>();
         input = GetComponent<InputManager>();
 	}
@@ -44,10 +48,23 @@ public class MovementBehavior : MonoBehaviour {
 
     private void Movement()
     {
-        if (onFloor)
-            rd.velocity = new Vector2(velocity.x * floorSpeed * Time.deltaTime, rd.velocity.y);
-        else
-            rd.velocity = new Vector2(velocity.x * airSpeed * Time.deltaTime, rd.velocity.y);
+        if (!knockback)
+        {
+            if (onFloor)
+                rd.velocity = new Vector2(velocity.x * floorSpeed * Time.deltaTime, rd.velocity.y);
+            else
+                rd.velocity = new Vector2(velocity.x * airSpeed * Time.deltaTime, rd.velocity.y);
+        }
+
+        if (knockback)
+        {
+            timer += Time.deltaTime;
+            if (timer >= knockbackTime)
+            {
+                timer = 0;
+                knockback = !knockback;
+            }
+        }
         CheckFlipDirection();
     }
 
@@ -71,5 +88,12 @@ public class MovementBehavior : MonoBehaviour {
             onFloor = true;
         }
     }
+
+    public void Push()
+    {
+        rd.velocity = new Vector2(-transform.localScale.x * 2, 20);
+        knockback = !knockback;
+    }
+
 
 }
