@@ -35,4 +35,13 @@ public class PlayerBehavior : MonoBehaviour {
         }
     }
 
+    public void Reset(Vector3 position){
+        health = maxHealth;
+        isAlive = true;
+        GetComponent<AttackBehavior>().enabled = true;
+        GetComponent<MovementBehavior>().enabled = true;
+        GetComponentInChildren<SpriteRenderer>().enabled = true;
+        transform.position = position;
+    }
+
 }

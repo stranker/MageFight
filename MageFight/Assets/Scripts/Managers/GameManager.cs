@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] int RoundsToWin; //How much of a round-win advantage a player needs to be considered winner.
 	private int[] WinCounters;
 	[SerializeField] GameObject PowerPickPanel;
+	[SerializeField] Transform[] StartingPositions;
 	
 	void Awake () {
 		DontDestroyOnLoad(gameObject); //Single scene, might not be needed
@@ -56,10 +57,12 @@ public class GameManager : MonoBehaviour {
 		for(int i = 0; i < PlayerStatus.Length; i++){ //State all players are alive
 			PlayerStatus[i] = true;
 		}
+
+		PlayerBehavior[] players = FindObjectsOfType<PlayerBehavior>();
+		for(int i = 0; i < PlayerStatus.Length; i++){
+			players[i].Reset(StartingPositions[i].position); 
+		}
 		Debug.Log("Begin round: " + (RoundCounter +1));
-		PowerPickPanel.SetActive(false);
-		//Spawn players, assign an int to each of them according to their possition on the PlayerStatus array
-		//Allow gameplay to begin
 	}
 
 	public void PlayerDeath(int PlayerID){ //registers player deaths, and checks if round should end
@@ -86,7 +89,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void EndGame(int winner){
-		Debug.Log("Player " + (winner +1) + " has won.");
+		Debug.Log("Player " + (winner +1) + " has won the match.");
 		RoundCounter = 0; //Reset round counter
 		playerIDCounter = 0; //reset ID counter
 		for(int i = 0; i < WinCounters.Length; i++){
