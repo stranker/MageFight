@@ -91,28 +91,20 @@ public class GameManager : MonoBehaviour {
 	private void EndGame(int winner){
 		Debug.Log("Player " + (winner +1) + " has won the match.");
 		RoundCounter = 0; //Reset round counter
-		playerIDCounter = 0; //reset ID counter
 		for(int i = 0; i < WinCounters.Length; i++){
 			WinCounters[i] = 0;
 		}
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	private void EndRound(){ //runs at end of round, to update round wins and check if there's a winner
 		//Stop gameplay
 		RoundCounter++;
-		int HighScore = 0;
 		int winner = 0; //Has to have a default value to not cause compiler errors
 		for(int i = 0; i < WinCounters.Length; i++){
-			if(WinCounters[i] > HighScore){ HighScore = WinCounters[i]; winner = i;} //Find highest score so far
 			Debug.Log("Player " + (i + 1) + " has won " + WinCounters[i] + " rounds.");
+			if (WinCounters[i] >= RoundsToWin){winner = i +1;}
 		}
-		for(int i = 0; i < WinCounters.Length; i++){
-			if(WinCounters[winner] - WinCounters[i] >= RoundsToWin){ //compare to others to determine if there's a winner yet.
-				EndGame(winner);
-				break;
-			}
-		}
+		if(winner > 0){ EndGame(winner);}
 		PowerPickPanel.SetActive(true); //if no winner is found, another round begins
 	}
 }
