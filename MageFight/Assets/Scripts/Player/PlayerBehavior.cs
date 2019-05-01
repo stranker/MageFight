@@ -11,8 +11,12 @@ public class PlayerBehavior : MonoBehaviour {
     public bool isAlive = true;
     public Transform headPos;
     public DamagePopUp popText;
+    private int PlayerID;
 
-
+    private void Start(){
+        PlayerID = GameManager.Instance.RegisterPlayerID();
+        Debug.Log(gameObject + " ID: " + PlayerID);
+    }
     public void TakeDamage(int val)
     {
         if (isAlive)
@@ -26,6 +30,7 @@ public class PlayerBehavior : MonoBehaviour {
                 GetComponent<AttackBehavior>().enabled = false;
                 GetComponent<MovementBehavior>().enabled = false;
                 GetComponentInChildren<SpriteRenderer>().enabled = false;
+                GameManager.Instance.PlayerDeath(PlayerID);
             }
         }
     }
