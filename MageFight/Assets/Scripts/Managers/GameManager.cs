@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour {
 	private int[] WinCounters;
 	[SerializeField] GameObject PowerPickPanel;
 	[SerializeField] Transform[] StartingPositions;
+	[SerializeField] Text Player1RoundCounter; //PROTOTYPE CODE
+	[SerializeField] Text Player2RoundCounter; //PROTOTYPE CODE
 	
 	void Awake () {
 		DontDestroyOnLoad(gameObject); //Single scene, might not be needed
@@ -61,6 +63,10 @@ public class GameManager : MonoBehaviour {
 		PlayerBehavior[] players = FindObjectsOfType<PlayerBehavior>();
 		for(int i = 0; i < PlayerStatus.Length; i++){
 			players[i].Reset(StartingPositions[i].position); 
+		}
+		if(RoundCounter == 0){
+		Player1RoundCounter.text = "0"; //PROTOTYPE CODE
+		Player2RoundCounter.text = "0"; //PROTOTYPE CODE
 		}
 		Debug.Log("Begin round: " + (RoundCounter +1));
 	}
@@ -104,6 +110,8 @@ public class GameManager : MonoBehaviour {
 			Debug.Log("Player " + (i + 1) + " has won " + WinCounters[i] + " rounds.");
 			if (WinCounters[i] >= RoundsToWin){winner = i +1;}
 		}
+		Player1RoundCounter.text = WinCounters[0].ToString(); //PROTOTYPE CODE
+		Player2RoundCounter.text = WinCounters[1].ToString(); //PROTOTYPE CODE
 		if(winner > 0){ EndGame(winner);}
 		PowerPickPanel.SetActive(true); //if no winner is found, another round begins
 	}
