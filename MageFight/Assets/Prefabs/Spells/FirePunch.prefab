@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50560673972942250}
   - component: {fileID: 61574270096349370}
   - component: {fileID: 114258428409597144}
+  - component: {fileID: 114324409251324650}
   m_Layer: 0
   m_Name: FirePunch
   m_TagString: Untagged
@@ -106,6 +107,21 @@ MonoBehaviour:
   lifeTime: 0.2
   castType: 0
   mageOwner: {fileID: 0}
+--- !u!114 &114324409251324650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1689455787337810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a864e62a2d46ef24f98d79cb8c82841b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
+  type: 0
+  spriteEffect: {fileID: 1620679785542546, guid: a25f7dc58b031b54f8e1bb9751805446,
+    type: 2}
 --- !u!212 &212643428284264184
 SpriteRenderer:
   m_ObjectHideFlags: 1
