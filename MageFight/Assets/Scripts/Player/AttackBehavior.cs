@@ -9,7 +9,7 @@ public class AttackBehavior : MonoBehaviour {
     public SpellsManager spellManager;
 
     public bool onAttackMode = false;
-
+    private bool canAttack = true;
     private InputManager input;
     private MovementBehavior movement;
     private float timer;
@@ -49,7 +49,7 @@ public class AttackBehavior : MonoBehaviour {
 
     private void ThrowSpell(int spellIndex)
     {
-        if (!onAttackMode)
+        if (!onAttackMode && canAttack)
         {
             onAttackMode = !onAttackMode;
             movement.SetCanMove(true);
@@ -61,7 +61,7 @@ public class AttackBehavior : MonoBehaviour {
 
     private void InvokeSpell(int spellIndex)
     {
-        if (!onAttackMode)
+        if (!onAttackMode && canAttack)
         {
             onAttackMode = !onAttackMode;
             movement.SetCanMove(false);
@@ -87,4 +87,10 @@ public class AttackBehavior : MonoBehaviour {
             ThrowSpell(spellIndex);
         }
     }
+
+    public void SetCanAttack(bool val)
+    {
+        canAttack = val;
+    }
+
 }

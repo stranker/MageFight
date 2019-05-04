@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,9 +31,19 @@ public abstract class Spell : MonoBehaviour {
     {
         if (collision.tag == "Player" && collision.gameObject != mageOwner)
         {
-            collision.GetComponent<PlayerBehavior>().TakeDamage(damage);
+            PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
+            player.TakeDamage(damage);
+            CheckHasEffect(player);
             Destroy(gameObject);
         }
     }
 
+    private void CheckHasEffect(PlayerBehavior player)
+    {
+        SpellEffect effect = GetComponentInChildren<SpellEffect>();
+        if (effect)
+        {
+            effect.ApplyEffect(player.gameObject);
+        }
+    }
 }

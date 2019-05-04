@@ -11,6 +11,21 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1552420983360624}
   m_IsPrefabAsset: 1
+--- !u!1 &1455276152890006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4017069537398186}
+  m_Layer: 0
+  m_Name: HandPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1552420983360624
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,6 +40,7 @@ GameObject:
   - component: {fileID: 114028408648824700}
   - component: {fileID: 114621506937169916}
   - component: {fileID: 61116940582786594}
+  - component: {fileID: 114281598765572702}
   - component: {fileID: 50144711259452210}
   - component: {fileID: 70114351085554426}
   m_Layer: 0
@@ -67,6 +83,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4017069537398186
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1455276152890006}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.357, y: -0.213, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4857442700456346}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4649220687986862
 Transform:
   m_ObjectHideFlags: 1
@@ -105,6 +134,7 @@ Transform:
   m_Children:
   - {fileID: 4658842977600666}
   - {fileID: 4649220687986862}
+  - {fileID: 4017069537398186}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -201,6 +231,7 @@ MonoBehaviour:
   onAttackMode: 0
   attackModeTime: 0.5
   aimDirection: {x: 0, y: 0}
+  handPos: {fileID: 4017069537398186}
 --- !u!114 &114205411813066328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,6 +252,17 @@ MonoBehaviour:
   secondSkillButton: P2_SecondSkill
   thirdSkillButton: P2_ThirdSkill
   pauseButton: 
+--- !u!114 &114281598765572702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1552420983360624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a52f172578f2e43854a9c4ee590d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114439683035862774
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,6 +309,8 @@ MonoBehaviour:
   airSpeed: 250
   jumpForce: 30
   velocity: {x: 0, y: 0}
+  timer: 0
+  knockbackTime: 1
 --- !u!114 &114874358540536474
 MonoBehaviour:
   m_ObjectHideFlags: 1

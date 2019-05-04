@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114353543599955174}
   - component: {fileID: 50575867523242656}
   - component: {fileID: 61577661944608120}
+  - component: {fileID: 114805377441861784}
   m_Layer: 0
   m_Name: IceStake
   m_TagString: Untagged
@@ -106,6 +107,21 @@ MonoBehaviour:
   lifeTime: 5
   castType: 0
   mageOwner: {fileID: 0}
+--- !u!114 &114805377441861784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1548829230379324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a864e62a2d46ef24f98d79cb8c82841b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1.5
+  type: 1
+  spriteEffect: {fileID: 1620679785542546, guid: 2a99dce6ee1eedd428c3c5b3d1b70894,
+    type: 2}
 --- !u!212 &212575001917486486
 SpriteRenderer:
   m_ObjectHideFlags: 1
