@@ -699,12 +699,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f56dae173a46342b5b113c0647fcd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playsOnKeyboard: 0
-  roundsToWin: 0
-  powerPickPanel: {fileID: 0}
-  startingPositions: []
-  player1RoundCounter: {fileID: 0}
-  player2RoundCounter: {fileID: 0}
+  playsOnKeyboard: 1
+  roundsToWin: 3
+  powerPickPanel: {fileID: 2070338682}
+  startingPositions:
+  - {fileID: 4490192054877450, guid: 57c7bef88383e934eaee2d530e9e4928, type: 2}
+  - {fileID: 4495696290417934, guid: 57c7bef88383e934eaee2d530e9e4928, type: 2}
+  - {fileID: 4689678425040772, guid: 57c7bef88383e934eaee2d530e9e4928, type: 2}
+  - {fileID: 4458775268166670, guid: 57c7bef88383e934eaee2d530e9e4928, type: 2}
+  player1RoundCounter: {fileID: 1763923096}
+  player2RoundCounter: {fileID: 925337258}
 --- !u!4 &524297103
 Transform:
   m_ObjectHideFlags: 0
