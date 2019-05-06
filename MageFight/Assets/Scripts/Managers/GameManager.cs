@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 public class GameManager : MonoBehaviour {
 
@@ -41,7 +42,8 @@ public class GameManager : MonoBehaviour {
 		if(!powerPickPanel){ powerPickPanel = FindObjectOfType<Button>().transform.parent.gameObject;} //PROTOTYPE CODE
 		powerPickPanel.SetActive(true);
 	}
-	public int RegisterPlayerID(){
+
+    public int RegisterPlayerID(){
 		int ID = playerIDCounter;
 		if(playerIDCounter >= playerStatus.Count){
 			Debug.Log(playerIDCounter);

@@ -11,6 +11,8 @@ public class PlayerBehavior : MonoBehaviour {
     public bool isAlive = true;
     public Transform headPos;
     public DamagePopUp popText;
+    public ParticleSystem deathParticles;
+    public Animator deathAnim;
     private int PlayerID;
 
     private void Start(){
@@ -30,6 +32,8 @@ public class PlayerBehavior : MonoBehaviour {
                 GetComponent<AttackBehavior>().enabled = false;
                 GetComponent<MovementBehavior>().enabled = false;
                 GetComponentInChildren<SpriteRenderer>().enabled = false;
+                deathParticles.Play();
+                deathAnim.SetTrigger("alive");
                 GameManager.Instance.PlayerDeath(PlayerID);
             }
         }
