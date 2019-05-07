@@ -19,54 +19,34 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private int roundCounter;
-	private int playerIDCounter;
-	private List<bool> playerStatus = new List<bool>();// true = alive, false = dead
-	[SerializeField] bool playsOnKeyboard; //Defines wether there are 2 or 4 players
-	[SerializeField] int roundsToWin; //How much of a round-win advantage a player needs to be considered winner.
-	private List<int> winCounters = new List<int>();
-	[SerializeField] GameObject powerPickPanel;
-	[SerializeField] List<Transform> startingPositions = new List<Transform>();
-	[SerializeField] Text player1RoundCounter; //PROTOTYPE CODE
-	[SerializeField] Text player2RoundCounter; //PROTOTYPE CODE
+	private List<PlayerBehavior> players = new List<PlayerBehavior>();
+	[SerializeField] private int roundsToWin; //How much of a round-win advantage a player needs to be considered winner.
+	[SerializeField] private GameObject powerPickPanel;
+	[SerializeField] private List<Transform> startingPositions = new List<Transform>();
+	[SerializeField] private Text player1RoundCounter; //PROTOTYPE CODE
+	[SerializeField] private Text player2RoundCounter; //PROTOTYPE CODE
 	
 	void Awake () {
-		DontDestroyOnLoad(gameObject); //Single scene, might not be needed
+		//DontDestroyOnLoad(gameObject); //Single scene, might not be needed
 		roundCounter = 0;
-		playerIDCounter = 0;
-		int playerCount;
-		if(playsOnKeyboard){ playerCount = 2;} else { playerCount = 4;} //Determine ammount of players based on input
-		for(int i = 0; i < playerCount; i++){ //State all players are alive
-			playerStatus.Add(true);
-			winCounters.Add(0);
+		PlayerBehavior[] activeplayers = FindObjectsOfType<PlayerBehavior>();
+		for(int i = 0; i < activeplayers.Length; i++){ //State all players are alive
+			players.Add(activeplayers[i]);
+			activeplayers[i].isAlive = true;
+			activeplayers[i].winCount = 0;
+			activeplayers[i].RegisterPlayerID(i);
+			activeplayers[i].Pause();
 		}
-		if(!powerPickPanel){ powerPickPanel = FindObjectOfType<Button>().transform.parent.gameObject;} //PROTOTYPE CODE
 		powerPickPanel.SetActive(true);
-	}
-
-    public int RegisterPlayerID(){
-		int ID = playerIDCounter;
-		if(playerIDCounter >= playerStatus.Count){
-			Debug.Log(playerIDCounter);
-			Debug.LogError("Error registering player ID, all players slots have been filled.");
-			return -1;
-		}
-		playerIDCounter++;
-		return ID;
 	}
 	
 	public void InitializeRound(){
-		for(int i = 0; i < playerStatus.Count; i++){ //State all players are alive
-			playerStatus[i] = true;
-		}
-
-		PlayerBehavior[] players = FindObjectsOfType<PlayerBehavior>();
-		int playerCount;
-		if(playsOnKeyboard){ playerCount = 2;} else { playerCount = 4;} //Determine ammount of players based on input
-		for(int i = 0; i < playerCount; i++){
+		for(int i = 0; i < players.Count; i++){
 			if(i <= startingPositions.Count -1){
 				players[i].Reset(startingPositions[i].position); 
+				players[i].Resume();
 			} else {
-				Debug.LogError("Out of starting positions, Players: " + playerCount + ", Positions: " + startingPositions.Count);
+				Debug.LogError("Out of starting positions, Players: " + players.Count + ", Positions: " + startingPositions.Count);
 			}
 		}
 
@@ -77,32 +57,29 @@ public class GameManager : MonoBehaviour {
 		Debug.Log("Begin round: " + (roundCounter +1));
 	}
 
-	public void PlayerDeath(int playerID){ //registers player deaths, and checks if round should end
-		if(playerID >= 0 && playerID <= playerStatus.Count -1){
-			playerStatus[playerID] = false;
-			bool isOnePlayerAlive = false;
-			int winner = 0; //Has to have a default value to not cause compiler errors
-			for(int i = 0; i < playerStatus.Count; i++){
-				if(playerStatus[i] == true){
-					if(!isOnePlayerAlive){ isOnePlayerAlive = true; winner = i;} //finds the first 'alive' player
-					else {return;} //if more than one player is alive, the round continues
-				}
+	public void PlayerDeath(){ //checks if round should end
+		bool isOnePlayerAlive = false;
+		int winner = -1; //Has to have a default value to not cause compiler errors
+		for(int i = 0; i < players.Count; i++){
+			if(players[i].isAlive == true){
+				if(!isOnePlayerAlive){ isOnePlayerAlive = true; winner = i;} //finds the first 'alive' player
+				else {return;} //if more than one player is alive, the round continues
 			}
-			//if only one player is alive, then that player wins the round
-			if(isOnePlayerAlive){ //check in case of errors
-				winCounters[winner]++;
-				EndRound();
-			} else { Debug.LogError("No players are alive, ID of last death: " + playerID);}
-		} else {
-			Debug.LogError("PlayerID " + playerID + " is out of PlayerStatus array index.");
+		}
+		//if only one player is alive, then that player wins the round
+		if(isOnePlayerAlive){ //check in case of errors
+			players[winner].winCount+=1;
+			EndRound();
+		} else { 
+			Debug.LogError("No players are alive");
 		}
 	}
 
 	private void EndGame(int winner){
 		Debug.Log("Player " + (winner + 1) + " has won the match.");
 		roundCounter = 0; //Reset round counter
-		for(int i = 0; i < winCounters.Count; i++){
-			winCounters[i] = 0;
+		for(int i = 0; i < players.Count; i++){
+			players[i].winCount = 0;
 		}
 	}
 
@@ -110,13 +87,14 @@ public class GameManager : MonoBehaviour {
 		//Stop gameplay
 		roundCounter++;
 		int winner = -1; //Has to have a default value to not cause compiler errors
-		for(int i = 0; i < winCounters.Count; i++){
-			Debug.Log("Player " + (i + 1) + " has won " + winCounters[i] + " rounds.");
-			if (winCounters[i] >= roundsToWin){winner = i;}
+		for(int i = 0; i < players.Count; i++){
+			players[i].Pause();
+			Debug.Log("Player " + (i + 1) + " has won " + players[i].winCount + " rounds.");
+			if (players[i].winCount >= roundsToWin){winner = i;}
 		}
-		player1RoundCounter.text = winCounters[0].ToString(); //PROTOTYPE CODE
-		player2RoundCounter.text = winCounters[1].ToString(); //PROTOTYPE CODE
+		player1RoundCounter.text = players[0].winCount.ToString(); //PROTOTYPE CODE
+		player2RoundCounter.text = players[1].winCount.ToString(); //PROTOTYPE CODE
 		if(winner > -1){ EndGame(winner);} //if a winner is found, the game ends
-		powerPickPanel.SetActive(true); //if no winner is found, another round begins
+		powerPickPanel.SetActive(true); 
 	}
 }

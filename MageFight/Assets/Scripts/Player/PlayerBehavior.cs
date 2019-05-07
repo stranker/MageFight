@@ -13,11 +13,10 @@ public class PlayerBehavior : MonoBehaviour {
     public DamagePopUp popText;
     public ParticleSystem deathParticles;
     public Animator deathAnim;
-    private int PlayerID;
-
+    private int playerID;
+    public int winCount;
     private void Start(){
-        PlayerID = GameManager.Instance.RegisterPlayerID();
-        Debug.Log(gameObject + " ID: " + PlayerID);
+        winCount = 0;
     }
     public void TakeDamage(int val)
     {
@@ -34,7 +33,7 @@ public class PlayerBehavior : MonoBehaviour {
                 GetComponentInChildren<SpriteRenderer>().enabled = false;
                 deathParticles.Play();
                 deathAnim.SetTrigger("alive");
-                GameManager.Instance.PlayerDeath(PlayerID);
+                GameManager.Instance.PlayerDeath();
             }
         }
     }
@@ -48,4 +47,19 @@ public class PlayerBehavior : MonoBehaviour {
         transform.position = position;
     }
 
+    public void RegisterPlayerID(int ID){
+        playerID = ID;
+        Debug.Log(gameObject + " ID: " + playerID);
+    }
+    
+    public void Pause(){
+        GetComponent<AttackBehavior>().enabled = false;
+        GetComponent<MovementBehavior>().enabled = false;
+    }
+    public void Resume(){
+        if(isAlive){
+            GetComponent<AttackBehavior>().enabled = true;
+            GetComponent<MovementBehavior>().enabled = true;
+        }
+    }
 }
