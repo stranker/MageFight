@@ -231,6 +231,51 @@ Prefab:
       propertyPath: deathAnim
       value: 
       objectReference: {fileID: 1291797002}
+    - target: {fileID: 61427620941898776, guid: bc6cf6c6ba046964b8f985b6edd81802,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.1094985
+      objectReference: {fileID: 0}
+    - target: {fileID: 61427620941898776, guid: bc6cf6c6ba046964b8f985b6edd81802,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -0.8584068
+      objectReference: {fileID: 0}
+    - target: {fileID: 61427620941898776, guid: bc6cf6c6ba046964b8f985b6edd81802,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.44075298
+      objectReference: {fileID: 0}
+    - target: {fileID: 61427620941898776, guid: bc6cf6c6ba046964b8f985b6edd81802,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.16681337
+      objectReference: {fileID: 0}
+    - target: {fileID: 70505541829595618, guid: bc6cf6c6ba046964b8f985b6edd81802,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.07820368
+      objectReference: {fileID: 0}
+    - target: {fileID: 70505541829595618, guid: bc6cf6c6ba046964b8f985b6edd81802,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.71249676
+      objectReference: {fileID: 0}
+    - target: {fileID: 70505541829595618, guid: bc6cf6c6ba046964b8f985b6edd81802,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.10355246
+      objectReference: {fileID: 0}
+    - target: {fileID: 70505541829595618, guid: bc6cf6c6ba046964b8f985b6edd81802,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2.0440438
+      objectReference: {fileID: 0}
+    - target: {fileID: 114656719760944332, guid: bc6cf6c6ba046964b8f985b6edd81802,
+        type: 2}
+      propertyPath: jumpForce
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc6cf6c6ba046964b8f985b6edd81802, type: 2}
   m_IsPrefabAsset: 0
@@ -713,7 +758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f56dae173a46342b5b113c0647fcd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playsOnKeyboard: 1
   roundsToWin: 3
   powerPickPanel: {fileID: 2070338682}
   startingPositions:
@@ -2650,6 +2694,46 @@ Prefab:
       propertyPath: deathAnim
       value: 
       objectReference: {fileID: 424878904}
+    - target: {fileID: 61116940582786594, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.14446688
+      objectReference: {fileID: 0}
+    - target: {fileID: 61116940582786594, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -0.8649652
+      objectReference: {fileID: 0}
+    - target: {fileID: 61116940582786594, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.43340778
+      objectReference: {fileID: 0}
+    - target: {fileID: 61116940582786594, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.17993021
+      objectReference: {fileID: 0}
+    - target: {fileID: 70114351085554426, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.11307049
+      objectReference: {fileID: 0}
+    - target: {fileID: 70114351085554426, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 0.66555405
+      objectReference: {fileID: 0}
+    - target: {fileID: 70114351085554426, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.09860957
+      objectReference: {fileID: 0}
+    - target: {fileID: 70114351085554426, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2.0539296
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4f71b467ae0ea445b9c978adb55f8d7, type: 2}
   m_IsPrefabAsset: 0

@@ -27,11 +27,17 @@ public class SpellsManager : MonoBehaviour {
     }
     public void InvokeSpell(int index, Vector3 startPosition, Vector3 direction, GameObject owner)
     {
-        if(!spells[index])
+        if (!spells[index])
         {
             spells[index] = Instantiate(inventorySpells[index], startPosition, Quaternion.identity);
-            spells[index].InvokeSpell(direction,owner);
+            if (spells[index].readyToInvoke)
+            {
+                spells[index].SetReadyToInvoke(false);
+                spells[index].InvokeSpell(direction, owner);
+            }
+
         }
+
     }
     public Spell.CastType GetSpellCastType(int index)
     {

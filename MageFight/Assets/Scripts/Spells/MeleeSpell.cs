@@ -22,16 +22,4 @@ public class MeleeSpell : Spell {
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
-
-    private void Update()
-    {
-        if (invoked)
-        {
-            if (timer < lifeTime)
-                timer += Time.deltaTime;
-            else
-                Destroy(gameObject);
-        }
-    }
-
 }

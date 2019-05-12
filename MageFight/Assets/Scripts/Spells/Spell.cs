@@ -15,17 +15,29 @@ public abstract class Spell : MonoBehaviour {
     public float castVelocity;
     public int damage;
     public float cooldown;
-    public float lifeTime;
     public CastType castType;
     public GameObject mageOwner;
+    public bool readyToInvoke = true;
 
     protected bool invoked = false;
     protected Vector3 dir;
-    protected float timer = 0f;
+    public float timer = 0f;
 
     public abstract void InvokeSpell(Vector3 direction, GameObject owner);
     public CastType GetCastType() { return castType; }
 
+    private void Update()
+    {
+        if (!readyToInvoke)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                readyToInvoke = !readyToInvoke;
+                timer = cooldown;
+            }
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,6 +48,16 @@ public abstract class Spell : MonoBehaviour {
             CheckHasEffect(player);
             Destroy(gameObject);
         }
+        if (collision.tag == "Ground")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void SetReadyToInvoke(bool v)
+    {
+        readyToInvoke = v;
+        timer = cooldown;
     }
 
     private void CheckHasEffect(PlayerBehavior player)

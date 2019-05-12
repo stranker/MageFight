@@ -25,15 +25,4 @@ public class RangeSpell : Spell {
         }
     }
 
-    private void Update()
-    {
-        if (invoked)
-        {
-            if (timer < lifeTime)
-                timer += Time.deltaTime;
-            else
-                Destroy(gameObject);
-        }
-    }
-
 }
