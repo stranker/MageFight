@@ -276,6 +276,26 @@ Prefab:
       propertyPath: jumpForce
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114740163679365256, guid: bc6cf6c6ba046964b8f985b6edd81802,
+        type: 2}
+      propertyPath: dodgeButton
+      value: P1_Dodge
+      objectReference: {fileID: 0}
+    - target: {fileID: 114656719760944332, guid: bc6cf6c6ba046964b8f985b6edd81802,
+        type: 2}
+      propertyPath: dashSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114656719760944332, guid: bc6cf6c6ba046964b8f985b6edd81802,
+        type: 2}
+      propertyPath: dashTotalTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 50135385551731502, guid: bc6cf6c6ba046964b8f985b6edd81802,
+        type: 2}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc6cf6c6ba046964b8f985b6edd81802, type: 2}
   m_IsPrefabAsset: 0
@@ -2733,6 +2753,11 @@ Prefab:
         type: 2}
       propertyPath: m_Size.y
       value: 2.0539296
+      objectReference: {fileID: 0}
+    - target: {fileID: 114205411813066328, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: dodgeButton
+      value: P2_Dodge
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4f71b467ae0ea445b9c978adb55f8d7, type: 2}
