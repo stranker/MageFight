@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,10 +11,21 @@ public class UIManager : MonoBehaviour {
     public Image health1;
     public Image health2;
 
-	
-	// Update is called once per frame
-	void Update () {
+    internal void Fade(float v)
+    {
+        var sr = GetComponentsInChildren<Image>();
+        foreach (Image sprite in sr)
+        {
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, v);
+        }
+
+    }
+
+    // Update is called once per frame
+    void Update () {
         health1.fillAmount = (float)p1.health / (float)p1.maxHealth;
         health2.fillAmount = (float)p2.health / (float)p2.maxHealth;
     }
+
+
 }
