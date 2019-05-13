@@ -25,6 +25,9 @@ public class MovementBehavior : MonoBehaviour {
     public float dashTimer;
     public float dashTotalTime = 2f;
     private float gravity;
+
+    public ParticleSystem jumpParticles;
+
     // Use this for initialization
     void Start () {
         rd = GetComponent<Rigidbody2D>();
@@ -50,6 +53,7 @@ public class MovementBehavior : MonoBehaviour {
         {
             onFloor = !onFloor;
             rd.velocity = new Vector2(0,jumpForce);
+            jumpParticles.Play();
         }
         if(Input.GetButtonDown(input.dodgeButton) || dashing)
         {
@@ -116,6 +120,10 @@ public class MovementBehavior : MonoBehaviour {
     public void SetCanMove(bool val)
     {
         canMove = val;
+        if (val)
+            rd.bodyType = RigidbodyType2D.Dynamic;
+        else
+            rd.bodyType = RigidbodyType2D.Static;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -10,10 +10,11 @@ public class UIManager : MonoBehaviour {
     public PlayerBehavior p2;
     public Image health1;
     public Image health2;
+    public GameObject playerUI;
 
     internal void Fade(float v)
     {
-        var sr = GetComponentsInChildren<Image>();
+        var sr = playerUI.GetComponentsInChildren<Image>();
         foreach (Image sprite in sr)
         {
             sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, v);

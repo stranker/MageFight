@@ -5,12 +5,14 @@ using UnityEngine;
 public class UIBox : MonoBehaviour {
 
     public UIManager ui;
+    private List<GameObject> players = new List<GameObject>();
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            ui.Fade(0.5f);
+            players.Add(collision.gameObject);
+            ui.Fade(0.3f);
         }
     }
 
@@ -18,7 +20,11 @@ public class UIBox : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
-            ui.Fade(1f);
+            players.Remove(collision.gameObject);
+            if (players.Count <= 0)
+            {
+                ui.Fade(1f);
+            }
         }
     }
 

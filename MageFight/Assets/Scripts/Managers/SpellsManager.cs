@@ -12,6 +12,7 @@ public class SpellsManager : MonoBehaviour {
     public GameObject clockCooldown;
     private float timer;
     public float clockTime = 1;
+    public ParticleSystem spellParticles;
 
     void OnValidate()
     {
@@ -51,6 +52,7 @@ public class SpellsManager : MonoBehaviour {
         if (!spells[index].invoked)
         {
             spells[index].InvokeSpell(startPosition, direction, owner);
+            spellParticles.Play();
         }
         else
         {
