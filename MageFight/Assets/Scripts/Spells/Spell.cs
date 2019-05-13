@@ -17,23 +17,23 @@ public abstract class Spell : MonoBehaviour {
     public float cooldown;
     public CastType castType;
     public GameObject mageOwner;
-    public bool readyToInvoke = true;
 
-    protected bool invoked = false;
+    public bool invoked = false;
     protected Vector3 dir;
     public float timer = 0f;
 
-    public abstract void InvokeSpell(Vector3 direction, GameObject owner);
+    public abstract void InvokeSpell(Vector3 startPos, Vector3 direction, GameObject owner);
     public CastType GetCastType() { return castType; }
+
 
     private void Update()
     {
-        if (!readyToInvoke)
+        if (invoked)
         {
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                readyToInvoke = !readyToInvoke;
+                invoked = false;
                 timer = cooldown;
             }
         }
@@ -46,18 +46,17 @@ public abstract class Spell : MonoBehaviour {
             PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
             player.TakeDamage(damage);
             CheckHasEffect(player);
-            Destroy(gameObject);
+            Kill();
         }
         if (collision.tag == "Ground")
         {
-            Destroy(gameObject);
+            Kill();
         }
     }
 
-    public void SetReadyToInvoke(bool v)
+    public void Kill()
     {
-        readyToInvoke = v;
-        timer = cooldown;
+        transform.position = new Vector2(-999, -999);
     }
 
     private void CheckHasEffect(PlayerBehavior player)

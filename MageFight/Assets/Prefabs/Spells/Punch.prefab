@@ -102,9 +102,13 @@ MonoBehaviour:
   travelVelocity: 15
   castVelocity: 0
   damage: 3
-  cooldown: 0
-  lifeTime: 0.2
+  cooldown: 2
   castType: 0
+  mageOwner: {fileID: 0}
+  invoked: 0
+  timer: 0
+  lifeTime: 0.3
+  lifeTimer: 0
 --- !u!212 &212935745592499306
 SpriteRenderer:
   m_ObjectHideFlags: 1

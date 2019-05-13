@@ -8,7 +8,11 @@ public class SpellsManager : MonoBehaviour {
     [Header("Player spells")]
     private const int amountOfSpells = 3;
     public Spell[] inventorySpells = new Spell[amountOfSpells];
-    private Spell[] spells;
+    public List<Spell> spells;
+    public GameObject clockCooldown;
+    private float timer;
+    public float clockTime = 1;
+
     void OnValidate()
     {
         if(inventorySpells.Length != amountOfSpells)
@@ -19,23 +23,39 @@ public class SpellsManager : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        spells = new Spell[3];
+        foreach (Spell item in inventorySpells)
+        {
+            Spell s = Instantiate(item, transform.parent);
+            spells.Add(s);
+            s.Kill();
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (clockCooldown.activeInHierarchy)
+        {
+            Vector3 clockScale = new Vector2(transform.localScale.x, 1);
+            clockCooldown.transform.localScale = clockScale;
+            timer += Time.deltaTime;
+            if (timer >= clockTime)
+            {
+                timer = 0;
+                clockCooldown.SetActive(false);
+            }
+        }
     }
+
     public void InvokeSpell(int index, Vector3 startPosition, Vector3 direction, GameObject owner)
     {
-        if (!spells[index])
+        if (!spells[index].invoked)
         {
-            spells[index] = Instantiate(inventorySpells[index], startPosition, Quaternion.identity);
-            if (spells[index].readyToInvoke)
-            {
-                spells[index].SetReadyToInvoke(false);
-                spells[index].InvokeSpell(direction, owner);
-            }
-
+            spells[index].InvokeSpell(startPosition, direction, owner);
+        }
+        else
+        {
+            clockCooldown.SetActive(true);
+            clockCooldown.GetComponentInChildren<TextMesh>().text = spells[index].timer.ToString("0");
         }
 
     }
