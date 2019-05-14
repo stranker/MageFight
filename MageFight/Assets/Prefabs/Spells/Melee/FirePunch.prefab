@@ -149,6 +149,7 @@ MonoBehaviour:
   mageOwner: {fileID: 0}
   invoked: 0
   timer: 0
+  type: 0
 --- !u!212 &212904244116824378
 SpriteRenderer:
   m_ObjectHideFlags: 1

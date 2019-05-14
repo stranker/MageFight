@@ -40,8 +40,6 @@ public abstract class Spell : MonoBehaviour {
         }
     }
 
-
-
     public void Kill()
     {
         transform.position = new Vector2(-999, -999);

@@ -145,9 +145,9 @@ MonoBehaviour:
   - {fileID: 114968378377795178, guid: b60f7ba977f55ab41bdc451e2919b3a0, type: 2}
   - {fileID: 114353543599955174, guid: 4d844d2b7c016f54d9d412cfb21218c1, type: 2}
   - {fileID: 114472322982678124, guid: ed820bc51e0309a4588629a399e4fb78, type: 2}
-  - {fileID: 114191083987830644, guid: 2d6a795219e15fb40b08e595adb8715d, type: 2}
+  - {fileID: 114194034602317248, guid: 2d6a795219e15fb40b08e595adb8715d, type: 2}
   - {fileID: 114394342564051314, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc, type: 2}
-  - {fileID: 114188684346475766, guid: a509e27a05325d24b8ed012aebbbedd7, type: 2}
+  - {fileID: 114786596358402696, guid: b164b286bf25c304bb28c1b2dbf4d06f, type: 2}
   - {fileID: 114951534744336276, guid: a41a750c7c56cc34aa4170ddf4884173, type: 2}
   - {fileID: 114544577187218886, guid: d4eb113f809050047a789aefe4821342, type: 2}
   powerPickingPanel: {fileID: 2070338682}
@@ -9599,7 +9599,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1617122149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.99, z: 0}
+  m_LocalPosition: {x: 0, y: 2.12, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 1924875479}
