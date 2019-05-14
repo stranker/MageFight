@@ -20,7 +20,7 @@ public class MovementBehavior : MonoBehaviour {
     public float timer;
     public float knockbackTime = 1;
     private Vector2 aimDirection;
-    private bool dashing;
+    public bool dashing;
     public float dashSpeed;
     public float dashTimer;
     public float dashTotalTime = 2f;
@@ -32,6 +32,8 @@ public class MovementBehavior : MonoBehaviour {
     private bool onChangui = false;
 
     public ParticleSystem jumpParticles;
+    public TrailRenderer dashTrail;
+    public TrailRenderer selfTrail;
 
     // Use this for initialization
     void Start () {
@@ -61,7 +63,8 @@ public class MovementBehavior : MonoBehaviour {
             jumpParticles.Play();
             canJump = !canJump;
         }
-        if(Input.GetButtonDown(input.dodgeButton) || dashing)
+        dashTrail.emitting = dashing;
+        if (Input.GetButtonDown(input.dodgeButton) || dashing)
         {
             canMove = false;
             if(!dashing)
@@ -160,10 +163,21 @@ public class MovementBehavior : MonoBehaviour {
         }
     }
 
-    public void Push()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        rd.velocity = new Vector2(-transform.localScale.x * 2, 20);
+        if (collision.gameObject.tag == "Ground" && dashing)
+        {
+            rd.gravityScale = gravity;
+            dashTimer = 0;
+            dashing = false;
+            canMove = true;
+        }
+    }
+
+    public void Knockback()
+    {
         knockback = !knockback;
+        rd.velocity = new Vector2(-transform.localScale.x * 2, 7);
     }
 
 

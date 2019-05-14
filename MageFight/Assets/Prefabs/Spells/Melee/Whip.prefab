@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f40031b22025e0419aad238c572bdd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  travelVelocity: 2
   castVelocity: 0
   damage: 3
   cooldown: 3
@@ -107,7 +106,6 @@ MonoBehaviour:
   mageOwner: {fileID: 0}
   invoked: 0
   timer: 0
-  lifeTime: 1
 --- !u!212 &212416317987420814
 SpriteRenderer:
   m_ObjectHideFlags: 1

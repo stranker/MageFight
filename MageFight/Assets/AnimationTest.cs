@@ -18,6 +18,9 @@ public class AnimationTest : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+
+        anim.SetBool("Dashing", movement.dashing);
+
         if (!movement.onFloor)
         {
             anim.SetFloat("VelocityY", rd.velocity.y);

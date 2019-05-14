@@ -4,26 +4,20 @@ using UnityEngine;
 
 public class MeleeSpell : Spell {
 
-    protected Rigidbody2D rd;
-    public float lifeTime;
-    public float lifeTimer = 0;
-
-    void Start() {
-        rd = GetComponent<Rigidbody2D>();
-    }
-
-    private void FixedUpdate()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (invoked)
+        if (collision.tag == "Player" && collision.gameObject != mageOwner)
         {
-            lifeTimer += Time.deltaTime;
-            if (lifeTimer >= lifeTime)
-            {
-                Kill();
-                lifeTimer = 0;
-            }
+            PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
+            player.TakeDamage(damage);
+            CheckHasEffect(player);
+        }
+        if (collision.tag == "Ground")
+        {
+            Kill();
         }
     }
+
 
     public override void InvokeSpell(Vector3 startPos, Vector3 direction, GameObject owner)
     {
@@ -31,9 +25,9 @@ public class MeleeSpell : Spell {
         mageOwner = owner;
         transform.position = startPos;
         dir = direction;
-        rd.velocity = travelVelocity * dir;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         timer = cooldown;
+        GetComponent<Animator>().SetTrigger("Invoked");
     }
 }

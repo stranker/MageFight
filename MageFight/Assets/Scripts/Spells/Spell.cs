@@ -11,7 +11,7 @@ public abstract class Spell : MonoBehaviour {
         Hold
     }
     [Header("Spell Stats")]
-    public float travelVelocity;
+
     public float castVelocity;
     public int damage;
     public float cooldown;
@@ -26,7 +26,7 @@ public abstract class Spell : MonoBehaviour {
     public CastType GetCastType() { return castType; }
 
 
-    private void Update()
+    protected void Update()
     {
         if (invoked)
         {
@@ -39,27 +39,14 @@ public abstract class Spell : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player" && collision.gameObject != mageOwner)
-        {
-            PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
-            player.TakeDamage(damage);
-            CheckHasEffect(player);
-            Kill();
-        }
-        if (collision.tag == "Ground")
-        {
-            Kill();
-        }
-    }
+
 
     public void Kill()
     {
         transform.position = new Vector2(-999, -999);
     }
 
-    private void CheckHasEffect(PlayerBehavior player)
+    protected void CheckHasEffect(PlayerBehavior player)
     {
         SpellEffect effect = GetComponentInChildren<SpellEffect>();
         if (effect)

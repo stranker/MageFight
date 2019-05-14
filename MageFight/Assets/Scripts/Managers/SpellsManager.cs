@@ -56,6 +56,7 @@ public class SpellsManager : MonoBehaviour {
             spells[index].InvokeSpell(startPosition, direction, owner);
             spellParticles.Play();
             anim.SetTrigger("Invoke");
+            GetComponent<MovementBehavior>().Knockback();
         }
         else
         {

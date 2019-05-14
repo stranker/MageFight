@@ -15,7 +15,7 @@ public class WindPush : MonoBehaviour {
     {
         if (collision.tag == "Player" && spell.mageOwner != collision.gameObject)
         {
-            collision.GetComponent<MovementBehavior>().Push();
+            collision.GetComponent<MovementBehavior>().Knockback();
         }
     }
 }
