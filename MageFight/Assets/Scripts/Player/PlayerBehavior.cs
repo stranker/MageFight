@@ -78,4 +78,8 @@ public class PlayerBehavior : MonoBehaviour {
     public void AddSpell(Spell s){
         spellsManager.AddSpell(s);
     }
+
+    public bool fullSpellInventory(){
+        return spellsManager.fullSpellInventory();
+    }
 }

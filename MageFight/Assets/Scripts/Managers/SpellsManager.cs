@@ -80,8 +80,12 @@ public class SpellsManager : MonoBehaviour {
             Debug.LogWarning("Spell capacity reached, unable to add new one");
         } else {
             Spell sp = Instantiate(s, transform.parent);
+            sp.transform.position =  new Vector2(-999, -999);
             spells.Add(sp);
             s.Kill();
         }
+    }
+    public bool fullSpellInventory(){
+        return spells.Count == amountOfSpells;
     }
 }

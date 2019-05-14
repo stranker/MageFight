@@ -102,7 +102,13 @@ public class PowerPickingManager : MonoBehaviour {
 				spellsAvailable = true;
 			}
 		}
-		if(!spellsAvailable){ End();}
+		bool playerInventoryFull = true;
+		foreach(PlayerBehavior player in players){
+			if(!player.fullSpellInventory()){
+				playerInventoryFull = false;
+			}
+		}
+		if(!spellsAvailable || playerInventoryFull){ End();}
 
 	}
 	public void Reset(){

@@ -12,8 +12,10 @@ public class PowerButtonScript : MonoBehaviour {
 	public void SetSpell(Spell s){
 		spell = s;
 		Image im = GetComponent<Image>();
-		im.sprite = spell.GetComponent<SpriteRenderer>().sprite;
-		im.color = spell.GetComponent<SpriteRenderer>().color;
+		SpriteRenderer sr = spell.GetComponent<SpriteRenderer>();
+		if(!sr){ sr = spell.GetComponentInChildren<SpriteRenderer>();}
+		im.sprite = sr.sprite;
+		im.color = sr.color;
 	}
 	public void Reset(){
 		GetComponent<Button>().interactable = true;
