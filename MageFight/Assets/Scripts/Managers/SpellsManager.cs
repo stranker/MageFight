@@ -55,7 +55,7 @@ public class SpellsManager : MonoBehaviour {
                 spells[index].InvokeSpell(startPosition, direction, owner);
                 spellParticles.Play();
                 anim.SetTrigger("Invoke");
-            GetComponent<MovementBehavior>().Knockback();
+                GetComponent<MovementBehavior>().Knockback();
             }
             else
             {
@@ -80,7 +80,7 @@ public class SpellsManager : MonoBehaviour {
             Debug.LogWarning("Spell capacity reached, unable to add new one");
         } else {
             Spell sp = Instantiate(s, transform.parent);
-            sp.transform.position =  new Vector2(-999, -999);
+            //sp.transform.position =  new Vector2(-999, -999);
             spells.Add(sp);
             s.Kill();
         }
