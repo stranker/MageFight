@@ -13,6 +13,7 @@ public class SpellsManager : MonoBehaviour {
     private float timer;
     public float clockTime = 1;
     public ParticleSystem spellParticles;
+    private Animator anim;
 
     void OnValidate()
     {
@@ -30,6 +31,7 @@ public class SpellsManager : MonoBehaviour {
             spells.Add(s);
             s.Kill();
         }
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -53,13 +55,13 @@ public class SpellsManager : MonoBehaviour {
         {
             spells[index].InvokeSpell(startPosition, direction, owner);
             spellParticles.Play();
+            anim.SetTrigger("Invoke");
         }
         else
         {
             clockCooldown.SetActive(true);
             clockCooldown.GetComponentInChildren<TextMesh>().text = spells[index].timer.ToString("0");
         }
-
     }
     public Spell.CastType GetSpellCastType(int index)
     {

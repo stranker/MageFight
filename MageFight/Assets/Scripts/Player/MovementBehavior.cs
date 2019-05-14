@@ -13,7 +13,7 @@ public class MovementBehavior : MonoBehaviour {
     public Vector2 velocity;
     private InputManager input;
     private Rigidbody2D rd;
-    private bool onFloor = false;
+    public bool onFloor = false;
     private bool canMove = true;
 
     private bool knockback = false;
@@ -131,6 +131,14 @@ public class MovementBehavior : MonoBehaviour {
         if (collision.gameObject.tag == "Ground")
         {
             onFloor = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            onFloor = false;
         }
     }
 

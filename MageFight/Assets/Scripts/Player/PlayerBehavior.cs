@@ -30,11 +30,20 @@ public class PlayerBehavior : MonoBehaviour {
                 isAlive = !isAlive;
                 GetComponent<AttackBehavior>().enabled = false;
                 GetComponent<MovementBehavior>().enabled = false;
-                GetComponentInChildren<SpriteRenderer>().enabled = false;
+                SetSpritesVisibles(false);
                 deathParticles.Play();
                 deathAnim.SetTrigger("alive");
                 GameManager.Instance.PlayerDeath();
             }
+        }
+    }
+
+    private void SetSpritesVisibles(bool v)
+    {
+        var sprites = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer sprite in sprites)
+        {
+            sprite.enabled = v;
         }
     }
 
@@ -43,7 +52,7 @@ public class PlayerBehavior : MonoBehaviour {
         isAlive = true;
         GetComponent<AttackBehavior>().enabled = true;
         GetComponent<MovementBehavior>().enabled = true;
-        GetComponentInChildren<SpriteRenderer>().enabled = true;
+        SetSpritesVisibles(true);
         transform.position = position;
     }
 
