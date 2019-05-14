@@ -26,6 +26,11 @@ public class MovementBehavior : MonoBehaviour {
     public float dashTotalTime = 2f;
     private float gravity;
 
+    private float changuiTimer = 0f;
+    public float changuiTime;
+    private bool canJump = true;
+    private bool onChangui = false;
+
     public ParticleSystem jumpParticles;
 
     // Use this for initialization
@@ -49,11 +54,12 @@ public class MovementBehavior : MonoBehaviour {
         else
             velocity.x = 0;
 
-        if (Input.GetButtonDown(input.jumpButton) && onFloor && !dashing)
+        if (Input.GetButtonDown(input.jumpButton) && canJump && !dashing)
         {
             onFloor = !onFloor;
             rd.velocity = new Vector2(0,jumpForce);
             jumpParticles.Play();
+            canJump = !canJump;
         }
         if(Input.GetButtonDown(input.dodgeButton) || dashing)
         {
@@ -106,6 +112,16 @@ public class MovementBehavior : MonoBehaviour {
                 knockback = !knockback;
             }
         }
+        if (onChangui)
+        {
+            changuiTimer += Time.deltaTime;
+            if (changuiTimer >= changuiTime)
+            {
+                onChangui = false;
+                canJump = false;
+                changuiTimer = 0;
+            }
+        }
         CheckFlipDirection();
     }
 
@@ -126,11 +142,12 @@ public class MovementBehavior : MonoBehaviour {
             rd.bodyType = RigidbodyType2D.Static;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
             onFloor = true;
+            canJump = onFloor;
         }
     }
 
@@ -139,6 +156,7 @@ public class MovementBehavior : MonoBehaviour {
         if (collision.gameObject.tag == "Ground")
         {
             onFloor = false;
+            onChangui = true;
         }
     }
 
