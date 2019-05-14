@@ -15,6 +15,7 @@ public class PlayerBehavior : MonoBehaviour {
     private int playerID;
     public int winCount;
     private SpellsManager spellsManager;
+	
     private void Start(){
         winCount = 0;
         spellsManager = GetComponent<SpellsManager>();
@@ -27,6 +28,8 @@ public class PlayerBehavior : MonoBehaviour {
             health -= val;
             GameObject pop = Instantiate(popText.gameObject, headPos.position, Quaternion.identity, transform.parent);
             pop.GetComponent<DamagePopUp>().SetDamage(val);
+			GetComponent<MovementBehavior>().Knockback();
+			GetComponent<Animator>().SetTrigger("Hit");
             if (health <= 0)
             {
                 isAlive = !isAlive;
