@@ -12,7 +12,6 @@ public class PlayerBehavior : MonoBehaviour {
     public Transform headPos;
     public DamagePopUp popText;
     public ParticleSystem deathParticles;
-    public Animator deathAnim;
     private int playerID;
     public int winCount;
     private SpellsManager spellsManager;
@@ -20,6 +19,7 @@ public class PlayerBehavior : MonoBehaviour {
         winCount = 0;
         spellsManager = GetComponent<SpellsManager>();
     }
+
     public void TakeDamage(int val)
     {
         if (isAlive)
@@ -34,7 +34,6 @@ public class PlayerBehavior : MonoBehaviour {
                 GetComponent<MovementBehavior>().enabled = false;
                 SetSpritesVisibles(false);
                 deathParticles.Play();
-                deathAnim.SetTrigger("alive");
                 GameManager.Instance.PlayerDeath();
             }
         }

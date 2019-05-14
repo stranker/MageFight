@@ -20,13 +20,20 @@ public class MovementBehavior : MonoBehaviour {
     public float timer;
     public float knockbackTime = 1;
     private Vector2 aimDirection;
-    private bool dashing;
+    public bool dashing;
     public float dashSpeed;
     public float dashTimer;
     public float dashTotalTime = 2f;
     private float gravity;
 
+    private float changuiTimer = 0f;
+    public float changuiTime;
+    private bool canJump = true;
+    private bool onChangui = false;
+
     public ParticleSystem jumpParticles;
+    public TrailRenderer dashTrail;
+    public TrailRenderer selfTrail;
 
     // Use this for initialization
     void Start () {
@@ -49,13 +56,15 @@ public class MovementBehavior : MonoBehaviour {
         else
             velocity.x = 0;
 
-        if (Input.GetButtonDown(input.jumpButton) && onFloor && !dashing)
+        if (Input.GetButtonDown(input.jumpButton) && canJump && !dashing)
         {
             onFloor = !onFloor;
             rd.velocity = new Vector2(0,jumpForce);
             jumpParticles.Play();
+            canJump = !canJump;
         }
-        if(Input.GetButtonDown(input.dodgeButton) || dashing)
+        dashTrail.emitting = dashing;
+        if (Input.GetButtonDown(input.dodgeButton) || dashing)
         {
             canMove = false;
             if(!dashing)
@@ -106,6 +115,16 @@ public class MovementBehavior : MonoBehaviour {
                 knockback = !knockback;
             }
         }
+        if (onChangui)
+        {
+            changuiTimer += Time.deltaTime;
+            if (changuiTimer >= changuiTime)
+            {
+                onChangui = false;
+                canJump = false;
+                changuiTimer = 0;
+            }
+        }
         CheckFlipDirection();
     }
 
@@ -126,11 +145,12 @@ public class MovementBehavior : MonoBehaviour {
             rd.bodyType = RigidbodyType2D.Static;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
             onFloor = true;
+            canJump = onFloor;
         }
     }
 
@@ -139,13 +159,25 @@ public class MovementBehavior : MonoBehaviour {
         if (collision.gameObject.tag == "Ground")
         {
             onFloor = false;
+            onChangui = true;
         }
     }
 
-    public void Push()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        rd.velocity = new Vector2(-transform.localScale.x * 2, 20);
+        if (collision.gameObject.tag == "Ground" && dashing)
+        {
+            rd.gravityScale = gravity;
+            dashTimer = 0;
+            dashing = false;
+            canMove = true;
+        }
+    }
+
+    public void Knockback()
+    {
         knockback = !knockback;
+        rd.velocity = new Vector2(-transform.localScale.x * 2, 7);
     }
 
 

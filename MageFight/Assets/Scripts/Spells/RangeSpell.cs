@@ -4,11 +4,27 @@ using UnityEngine;
 
 public class RangeSpell : Spell {
 
-    protected Rigidbody2D rd;
+    public float travelVelocity;
+    private Rigidbody2D rd;
 
     private void Start()
     {
         rd = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player" && collision.gameObject != mageOwner)
+        {
+            PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
+            player.TakeDamage(damage);
+            CheckHasEffect(player);
+            Kill();
+        }
+        if (collision.tag == "Ground")
+        {
+            Kill();
+        }
     }
 
     public override void InvokeSpell(Vector3 startPos, Vector3 direction, GameObject owner)
