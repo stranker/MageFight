@@ -15,8 +15,10 @@ public class PlayerBehavior : MonoBehaviour {
     public Animator deathAnim;
     private int playerID;
     public int winCount;
+    private SpellsManager spellsManager;
     private void Start(){
         winCount = 0;
+        spellsManager = GetComponent<SpellsManager>();
     }
     public void TakeDamage(int val)
     {
@@ -60,7 +62,9 @@ public class PlayerBehavior : MonoBehaviour {
         playerID = ID;
         Debug.Log(gameObject + " ID: " + playerID);
     }
-    
+    public int GetID(){
+        return playerID;
+    }
     public void Pause(){
         GetComponent<AttackBehavior>().enabled = false;
         GetComponent<MovementBehavior>().enabled = false;
@@ -70,5 +74,9 @@ public class PlayerBehavior : MonoBehaviour {
             GetComponent<AttackBehavior>().enabled = true;
             GetComponent<MovementBehavior>().enabled = true;
         }
+    }
+
+    public void AddSpell(Spell s){
+        spellsManager.AddSpell(s);
     }
 }

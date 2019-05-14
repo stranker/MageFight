@@ -8,7 +8,8 @@ public abstract class Spell : MonoBehaviour {
     public enum CastType 
     {
         OneTap,
-        Hold
+        Hold,
+        Error
     }
     [Header("Spell Stats")]
     public float travelVelocity;
