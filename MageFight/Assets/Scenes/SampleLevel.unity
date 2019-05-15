@@ -1537,7 +1537,7 @@ GameObject:
   - component: {fileID: 549306962}
   - component: {fileID: 549306961}
   - component: {fileID: 549306963}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Level
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3844,6 +3844,12 @@ MonoBehaviour:
   jumpParticles: {fileID: 1819166833}
   dashTrail: {fileID: 540744634}
   selfTrail: {fileID: 429132405}
+  leftFoot: {fileID: 1381432995}
+  rightFoot: {fileID: 1641378971}
+  floorLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  rayCastFloorLenght: 0.25
 --- !u!114 &968361975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9151,6 +9157,12 @@ MonoBehaviour:
   jumpParticles: {fileID: 1339969353}
   dashTrail: {fileID: 313556167}
   selfTrail: {fileID: 2063949987}
+  leftFoot: {fileID: 2135675630}
+  rightFoot: {fileID: 783105555}
+  floorLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  rayCastFloorLenght: 0.25
 --- !u!114 &1379954433
 MonoBehaviour:
   m_ObjectHideFlags: 0
