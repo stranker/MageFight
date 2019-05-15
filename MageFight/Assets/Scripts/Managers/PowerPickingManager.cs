@@ -28,7 +28,8 @@ public class PowerPickingManager : MonoBehaviour {
 	[SerializeField] private GameObject powerPickingPanel;
 	[SerializeField] private Text pickTurnText;
 	[SerializeField] private GameObject powerButtonPrefab;
-	private List<PlayerBehavior> players;
+	[SerializeField] private GameObject powerGrid;
+    private List<PlayerBehavior> players;
 	private List<turn> turns = new List<turn>();
 	private List<PowerButtonScript> buttons = new List<PowerButtonScript>();
 	private int turnCounter;
@@ -36,24 +37,7 @@ public class PowerPickingManager : MonoBehaviour {
 	private void Start(){
 		for(int i = 0; i < spells.Count; i++){
 			GameObject go = Instantiate(powerButtonPrefab) as GameObject;
-			Vector3 pos = powerPickingPanel.transform.position;
-            if (i <= 4){
-                if (i % 2 == 0){
-                    pos.x += 30 + 30 * i;
-                } else {
-                    pos.x -= 30 + 30 * (i -1);
-                }
-                pos.y += 30;
-            } else {
-                if (i % 2 == 0) {
-                    pos.x += 30 + 30 * (i - 6);
-                } else {
-                    pos.x -= 30 + 30 * (i - 5);
-                }
-                pos.y -= 30;
-            }
-			go.transform.position = pos;
-			go.transform.SetParent(powerPickingPanel.transform);
+			go.transform.SetParent(powerGrid.transform);
 			go.GetComponent<PowerButtonScript>().SetSpell(spells[i]);
 			buttons.Add(go.GetComponent<PowerButtonScript>());
 		}

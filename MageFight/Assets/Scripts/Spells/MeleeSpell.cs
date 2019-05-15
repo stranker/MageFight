@@ -32,11 +32,14 @@ public class MeleeSpell : Spell {
         mageOwner = owner;
         transform.position = startPos;
         dir = direction;
-        transform.localScale = new Vector2(owner.transform.localScale.x, 1);
         if (type == MeleeType.Punch)
         {
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+        else
+        {
+            transform.localScale = new Vector2(owner.transform.localScale.x, 1);
         }
         timer = cooldown;
 		SetAnimation();
