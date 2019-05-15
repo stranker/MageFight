@@ -8,7 +8,7 @@ public class MovementBehavior : MonoBehaviour {
     [Header("Movement stats")]
     public float floorSpeed;
     public float airSpeed;
-    public float jumpForce;
+    public float jumpForce;    
 
     public Vector2 velocity;
     private InputManager input;
@@ -35,6 +35,11 @@ public class MovementBehavior : MonoBehaviour {
     public TrailRenderer dashTrail;
     public TrailRenderer selfTrail;
 
+    public SpriteRenderer leftFoot;
+    public SpriteRenderer rightFoot;
+    public LayerMask floorLayer;
+    public float rayCastFloorLenght = 0.25f;
+
     // Use this for initialization
     void Start () {
         rd = GetComponent<Rigidbody2D>();
@@ -58,7 +63,6 @@ public class MovementBehavior : MonoBehaviour {
 
         if (Input.GetButtonDown(input.jumpButton) && canJump && !dashing)
         {
-            onFloor = !onFloor;
             rd.velocity = new Vector2(0,jumpForce);
             jumpParticles.Play();
             canJump = !canJump;
@@ -98,6 +102,7 @@ public class MovementBehavior : MonoBehaviour {
 
     private void Movement()
     {
+        GroundControl();
         if (!knockback && !dashing)
         {            
             if (onFloor)
@@ -145,24 +150,6 @@ public class MovementBehavior : MonoBehaviour {
             rd.bodyType = RigidbodyType2D.Static;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            onFloor = true;
-            canJump = onFloor;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            onFloor = false;
-            onChangui = true;
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground" && dashing)
@@ -180,5 +167,30 @@ public class MovementBehavior : MonoBehaviour {
         rd.velocity = new Vector2(-transform.localScale.x * 2, 7);
     }
 
+    public void GroundControl()
+    {
+        RaycastHit2D hit1 = Physics2D.Raycast(rightFoot.transform.position, Vector2.down, rayCastFloorLenght, floorLayer);
+        Debug.DrawLine(leftFoot.transform.position, new Vector3(leftFoot.transform.position.x, leftFoot.transform.position.y + -rayCastFloorLenght));
 
+        Debug.DrawLine(rightFoot.transform.position, new Vector3(rightFoot.transform.position.x, rightFoot.transform.position.y + -rayCastFloorLenght));
+        RaycastHit2D hit2 = Physics2D.Raycast(leftFoot.transform.position, Vector2.down, rayCastFloorLenght, floorLayer);
+
+        if(hit1 || hit2)
+        {
+            onFloor = true;
+            canJump = onFloor;
+            changuiTimer = 0;
+        }
+        else
+        {
+            onFloor = false;
+            onChangui = true;
+
+            changuiTimer += Time.deltaTime;
+            if(changuiTimer > changuiTime)
+            {
+                onFloor = false;
+            }
+        }
+    }
 }
