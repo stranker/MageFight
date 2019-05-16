@@ -3895,7 +3895,8 @@ MonoBehaviour:
   timer: 0
   knockbackTime: 0.4
   flying: 0
-  flySpeed: 100
+  flySpeed: 20
+  flyStamina: 0
   flyMaxStamina: 100
   dashTimer: 0
   dashTotalTime: 0.5
@@ -9210,6 +9211,7 @@ MonoBehaviour:
   knockbackTime: 0.4
   flying: 0
   flySpeed: 0
+  flyStamina: 0
   flyMaxStamina: 0
   dashTimer: 0
   dashTotalTime: 0.5
