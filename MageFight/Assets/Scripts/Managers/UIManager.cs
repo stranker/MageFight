@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour {
     public PlayerBehavior p2;
     public Image health1;
     public Image health2;
+    public Image stamina1;
+    public Image stamina2;
     public GameObject playerUI;
 
     internal void Fade(float v)
@@ -26,6 +28,8 @@ public class UIManager : MonoBehaviour {
     void Update () {
         health1.fillAmount = (float)p1.health / (float)p1.maxHealth;
         health2.fillAmount = (float)p2.health / (float)p2.maxHealth;
+        stamina1.fillAmount = (float)p1.GetComponent<MovementBehavior>().flyStamina / (float)p1.GetComponent<MovementBehavior>().flyMaxStamina;
+        stamina2.fillAmount = (float)p2.GetComponent<MovementBehavior>().flyStamina / (float)p2.GetComponent<MovementBehavior>().flyMaxStamina;
     }
 
 

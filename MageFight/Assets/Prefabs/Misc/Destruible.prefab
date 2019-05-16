@@ -102,6 +102,7 @@ MonoBehaviour:
   canBeDestroyed: 0
   destructionTime: 2
   timer: 0
+  pieceColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &212706043291891504
 SpriteRenderer:
   m_ObjectHideFlags: 1

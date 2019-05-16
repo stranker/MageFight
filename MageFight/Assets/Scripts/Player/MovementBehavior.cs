@@ -21,13 +21,13 @@ public class MovementBehavior : MonoBehaviour {
     public float timer;
     public float knockbackTime = 1;
     private Vector2 aimDirection;
-	
+
+    public bool canFly = true;
     public bool flying;
     public float flySpeed = 100;
 	public float flyStamina = 0;
     public float flyMaxStamina = 100;
-	public float dashTimer;
-    public float dashTotalTime = 2f;
+    public float flyConsumptionStamina = 10;
 
     private float changuiTimer = 0f;
     public float changuiTime;
@@ -47,7 +47,6 @@ public class MovementBehavior : MonoBehaviour {
     void Start () {
         rd = GetComponent<Rigidbody2D>();
         input = GetComponent<InputManager>();
-        dashTimer = 0;
         gravity = rd.gravityScale;
 		flyStamina = flyMaxStamina;
 	}
@@ -71,51 +70,49 @@ public class MovementBehavior : MonoBehaviour {
             jumpParticles.Play();
             canJump = !canJump;
         }
-        dashTrail.emitting = flying;
 		int upDir = (int)Input.GetAxis(input.aimAxisY);
         int fwDir = Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f ? (int)transform.localScale.x : 0;
         aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
-        if (Input.GetButton(input.dodgeButton))
+        dashTrail.emitting = flying;
+        if (Input.GetButtonDown(input.dodgeButton) && canFly)
         {
-            /*canMove = false;
-            if(!flying)
-            {
-                int upDir = (int)Input.GetAxis(input.aimAxisY);
-                int fwDir = Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f ? (int)transform.localScale.x : 0;
-                aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
-            }*/
-
+            flying = true;
+        }
+        else if (Input.GetButtonUp(input.dodgeButton))
+        {
+            flying = false;
+            canMove = true;
+            rd.gravityScale = gravity;
+        }
+        if (Input.GetButton(input.dodgeButton) && canFly)
+        {
             Fly(aimDirection);
         }
-		else{
-			rd.gravityScale = gravity;
-			flying = false;
-			canMove = true;
-		}
+        if (onFloor && flyStamina < flyMaxStamina)
+        {
+            canFly = true;
+            flyStamina += Time.deltaTime * flyConsumptionStamina;
+            if (flyStamina >= flyMaxStamina)
+                flyStamina = flyMaxStamina;
+        }
     }
 
     private void Fly(Vector2 dir)
     {
 		if (flyStamina > 0){
 			flying = true;
-			flyStamina -= Time.deltaTime;
+            flyStamina -= Time.deltaTime * flyConsumptionStamina;
 			rd.gravityScale = 0;
-			transform.position += new Vector3(dir.x * flySpeed, dir.y * flySpeed) * Time.deltaTime;
-		}
-        /*if(dashTimer < dashTotalTime)
-        {
-            rd.gravityScale = 0;
-            rd.velocity = Vector2.zero;
-            transform.position += new Vector3(dir.x * flySpeed, dir.y * flySpeed);
-            dashTimer += Time.deltaTime;
+            rd.velocity = new Vector2();
+            transform.position += new Vector3(dir.normalized.x* flySpeed, dir.normalized.y * flySpeed) * Time.deltaTime;
         }
         else
         {
-            rd.gravityScale = gravity;
-            dashTimer = 0;
+            canFly = false;
             flying = false;
             canMove = true;
-        }*/
+            rd.gravityScale = gravity;
+        }
     }
 
     private void Movement()
@@ -159,9 +156,10 @@ public class MovementBehavior : MonoBehaviour {
             transform.localScale = new Vector2(-1, 1);
     }
 
-    public void SetCanMove(bool val)
+    public void Immobilize(bool val)
     {
         canMove = val;
+        canFly = val;
         if (val)
             rd.bodyType = RigidbodyType2D.Dynamic;
         else
@@ -173,7 +171,6 @@ public class MovementBehavior : MonoBehaviour {
         if (collision.gameObject.tag == "Ground" && flying)
         {
             rd.gravityScale = gravity;
-            dashTimer = 0;
             flying = false;
             canMove = true;
         }
@@ -193,7 +190,7 @@ public class MovementBehavior : MonoBehaviour {
         Debug.DrawLine(rightFoot.transform.position, new Vector3(rightFoot.transform.position.x, rightFoot.transform.position.y + -rayCastFloorLenght));
         RaycastHit2D hit2 = Physics2D.Raycast(leftFoot.transform.position, Vector2.down, rayCastFloorLenght, floorLayer);
 
-        if(hit1 || hit2)
+        if((hit1 || hit2) && !flying)
         {
             onFloor = true;
             canJump = onFloor;

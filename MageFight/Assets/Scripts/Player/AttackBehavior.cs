@@ -52,7 +52,7 @@ public class AttackBehavior : MonoBehaviour {
         if (!onAttackMode && canAttack)
         {
             onAttackMode = !onAttackMode;
-            movement.SetCanMove(true);
+            movement.Immobilize(true);
             Vector3 dir = aimDirection.normalized;
             spellManager.InvokeSpell(spellIndex, handPos.position, dir, gameObject);
             print("Throwing spell");
@@ -64,7 +64,7 @@ public class AttackBehavior : MonoBehaviour {
         if (!onAttackMode && canAttack)
         {
             onAttackMode = !onAttackMode;
-            movement.SetCanMove(false);
+            movement.Immobilize(false);
             print("Invoking spell");
         }
 
