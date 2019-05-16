@@ -3894,8 +3894,9 @@ MonoBehaviour:
   onFloor: 0
   timer: 0
   knockbackTime: 0.4
-  dashing: 0
-  dashSpeed: 0.2
+  flying: 0
+  flySpeed: 100
+  flyMaxStamina: 100
   dashTimer: 0
   dashTotalTime: 0.5
   changuiTime: 0.25
@@ -9000,72 +9001,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1317751862
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4540036244989920, guid: ffdf763c2e5dc0e408381180115e2b4f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -6.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 4540036244989920, guid: ffdf763c2e5dc0e408381180115e2b4f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -3.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 4540036244989920, guid: ffdf763c2e5dc0e408381180115e2b4f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.33163953
-      objectReference: {fileID: 0}
-    - target: {fileID: 4540036244989920, guid: ffdf763c2e5dc0e408381180115e2b4f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4540036244989920, guid: ffdf763c2e5dc0e408381180115e2b4f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4540036244989920, guid: ffdf763c2e5dc0e408381180115e2b4f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4540036244989920, guid: ffdf763c2e5dc0e408381180115e2b4f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4540036244989920, guid: ffdf763c2e5dc0e408381180115e2b4f, type: 2}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1978170667628448, guid: ffdf763c2e5dc0e408381180115e2b4f, type: 2}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114466256117000006, guid: ffdf763c2e5dc0e408381180115e2b4f,
-        type: 2}
-      propertyPath: pieceColor.r
-      value: 0.9150943
-      objectReference: {fileID: 0}
-    - target: {fileID: 114466256117000006, guid: ffdf763c2e5dc0e408381180115e2b4f,
-        type: 2}
-      propertyPath: pieceColor.g
-      value: 0.35826805
-      objectReference: {fileID: 0}
-    - target: {fileID: 114466256117000006, guid: ffdf763c2e5dc0e408381180115e2b4f,
-        type: 2}
-      propertyPath: pieceColor.b
-      value: 0.35826805
-      objectReference: {fileID: 0}
-    - target: {fileID: 114466256117000006, guid: ffdf763c2e5dc0e408381180115e2b4f,
-        type: 2}
-      propertyPath: pieceColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ffdf763c2e5dc0e408381180115e2b4f, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!198 &1339969353 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 198152470868986470, guid: 765948059d2854d448ad77d06dcb1497,
@@ -9273,8 +9208,9 @@ MonoBehaviour:
   onFloor: 0
   timer: 0
   knockbackTime: 0.4
-  dashing: 0
-  dashSpeed: 0.2
+  flying: 0
+  flySpeed: 0
+  flyMaxStamina: 0
   dashTimer: 0
   dashTotalTime: 0.5
   changuiTime: 0.25

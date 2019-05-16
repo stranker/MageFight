@@ -19,7 +19,7 @@ public class AnimationTest : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        anim.SetBool("Dashing", movement.dashing);
+        anim.SetBool("Dashing", movement.flying);
 
         if (!movement.onFloor)
         {

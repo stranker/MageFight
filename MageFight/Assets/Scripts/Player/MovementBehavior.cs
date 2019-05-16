@@ -8,7 +8,8 @@ public class MovementBehavior : MonoBehaviour {
     [Header("Movement stats")]
     public float floorSpeed;
     public float airSpeed;
-    public float jumpForce;    
+    public float jumpForce;  
+	private float gravity;	
 
     public Vector2 velocity;
     private InputManager input;
@@ -20,11 +21,13 @@ public class MovementBehavior : MonoBehaviour {
     public float timer;
     public float knockbackTime = 1;
     private Vector2 aimDirection;
-    public bool dashing;
-    public float dashSpeed;
-    public float dashTimer;
+	
+    public bool flying;
+    public float flySpeed = 100;
+	public float flyStamina = 0;
+    public float flyMaxStamina = 100;
+	public float dashTimer;
     public float dashTotalTime = 2f;
-    private float gravity;
 
     private float changuiTimer = 0f;
     public float changuiTime;
@@ -46,6 +49,7 @@ public class MovementBehavior : MonoBehaviour {
         input = GetComponent<InputManager>();
         dashTimer = 0;
         gravity = rd.gravityScale;
+		flyStamina = flyMaxStamina;
 	}
 	
     private void FixedUpdate()
@@ -61,49 +65,63 @@ public class MovementBehavior : MonoBehaviour {
         else
             velocity.x = 0;
 
-        if (Input.GetButtonDown(input.jumpButton) && canJump && !dashing)
+        if (Input.GetButtonDown(input.jumpButton) && canJump && !flying)
         {
             rd.velocity = new Vector2(0,jumpForce);
             jumpParticles.Play();
             canJump = !canJump;
         }
-        dashTrail.emitting = dashing;
-        if (Input.GetButtonDown(input.dodgeButton) || dashing)
+        dashTrail.emitting = flying;
+		int upDir = (int)Input.GetAxis(input.aimAxisY);
+        int fwDir = Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f ? (int)transform.localScale.x : 0;
+        aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
+        if (Input.GetButton(input.dodgeButton))
         {
-            canMove = false;
-            if(!dashing)
+            /*canMove = false;
+            if(!flying)
             {
                 int upDir = (int)Input.GetAxis(input.aimAxisY);
                 int fwDir = Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f ? (int)transform.localScale.x : 0;
                 aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
-            }
-            Dash(aimDirection);
+            }*/
+
+            Fly(aimDirection);
         }
+		else{
+			rd.gravityScale = gravity;
+			flying = false;
+			canMove = true;
+		}
     }
 
-    private void Dash(Vector2 dir)
+    private void Fly(Vector2 dir)
     {
-        dashing = true;
-        if(dashTimer < dashTotalTime)
+		if (flyStamina > 0){
+			flying = true;
+			flyStamina -= Time.deltaTime;
+			rd.gravityScale = 0;
+			transform.position += new Vector3(dir.x * flySpeed, dir.y * flySpeed) * Time.deltaTime;
+		}
+        /*if(dashTimer < dashTotalTime)
         {
             rd.gravityScale = 0;
             rd.velocity = Vector2.zero;
-            transform.position += new Vector3(dir.x * dashSpeed, dir.y * dashSpeed);
+            transform.position += new Vector3(dir.x * flySpeed, dir.y * flySpeed);
             dashTimer += Time.deltaTime;
         }
         else
         {
             rd.gravityScale = gravity;
             dashTimer = 0;
-            dashing = false;
+            flying = false;
             canMove = true;
-        }
+        }*/
     }
 
     private void Movement()
     {
         GroundControl();
-        if (!knockback && !dashing)
+        if (!knockback && !flying)
         {            
             if (onFloor)
                 rd.velocity = new Vector2(velocity.x * floorSpeed * Time.deltaTime, rd.velocity.y);
@@ -152,11 +170,11 @@ public class MovementBehavior : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground" && dashing)
+        if (collision.gameObject.tag == "Ground" && flying)
         {
             rd.gravityScale = gravity;
             dashTimer = 0;
-            dashing = false;
+            flying = false;
             canMove = true;
         }
     }
