@@ -4049,6 +4049,7 @@ MonoBehaviour:
   jumpForce: 21.5
   velocity: {x: 0, y: 0}
   onFloor: 0
+  canMove: 1
   timer: 0
   knockbackTime: 0.4
   canFly: 1
@@ -4056,7 +4057,7 @@ MonoBehaviour:
   flySpeed: 12
   flyStamina: 0
   flyMaxStamina: 100
-  flyConsumptionStamina: 20
+  flyConsumptionStamina: 1
   changuiTime: 0.25
   jumpParticles: {fileID: 1819166833}
   dashTrail: {fileID: 540744634}
@@ -9292,7 +9293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1379954423
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9467,6 +9468,7 @@ MonoBehaviour:
   jumpForce: 21.5
   velocity: {x: 0, y: 0}
   onFloor: 0
+  canMove: 1
   timer: 0
   knockbackTime: 0.4
   canFly: 1

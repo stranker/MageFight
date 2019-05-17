@@ -15,7 +15,7 @@ public class MovementBehavior : MonoBehaviour {
     private InputManager input;
     private Rigidbody2D rd;
     public bool onFloor = false;
-    private bool canMove = true;
+    public bool canMove = true;
 
     private bool knockback = false;
     public float timer;
@@ -74,45 +74,33 @@ public class MovementBehavior : MonoBehaviour {
         int fwDir = Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f ? (int)transform.localScale.x : 0;
         aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
         dashTrail.emitting = flying;
-        if (Input.GetButtonDown(input.dodgeButton) && canFly)
+        flying = Input.GetButton(input.dodgeButton) && canFly && flyStamina > 0;
+        if (flying)
         {
-            flying = true;
+            Fly(aimDirection);
         }
-        else if (Input.GetButtonUp(input.dodgeButton))
+        else
         {
             flying = false;
             canMove = true;
             rd.gravityScale = gravity;
-        }
-        if (Input.GetButton(input.dodgeButton) && canFly)
-        {
-            Fly(aimDirection);
-        }
-        if (onFloor && flyStamina < flyMaxStamina)
-        {
-            canFly = true;
-            flyStamina += Time.deltaTime * flyConsumptionStamina;
-            if (flyStamina >= flyMaxStamina)
-                flyStamina = flyMaxStamina;
+            if (onFloor && flyStamina < flyMaxStamina)
+            {
+                canFly = true;
+                flyStamina += Time.deltaTime * flyConsumptionStamina;
+                if (flyStamina >= flyMaxStamina)
+                    flyStamina = flyMaxStamina;
+            }
         }
     }
 
     private void Fly(Vector2 dir)
     {
-		if (flyStamina > 0){
-			flying = true;
-            flyStamina -= Time.deltaTime * flyConsumptionStamina;
-			rd.gravityScale = 0;
-            rd.velocity = new Vector2();
-            transform.position += new Vector3(dir.normalized.x* flySpeed, dir.normalized.y * flySpeed) * Time.deltaTime;
-        }
-        else
-        {
-            canFly = false;
-            flying = false;
-            canMove = true;
-            rd.gravityScale = gravity;
-        }
+        flying = true;
+        flyStamina -= Time.deltaTime * flyConsumptionStamina;
+        rd.gravityScale = 0;
+        rd.velocity = new Vector2();
+        transform.position += new Vector3(dir.normalized.x * flySpeed, dir.normalized.y * flySpeed) * Time.deltaTime;
     }
 
     private void Movement()
