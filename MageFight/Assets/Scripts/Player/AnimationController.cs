@@ -21,23 +21,19 @@ public class AnimationController : MonoBehaviour {
         if (movement.onFloor)
         {
             anim.SetFloat("VelocityX", Mathf.Abs(movement.velocity.x));
+            anim.SetFloat("VelocityY", 0);
         }
         else
         {
-            if (movement.flying)
-            {
-                anim.SetBool("Fly", movement.flying);
-
-            }
-            else
-            {
-                anim.SetFloat("VelocityY", movement.rd.velocity.y);
-            }
+            anim.SetFloat("VelocityY", movement.rd.velocity.y);
         }
-	}
+        anim.SetBool("Fly", movement.flying);
+
+    }
 
     internal void PlayerSpell(Spell.SpellType typeOfSpeel)
     {
+        print(typeOfSpeel);
         switch (typeOfSpeel)
         {
             case Spell.SpellType.Melee:

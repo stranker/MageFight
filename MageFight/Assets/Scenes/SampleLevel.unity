@@ -1441,6 +1441,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4423151460838178, guid: 7818cb499d34627498753fdc52ad05ab,
     type: 2}
   m_PrefabInternal: {fileID: 122525896}
+--- !u!198 &386836444 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198263825599425388, guid: 7818cb499d34627498753fdc52ad05ab,
+    type: 2}
+  m_PrefabInternal: {fileID: 122525896}
 --- !u!1 &429132403
 GameObject:
   m_ObjectHideFlags: 0
@@ -3667,7 +3672,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 7a4f06cff1959ad4f9ee350e4af9e674, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3750,10 +3755,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14aaa0004897a5d48b77288785e71cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clockCooldown: {fileID: 461706932}
+  clockCooldown: {fileID: 2118728012}
   clockTime: 1.5
-  spellParticles: {fileID: 1695914476}
-  anim: {fileID: 0}
+  spellParticles: {fileID: 386836444}
+  anim: {fileID: 630138319}
 --- !u!114 &630138323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3781,9 +3786,9 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   isAlive: 1
-  headPos: {fileID: 185414875}
+  headPos: {fileID: 1573874812}
   popText: {fileID: 114276423107348564, guid: f9dca02160058974b97973040e6c0f02, type: 2}
-  deathParticles: {fileID: 1004547775}
+  deathParticles: {fileID: 1058874417}
   winCount: 0
 --- !u!114 &630138325
 MonoBehaviour:
@@ -3812,9 +3817,9 @@ MonoBehaviour:
   flyMaxStamina: 100
   flyConsumptionStamina: 1
   changuiTime: 0.25
-  jumpParticles: {fileID: 1819166833}
-  dashTrail: {fileID: 540744634}
-  selfTrail: {fileID: 429132405}
+  jumpParticles: {fileID: 648865583}
+  dashTrail: {fileID: 1032055965}
+  selfTrail: {fileID: 1457763673}
   leftFoot: {fileID: 1381432995}
   rightFoot: {fileID: 1641378971}
   floorLayer:
@@ -3832,7 +3837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c51fa8678ea7cf4893208be052a5599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellManager: {fileID: 968361971}
+  spellManager: {fileID: 630138322}
   onAttackMode: 0
   attackModeTime: 0.5
   aimDirection: {x: 0, y: 0}
@@ -3860,6 +3865,11 @@ MonoBehaviour:
 --- !u!4 &648865581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4315483015009414, guid: 765948059d2854d448ad77d06dcb1497,
+    type: 2}
+  m_PrefabInternal: {fileID: 309485490}
+--- !u!198 &648865583 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198152470868986470, guid: 765948059d2854d448ad77d06dcb1497,
     type: 2}
   m_PrefabInternal: {fileID: 309485490}
 --- !u!1 &711086217
@@ -4548,7 +4558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &968361970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15157,7 +15167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1457763672
 Transform:
   m_ObjectHideFlags: 0
