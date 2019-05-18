@@ -10,7 +10,12 @@ public class MeleeSpell : Spell {
 		Whip
 	}
 	public MeleeType type;
-	
+
+    private void Start()
+    {
+        typeOfSpeel = SpellType.Melee;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player" && collision.gameObject != mageOwner)

@@ -11,13 +11,22 @@ public abstract class Spell : MonoBehaviour {
         Hold,
         Error
     }
-    [Header("Spell Stats")]
 
+    public enum SpellType
+    {
+        Melee,
+        Range,
+        Utility
+    }
+
+    [Header("Spell Stats")]
     public float castVelocity;
     public int damage;
     public float cooldown;
     public CastType castType;
     public GameObject mageOwner;
+
+    public SpellType typeOfSpeel;
 
     public bool invoked = false;
     protected Vector3 dir;

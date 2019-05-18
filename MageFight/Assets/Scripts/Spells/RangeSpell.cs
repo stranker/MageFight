@@ -10,6 +10,7 @@ public class RangeSpell : Spell {
     private void Start()
     {
         rd = GetComponent<Rigidbody2D>();
+        typeOfSpeel = SpellType.Range;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

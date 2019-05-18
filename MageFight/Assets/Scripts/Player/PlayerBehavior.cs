@@ -83,6 +83,6 @@ public class PlayerBehavior : MonoBehaviour {
     }
 
     public bool fullSpellInventory(){
-        return spellsManager.fullSpellInventory();
+        return spellsManager.FullSpellInventory();
     }
 }
