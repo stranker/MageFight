@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour {
 		}
 		PowerPickingManager.Instance.SetPlayerList(players);
 		PowerPickingManager.Instance.Begin();
+        UIManager.Get().OnLeaderboardShown += OnLeaderboardShown;
 	}
 	
 	public void InitializeRound(){
@@ -86,18 +87,28 @@ public class GameManager : MonoBehaviour {
 		PowerPickingManager.Instance.Reset();
 	}
 
-	private void EndRound(){ //runs at end of round, to update round wins and check if there's a winner
-		//Stop gameplay
-		roundCounter++;
-		int winner = -1; //Has to have a default value to not cause compiler errors
-		for(int i = 0; i < players.Count; i++){
-			players[i].Pause();
-			Debug.Log("Player " + (i + 1) + " has won " + players[i].winCount + " rounds.");
-			if (players[i].winCount >= roundsToWin){winner = i;}
-		}
-		player1RoundCounter.text = players[0].winCount.ToString(); //PROTOTYPE CODE
-		player2RoundCounter.text = players[1].winCount.ToString(); //PROTOTYPE CODE
-		if(winner > -1){ EndGame(winner);} //if a winner is found, the game ends
-		PowerPickingManager.Instance.Begin();
-	}
+	private void EndRound(){
+        UIManager.Get().ShowLeaderboard(players[0].winCount, players[1].winCount);
+    }
+    private void OnLeaderboardShown(UIManager manager)
+    {
+        //runs at end of round, to update round wins and check if there's a winner
+        //Stop gameplay
+        roundCounter++;
+        int winner = -1; //Has to have a default value to not cause compiler errors
+        for(int i = 0; i < players.Count; i++)
+        {
+            players[i].Pause();
+            Debug.Log("Player " + (i + 1) + " has won " + players[i].winCount + " rounds.");
+            if(players[i].winCount >= roundsToWin) { winner = i; }
+        }
+        player1RoundCounter.text = players[0].winCount.ToString(); //PROTOTYPE CODE
+        player2RoundCounter.text = players[1].winCount.ToString(); //PROTOTYPE CODE)
+        if(winner > -1) { EndGame(winner); } //if a winner is found, the game ends
+        PowerPickingManager.Instance.Begin();
+    }
+    private void OnDestroy()
+    {
+        UIManager.Get().OnLeaderboardShown -= OnLeaderboardShown;
+    }
 }
