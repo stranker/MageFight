@@ -22,8 +22,6 @@ public class GameManager : MonoBehaviour {
 	private List<PlayerBehavior> players = new List<PlayerBehavior>();
 	[SerializeField] private int roundsToWin; //How much of a round-win advantage a player needs to be considered winner.
 	[SerializeField] private List<Transform> startingPositions = new List<Transform>();
-	[SerializeField] private Text player1RoundCounter; //PROTOTYPE CODE
-	[SerializeField] private Text player2RoundCounter; //PROTOTYPE CODE
 	
 	void Awake () {
 		//DontDestroyOnLoad(gameObject); //Single scene, might not be needed
@@ -40,10 +38,13 @@ public class GameManager : MonoBehaviour {
 		}
 		PowerPickingManager.Instance.SetPlayerList(players);
 		PowerPickingManager.Instance.Begin();
-        UIManager.Get().OnLeaderboardShown += OnLeaderboardShown;
 	}
-	
-	public void InitializeRound(){
+    private void Start()
+    {
+        UIManager.Get().OnLeaderboardShown += OnLeaderboardShown;
+    }
+
+    public void InitializeRound(){
 		for(int i = 0; i < players.Count; i++){
 			if(i <= startingPositions.Count -1){
 				players[i].Reset(startingPositions[i].position); 
@@ -53,10 +54,6 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
-		if(roundCounter == 0){
-		player1RoundCounter.text = "0"; //PROTOTYPE CODE
-		player2RoundCounter.text = "0"; //PROTOTYPE CODE
-		}
 		Debug.Log("Begin round: " + (roundCounter +1));
 	}
 
@@ -102,8 +99,6 @@ public class GameManager : MonoBehaviour {
             Debug.Log("Player " + (i + 1) + " has won " + players[i].winCount + " rounds.");
             if(players[i].winCount >= roundsToWin) { winner = i; }
         }
-        player1RoundCounter.text = players[0].winCount.ToString(); //PROTOTYPE CODE
-        player2RoundCounter.text = players[1].winCount.ToString(); //PROTOTYPE CODE)
         if(winner > -1) { EndGame(winner); } //if a winner is found, the game ends
         PowerPickingManager.Instance.Begin();
     }
