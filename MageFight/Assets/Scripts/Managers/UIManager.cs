@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour {
     public Image stamina2;
     public GameObject playerUI;
     public UILeaderboard leaderboard;
+    public GameObject PostGameUI;
+    public Text playerLabelWins;
     private float timer = 0;
     public float leaderboardTime = 3f;
     private bool showLeaderboard = false;
@@ -41,10 +43,18 @@ public class UIManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        health1.fillAmount = (float)p1.health / (float)p1.maxHealth;
-        health2.fillAmount = (float)p2.health / (float)p2.maxHealth;
-        stamina1.fillAmount = (float)p1.GetComponent<MovementBehavior>().flyStamina / (float)p1.GetComponent<MovementBehavior>().flyMaxStamina;
-        stamina2.fillAmount = (float)p2.GetComponent<MovementBehavior>().flyStamina / (float)p2.GetComponent<MovementBehavior>().flyMaxStamina;
+        if (p1)
+        {
+            health1.fillAmount = (float)p1.health / (float)p1.maxHealth;
+            stamina1.fillAmount = (float)p1.GetComponent<MovementBehavior>().flyStamina / (float)p1.GetComponent<MovementBehavior>().flyMaxStamina;
+        }
+        if (p2)
+        {
+            health2.fillAmount = (float)p2.health / (float)p2.maxHealth;
+            stamina2.fillAmount = (float)p2.GetComponent<MovementBehavior>().flyStamina / (float)p2.GetComponent<MovementBehavior>().flyMaxStamina;
+        }
+
+
         if(showLeaderboard)
         {
             if(timer < leaderboardTime)
@@ -66,5 +76,14 @@ public class UIManager : MonoBehaviour {
         leaderboard.ShowLeaderboard(firstPlayerScore, secondPlayerScore);
         showLeaderboard = true;
     }
-
+    public void ShowPostGame(int winner)
+    {
+        PostGameUI.SetActive(true);
+        playerLabelWins.text = "PLAYER " + winner + " WINS";
+    }
+    public void RematchPressed()
+    {
+        PostGameUI.SetActive(false);
+        GameManager.Instance.EndGame();
+    }
 }

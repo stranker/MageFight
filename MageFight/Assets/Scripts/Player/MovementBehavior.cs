@@ -25,8 +25,8 @@ public class MovementBehavior : MonoBehaviour {
     public bool canFly = true;
     public bool flying;
     public float flySpeed = 100;
-	public float flyStamina = 0;
     public float flyMaxStamina = 100;
+	public float flyStamina = 100;
     public float flyConsumptionStamina = 10;
 
     private float changuiTimer = 0f;
