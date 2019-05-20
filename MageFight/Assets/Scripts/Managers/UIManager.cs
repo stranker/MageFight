@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour {
     public Image stamina2;
     public GameObject playerUI;
     public UILeaderboard leaderboard;
+    public GameObject PostGameUI;
+    public Text playerLabelWins;
     private float timer = 0;
     public float leaderboardTime = 3f;
     private bool showLeaderboard = false;
@@ -66,5 +68,14 @@ public class UIManager : MonoBehaviour {
         leaderboard.ShowLeaderboard(firstPlayerScore, secondPlayerScore);
         showLeaderboard = true;
     }
-
+    public void ShowPostGame(int winner)
+    {
+        PostGameUI.SetActive(true);
+        playerLabelWins.text = "PLAYER " + winner + " WINS";
+    }
+    public void RematchPressed()
+    {
+        PostGameUI.SetActive(false);
+        GameManager.Instance.EndGame();
+    }
 }

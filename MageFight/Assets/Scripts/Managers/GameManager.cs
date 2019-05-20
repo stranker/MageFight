@@ -75,14 +75,14 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	private void EndGame(int winner){
-		Debug.Log("Player " + (winner + 1) + " has won the match.");
+	public void EndGame(){
 		roundCounter = 0; //Reset round counter
 		for(int i = 0; i < players.Count; i++){
 			players[i].winCount = 0;
 		}
 		PowerPickingManager.Instance.Reset();
-	}
+        PowerPickingManager.Instance.Begin();
+    }
 
 	private void EndRound(){
         UIManager.Get().ShowLeaderboard(players[0].winCount, players[1].winCount);
@@ -99,8 +99,14 @@ public class GameManager : MonoBehaviour {
             Debug.Log("Player " + (i + 1) + " has won " + players[i].winCount + " rounds.");
             if(players[i].winCount >= roundsToWin) { winner = i; }
         }
-        if(winner > -1) { EndGame(winner); } //if a winner is found, the game ends
-        PowerPickingManager.Instance.Begin();
+        if(winner > -1)
+        {
+            UIManager.Get().ShowPostGame(winner); //if a winner is found, the game ends            
+        }
+        else
+        {
+            PowerPickingManager.Instance.Begin();
+        }
     }
     private void OnDestroy()
     {
