@@ -47,6 +47,7 @@ public class UIManager : MonoBehaviour {
         health2.fillAmount = (float)p2.health / (float)p2.maxHealth;
         stamina1.fillAmount = (float)p1.GetComponent<MovementBehavior>().flyStamina / (float)p1.GetComponent<MovementBehavior>().flyMaxStamina;
         stamina2.fillAmount = (float)p2.GetComponent<MovementBehavior>().flyStamina / (float)p2.GetComponent<MovementBehavior>().flyMaxStamina;
+
         if(showLeaderboard)
         {
             if(timer < leaderboardTime)

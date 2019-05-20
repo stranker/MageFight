@@ -22,9 +22,11 @@ public class AnimationController : MonoBehaviour {
         {
             anim.SetFloat("VelocityX", Mathf.Abs(movement.velocity.x));
             anim.SetFloat("VelocityY", 0);
+            anim.SetBool("OnFloor", true);
         }
         else
         {
+            anim.SetBool("OnFloor", false);
             anim.SetFloat("VelocityY", movement.rd.velocity.y);
         }
         anim.SetBool("Fly", movement.flying);

@@ -4294,7 +4294,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 630138315}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.84, y: -4.45, z: 0}
+  m_LocalPosition: {x: -3.7, y: -4.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1727201602}
@@ -4418,7 +4418,7 @@ MonoBehaviour:
   flySpeed: 12
   flyStamina: 0
   flyMaxStamina: 100
-  flyConsumptionStamina: 1
+  flyConsumptionStamina: 10
   changuiTime: 0.25
   jumpParticles: {fileID: 648865583}
   dashTrail: {fileID: 1032055965}
@@ -5924,7 +5924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &968361970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10959,7 +10959,7 @@ TrailRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 818aa8534fe751344a5157291ea33544, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10979,7 +10979,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.5
+  m_Time: 0.35
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 2.5
@@ -10988,7 +10988,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5833359
+        value: 0.26568604
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -10997,7 +10997,7 @@ TrailRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.94444466
+        value: 0.41503143
         inSlope: 0
         outSlope: 0
         tangentMode: 0
