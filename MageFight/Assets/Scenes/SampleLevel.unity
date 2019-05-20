@@ -149,7 +149,7 @@ MonoBehaviour:
   - {fileID: 114394342564051314, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc, type: 2}
   - {fileID: 114786596358402696, guid: b164b286bf25c304bb28c1b2dbf4d06f, type: 2}
   - {fileID: 114951534744336276, guid: a41a750c7c56cc34aa4170ddf4884173, type: 2}
-  - {fileID: 114544577187218886, guid: d4eb113f809050047a789aefe4821342, type: 2}
+  - {fileID: 114080733479666062, guid: d4eb113f809050047a789aefe4821342, type: 2}
   powerPickingPanel: {fileID: 1301308509}
   pickTurnText: {fileID: 1882329785}
   powerButtonPrefab: {fileID: 1361063501272560, guid: 87fc5011ee3c30747a139efe0e3015d0,

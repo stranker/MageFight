@@ -5,7 +5,7 @@ using UnityEngine;
 public class RangeSpell : Spell {
 
     public float travelVelocity;
-    private Rigidbody2D rd;
+    protected Rigidbody2D rd;
 
     private void Start()
     {

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212440700413519084}
   - component: {fileID: 50427747273298612}
   - component: {fileID: 61920298709779256}
-  - component: {fileID: 114544577187218886}
+  - component: {fileID: 114080733479666062}
   m_Layer: 0
   m_Name: WindShuriken
   m_TagString: Spell
@@ -88,7 +88,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.33, y: 1.1254883}
   m_EdgeRadius: 0
---- !u!114 &114544577187218886
+--- !u!114 &114080733479666062
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1556697017835700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af8904f024d9a1e43a98d17322398cd4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d30efb4848e5c842b3a2972add7eee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   castVelocity: 0
@@ -104,9 +104,11 @@ MonoBehaviour:
   cooldown: 3
   castType: 0
   mageOwner: {fileID: 0}
+  typeOfSpeel: 0
   invoked: 0
   timer: 0
   travelVelocity: 20
+  travelTime: 0.8
 --- !u!212 &212440700413519084
 SpriteRenderer:
   m_ObjectHideFlags: 1
