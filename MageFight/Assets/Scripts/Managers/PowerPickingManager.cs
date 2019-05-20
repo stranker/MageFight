@@ -29,16 +29,18 @@ public class PowerPickingManager : MonoBehaviour {
 	[SerializeField] private Text pickTurnText;
 	[SerializeField] private GameObject powerButtonPrefab;
 	[SerializeField] private GameObject powerGrid;
+	[Header("Settings")]
+	[SerializeField][Range(1,9)] private int powersPerRound;
     private List<PlayerBehavior> players;
 	private List<turn> turns = new List<turn>();
 	private List<PowerButtonScript> buttons = new List<PowerButtonScript>();
 	private int turnCounter;
 
-	private void Start(){
+	private void Awake(){
 		for(int i = 0; i < spells.Count; i++){
 			GameObject go = Instantiate(powerButtonPrefab) as GameObject;
-			go.transform.SetParent(powerGrid.transform);
 			go.GetComponent<PowerButtonScript>().SetSpell(spells[i]);
+			//go.transform.SetParent(powerGrid.transform);
 			buttons.Add(go.GetComponent<PowerButtonScript>());
 		}
 	}
@@ -51,6 +53,7 @@ public class PowerPickingManager : MonoBehaviour {
 		UpdateTurns();
 		pickTurnText.text = "Player " + (turns[turnCounter].player + 1).ToString() + ", pick your power.";
 		powerPickingPanel.SetActive(true);
+		SetupButtons();
 	}
 
 	private void End(){
@@ -98,6 +101,24 @@ public class PowerPickingManager : MonoBehaviour {
 	public void Reset(){
 		foreach(PowerButtonScript button in buttons){
 			button.Reset();
+		}
+	}
+
+	private void SetupButtons(){
+		List<PowerButtonScript> pickedButtons = new List<PowerButtonScript>();
+
+		foreach(PowerButtonScript button in buttons){
+			if(button.IsAvailable()){ pickedButtons.Add(button);}
+			button.gameObject.transform.SetParent(null);
+		}
+
+		while (pickedButtons.Count > powersPerRound){
+			PowerButtonScript but = pickedButtons[Random.Range(0, pickedButtons.Count -1)];
+			pickedButtons.Remove(but);
+		}
+
+		foreach(PowerButtonScript button in pickedButtons){
+			button.gameObject.transform.SetParent(powerGrid.transform);
 		}
 	}
 }
