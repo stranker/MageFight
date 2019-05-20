@@ -102,6 +102,10 @@ public class PowerPickingManager : MonoBehaviour {
 		foreach(PowerButtonScript button in buttons){
 			button.Reset();
 		}
+		SpellsManager[] spellsManagers = FindObjectsOfType<SpellsManager>();
+		foreach(SpellsManager sm in spellsManagers){
+			sm.Reset();
+		} 
 	}
 
 	private void SetupButtons(){

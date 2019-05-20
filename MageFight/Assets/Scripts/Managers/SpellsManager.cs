@@ -6,14 +6,16 @@ using UnityEngine;
 public class SpellsManager : MonoBehaviour {
 
     [Header("Player spells")]
-    private const int amountOfSpells = 3;
-    //public Spell[] inventorySpells = new Spell[amountOfSpells];
     private List<Spell> spells = new List<Spell>();
+    private const int amountOfSpells = 3;
+    public GameObject powerIcons; //set to corresponding player's UI "PowerIcons" object from hierarchy
+    private List<PowerIcon> icons = new List<PowerIcon>();
     public GameObject clockCooldown;
     private float timer;
     public float clockTime = 1;
     public ParticleSystem spellParticles;
     public AnimationController anim;
+
 
    /* void OnValidate()
     {
@@ -32,6 +34,10 @@ public class SpellsManager : MonoBehaviour {
             s.Kill();
         }*/
         anim = GetComponent<AnimationController>();
+        PowerIcon[] pI = powerIcons.GetComponentsInChildren<PowerIcon>();
+        foreach(PowerIcon icon in pI){
+            icons.Add(icon);
+        }
 	}
 	// Update is called once per frame
 	void Update () {
@@ -82,9 +88,22 @@ public class SpellsManager : MonoBehaviour {
             Spell sp = Instantiate(s, transform.parent);
             sp.Kill();
             spells.Add(sp);
+
+            foreach(PowerIcon icon in icons){
+                if(spells.Count == icon.GetSkillOrder()){
+                    icon.SetSpell(s);
+                }
+            }
         }
     }
     public bool FullSpellInventory(){
         return spells.Count == amountOfSpells;
+    }
+
+    public void Reset(){
+        spells.Clear();
+        foreach(PowerIcon icon in icons){
+            icon.Reset();
+        }
     }
 }
