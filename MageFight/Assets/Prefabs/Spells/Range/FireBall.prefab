@@ -104,6 +104,7 @@ MonoBehaviour:
   cooldown: 0
   castType: 0
   mageOwner: {fileID: 0}
+  typeOfSpeel: 1
   invoked: 0
   timer: 0
   travelVelocity: 20

@@ -127,10 +127,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castVelocity: 0
-  damage: 2
+  damage: 3
   cooldown: 2
   castType: 0
   mageOwner: {fileID: 0}
+  typeOfSpeel: 0
   invoked: 0
   timer: 0
   type: 0

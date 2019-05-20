@@ -153,6 +153,7 @@ MonoBehaviour:
   cooldown: 3
   castType: 0
   mageOwner: {fileID: 0}
+  typeOfSpeel: 0
   invoked: 0
   timer: 0
   type: 1
@@ -168,10 +169,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castVelocity: 0
-  damage: 2
-  cooldown: 2
+  damage: 4
+  cooldown: 2.5
   castType: 0
   mageOwner: {fileID: 0}
+  typeOfSpeel: 0
   invoked: 0
   timer: 0
   type: 1

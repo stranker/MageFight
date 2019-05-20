@@ -9778,7 +9778,7 @@ GameObject:
   - component: {fileID: 630138321}
   - component: {fileID: 630138320}
   m_Layer: 9
-  m_Name: Player
+  m_Name: Player2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9860,7 +9860,7 @@ Transform:
   m_Children:
   - {fileID: 1727201602}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &630138319
 MonoBehaviour:
@@ -22135,7 +22135,7 @@ RectTransform:
   - {fileID: 689178888}
   - {fileID: 344254250}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -22153,7 +22153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312912fe4b476324cbdc72f9071ad127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p1: {fileID: 0}
+  p1: {fileID: 1725477749}
   p2: {fileID: 630138324}
   health1: {fileID: 412161454}
   health2: {fileID: 2101315743}
@@ -29675,7 +29675,7 @@ GameObject:
   - component: {fileID: 1725477746}
   - component: {fileID: 1725477745}
   m_Layer: 9
-  m_Name: Player2
+  m_Name: Player1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29922,7 +29922,7 @@ Transform:
   m_Children:
   - {fileID: 1970437001}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1727201601
 GameObject:
@@ -31019,7 +31019,7 @@ Transform:
   - {fileID: 139730434}
   - {fileID: 1514455621}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2007996447
 GameObject:
@@ -31127,7 +31127,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4825204083448822, guid: fe591da1a6c55a1488fed89b97054471, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe591da1a6c55a1488fed89b97054471, type: 2}

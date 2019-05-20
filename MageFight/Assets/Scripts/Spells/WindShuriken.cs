@@ -10,14 +10,17 @@ public class WindShuriken : RangeSpell
     private void Update()
     {
         base.Update();
-        if(travelTimer < travelTime)
+        if (invoked)
         {
-            travelTimer += Time.deltaTime;
-        }
-        else
-        {
-            rd.velocity = travelVelocity * -dir;
-            travelTimer = 0;
+            if (travelTimer < travelTime)
+            {
+                travelTimer += Time.deltaTime;
+            }
+            else
+            {
+                rd.velocity = travelVelocity * -dir;
+                travelTimer = 0;
+            }
         }
     }
 
