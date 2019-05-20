@@ -29,7 +29,6 @@ public class PlayerBehavior : MonoBehaviour {
             GameObject pop = Instantiate(popText.gameObject, headPos.position, Quaternion.identity, transform.parent);
             pop.GetComponent<DamagePopUp>().SetDamage(val);
 			GetComponent<MovementBehavior>().Knockback();
-			GetComponent<Animator>().SetTrigger("Hit");
             if (health <= 0)
             {
                 isAlive = !isAlive;

@@ -43,6 +43,9 @@ public class MovementBehavior : MonoBehaviour {
     public LayerMask floorLayer;
     public float rayCastFloorLenght = 0.25f;
 
+    private float bodyTypeTimer;
+    private float bodyTypeTime = 0.5f;
+
     // Use this for initialization
     void Start () {
         rd = GetComponent<Rigidbody2D>();
@@ -50,7 +53,20 @@ public class MovementBehavior : MonoBehaviour {
         gravity = rd.gravityScale;
 		flyStamina = flyMaxStamina;
 	}
-	
+
+    private void Update()
+    {
+        if (rd.bodyType == RigidbodyType2D.Static && !knockback)
+        {
+            bodyTypeTimer += Time.deltaTime;
+            if (bodyTypeTimer > bodyTypeTime)
+            {
+                rd.bodyType = RigidbodyType2D.Dynamic;
+                bodyTypeTimer = 0;
+            }
+        }
+    }
+
     private void FixedUpdate()
     {
         GetInput();
@@ -87,7 +103,7 @@ public class MovementBehavior : MonoBehaviour {
             if (onFloor && flyStamina < flyMaxStamina)
             {
                 canFly = true;
-                flyStamina += Time.deltaTime * flyConsumptionStamina;
+                flyStamina += Time.deltaTime * flyConsumptionStamina * 0.5f;
                 if (flyStamina >= flyMaxStamina)
                     flyStamina = flyMaxStamina;
             }
@@ -107,11 +123,15 @@ public class MovementBehavior : MonoBehaviour {
     {
         GroundControl();
         if (!knockback && !flying)
-        {            
-            if (onFloor)
-                rd.velocity = new Vector2(velocity.x * floorSpeed * Time.deltaTime, rd.velocity.y);
-            else
-                rd.velocity = new Vector2(velocity.x * airSpeed * Time.deltaTime, rd.velocity.y);
+        {
+            if (rd.bodyType == RigidbodyType2D.Dynamic)
+            {
+                if (onFloor)
+                    rd.velocity = new Vector2(velocity.x * floorSpeed * Time.deltaTime, rd.velocity.y);
+                else
+                    rd.velocity = new Vector2(velocity.x * airSpeed * Time.deltaTime, rd.velocity.y);
+            }
+
         }
 
         if (knockback)

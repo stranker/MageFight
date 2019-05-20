@@ -15,7 +15,7 @@ public class WindShuriken : RangeSpell
             travelTimer += Time.deltaTime;
         }
         else
-        {            
+        {
             rd.velocity = travelVelocity * -dir;
             travelTimer = 0;
         }

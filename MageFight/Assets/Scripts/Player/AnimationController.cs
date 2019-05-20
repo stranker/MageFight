@@ -6,13 +6,11 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour {
 
     private MovementBehavior movement;
-    private AttackBehavior attack;
     private Animator anim;
 
     // Use this for initialization
     void Start () {
         movement = GetComponent<MovementBehavior>();
-        attack = GetComponent<AttackBehavior>();
         anim = GetComponent<Animator>();
     }
 	
@@ -35,7 +33,6 @@ public class AnimationController : MonoBehaviour {
 
     internal void PlayerSpell(Spell.SpellType typeOfSpeel)
     {
-        print(typeOfSpeel);
         switch (typeOfSpeel)
         {
             case Spell.SpellType.Melee:

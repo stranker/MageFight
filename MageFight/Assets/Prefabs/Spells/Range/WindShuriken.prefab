@@ -102,7 +102,7 @@ MonoBehaviour:
   castVelocity: 0
   damage: 1
   cooldown: 3
-  castType: 0
+  castType: 1
   mageOwner: {fileID: 0}
   typeOfSpeel: 0
   invoked: 0

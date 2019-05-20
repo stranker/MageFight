@@ -9,15 +9,19 @@ public class SpellStateManager : MonoBehaviour
 
     private float freezeTimer;
     private float burnTimer;
+    private float burnAttackTimer;
+    private float burnAttackTime = 0.5f;
     public bool isFreezed;
     public bool isBurned;
     private MovementBehavior movement;
     private AttackBehavior attack;
+    private PlayerBehavior player;
 
     private void Start()
     {
         movement = GetComponent<MovementBehavior>();
         attack = GetComponent<AttackBehavior>();
+        player = GetComponent<PlayerBehavior>();
     }
 
     // Update is called once per frame
@@ -35,6 +39,12 @@ public class SpellStateManager : MonoBehaviour
         }
         if (isBurned)
         {
+            burnAttackTimer += Time.deltaTime;
+            if (burnAttackTimer >= burnAttackTime)
+            {
+                player.TakeDamage(1);
+                burnAttackTimer = 0;
+            }
             burnTimer -= Time.deltaTime;
             if (burnTimer <= 0)
             {
