@@ -43,10 +43,17 @@ public class UIManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        health1.fillAmount = (float)p1.health / (float)p1.maxHealth;
-        health2.fillAmount = (float)p2.health / (float)p2.maxHealth;
-        stamina1.fillAmount = (float)p1.GetComponent<MovementBehavior>().flyStamina / (float)p1.GetComponent<MovementBehavior>().flyMaxStamina;
-        stamina2.fillAmount = (float)p2.GetComponent<MovementBehavior>().flyStamina / (float)p2.GetComponent<MovementBehavior>().flyMaxStamina;
+        if (p1)
+        {
+            health1.fillAmount = (float)p1.health / (float)p1.maxHealth;
+            stamina1.fillAmount = (float)p1.GetComponent<MovementBehavior>().flyStamina / (float)p1.GetComponent<MovementBehavior>().flyMaxStamina;
+        }
+        if (p2)
+        {
+            health2.fillAmount = (float)p2.health / (float)p2.maxHealth;
+            stamina2.fillAmount = (float)p2.GetComponent<MovementBehavior>().flyStamina / (float)p2.GetComponent<MovementBehavior>().flyMaxStamina;
+        }
+
 
         if(showLeaderboard)
         {

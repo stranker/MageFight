@@ -813,7 +813,7 @@ RectTransform:
   m_LocalScale: {x: 0.9999974, y: 0.9999974, z: 0.9999974}
   m_Children: []
   m_Father: {fileID: 195056253}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -985,11 +985,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 661372920}
-  - {fileID: 167215718}
   - {fileID: 412161453}
   - {fileID: 776263130}
   - {fileID: 468772501}
   - {fileID: 1507355096}
+  - {fileID: 167215718}
   m_Father: {fileID: 1620487371}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1702,7 +1702,7 @@ RectTransform:
   m_LocalScale: {x: 0.9999974, y: 0.9999974, z: 0.9999974}
   m_Children: []
   m_Father: {fileID: 195056253}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2216,7 +2216,7 @@ RectTransform:
   m_LocalScale: {x: 0.9999974, y: 0.9999974, z: 0.9999974}
   m_Children: []
   m_Father: {fileID: 195056253}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4416,9 +4416,9 @@ MonoBehaviour:
   canFly: 1
   flying: 0
   flySpeed: 12
-  flyStamina: 0
   flyMaxStamina: 100
-  flyConsumptionStamina: 10
+  flyStamina: 0
+  flyConsumptionStamina: 20
   changuiTime: 0.25
   jumpParticles: {fileID: 648865583}
   dashTrail: {fileID: 1032055965}
@@ -5260,7 +5260,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 195056253}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6008,8 +6008,8 @@ MonoBehaviour:
   canFly: 1
   flying: 0
   flySpeed: 12
-  flyStamina: 0
   flyMaxStamina: 100
+  flyStamina: 0
   flyConsumptionStamina: 1
   changuiTime: 0.25
   jumpParticles: {fileID: 1819166833}
@@ -16045,8 +16045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312912fe4b476324cbdc72f9071ad127, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p1: {fileID: 968361973}
-  p2: {fileID: 1379954431}
+  p1: {fileID: 0}
+  p2: {fileID: 630138324}
   health1: {fileID: 412161454}
   health2: {fileID: 2101315743}
   stamina1: {fileID: 167215719}
@@ -16774,8 +16774,8 @@ MonoBehaviour:
   canFly: 1
   flying: 0
   flySpeed: 12
-  flyStamina: 0
   flyMaxStamina: 100
+  flyStamina: 0
   flyConsumptionStamina: 20
   changuiTime: 0.25
   jumpParticles: {fileID: 1819166833}
@@ -17205,7 +17205,7 @@ RectTransform:
   m_LocalScale: {x: 0.9999974, y: 0.9999974, z: 0.9999974}
   m_Children: []
   m_Father: {fileID: 195056253}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
