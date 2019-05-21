@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour {
 		roundCounter = 0; //Reset round counter
 		for(int i = 0; i < players.Count; i++){
 			players[i].winCount = 0;
+			players[i].ResetAnimation();
 		}
 		PowerPickingManager.Instance.Reset();
         PowerPickingManager.Instance.Begin();
@@ -125,7 +126,8 @@ public class GameManager : MonoBehaviour {
         }
         if(winner > -1)
         {
-            UIManager.Get().ShowPostGame(players[winner].GetPlayerName()); //if a winner is found, the game ends            
+            UIManager.Get().ShowPostGame(players[winner].GetPlayerName()); //if a winner is found, the game ends
+			players[winner].Win();
         }
         else
         {

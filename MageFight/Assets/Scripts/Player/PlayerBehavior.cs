@@ -91,4 +91,13 @@ public class PlayerBehavior : MonoBehaviour {
     public int GetPlayerName(){
         return playerName;
     }
+	
+	public void Win(){
+		GetComponent<Animator>().SetTrigger("Win");
+	}
+	
+	public void ResetAnimation(){
+		GetComponent<Animator>().SetTrigger("Reset");
+	}
+	
 }
