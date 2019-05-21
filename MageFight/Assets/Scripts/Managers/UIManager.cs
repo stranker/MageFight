@@ -26,7 +26,8 @@ public class UIManager : MonoBehaviour {
     public GameObject playerUI;
     public UILeaderboard leaderboard;
     public GameObject PostGameUI;
-    public Text playerLabelWins;
+    public Sprite[] playerLabelSprites;
+    public Image playerLabel;
     private float timer = 0;
     public float leaderboardTime = 3f;
     private bool showLeaderboard = false;
@@ -79,7 +80,7 @@ public class UIManager : MonoBehaviour {
     public void ShowPostGame(int winner)
     {
         PostGameUI.SetActive(true);
-        playerLabelWins.text = "PLAYER " + winner + " WINS";
+        playerLabel.sprite = playerLabelSprites[winner];
     }
     public void RematchPressed()
     {
