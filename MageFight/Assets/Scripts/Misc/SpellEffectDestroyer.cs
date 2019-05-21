@@ -6,12 +6,17 @@ using UnityEngine;
 public class SpellEffectDestroyer : MonoBehaviour {
 
     private float timer;
-    private bool isActivated = false;
+    public float time;
+    public bool isActivated = false;
 	
 	// Update is called once per frame
 	void Update () {
         if (isActivated)
         {
+            if (time != 0 && timer != 0)
+            {
+                timer = time;
+            }
             timer -= Time.deltaTime;
             if (timer <= 0)
             {

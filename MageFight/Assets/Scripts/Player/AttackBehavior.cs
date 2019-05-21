@@ -16,6 +16,7 @@ public class AttackBehavior : MonoBehaviour {
     public float attackModeTime = 0.5f;
     public Vector2 aimDirection;
     public Transform handPos;
+    public ParticleSystem invokeParticles;
 
     // Use this for initialization
     void Start () {
@@ -54,6 +55,7 @@ public class AttackBehavior : MonoBehaviour {
             onAttackMode = !onAttackMode;
             Vector3 dir = aimDirection.normalized;
             spellManager.InvokeSpell(spellIndex, handPos.position, dir, gameObject);
+            invokeParticles.Stop();
             print("Throwing spell");
         }
     }
@@ -63,6 +65,7 @@ public class AttackBehavior : MonoBehaviour {
         if (!onAttackMode && canAttack)
         {
             onAttackMode = !onAttackMode;
+            invokeParticles.Play();
             print("Invoking spell");
         }
 

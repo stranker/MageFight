@@ -150,6 +150,8 @@ MonoBehaviour:
   typeOfSpeel: 0
   invoked: 0
   timer: 0
+  particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
+    type: 2}
   type: 0
 --- !u!212 &212904244116824378
 SpriteRenderer:

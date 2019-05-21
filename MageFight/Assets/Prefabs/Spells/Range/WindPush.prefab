@@ -115,10 +115,12 @@ MonoBehaviour:
   damage: 5
   cooldown: 4.5
   castType: 1
-  mageOwner: {fileID: 0}
+  mageOwner: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b, type: 2}
   typeOfSpeel: 1
   invoked: 0
   timer: 0
+  particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
+    type: 2}
   travelVelocity: 20
 --- !u!212 &212315875198774610
 SpriteRenderer:

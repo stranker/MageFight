@@ -26,6 +26,7 @@ public class RangeSpell : Spell {
         {
             Kill();
         }
+        MakeExplosion();
     }
 
     public override void InvokeSpell(Vector3 startPos, Vector3 direction, GameObject owner)

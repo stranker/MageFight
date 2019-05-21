@@ -35,6 +35,8 @@ public abstract class Spell : MonoBehaviour {
     public abstract void InvokeSpell(Vector3 startPos, Vector3 direction, GameObject owner);
     public CastType GetCastType() { return castType; }
 
+    public GameObject particlesExplosion;
+
 
     protected void Update()
     {
@@ -62,4 +64,10 @@ public abstract class Spell : MonoBehaviour {
             effect.ApplyEffect(player.gameObject);
         }
     }
+
+    protected void MakeExplosion()
+    {
+        Instantiate(particlesExplosion, transform.position, Quaternion.identity, transform.parent);
+    }
+
 }
