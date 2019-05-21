@@ -10,6 +10,7 @@ public class AttackBehavior : MonoBehaviour {
 
     public bool onAttackMode = false;
     private bool canAttack = true;
+    private bool isHolding = false;
     private InputManager input;
     private MovementBehavior movement;
     private float timer;
@@ -50,20 +51,22 @@ public class AttackBehavior : MonoBehaviour {
 
     private void ThrowSpell(int spellIndex)
     {
-        if (!onAttackMode && canAttack)
+        if ((isHolding || !onAttackMode) && canAttack)
         {
+            isHolding = false;
             onAttackMode = !onAttackMode;
             Vector3 dir = aimDirection.normalized;
             spellManager.InvokeSpell(spellIndex, handPos.position, dir, gameObject);
             invokeParticles.Stop();
             print("Throwing spell");
-        }
+        } else{ Debug.Log("not throwing "+isHolding + " " + !onAttackMode + " " + canAttack);}
     }
 
     private void InvokeSpell(int spellIndex)
     {
         if (!onAttackMode && canAttack)
         {
+            isHolding = true;
             onAttackMode = !onAttackMode;
             invokeParticles.Play();
             print("Invoking spell");
@@ -76,15 +79,18 @@ public class AttackBehavior : MonoBehaviour {
         {
             if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.OneTap)
             {
+                //Debug.Log("tap");
                 ThrowSpell(spellIndex);
             }
             else if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
             {
+                //Debug.Log("Hold");
                 InvokeSpell(spellIndex);
             }
         }
         if (Input.GetButtonUp(input) && spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
         {
+            //Debug.Log("Release");
             ThrowSpell(spellIndex);
         }
     }
