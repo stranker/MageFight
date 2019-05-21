@@ -18,7 +18,8 @@ public class PowerPickingManager : MonoBehaviour {
 	}
 
 	struct turn{
-		public int player;
+		public int playerID;
+		public int PlayerName;
 		public int wins;
 	}
 
@@ -51,7 +52,7 @@ public class PowerPickingManager : MonoBehaviour {
 	public void Begin(){
 		turnCounter = 0;
 		UpdateTurns();
-		pickTurnText.text = "Player " + (turns[turnCounter].player + 1).ToString() + ", pick your power.";
+		pickTurnText.text = "Player " + turns[turnCounter].PlayerName.ToString() + ", pick your power.";
 		powerPickingPanel.SetActive(true);
 		SetupButtons();
 	}
@@ -65,23 +66,26 @@ public class PowerPickingManager : MonoBehaviour {
 		turns.Clear();
 		for(int i = 0; i < players.Count; i++){
 			turn t = new turn();
-			t.player = players[i].GetID();
+			t.playerID = players[i].GetID();
+			t.PlayerName = players[i].GetPlayerName();
 			t.wins = players[i].winCount;
 			turns.Add(t);
 		}
-		if(!turns.TrueForAll(s => s.wins == 0)){
+		if(turns.TrueForAll(s => s.wins == 0)){
+			turns.Sort((s1,s2) => s1.PlayerName.CompareTo(s2.PlayerName));
+		}else{
 			turns.Sort((s1,s2) => s1.wins.CompareTo(s2.wins));
 		}
 	}
 
 	public void SelectPower(Spell s){
-		players[turns[turnCounter].player].AddSpell(s);
+		players[turns[turnCounter].playerID].AddSpell(s);
 		turnCounter++;
 		if(turnCounter >= players.Count){
 			End();
 			return;
 		} else {
-			pickTurnText.text = "Player " + (turns[turnCounter].player + 1).ToString() + ", pick your power.";
+			pickTurnText.text = "Player " + turns[turnCounter].PlayerName.ToString() + ", pick your power.";
 		}
 		bool spellsAvailable = false;
 		foreach(PowerButtonScript button in buttons){
@@ -116,7 +120,8 @@ public class PowerPickingManager : MonoBehaviour {
 			button.gameObject.transform.SetParent(null);
 		}
 
-		while (pickedButtons.Count > powersPerRound){
+		int difference = pickedButtons.Count - powersPerRound;
+		for(int i = 0; i < difference; i++ ){
 			PowerButtonScript but = pickedButtons[Random.Range(0, pickedButtons.Count -1)];
 			pickedButtons.Remove(but);
 		}

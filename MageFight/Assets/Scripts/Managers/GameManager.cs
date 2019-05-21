@@ -105,7 +105,11 @@ public class GameManager : MonoBehaviour {
     }
 
 	private void EndRound(){
-        UIManager.Get().ShowLeaderboard(players[0].winCount, players[1].winCount);
+        if(players[0].GetPlayerName() > players[1].GetPlayerName()){
+            UIManager.Get().ShowLeaderboard(players[1].winCount, players[0].winCount);
+        } else{
+            UIManager.Get().ShowLeaderboard(players[0].winCount, players[1].winCount);
+        }
     }
     private void OnLeaderboardShown(UIManager manager)
     {
@@ -116,12 +120,12 @@ public class GameManager : MonoBehaviour {
         for(int i = 0; i < players.Count; i++)
         {
             players[i].Pause();
-            Debug.Log("Player " + (i + 1) + " has won " + players[i].winCount + " rounds.");
+            Debug.Log("Player " + players[i].GetPlayerName() + " has won " + players[i].winCount + " rounds.");
             if(players[i].winCount >= roundsToWin) { winner = i; }
         }
         if(winner > -1)
         {
-            UIManager.Get().ShowPostGame(winner); //if a winner is found, the game ends            
+            UIManager.Get().ShowPostGame(players[winner].GetPlayerName()); //if a winner is found, the game ends            
         }
         else
         {

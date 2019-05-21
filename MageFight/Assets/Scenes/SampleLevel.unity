@@ -14559,6 +14559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8049b95f63ca44a873eea08a190333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: 2
   health: 10
   maxHealth: 10
   isAlive: 1
@@ -16559,6 +16560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8049b95f63ca44a873eea08a190333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: -1
   health: 10
   maxHealth: 10
   isAlive: 1
@@ -16744,7 +16746,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.19978918, y: 0.3016413}
-  m_AnchoredPosition: {x: -59.49939, y: 12}
+  m_AnchoredPosition: {x: -59.49951, y: 12}
   m_SizeDelta: {x: -173, y: -85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1000076895
@@ -32237,7 +32239,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 0, y: 0.25}
-  m_AnchoredPosition: {x: 487.925, y: 4.4999695}
+  m_AnchoredPosition: {x: 487.925, y: 4.5}
   m_SizeDelta: {x: 501.15002, y: 172.29999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1361770087
@@ -32481,6 +32483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8049b95f63ca44a873eea08a190333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: -1
   health: 10
   maxHealth: 10
   isAlive: 1
@@ -33351,7 +33354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.25}
-  m_AnchoredPosition: {x: -325.425, y: 4.4999695}
+  m_AnchoredPosition: {x: -325.425, y: 4.5}
   m_SizeDelta: {x: 149.15002, y: 170.29999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1533054414
@@ -39032,6 +39035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8049b95f63ca44a873eea08a190333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: 1
   health: 10
   maxHealth: 10
   isAlive: 1

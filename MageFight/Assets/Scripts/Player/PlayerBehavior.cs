@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour {
 
-
+    public int playerName = -1;
     public int health;
     public int maxHealth;
     public bool isAlive = true;
@@ -86,5 +86,9 @@ public class PlayerBehavior : MonoBehaviour {
 
     public bool fullSpellInventory(){
         return spellsManager.FullSpellInventory();
+    }
+
+    public int GetPlayerName(){
+        return playerName;
     }
 }

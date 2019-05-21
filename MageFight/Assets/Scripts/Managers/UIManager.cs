@@ -78,10 +78,14 @@ public class UIManager : MonoBehaviour {
         leaderboard.ShowLeaderboard(firstPlayerScore, secondPlayerScore);
         showLeaderboard = true;
     }
-    public void ShowPostGame(int winner)
+    public void ShowPostGame(int winnerName)
     {
+        int num = 0;
+        if(winnerName > 0 && winnerName-1 < playerLabelSprites.Length){
+            num = winnerName -1;
+        }
         PostGameUI.SetActive(true);
-        playerLabel.sprite = playerLabelSprites[winner];
+        playerLabel.sprite = playerLabelSprites[num];
     }
     public void RematchPressed()
     {
