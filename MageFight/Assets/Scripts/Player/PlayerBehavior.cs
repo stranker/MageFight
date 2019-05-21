@@ -17,7 +17,7 @@ public class PlayerBehavior : MonoBehaviour {
     private SpellsManager spellsManager;
     private MovementBehavior movement;
 	
-    private void Start(){
+    private void Awake(){
         winCount = 0;
         spellsManager = GetComponent<SpellsManager>();
         movement = GetComponent<MovementBehavior>();

@@ -39,12 +39,12 @@ public class GameManager : MonoBehaviour {
 			activeplayers[i].Pause();
 			}
 		}
-		PowerPickingManager.Instance.SetPlayerList(players);
-		PowerPickingManager.Instance.Begin();
 	}
     private void Start()
     {
         UIManager.Get().OnLeaderboardShown += OnLeaderboardShown;
+		PowerPickingManager.Instance.SetPlayerList(players);
+		PowerPickingManager.Instance.Begin();
     }
 
     private void Update()

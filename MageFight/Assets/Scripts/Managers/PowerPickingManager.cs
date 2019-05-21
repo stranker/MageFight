@@ -51,10 +51,14 @@ public class PowerPickingManager : MonoBehaviour {
 	}
 	public void Begin(){
 		turnCounter = 0;
-		UpdateTurns();
-		pickTurnText.text = "Player " + turns[turnCounter].PlayerName.ToString() + ", pick your power.";
-		powerPickingPanel.SetActive(true);
-		SetupButtons();
+		if(ShouldContinue()){
+			UpdateTurns();
+			pickTurnText.text = "Player " + turns[turnCounter].PlayerName.ToString() + ", pick your power.";
+			powerPickingPanel.SetActive(true);
+			SetupButtons();
+		} else {
+			End();
+		}
 	}
 
 	private void End(){
@@ -87,19 +91,7 @@ public class PowerPickingManager : MonoBehaviour {
 		} else {
 			pickTurnText.text = "Player " + turns[turnCounter].PlayerName.ToString() + ", pick your power.";
 		}
-		bool spellsAvailable = false;
-		foreach(PowerButtonScript button in buttons){
-			if(button.IsAvailable()){
-				spellsAvailable = true;
-			}
-		}
-		bool playerInventoryFull = true;
-		foreach(PlayerBehavior player in players){
-			if(!player.fullSpellInventory()){
-				playerInventoryFull = false;
-			}
-		}
-		if(!spellsAvailable || playerInventoryFull){ End();}
+		if(!ShouldContinue()){ End();}
 
 	}
 	public void Reset(){
@@ -128,6 +120,26 @@ public class PowerPickingManager : MonoBehaviour {
 
 		foreach(PowerButtonScript button in pickedButtons){
 			button.gameObject.transform.SetParent(powerGrid.transform);
+		}
+	}
+
+	private bool ShouldContinue(){
+		bool spellsAvailable = false;
+		foreach(PowerButtonScript button in buttons){
+			if(button.IsAvailable()){
+				spellsAvailable = true;
+			}
+		}
+		bool playerInventoryFull = true;
+		foreach(PlayerBehavior player in players){
+			if(!player.fullSpellInventory()){
+				playerInventoryFull = false;
+			}
+		}
+		if(!spellsAvailable || playerInventoryFull){
+			return false;
+		} else{
+			return true;
 		}
 	}
 }
