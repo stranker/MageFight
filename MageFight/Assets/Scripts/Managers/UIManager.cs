@@ -32,6 +32,17 @@ public class UIManager : MonoBehaviour {
     public float leaderboardTime = 3f;
     private bool showLeaderboard = false;
 
+    public void Fade(float amount)
+    {
+        var sprites = playerUI.GetComponentsInChildren<Image>();
+        foreach (Image image in sprites)
+        {
+            Color actualColor = image.color;
+            actualColor.a = amount;
+            image.color = actualColor;
+        }
+    }
+
     // Update is called once per frame
     void Update () {
         if (p1)
