@@ -15,10 +15,12 @@ public class PlayerBehavior : MonoBehaviour {
     private int playerID;
     public int winCount;
     private SpellsManager spellsManager;
+    private MovementBehavior movement;
 	
     private void Start(){
         winCount = 0;
         spellsManager = GetComponent<SpellsManager>();
+        movement = GetComponent<MovementBehavior>();
     }
 
     public void TakeDamage(int val)
@@ -57,6 +59,7 @@ public class PlayerBehavior : MonoBehaviour {
         GetComponent<MovementBehavior>().enabled = true;
         SetSpritesVisibles(true);
         transform.position = position;
+        movement.flyStamina = movement.flyMaxStamina;
     }
 
     public void RegisterPlayerID(int ID){

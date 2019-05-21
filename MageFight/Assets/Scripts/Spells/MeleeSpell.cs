@@ -23,12 +23,13 @@ public class MeleeSpell : Spell {
             PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
             player.TakeDamage(damage);
             CheckHasEffect(player);
+            MakeExplosion();
         }
         if (collision.tag == "Ground")
         {
+            MakeExplosion();
             Kill();
         }
-        MakeExplosion();
     }
 
 

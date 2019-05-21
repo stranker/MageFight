@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour {
 	private List<PlayerBehavior> players = new List<PlayerBehavior>();
 	[SerializeField] private int roundsToWin; //How much of a round-win advantage a player needs to be considered winner.
 	[SerializeField] private List<Transform> startingPositions = new List<Transform>();
+    private float timer;
+    private float frezeeDeathTime = 1f;
+    private bool playerDeath = false;
 	
 	void Awake () {
 		//DontDestroyOnLoad(gameObject); //Single scene, might not be needed
@@ -44,6 +47,20 @@ public class GameManager : MonoBehaviour {
         UIManager.Get().OnLeaderboardShown += OnLeaderboardShown;
     }
 
+    private void Update()
+    {
+        if (playerDeath)
+        {
+            timer += Time.unscaledDeltaTime;
+            if (timer >= frezeeDeathTime)
+            {
+                Time.timeScale = 1;
+                timer = 0;
+                playerDeath = false;
+            }
+        }
+    }
+
     public void InitializeRound(){
 		for(int i = 0; i < players.Count; i++){
 			if(i <= startingPositions.Count -1){
@@ -58,7 +75,10 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void PlayerDeath(){ //checks if round should end
-		bool isOnePlayerAlive = false;
+        playerDeath = true;
+        timer = 0;
+        Time.timeScale = 0.2f;
+        bool isOnePlayerAlive = false;
 		int winner = -1; //Has to have a default value to not cause compiler errors
 		for(int i = 0; i < players.Count; i++){
 			if(players[i].isAlive == true){

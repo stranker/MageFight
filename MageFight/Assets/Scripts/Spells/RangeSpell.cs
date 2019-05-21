@@ -20,13 +20,15 @@ public class RangeSpell : Spell {
             PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
             player.TakeDamage(damage);
             CheckHasEffect(player);
+            MakeExplosion();
             Kill();
+
         }
         if (collision.tag == "Ground")
         {
+            MakeExplosion();
             Kill();
         }
-        MakeExplosion();
     }
 
     public override void InvokeSpell(Vector3 startPos, Vector3 direction, GameObject owner)
