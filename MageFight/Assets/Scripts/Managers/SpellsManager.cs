@@ -10,9 +10,6 @@ public class SpellsManager : MonoBehaviour {
     private const int amountOfSpells = 3;
     public GameObject powerIcons; //set to corresponding player's UI "PowerIcons" object from hierarchy
     private List<PowerIcon> icons = new List<PowerIcon>();
-    public GameObject clockCooldown;
-    private float timer;
-    public float clockTime = 1;
     public ParticleSystem spellParticles;
     public AnimationController anim;
 
@@ -39,20 +36,6 @@ public class SpellsManager : MonoBehaviour {
             icons.Add(icon);
         }
 	}
-	// Update is called once per frame
-	void Update () {
-        if (clockCooldown.activeInHierarchy)
-        {
-            Vector3 clockScale = new Vector2(transform.localScale.x, 1);
-            clockCooldown.transform.localScale = clockScale;
-            timer += Time.deltaTime;
-            if (timer >= clockTime)
-            {
-                timer = 0;
-                clockCooldown.SetActive(false);
-            }
-        }
-    }
 
     public void InvokeSpell(int index, Vector3 startPosition, Vector3 direction, GameObject owner)
     {   if(index < spells.Count){
@@ -62,11 +45,7 @@ public class SpellsManager : MonoBehaviour {
                 spellParticles.Play();
                 GetComponent<MovementBehavior>().Knockback();
                 anim.PlayerSpell(spells[index].typeOfSpeel);
-            }
-            else
-            {
-                clockCooldown.SetActive(true);
-                clockCooldown.GetComponentInChildren<TextMesh>().text = spells[index].timer.ToString("0");
+                icons[index].StartCooldown(spells[index].cooldown);
             }
         } else {
             Debug.LogWarning("Spell not available or out of index");
@@ -88,7 +67,6 @@ public class SpellsManager : MonoBehaviour {
             Spell sp = Instantiate(s, transform.parent);
             sp.Kill();
             spells.Add(sp);
-
             foreach(PowerIcon icon in icons){
                 if(spells.Count == icon.GetSkillOrder()){
                     icon.SetSpell(s);
