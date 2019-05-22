@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 38125223}
   - component: {fileID: 38125222}
   - component: {fileID: 38125221}
+  - component: {fileID: 38125224}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -344,9 +345,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2048147202}
-        m_MethodName: LoadSceneQuick
-        m_Mode: 5
+      - m_Target: {fileID: 38125224}
+        m_MethodName: LoadMainMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -391,6 +392,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 38125219}
   m_CullTransparentMesh: 0
+--- !u!114 &38125224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 38125219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7665a0b796050f245b806fa83874e002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &49574450
 GameObject:
   m_ObjectHideFlags: 0
@@ -16746,7 +16758,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.19978918, y: 0.3016413}
-  m_AnchoredPosition: {x: -59.49951, y: 12}
+  m_AnchoredPosition: {x: -59.49939, y: 12}
   m_SizeDelta: {x: -173, y: -85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1000076895
@@ -40497,12 +40509,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe591da1a6c55a1488fed89b97054471, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &2048147202 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114908047284644104, guid: fe591da1a6c55a1488fed89b97054471,
-    type: 2}
-  m_PrefabInternal: {fileID: 2048147201}
-  m_Script: {fileID: 11500000, guid: 9287cdb068721554797414c86bf4e448, type: 3}
 --- !u!1 &2059305761
 GameObject:
   m_ObjectHideFlags: 0
