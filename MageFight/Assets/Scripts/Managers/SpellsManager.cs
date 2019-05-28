@@ -8,28 +8,13 @@ public class SpellsManager : MonoBehaviour {
     [Header("Player spells")]
     private List<Spell> spells = new List<Spell>();
     private const int amountOfSpells = 3;
+    private int spellIndexToReplace = 0;
     public GameObject powerIcons; //set to corresponding player's UI "PowerIcons" object from hierarchy
     private List<PowerIcon> icons = new List<PowerIcon>();
     public ParticleSystem spellParticles;
     public AnimationController anim;
 
-
-   /* void OnValidate()
-    {
-        if(inventorySpells.Length != amountOfSpells)
-        {
-            Debug.LogWarning("THE MAX AMOUNT OF SPELLS IS 3 (TRI)");
-            Array.Resize(ref inventorySpells, amountOfSpells);
-        }
-    }*/
-    // Use this for initialization
     void Start () {
-        /*foreach (Spell item in inventorySpells)
-        {
-            Spell s = Instantiate(item, transform.parent);
-            spells.Add(s);
-            s.Kill();
-        }*/
         anim = GetComponent<AnimationController>();
         PowerIcon[] pI = powerIcons.GetComponentsInChildren<PowerIcon>();
         foreach(PowerIcon icon in pI){
@@ -60,26 +45,46 @@ public class SpellsManager : MonoBehaviour {
             return Spell.CastType.Error;
         }
     }
-    public void AddSpell(Spell s){
-        if(spells.Count >= amountOfSpells){
-            Debug.LogWarning("Spell capacity reached, unable to add new one");
-        } else {
-            Spell sp = Instantiate(s, transform.parent);
+    public void AddSpell(Spell spell){
+        
+        if(spells.Count < amountOfSpells){
+            Spell sp = Instantiate(spell, transform.parent);
             sp.Kill();
             spells.Add(sp);
+
             foreach(PowerIcon icon in icons){
-                if(spells.Count == icon.GetSkillOrder()){
-                    icon.SetSpell(s);
+                if(icon.GetSkillOrder() == spells.Count){
+                    icon.SetSpell(spell);
                 }
             }
+
+        } else {
+            if(spellIndexToReplace >= amountOfSpells){ spellIndexToReplace = 0;}
+
+            spells[spellIndexToReplace].Kill();
+            PowerPickingManager.Instance.RecicleSpell(spells[spellIndexToReplace]);
+
+            Spell sp = Instantiate(spell, transform.parent);
+            sp.Kill();
+            spells[spellIndexToReplace] = sp;
+
+            foreach(PowerIcon icon in icons){
+                if(icon.GetSkillOrder() == spellIndexToReplace + 1 ){
+                    icon.SetSpell(spell);
+                }
+            }
+            spellIndexToReplace++;
         }
+        
     }
+
     public bool FullSpellInventory(){
         return spells.Count == amountOfSpells;
     }
 
     public void Reset(){
         spells.Clear();
+        spellIndexToReplace = 0;
         foreach(PowerIcon icon in icons){
             icon.Reset();
         }

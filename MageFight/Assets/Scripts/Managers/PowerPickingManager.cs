@@ -99,6 +99,7 @@ public class PowerPickingManager : MonoBehaviour {
 			button.Reset();
 		}
 		SpellsManager[] spellsManagers = FindObjectsOfType<SpellsManager>();
+		
 		foreach(SpellsManager sm in spellsManagers){
 			sm.Reset();
 		} 
@@ -130,16 +131,17 @@ public class PowerPickingManager : MonoBehaviour {
 				spellsAvailable = true;
 			}
 		}
-		bool playerInventoryFull = true;
-		foreach(PlayerBehavior player in players){
-			if(!player.fullSpellInventory()){
-				playerInventoryFull = false;
+		return spellsAvailable;
+	}
+
+	public void RecicleSpell(Spell spell){
+		foreach(PowerButtonScript button in buttons){
+			if(!button.IsAvailable()){
+				button.SetSpell(spell);
+				button.Reset();
+				Debug.Log("Button reset");
+				return;
 			}
-		}
-		if(!spellsAvailable || playerInventoryFull){
-			return false;
-		} else{
-			return true;
 		}
 	}
 }

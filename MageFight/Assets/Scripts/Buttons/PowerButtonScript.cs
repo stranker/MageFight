@@ -23,4 +23,8 @@ public class PowerButtonScript : MonoBehaviour {
 	public bool IsAvailable(){
 		return GetComponent<Button>().interactable;
 	}
+
+	public Spell GetSpell(){
+		return spell;
+	}
 }
