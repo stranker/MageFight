@@ -31,7 +31,7 @@ public class MovementBehavior : MonoBehaviour {
 
     private float changuiTimer = 0f;
     public float changuiTime;
-    private bool canJump = true;
+    private bool canJump = false;
     private bool onChangui = false;
 
     public ParticleSystem jumpParticles;
@@ -201,7 +201,6 @@ public class MovementBehavior : MonoBehaviour {
         if((hit1 || hit2) && !flying)
         {
             onFloor = true;
-            canJump = onFloor;
             changuiTimer = 0;
         }
         else
