@@ -41,7 +41,6 @@ public class PowerPickingManager : MonoBehaviour {
 		for(int i = 0; i < spells.Count; i++){
 			GameObject go = Instantiate(powerButtonPrefab) as GameObject;
 			go.GetComponent<PowerButtonScript>().SetSpell(spells[i]);
-			//go.transform.SetParent(powerGrid.transform);
 			buttons.Add(go.GetComponent<PowerButtonScript>());
 		}
 	}
@@ -106,20 +105,20 @@ public class PowerPickingManager : MonoBehaviour {
 	}
 
 	private void SetupButtons(){
-		List<PowerButtonScript> pickedButtons = new List<PowerButtonScript>();
+		List<PowerButtonScript> roundButtons = new List<PowerButtonScript>();
 
 		foreach(PowerButtonScript button in buttons){
-			if(button.IsAvailable()){ pickedButtons.Add(button);}
+			if(button.IsAvailable()){ roundButtons.Add(button);}
 			button.gameObject.transform.SetParent(null);
 		}
 
-		int difference = pickedButtons.Count - powersPerRound;
+		int difference = roundButtons.Count - powersPerRound;
 		for(int i = 0; i < difference; i++ ){
-			PowerButtonScript but = pickedButtons[Random.Range(0, pickedButtons.Count -1)];
-			pickedButtons.Remove(but);
+			PowerButtonScript but = roundButtons[Random.Range(0, roundButtons.Count -1)];
+			roundButtons.Remove(but);
 		}
 
-		foreach(PowerButtonScript button in pickedButtons){
+		foreach(PowerButtonScript button in roundButtons){
 			button.gameObject.transform.SetParent(powerGrid.transform);
 		}
 	}
@@ -135,11 +134,12 @@ public class PowerPickingManager : MonoBehaviour {
 	}
 
 	public void RecicleSpell(Spell spell){
-		foreach(PowerButtonScript button in buttons){
+		PowerButtonScript[] buttonsInMatrix = powerGrid.GetComponentsInChildren<PowerButtonScript>();
+		foreach(PowerButtonScript button in buttonsInMatrix){
 			if(!button.IsAvailable()){
 				button.SetSpell(spell);
 				button.Reset();
-				Debug.Log("Button reset");
+				Debug.Log("button recicled");
 				return;
 			}
 		}

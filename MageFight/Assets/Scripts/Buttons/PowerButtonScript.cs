@@ -6,8 +6,8 @@ public class PowerButtonScript : MonoBehaviour {
 	private Spell spell;
 
 	public void PickSpell(){
-		PowerPickingManager.Instance.SelectPower(spell);
 		GetComponent<Button>().interactable = false;
+		PowerPickingManager.Instance.SelectPower(spell);
 	}
 	public void SetSpell(Spell s){
 		spell = s;
