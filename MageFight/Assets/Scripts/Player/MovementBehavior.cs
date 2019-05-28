@@ -28,6 +28,8 @@ public class MovementBehavior : MonoBehaviour {
     public float flyMaxStamina = 100;
 	public float flyStamina = 100;
     public float flyConsumptionStamina = 10;
+    public float quickRechargeStaminaTime = 1f;
+    private float staminaTimer = 0f;
 
     private float changuiTimer = 0f;
     public float changuiTime;
@@ -103,7 +105,15 @@ public class MovementBehavior : MonoBehaviour {
             if (onFloor && flyStamina < flyMaxStamina)
             {
                 canFly = true;
-                flyStamina += Time.deltaTime * flyConsumptionStamina * 0.5f;
+                if(velocity.x == 0)
+                    staminaTimer += Time.deltaTime;
+                else
+                    staminaTimer = 0f;
+                if(staminaTimer >= quickRechargeStaminaTime)
+                    flyStamina += Time.deltaTime * flyConsumptionStamina * 2.5f;
+                else
+                    flyStamina += Time.deltaTime * flyConsumptionStamina * 0.5f;                
+
                 if (flyStamina >= flyMaxStamina)
                     flyStamina = flyMaxStamina;
             }
