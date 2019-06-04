@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour {
     private float timer = 0;
     public float leaderboardTime = 3f;
     private bool showLeaderboard = false;
+    private bool leaderboardActive = false;
 
     public void Fade(float amount)
     {
@@ -57,26 +58,43 @@ public class UIManager : MonoBehaviour {
         }
 
 
-        if(showLeaderboard)
+        if (showLeaderboard)
         {
-            if(timer < leaderboardTime)
+            if (!leaderboardActive)
             {
-                timer += Time.deltaTime;
+                if (timer < leaderboardTime)
+                {
+                    timer += Time.deltaTime;
+                }
+                else
+                {
+                    leaderboard.gameObject.SetActive(true);
+                    leaderboardActive = true;
+                    timer = 0;
+                }
             }
             else
             {
-                leaderboard.gameObject.SetActive(false);
-                timer = 0;
-                showLeaderboard = false;
-                OnLeaderboardShown(this);
+                if (timer < leaderboardTime)
+                {
+                    timer += Time.deltaTime;
+                }
+                else
+                {
+                    leaderboard.gameObject.SetActive(false);
+                    timer = 0;
+                    showLeaderboard = false;
+                    OnLeaderboardShown(this);
+                    leaderboardActive = false;
+                }
             }
         }
     }
     public void ShowLeaderboard(int firstPlayerScore, int secondPlayerScore)
     {
-        leaderboard.gameObject.SetActive(true);
         leaderboard.ShowLeaderboard(firstPlayerScore, secondPlayerScore);
         showLeaderboard = true;
+        leaderboardActive = false;
     }
     public void ShowPostGame(int winnerName)
     {

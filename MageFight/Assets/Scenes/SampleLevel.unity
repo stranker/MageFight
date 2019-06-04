@@ -5951,7 +5951,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.80010986, y: 0.7976558}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 80.900085, y: 8.000244}
+  m_AnchoredPosition: {x: 80.900085, y: 8.000229}
   m_SizeDelta: {x: -173, y: -24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &197409065
@@ -14604,7 +14604,8 @@ MonoBehaviour:
   flySpeed: 12
   flyMaxStamina: 100
   flyStamina: 0
-  flyConsumptionStamina: 20
+  flyConsumptionStamina: 10
+  quickRechargeStaminaTime: 1
   changuiTime: 0.25
   jumpParticles: {fileID: 648865583}
   dashTrail: {fileID: 1032055965}
@@ -16606,6 +16607,7 @@ MonoBehaviour:
   flyMaxStamina: 100
   flyStamina: 0
   flyConsumptionStamina: 1
+  quickRechargeStaminaTime: 1
   changuiTime: 0.25
   jumpParticles: {fileID: 1819166833}
   dashTrail: {fileID: 540744634}
@@ -32529,6 +32531,7 @@ MonoBehaviour:
   flyMaxStamina: 100
   flyStamina: 0
   flyConsumptionStamina: 20
+  quickRechargeStaminaTime: 1
   changuiTime: 0.25
   jumpParticles: {fileID: 1819166833}
   dashTrail: {fileID: 540744634}
@@ -39080,7 +39083,8 @@ MonoBehaviour:
   flySpeed: 12
   flyMaxStamina: 100
   flyStamina: 0
-  flyConsumptionStamina: 20
+  flyConsumptionStamina: 10
+  quickRechargeStaminaTime: 1
   changuiTime: 0.25
   jumpParticles: {fileID: 573692219}
   dashTrail: {fileID: 803211328}
