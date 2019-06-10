@@ -18,6 +18,7 @@ public class AttackBehavior : MonoBehaviour {
     public Vector2 aimDirection;
     public Transform handPos;
     public ParticleSystem invokeParticles;
+    public GameObject arrowSprite;
 
     // Use this for initialization
     void Start () {
@@ -44,6 +45,12 @@ public class AttackBehavior : MonoBehaviour {
         int upDir = (int)Input.GetAxis(input.aimAxisY);
         int fwDir = Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f ? (int)transform.localScale.x : 0;
         aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
+        float angle;
+        if(transform.localScale.x < 1)
+            angle = Mathf.Atan2(-aimDirection.y, Mathf.Abs(aimDirection.x)) * Mathf.Rad2Deg;
+        else
+            angle = Mathf.Atan2(aimDirection.y, Mathf.Abs(aimDirection.x)) * Mathf.Rad2Deg;
+        arrowSprite.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         GetSpellsInputs(input.firstSkillButton, 0);
         GetSpellsInputs(input.secondSkillButton, 1);
         GetSpellsInputs(input.thirdSkillButton, 2);
@@ -80,17 +87,20 @@ public class AttackBehavior : MonoBehaviour {
             if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.OneTap)
             {
                 //Debug.Log("tap");
-                ThrowSpell(spellIndex);
+                arrowSprite.gameObject.SetActive(false);
+                ThrowSpell(spellIndex);                
             }
             else if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
             {
                 //Debug.Log("Hold");
+                arrowSprite.gameObject.SetActive(true);
                 InvokeSpell(spellIndex);
             }
         }
         if (Input.GetButtonUp(input) && spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
         {
             //Debug.Log("Release");
+            arrowSprite.gameObject.SetActive(false);
             ThrowSpell(spellIndex);
         }
     }
