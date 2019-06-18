@@ -110,6 +110,7 @@ MonoBehaviour:
   timer: 0
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
     type: 2}
+  spellColor: {r: 0.38823533, g: 0.7607844, b: 0.909804, a: 1}
   travelVelocity: 15
 --- !u!114 &114805377441861784
 MonoBehaviour:

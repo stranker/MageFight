@@ -109,6 +109,7 @@ MonoBehaviour:
   timer: 0
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
     type: 2}
+  spellColor: {r: 0.5294118, g: 0.45098042, b: 1, a: 1}
   travelVelocity: 15
 --- !u!212 &212000159523532090
 SpriteRenderer:
