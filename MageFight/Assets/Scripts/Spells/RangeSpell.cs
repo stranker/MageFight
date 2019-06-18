@@ -18,7 +18,7 @@ public class RangeSpell : Spell {
         if (collision.tag == "Player" && collision.gameObject != mageOwner)
         {
             PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
-            player.TakeDamage(damage);
+            player.TakeDamage(damage,transform.position);
             CheckHasEffect(player);
             MakeExplosion();
             Kill();

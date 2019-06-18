@@ -23,14 +23,14 @@ public class PlayerBehavior : MonoBehaviour {
         movement = GetComponent<MovementBehavior>();
     }
 
-    public void TakeDamage(int val)
+    public void TakeDamage(int val, Vector2 position)
     {
         if (isAlive)
         {
             health -= val;
             GameObject pop = Instantiate(popText.gameObject, headPos.position, Quaternion.identity, transform.parent);
             pop.GetComponent<DamagePopUp>().SetDamage(val);
-			GetComponent<MovementBehavior>().Knockback();
+			GetComponent<MovementBehavior>().Knockback(position);
             if (health <= 0)
             {
                 isAlive = !isAlive;

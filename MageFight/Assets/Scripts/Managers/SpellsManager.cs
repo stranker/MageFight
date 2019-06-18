@@ -32,7 +32,6 @@ public class SpellsManager : MonoBehaviour {
                 spells[index].InvokeSpell(startPosition, direction, owner);
                 spellParticlesMain.startColor = spells[index].spellColor;
                 spellParticles.Play();
-                GetComponent<MovementBehavior>().Knockback();
                 anim.PlayerSpell(spells[index].typeOfSpeel);
                 icons[index].StartCooldown(spells[index].cooldown);
             }

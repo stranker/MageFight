@@ -199,10 +199,13 @@ public class MovementBehavior : MonoBehaviour {
         }
     }
 
-    public void Knockback()
+    public void Knockback(Vector2 pos)
     {
         knockback = !knockback;
-        rd.velocity = new Vector2(-transform.localScale.x * 2, 7);
+        Vector2 knockDirection = ((Vector2)transform.position - pos).normalized;
+        knockDirection.x *= 5;
+        knockDirection.y = 10;
+        rd.velocity = knockDirection;
     }
 
     public void GroundControl()
