@@ -18,9 +18,10 @@ public class PowerPickingManager : MonoBehaviour {
 	}
 
 	struct turn{
-		public int playerID;
-		public int PlayerName;
-		public int wins;
+		public int   playerID;
+		public int   PlayerName;
+		public int   wins;
+        public Color playerColor;
 	}
 
 	[Header("Spells")]
@@ -52,8 +53,8 @@ public class PowerPickingManager : MonoBehaviour {
 		turnCounter = 0;
 		if(ShouldContinue()){
 			UpdateTurns();
-			pickTurnText.text = "Player " + turns[turnCounter].PlayerName.ToString() + ", pick your power.";
-			powerPickingPanel.SetActive(true);
+            SetColorAndTextRound(turnCounter);
+            powerPickingPanel.SetActive(true);
 			SetupButtons();
 		} else {
 			End();
@@ -69,9 +70,10 @@ public class PowerPickingManager : MonoBehaviour {
 		turns.Clear();
 		for(int i = 0; i < players.Count; i++){
 			turn t = new turn();
-			t.playerID = players[i].GetID();
-			t.PlayerName = players[i].GetPlayerName();
-			t.wins = players[i].winCount;
+			t.playerID    = players[i].GetID();
+			t.PlayerName  = players[i].GetPlayerName();
+			t.wins        = players[i].winCount;
+            t.playerColor = players[i].playerColor;
 			turns.Add(t);
 		}
 		if(turns.TrueForAll(s => s.wins == 0)){
@@ -88,9 +90,9 @@ public class PowerPickingManager : MonoBehaviour {
 			End();
 			return;
 		} else {
-			pickTurnText.text = "Player " + turns[turnCounter].PlayerName.ToString() + ", pick your power.";
-		}
-		if(!ShouldContinue()){ End();}
+            SetColorAndTextRound(turnCounter);
+        }
+        if(!ShouldContinue()){ End();}
 
 	}
 	public void Reset(){
@@ -143,4 +145,9 @@ public class PowerPickingManager : MonoBehaviour {
 			}
 		}
 	}
+    public void SetColorAndTextRound(int turnIndex)
+    {
+        pickTurnText.color = turns[turnIndex].playerColor;
+        pickTurnText.text = "Player " + turns[turnIndex].PlayerName.ToString() + ", pick your power.";
+    }
 }

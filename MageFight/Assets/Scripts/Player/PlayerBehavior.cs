@@ -16,7 +16,7 @@ public class PlayerBehavior : MonoBehaviour {
     public int winCount;
     private SpellsManager spellsManager;
     private MovementBehavior movement;
-	
+    public Color playerColor;
     private void Awake(){
         winCount = 0;
         spellsManager = GetComponent<SpellsManager>();
@@ -98,6 +98,6 @@ public class PlayerBehavior : MonoBehaviour {
 	
 	public void ResetAnimation(){
 		GetComponent<Animator>().SetTrigger("Reset");
-	}
-	
+	}    
 }
+
