@@ -47,6 +47,7 @@ public class MovementBehavior : MonoBehaviour {
 
     private float bodyTypeTimer;
     private float bodyTypeTime = 0.5f;
+    private bool immobilized = false;
 
     // Use this for initialization
     void Start () {
@@ -77,45 +78,48 @@ public class MovementBehavior : MonoBehaviour {
 
     private void GetInput()
     {
-        if (canMove)
-            velocity.x = Input.GetAxis(input.movementAxisX);
-        else
-            velocity.x = 0;
+        if(!immobilized)
+        {
+            if(canMove)
+                velocity.x = Input.GetAxis(input.movementAxisX);
+            else
+                velocity.x = 0;
 
-        if (Input.GetButtonDown(input.jumpButton) && canJump && !flying)
-        {
-            rd.velocity = new Vector2(0,jumpForce);
-            jumpParticles.Play();
-            canJump = !canJump;
-        }
-		int upDir = (int)Input.GetAxis(input.aimAxisY);
-        int fwDir = Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f ? (int)transform.localScale.x : 0;
-        aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
-        dashTrail.emitting = flying;
-        flying = Input.GetButton(input.dodgeButton) && canFly && flyStamina > 0;
-        if (flying)
-        {
-            Fly(aimDirection);
-        }
-        else
-        {
-            flying = false;
-            canMove = true;
-            rd.gravityScale = gravity;
-            if (onFloor && flyStamina < flyMaxStamina)
+            if(Input.GetButtonDown(input.jumpButton) && canJump && !flying)
             {
-                canFly = true;
-                if(velocity.x == 0)
-                    staminaTimer += Time.deltaTime;
-                else
-                    staminaTimer = 0f;
-                if(staminaTimer >= quickRechargeStaminaTime)
-                    flyStamina += Time.deltaTime * flyConsumptionStamina * 2.5f;
-                else
-                    flyStamina += Time.deltaTime * flyConsumptionStamina * 0.5f;                
+                rd.velocity = new Vector2(0, jumpForce);
+                jumpParticles.Play();
+                canJump = !canJump;
+            }
+            int upDir = (int)Input.GetAxis(input.aimAxisY);
+            int fwDir = Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f ? (int)transform.localScale.x : 0;
+            aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
+            dashTrail.emitting = flying;
+            flying = Input.GetButton(input.dodgeButton) && canFly && flyStamina > 0;
+            if(flying)
+            {
+                Fly(aimDirection);
+            }
+            else
+            {
+                flying = false;
+                canMove = true;
+                rd.gravityScale = gravity;
+                if(onFloor && flyStamina < flyMaxStamina)
+                {
+                    canFly = true;
+                    if(velocity.x == 0)
+                        staminaTimer += Time.deltaTime;
+                    else
+                        staminaTimer = 0f;
+                    if(staminaTimer >= quickRechargeStaminaTime)
+                        flyStamina += Time.deltaTime * flyConsumptionStamina * 2.5f;
+                    else
+                        flyStamina += Time.deltaTime * flyConsumptionStamina * 0.5f;
 
-                if (flyStamina >= flyMaxStamina)
-                    flyStamina = flyMaxStamina;
+                    if(flyStamina >= flyMaxStamina)
+                        flyStamina = flyMaxStamina;
+                }
             }
         }
     }
@@ -176,6 +180,7 @@ public class MovementBehavior : MonoBehaviour {
 
     public void Immobilize(bool val)
     {
+        immobilized = !val;
         canMove = val;
         canFly = val;
         if (val)
