@@ -31,9 +31,9 @@ public class AnimationController : MonoBehaviour {
 
     }
 
-    internal void PlayerSpell(Spell.SpellType typeOfSpeel)
+    internal void PlayerSpell(Spell.SpellType typeOfSpell)
     {
-        switch (typeOfSpeel)
+        switch (typeOfSpell)
         {
             case Spell.SpellType.Melee:
                 anim.SetTrigger("Melee");

@@ -89,4 +89,8 @@ public class SpellsManager : MonoBehaviour {
             icon.Reset();
         }
     }
+    public Color GetSpellColor(int index)
+    {
+        return spells[index].spellColor;
+    }
 }

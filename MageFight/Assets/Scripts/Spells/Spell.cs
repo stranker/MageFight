@@ -36,7 +36,7 @@ public abstract class Spell : MonoBehaviour {
     public CastType GetCastType() { return castType; }
 
     public GameObject particlesExplosion;
-
+    public Color spellColor;
 
     protected void Update()
     {

@@ -20,10 +20,12 @@ public class AttackBehavior : MonoBehaviour {
     public ParticleSystem invokeParticles;
     public GameObject arrowSprite;
 
+    private ParticleSystem.MainModule invokeParticlesMain;
     // Use this for initialization
     void Start () {
         input = GetComponent<InputManager>();
         movement = GetComponent<MovementBehavior>();
+        invokeParticlesMain = invokeParticles.GetComponent<ParticleSystem>().main;
     }
 
     // Update is called once per frame
@@ -75,6 +77,7 @@ public class AttackBehavior : MonoBehaviour {
         {
             isHolding = true;
             onAttackMode = !onAttackMode;
+            invokeParticlesMain.startColor = spellManager.GetSpellColor(spellIndex);
             invokeParticles.Play();
             print("Invoking spell");
         }
