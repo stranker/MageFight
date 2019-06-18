@@ -12,6 +12,7 @@ public class SpellsManager : MonoBehaviour {
     public GameObject powerIcons; //set to corresponding player's UI "PowerIcons" object from hierarchy
     private List<PowerIcon> icons = new List<PowerIcon>();
     public ParticleSystem spellParticles;
+    private ParticleSystem.MainModule spellParticlesMain;
     public AnimationController anim;
 
     void Start () {
@@ -20,13 +21,16 @@ public class SpellsManager : MonoBehaviour {
         foreach(PowerIcon icon in pI){
             icons.Add(icon);
         }
-	}
+        spellParticlesMain = spellParticles.GetComponent<ParticleSystem>().main;
+
+    }
 
     public void InvokeSpell(int index, Vector3 startPosition, Vector3 direction, GameObject owner)
     {   if(index < spells.Count){
             if (!spells[index].invoked)
             {
                 spells[index].InvokeSpell(startPosition, direction, owner);
+                spellParticlesMain.startColor = spells[index].spellColor;
                 spellParticles.Play();
                 GetComponent<MovementBehavior>().Knockback();
                 anim.PlayerSpell(spells[index].typeOfSpeel);
