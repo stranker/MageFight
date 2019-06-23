@@ -96,4 +96,8 @@ public class SpellsManager : MonoBehaviour {
     {
         return spells[index].spellColor;
     }
+    public bool SpellInvoked(int spellIndex)
+    {
+        return spells[spellIndex].invoked;
+    }
 }

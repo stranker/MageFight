@@ -19,6 +19,7 @@ public class AttackBehavior : MonoBehaviour {
     public Transform handPos;
     public ParticleSystem invokeParticles;
     public GameObject arrowSprite;
+    private bool invoking;
 
     private ParticleSystem.MainModule invokeParticlesMain;
     // Use this for initialization
@@ -85,7 +86,7 @@ public class AttackBehavior : MonoBehaviour {
     }
     private void GetSpellsInputs(String input,int spellIndex)
     {
-        if(Input.GetButtonDown(input))
+        if(Input.GetButtonDown(input) && !spellManager.SpellInvoked(spellIndex))
         {
             if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.OneTap)
             {
@@ -98,13 +99,15 @@ public class AttackBehavior : MonoBehaviour {
                 //Debug.Log("Hold");
                 arrowSprite.gameObject.SetActive(true);
                 InvokeSpell(spellIndex);
+                invoking = true;
             }
         }
-        if (Input.GetButtonUp(input) && spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
+        if (Input.GetButtonUp(input) && spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold && invoking)
         {
             //Debug.Log("Release");
             arrowSprite.gameObject.SetActive(false);
             ThrowSpell(spellIndex);
+            invoking = false;
         }
     }
 
