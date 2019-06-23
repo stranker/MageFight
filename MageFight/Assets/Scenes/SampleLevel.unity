@@ -5735,7 +5735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillOrder: 1
-  background: {fileID: 1659082661}
+  backgroundSprite: {fileID: 1659082661}
 --- !u!114 &165956277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5951,7 +5951,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.80010986, y: 0.7976558}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 80.8999, y: 8.000244}
+  m_AnchoredPosition: {x: 80.89996, y: 8.000244}
   m_SizeDelta: {x: -173, y: -24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &200617633
@@ -11102,7 +11102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillOrder: 3
-  background: {fileID: 1285727820}
+  backgroundSprite: {fileID: 1285727820}
 --- !u!114 &460580549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12808,7 +12808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillOrder: 2
-  background: {fileID: 1346235332}
+  backgroundSprite: {fileID: 1346235332}
 --- !u!114 &680864512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13367,7 +13367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillOrder: 2
-  background: {fileID: 97361171}
+  backgroundSprite: {fileID: 97361171}
 --- !u!114 &820518408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13665,7 +13665,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.19978918, y: 0.3016413}
-  m_AnchoredPosition: {x: -59.49951, y: 11.999878}
+  m_AnchoredPosition: {x: -59.49939, y: 11.999756}
   m_SizeDelta: {x: -173, y: -85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1000076895
@@ -19151,7 +19151,7 @@ RectTransform:
   m_GameObject: {fileID: 1222647848}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9999945, y: 0.9999945, z: 0.9999945}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1100000351}
   m_RootOrder: 1
@@ -19174,7 +19174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillOrder: 1
-  background: {fileID: 1405338761}
+  backgroundSprite: {fileID: 1405338761}
 --- !u!114 &1222647851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24118,7 +24118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillOrder: 3
-  background: {fileID: 2073743119}
+  backgroundSprite: {fileID: 2073743119}
 --- !u!114 &1325918091
 MonoBehaviour:
   m_ObjectHideFlags: 0

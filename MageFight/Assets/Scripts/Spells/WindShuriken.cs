@@ -5,22 +5,39 @@ using UnityEngine;
 public class WindShuriken : RangeSpell
 {
     public float travelTime;
-    private float travelTimer = 0f;
+    public float travelTimer = 0f;
+    public bool onComeback = false;
 
     private void Update()
     {
         base.Update();
         if (invoked)
         {
-            if (travelTimer < travelTime)
+            if (onComeback)
             {
-                travelTimer += Time.deltaTime;
+                dir = (mageOwner.transform.position - transform.position).normalized;
+                rd.velocity = travelVelocity * dir;
+                if (Vector3.Distance(mageOwner.transform.position,transform.position)<1f)
+                {
+                    Kill();
+                }
             }
             else
             {
-                rd.velocity = travelVelocity * -dir;
-                travelTimer = 0;
+                if (travelTimer < travelTime)
+                {
+                    travelTimer += Time.deltaTime;
+                }
+                else
+                {
+                    onComeback = true;
+                    travelTimer = 0;
+                }
             }
+        }
+        else
+        {
+            onComeback = false;
         }
     }
 
