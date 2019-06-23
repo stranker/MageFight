@@ -17,10 +17,13 @@ public class PlayerBehavior : MonoBehaviour {
     private SpellsManager spellsManager;
     private MovementBehavior movement;
     public Color playerColor;
+    private SpriteRenderer sr;
+
     private void Awake(){
         winCount = 0;
         spellsManager = GetComponent<SpellsManager>();
         movement = GetComponent<MovementBehavior>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(int val, Vector2 position)
@@ -31,6 +34,8 @@ public class PlayerBehavior : MonoBehaviour {
             GameObject pop = Instantiate(popText.gameObject, headPos.position, Quaternion.identity, transform.parent);
             pop.GetComponent<DamagePopUp>().SetDamage(val);
 			GetComponent<MovementBehavior>().Knockback(position);
+            StopCoroutine("FlickerEffect");
+            StartCoroutine("FlickerEffect");
             if (health <= 0)
             {
                 isAlive = !isAlive;
@@ -42,7 +47,22 @@ public class PlayerBehavior : MonoBehaviour {
             }
         }
     }
-
+    IEnumerator FlickerEffect()
+    {
+        for(int i = 0; i < 5; i++)
+        {
+            if(i % 2 == 0)
+            {
+                sr.material.SetFloat("_FlashAmount", 0.7f);
+            }
+            else
+            {
+                sr.material.SetFloat("_FlashAmount", 0f);
+            }
+            yield return new WaitForSeconds(0.07f);
+        }
+        sr.material.SetFloat("_FlashAmount", 0);
+    }
     private void SetSpritesVisibles(bool v)
     {
         var sprites = GetComponentsInChildren<SpriteRenderer>();
