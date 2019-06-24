@@ -32,6 +32,11 @@ public class UIManager : MonoBehaviour {
     public float leaderboardTime = 3f;
     private bool showLeaderboard = false;
     private bool leaderboardActive = false;
+    public PickParticles pickParticles;
+    public GameObject countdownPanel;
+    private bool onCountdown = false;
+    public Text countdownText;
+    public Text getReadyText;
 
     public void Fade(float amount)
     {
@@ -89,7 +94,42 @@ public class UIManager : MonoBehaviour {
                 }
             }
         }
+
+        if (onCountdown)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                timer = 0;
+                onCountdown = false;
+                countdownPanel.SetActive(false);
+                GameManager.Instance.InitializeRound();
+            }
+            if (timer<=1.1f)
+            {
+                getReadyText.enabled = false;
+                countdownText.text = "FIGHT!";
+            }
+            else
+            {
+                countdownText.text = Mathf.Floor(timer).ToString("0");
+            }
+        }
     }
+
+    internal void StartCountdown()
+    {
+        countdownPanel.SetActive(true);
+        getReadyText.enabled = true;
+        timer = 3.9f;
+        onCountdown = true;
+    }
+
+    public void PlayPickParticles(PlayerBehavior playerBehavior)
+    {
+        pickParticles.PlayParticles(playerBehavior);
+    }
+
     public void ShowLeaderboard(int firstPlayerScore, int secondPlayerScore)
     {
         leaderboard.ShowLeaderboard(firstPlayerScore, secondPlayerScore);

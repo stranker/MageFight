@@ -28,7 +28,8 @@ public class PowerPickingManager : MonoBehaviour {
 	[SerializeField] private List<Spell> spells = new List<Spell>();
 	[Header("UI")]
 	[SerializeField] private GameObject powerPickingPanel;
-	[SerializeField] private Text pickTurnText;
+	[SerializeField] private Image powerPickingImage;
+    [SerializeField] private Text pickTurnText;
 	[SerializeField] private GameObject powerButtonPrefab;
 	[SerializeField] private GameObject powerGrid;
 	[Header("Settings")]
@@ -37,8 +38,11 @@ public class PowerPickingManager : MonoBehaviour {
 	private List<turn> turns = new List<turn>();
 	private List<PowerButtonScript> buttons = new List<PowerButtonScript>();
 	private int turnCounter;
+    private bool endPickTurn = false;
+    private float timer;
+    public float endPickTime = 2f;
 
-	private void Awake(){
+    private void Awake(){
 		for(int i = 0; i < spells.Count; i++){
 			GameObject go = Instantiate(powerButtonPrefab) as GameObject;
 			go.GetComponent<PowerButtonScript>().SetSpell(spells[i]);
@@ -61,9 +65,23 @@ public class PowerPickingManager : MonoBehaviour {
 		}
 	}
 
-	private void End(){
-		powerPickingPanel.SetActive(false);
-		GameManager.Instance.InitializeRound();
+    private void Update()
+    {
+        if (endPickTurn)
+        {
+            timer += Time.deltaTime;
+            if (timer >= endPickTime)
+            {
+                timer = 0;
+                endPickTurn = false;
+                End();
+            }
+        }
+    }
+
+    private void End(){
+        UIManager.Get().StartCountdown();
+        powerPickingPanel.SetActive(false);
 	}
 
 	private void UpdateTurns(){
@@ -85,14 +103,18 @@ public class PowerPickingManager : MonoBehaviour {
 
 	public void SelectPower(Spell s){
 		players[turns[turnCounter].playerID].AddSpell(s);
+        UIManager.Get().PlayPickParticles(players[turns[turnCounter].playerID]);
 		turnCounter++;
 		if(turnCounter >= players.Count){
-			End();
+            endPickTurn = true;
 			return;
 		} else {
             SetColorAndTextRound(turnCounter);
         }
-        if(!ShouldContinue()){ End();}
+        if(!ShouldContinue())
+        {
+            endPickTurn = true;
+        }
 
 	}
 	public void Reset(){
@@ -148,6 +170,7 @@ public class PowerPickingManager : MonoBehaviour {
     public void SetColorAndTextRound(int turnIndex)
     {
         pickTurnText.color = turns[turnIndex].playerColor;
-        pickTurnText.text = "Player " + turns[turnIndex].PlayerName.ToString() + ", pick your power.";
+        powerPickingImage.color = turns[turnIndex].playerColor;
+        pickTurnText.text = "PLAYER " + turns[turnIndex].PlayerName.ToString() + " CHOOSE!";
     }
 }
