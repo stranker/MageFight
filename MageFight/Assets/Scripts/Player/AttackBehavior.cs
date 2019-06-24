@@ -12,7 +12,6 @@ public class AttackBehavior : MonoBehaviour {
     private bool canAttack = true;
     private bool isHolding = false;
     private InputManager input;
-    private MovementBehavior movement;
     private float timer;
     public float attackModeTime = 0.5f;
     public Vector2 aimDirection;
@@ -25,7 +24,6 @@ public class AttackBehavior : MonoBehaviour {
     // Use this for initialization
     void Start () {
         input = GetComponent<InputManager>();
-        movement = GetComponent<MovementBehavior>();
         invokeParticlesMain = invokeParticles.GetComponent<ParticleSystem>().main;
     }
 

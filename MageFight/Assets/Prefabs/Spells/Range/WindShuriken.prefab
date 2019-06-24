@@ -110,8 +110,11 @@ MonoBehaviour:
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
     type: 2}
   spellColor: {r: 1, g: 1, b: 1, a: 1}
+  hasSecondAttack: 1
   travelVelocity: 20
   travelTime: 0.8
+  travelTimer: 0
+  onComeback: 0
 --- !u!212 &212440700413519084
 SpriteRenderer:
   m_ObjectHideFlags: 1

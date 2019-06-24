@@ -38,6 +38,8 @@ public abstract class Spell : MonoBehaviour {
     public GameObject particlesExplosion;
     public Color spellColor;
 
+    public bool hasSecondAttack = false;
+
     protected void Update()
     {
         if (invoked)
@@ -70,4 +72,13 @@ public abstract class Spell : MonoBehaviour {
         Instantiate(particlesExplosion, transform.position, Quaternion.identity, transform.parent);
     }
 
+    internal bool HasSecondAttack()
+    {
+        return hasSecondAttack;
+    }
+
+    internal void SecondAttack()
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -9,12 +9,6 @@ public class UILoadingScreen : MonoBehaviour
     public Text loadingText;
     public Text pressText;
     public bool onGame = false;
-    private Animator anim;
-
-    private void Start()
-    {
-        anim = GetComponent<Animator>();
-    }
 
     public void SetVisible(bool show)
     {
