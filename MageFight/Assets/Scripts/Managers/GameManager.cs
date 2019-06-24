@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
     private float timer;
     private float frezeeDeathTime = 1f;
     private bool playerDeath = false;
+    public AnimationCurve deathCurve;
 	
 	void Awake () {
 		//DontDestroyOnLoad(gameObject); //Single scene, might not be needed
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour {
         if (playerDeath)
         {
             timer += Time.unscaledDeltaTime;
+            Time.timeScale = deathCurve.Evaluate(timer);
             if (timer >= frezeeDeathTime)
             {
                 Time.timeScale = 1;
@@ -77,7 +79,7 @@ public class GameManager : MonoBehaviour {
 	public void PlayerDeath(){ //checks if round should end
         playerDeath = true;
         timer = 0;
-        Time.timeScale = 0.2f;
+        Time.timeScale = 0f;
         bool isOnePlayerAlive = false;
 		int winner = -1; //Has to have a default value to not cause compiler errors
 		for(int i = 0; i < players.Count; i++){

@@ -156,7 +156,7 @@ MonoBehaviour:
     type: 2}
   powerGrid: {fileID: 800194578}
   powersPerRound: 3
-  endPickTime: 2
+  endPickTime: 1.5
 --- !u!4 &7970468
 Transform:
   m_ObjectHideFlags: 0
