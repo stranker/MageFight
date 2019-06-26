@@ -26,7 +26,7 @@ public class LoaderManager : MonoBehaviour
     #endregion
     public float loadingProgress;
     public float timeLoading;
-    public float minTimeToLoad = 2;
+    public float minTimeToLoad = 6;
     private Scene currentScene;
 
     public void LoadScene(string sceneName)
