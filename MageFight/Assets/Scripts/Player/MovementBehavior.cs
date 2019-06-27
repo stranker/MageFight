@@ -234,4 +234,13 @@ public class MovementBehavior : MonoBehaviour {
             }
         }
     }
+    public void StopRigidbody()
+    {
+        rd.bodyType = RigidbodyType2D.Static;
+    }
+    public void StartRigidbody()
+    {
+        rd.bodyType = RigidbodyType2D.Dynamic;
+    }
+
 }

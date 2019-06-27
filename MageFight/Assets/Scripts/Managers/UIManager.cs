@@ -113,7 +113,7 @@ public class UIManager : MonoBehaviour {
                 timer = 0;
                 onCountdown = false;
                 countdownPanel.SetActive(false);
-                GameManager.Instance.InitializeRound();
+                GameManager.Instance.StartRound();
             }
             if (timer<=1.1f)
             {
@@ -132,6 +132,7 @@ public class UIManager : MonoBehaviour {
         countdownPanel.SetActive(true);
         getReadyText.enabled = true;
         timer = 3.9f;
+        GameManager.Instance.InitializeRound();
         onCountdown = true;
     }
 

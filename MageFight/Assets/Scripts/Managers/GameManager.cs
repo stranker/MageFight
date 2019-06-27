@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour {
 		for(int i = 0; i < players.Count; i++){
 			if(i <= startingPositions.Count -1){
 				players[i].Reset(startingPositions[i].position); 
-				players[i].Resume();
 			} else {
 				Debug.LogError("Out of starting positions, Players: " + players.Count + ", Positions: " + startingPositions.Count);
 			}
@@ -75,6 +74,12 @@ public class GameManager : MonoBehaviour {
 
 		Debug.Log("Begin round: " + (roundCounter +1));
 	}
+    public void StartRound(){
+        for(int i = 0; i < players.Count; i++)
+        {
+            players[i].Resume();
+        }
+    }
 
 	public void PlayerDeath(){ //checks if round should end
         playerDeath = true;

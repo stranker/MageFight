@@ -75,8 +75,6 @@ public class PlayerBehavior : MonoBehaviour {
     public void Reset(Vector3 position){
         health = maxHealth;
         isAlive = true;
-        GetComponent<AttackBehavior>().enabled = true;
-        GetComponent<MovementBehavior>().enabled = true;
         SetSpritesVisibles(true);
         transform.position = position;
         movement.flyStamina = movement.flyMaxStamina;
@@ -90,11 +88,13 @@ public class PlayerBehavior : MonoBehaviour {
         return playerID;
     }
     public void Pause(){
+        GetComponent<MovementBehavior>().StopRigidbody();
         GetComponent<AttackBehavior>().enabled = false;
         GetComponent<MovementBehavior>().enabled = false;
     }
     public void Resume(){
         if(isAlive){
+            GetComponent<MovementBehavior>().StartRigidbody();
             GetComponent<AttackBehavior>().enabled = true;
             GetComponent<MovementBehavior>().enabled = true;
         }
