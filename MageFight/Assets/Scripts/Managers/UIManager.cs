@@ -174,16 +174,16 @@ public class UIManager : MonoBehaviour {
         switch (spell.diff)
         {
             case Spell.Difficulty.Easy:
-                spellDifficulty.color = Color.blue;
+                spellDifficulty.color = Color.green;
                 break;
             case Spell.Difficulty.Medium:
                 spellDifficulty.color = Color.yellow;
                 break;
             case Spell.Difficulty.Hard:
-                spellDifficulty.color = Color.red;
+                spellDifficulty.color = new Color32(0xFF, 0x45, 0x00, 0xFF);
                 break;
             case Spell.Difficulty.BeyondMagelike:
-                spellDifficulty.color = Color.magenta;
+                spellDifficulty.color = Color.red;
                 break;
             default:
                 break;
