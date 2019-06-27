@@ -62,15 +62,7 @@ public class MeleeSpell : Spell {
 	
 	private void SetAnimation()
 	{
-		switch(type){
-			case MeleeType.Punch:
-				GetComponent<Animator>().SetTrigger("Punch");
-				break;
-			case MeleeType.Whip:
-				GetComponent<Animator>().SetTrigger("Whip");
-				break;
-			default:
-				break;
-		}
+        int splitIndex = gameObject.name.IndexOf('(',0);
+        GetComponent<Animator>().SetTrigger(gameObject.name.Remove(splitIndex));
 	}
 }

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 95009770965645622}
   - component: {fileID: 61678208678312574}
   m_Layer: 0
-  m_Name: Whipe
+  m_Name: Whip
   m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
