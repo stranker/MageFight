@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MeleeSpell : Spell {
 
+    private bool canHit = true;
+
 	public enum MeleeType 
 	{
 		Punch,
@@ -18,8 +20,9 @@ public class MeleeSpell : Spell {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && collision.gameObject != mageOwner)
+        if (collision.tag == "Player" && collision.gameObject != mageOwner && canHit)
         {
+            canHit = false;
             PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
             player.TakeDamage(damage, transform.position);
             CheckHasEffect(player);
@@ -38,11 +41,16 @@ public class MeleeSpell : Spell {
         invoked = true;
         mageOwner = owner;
         transform.position = startPos;
+        canHit = true;
         dir = direction;
         if (type == MeleeType.Punch)
         {
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            if (angle >= 180)
+            {
+                transform.rotation = Quaternion.AngleAxis(180, Vector2.up);
+            }
         }
         else
         {

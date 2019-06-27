@@ -103,6 +103,7 @@ MonoBehaviour:
   damage: 3
   cooldown: 2.5
   castType: 1
+  diff: 1
   mageOwner: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b, type: 2}
   typeOfSpeel: 1
   invoked: 0

@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 95256929772502640}
   - component: {fileID: 61047390104119140}
   m_Layer: 0
-  m_Name: Punch
+  m_Name: Slap
   m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,17 +127,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castVelocity: 0
-  damage: 3
-  cooldown: 3
+  damage: 1
+  cooldown: 2
   castType: 0
-  diff: 1
+  diff: 3
   mageOwner: {fileID: 0}
   typeOfSpeel: 0
   invoked: 0
   timer: 0
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
     type: 2}
-  spellColor: {r: 0.4784314, g: 0.2901961, b: 0.9294118, a: 1}
+  spellColor: {r: 0.9528302, g: 0.916264, b: 0.74158955, a: 1}
   hasSecondAttack: 0
   type: 0
 --- !u!212 &212771407861825478
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 06d943a1b16b3a948adcff25f4d64cc1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a882c941218cbb14a8191a935835a362, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

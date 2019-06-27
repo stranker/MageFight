@@ -28,7 +28,10 @@ public class PowerPickingManager : MonoBehaviour {
 	[SerializeField] private List<Spell> spells = new List<Spell>();
 	[Header("UI")]
 	[SerializeField] private GameObject powerPickingPanel;
-	[SerializeField] private Image powerPickingImage;
+	[SerializeField] private Image descriptionPanel;
+	[SerializeField] private Text descriptionText;
+	[SerializeField] private Text diffLabel;
+    [SerializeField] private Image powerPickingImage;
     [SerializeField] private Text pickTurnText;
 	[SerializeField] private GameObject powerButtonPrefab;
 	[SerializeField] private GameObject powerGrid;
@@ -170,7 +173,10 @@ public class PowerPickingManager : MonoBehaviour {
     public void SetColorAndTextRound(int turnIndex)
     {
         pickTurnText.color = turns[turnIndex].playerColor;
-        powerPickingImage.color = turns[turnIndex].playerColor;
+        diffLabel.color = pickTurnText.color;
+        powerPickingImage.color = pickTurnText.color;
+        descriptionPanel.color = pickTurnText.color;
+        descriptionText.color = pickTurnText.color;
         pickTurnText.text = "PLAYER " + turns[turnIndex].PlayerName.ToString() + " CHOOSE!";
     }
 }

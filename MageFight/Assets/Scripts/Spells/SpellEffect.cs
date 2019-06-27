@@ -40,4 +40,17 @@ public class SpellEffect : MonoBehaviour {
                 break;
         }
     }
+
+    public string GetSpellEffect()
+    {
+        switch (type)
+        {
+            case EffectType.Burn:
+                return "The target receives 1 dmg x 3 sec while on fire";
+            case EffectType.Freeze:
+                return "The target will freeze and will be immobile";
+            default:
+                return "-";
+        }
+    }
 }

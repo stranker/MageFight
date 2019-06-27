@@ -28,6 +28,8 @@ public class UIManager : MonoBehaviour {
     public GameObject PostGameUI;
     public Sprite[] playerLabelSprites;
     public Image playerLabel;
+    public Text spellDescription;
+    public Text spellDifficulty;
     private float timer = 0;
     public float leaderboardTime = 3f;
     private bool showLeaderboard = false;
@@ -149,5 +151,28 @@ public class UIManager : MonoBehaviour {
     {
         PostGameUI.SetActive(false);
         GameManager.Instance.EndGame();
+    }
+
+    public void SetSpellDescription(Spell spell)
+    {
+        spellDescription.text = "Damage: " + spell.damage.ToString() + "\n\nType: " + spell.GetSpellType() + "\n\nCooldown: " + spell.cooldown.ToString() + "\n\nCast type: " + spell.GetSpellCastType() + "\n\nEffect: " + spell.GetEffect();
+        spellDifficulty.text = spell.GetDifficulty();
+        switch (spell.diff)
+        {
+            case Spell.Difficulty.Easy:
+                spellDifficulty.color = Color.blue;
+                break;
+            case Spell.Difficulty.Medium:
+                spellDifficulty.color = Color.yellow;
+                break;
+            case Spell.Difficulty.Hard:
+                spellDifficulty.color = Color.red;
+                break;
+            case Spell.Difficulty.BeyondMagelike:
+                spellDifficulty.color = Color.magenta;
+                break;
+            default:
+                break;
+        }
     }
 }

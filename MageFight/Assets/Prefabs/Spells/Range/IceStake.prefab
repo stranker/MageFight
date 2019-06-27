@@ -102,8 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castVelocity: 0
   damage: 2
-  cooldown: 2.5
+  cooldown: 2
   castType: 1
+  diff: 1
   mageOwner: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b, type: 2}
   typeOfSpeel: 1
   invoked: 0
@@ -111,6 +112,7 @@ MonoBehaviour:
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
     type: 2}
   spellColor: {r: 0.38823533, g: 0.7607844, b: 0.909804, a: 1}
+  hasSecondAttack: 0
   travelVelocity: 15
 --- !u!114 &114805377441861784
 MonoBehaviour:

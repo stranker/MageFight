@@ -19,13 +19,21 @@ public abstract class Spell : MonoBehaviour {
         Utility
     }
 
+    public enum Difficulty
+    {
+        Easy,
+        Medium,
+        Hard,
+        BeyondMagelike
+    }
+
     [Header("Spell Stats")]
     public float castVelocity;
     public int damage;
     public float cooldown;
     public CastType castType;
+    public Difficulty diff;
     public GameObject mageOwner;
-
     public SpellType typeOfSpeel;
 
     public bool invoked = false;
@@ -80,5 +88,69 @@ public abstract class Spell : MonoBehaviour {
     internal void SecondAttack()
     {
         throw new NotImplementedException();
+    }
+
+    internal string GetSpellType()
+    {
+        switch (typeOfSpeel)
+        {
+            case SpellType.Melee:
+                return "Melee";
+            case SpellType.Range:
+                return "Range";
+            case SpellType.Utility:
+                return "Utility";
+            default:
+                return "ERROR";
+        }
+    }
+
+    public string GetSpellCastType()
+    {
+        switch (castType)
+        {
+            case CastType.OneTap:
+                return "Instant";
+            case CastType.Hold:
+                return "Hold";
+            case CastType.Error:
+                return "ERROR";
+            default:
+                return "ERROR";
+        }
+    }
+
+    public string GetEffect()
+    {
+        if (gameObject.name == "Slap")
+        {
+            return "Humiliation of your rival";
+        }
+        else
+        {
+            SpellEffect effect = GetComponent<SpellEffect>();
+            if (effect)
+                return effect.GetSpellEffect();
+            else
+                return "-";
+        }
+
+    }
+
+    public string GetDifficulty()
+    {
+        switch (diff)
+        {
+            case Difficulty.Easy:
+                return "Easy";
+            case Difficulty.Medium:
+                return "Medium";
+            case Difficulty.Hard:
+                return "Hard";
+            case Difficulty.BeyondMagelike:
+                return "Beyond Magelike";
+            default:
+                return "ERROR";
+        }
     }
 }
