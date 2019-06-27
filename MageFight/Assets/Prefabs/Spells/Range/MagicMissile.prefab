@@ -99,10 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af8904f024d9a1e43a98d17322398cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellName: Magic Missile
   castVelocity: 0
   damage: 3
   cooldown: 2.5
   castType: 0
+  diff: 0
   mageOwner: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b, type: 2}
   typeOfSpeel: 1
   invoked: 0
@@ -110,6 +112,7 @@ MonoBehaviour:
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
     type: 2}
   spellColor: {r: 0.5294118, g: 0.45098042, b: 1, a: 1}
+  hasSecondAttack: 0
   travelVelocity: 15
 --- !u!212 &212000159523532090
 SpriteRenderer:

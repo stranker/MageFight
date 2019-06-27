@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af8904f024d9a1e43a98d17322398cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellName: Behemoth Boulder
   castVelocity: 0
   damage: 3
   cooldown: 4

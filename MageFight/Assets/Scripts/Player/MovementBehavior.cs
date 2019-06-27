@@ -45,8 +45,8 @@ public class MovementBehavior : MonoBehaviour {
     public LayerMask floorLayer;
     public float rayCastFloorLenght = 0.25f;
 
-    private float bodyTypeTimer;
-    private float bodyTypeTime = 0.5f;
+    private float immobilizeTime = 0.5f;
+    private float immobilizeTimer = 0;
     private bool immobilized = false;
 
     // Use this for initialization
@@ -59,21 +59,25 @@ public class MovementBehavior : MonoBehaviour {
 
     private void Update()
     {
-        if (rd.bodyType == RigidbodyType2D.Static && !knockback)
+        if (immobilized)
         {
-            bodyTypeTimer += Time.deltaTime;
-            if (bodyTypeTimer > bodyTypeTime)
+            immobilizeTimer += Time.deltaTime;
+            rd.velocity = Vector2.zero;
+            if (immobilizeTimer >= immobilizeTime)
             {
-                rd.bodyType = RigidbodyType2D.Dynamic;
-                bodyTypeTimer = 0;
+                immobilizeTimer = 0;
+                Immobilize(0, false);
             }
         }
     }
 
     private void FixedUpdate()
     {
-        GetInput();
-        Movement();
+        if (!immobilized)
+        {
+            GetInput();
+            Movement();
+        }
     }
 
     private void GetInput()
@@ -178,15 +182,12 @@ public class MovementBehavior : MonoBehaviour {
             transform.localScale = new Vector2(-1, 1);
     }
 
-    public void Immobilize(bool val)
+    public void Immobilize(float dur, bool val)
     {
-        immobilized = !val;
-        canMove = val;
-        canFly = val;
-        if (val)
-            rd.bodyType = RigidbodyType2D.Dynamic;
-        else
-            rd.bodyType = RigidbodyType2D.Static;
+        immobilized = val;
+        canMove = !val;
+        canFly = !val;
+        immobilizeTime = val ? dur : 0.5f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -195,7 +196,7 @@ public class MovementBehavior : MonoBehaviour {
         {
             rd.gravityScale = gravity;
             flying = false;
-            canMove = true;
+            canMove = true && !immobilized;
         }
     }
 

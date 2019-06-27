@@ -28,6 +28,7 @@ public abstract class Spell : MonoBehaviour {
     }
 
     [Header("Spell Stats")]
+    public string spellName;
     public float castVelocity;
     public int damage;
     public float cooldown;
@@ -122,9 +123,13 @@ public abstract class Spell : MonoBehaviour {
 
     public string GetEffect()
     {
-        if (gameObject.name == "Slap")
+        if (spellName == "Summoner Slap")
         {
             return "Humiliation of your rival";
+        }
+        if (spellName == "Breeze Boomerang")
+        {
+            return "After 1 sec It comes back!";
         }
         else
         {

@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f40031b22025e0419aad238c572bdd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellName: 
   castVelocity: 0
   damage: 3
   cooldown: 3
@@ -172,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f40031b22025e0419aad238c572bdd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellName: Wizard's Whip
   castVelocity: 0
   damage: 4
   cooldown: 3

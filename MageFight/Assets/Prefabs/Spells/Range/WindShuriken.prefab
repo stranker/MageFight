@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d30efb4848e5c842b3a2972add7eee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellName: Breeze Boomerang
   castVelocity: 0
   damage: 3
   cooldown: 2.5

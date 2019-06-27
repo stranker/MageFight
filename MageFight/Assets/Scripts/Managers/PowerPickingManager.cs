@@ -29,8 +29,13 @@ public class PowerPickingManager : MonoBehaviour {
 	[Header("UI")]
 	[SerializeField] private GameObject powerPickingPanel;
 	[SerializeField] private Image descriptionPanel;
-	[SerializeField] private Text descriptionText;
-	[SerializeField] private Text diffLabel;
+	[SerializeField] private Text nameLabel;
+	[SerializeField] private Text damageLabel;
+	[SerializeField] private Text typeLabel;
+	[SerializeField] private Text cdLabel;
+	[SerializeField] private Text ctLabel;
+	[SerializeField] private Text effLabel;
+    [SerializeField] private Text diffLabel;
     [SerializeField] private Image powerPickingImage;
     [SerializeField] private Text pickTurnText;
 	[SerializeField] private GameObject powerButtonPrefab;
@@ -176,7 +181,12 @@ public class PowerPickingManager : MonoBehaviour {
         diffLabel.color = pickTurnText.color;
         powerPickingImage.color = pickTurnText.color;
         descriptionPanel.color = pickTurnText.color;
-        descriptionText.color = pickTurnText.color;
+        nameLabel.color = pickTurnText.color;
+        damageLabel.color = pickTurnText.color;
+        typeLabel.color = pickTurnText.color;
+        cdLabel.color = pickTurnText.color;
+        ctLabel.color = pickTurnText.color;
+        effLabel.color = pickTurnText.color;
         pickTurnText.text = "PLAYER " + turns[turnIndex].PlayerName.ToString() + " CHOOSE!";
     }
 }

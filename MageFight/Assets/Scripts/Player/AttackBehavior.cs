@@ -66,7 +66,6 @@ public class AttackBehavior : MonoBehaviour {
             Vector3 dir = aimDirection.normalized;
             spellManager.InvokeSpell(spellIndex, handPos.position, dir, gameObject);
             invokeParticles.Stop();
-            print("Throwing spell");
         } else{ Debug.Log("not throwing "+isHolding + " " + !onAttackMode + " " + canAttack);}
     }
 
@@ -78,7 +77,6 @@ public class AttackBehavior : MonoBehaviour {
             onAttackMode = !onAttackMode;
             invokeParticlesMain.startColor = spellManager.GetSpellColor(spellIndex);
             invokeParticles.Play();
-            print("Invoking spell");
         }
 
     }

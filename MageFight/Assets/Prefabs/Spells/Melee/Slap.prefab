@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f40031b22025e0419aad238c572bdd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellName: Summoner Slap
   castVelocity: 0
   damage: 1
   cooldown: 2

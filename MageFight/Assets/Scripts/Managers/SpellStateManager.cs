@@ -33,7 +33,7 @@ public class SpellStateManager : MonoBehaviour
             if (freezeTimer <= 0)
             {
                 isFreezed = !isFreezed;
-                movement.Immobilize(true);
+                movement.Immobilize(0,false);
                 attack.SetCanAttack(true);
             }
         }
@@ -57,7 +57,7 @@ public class SpellStateManager : MonoBehaviour
     {
         isFreezed = true;
         freezeTimer = freezeTime;
-        movement.Immobilize(false);
+        movement.Immobilize(2, true);
         attack.SetCanAttack(false);
     }
 

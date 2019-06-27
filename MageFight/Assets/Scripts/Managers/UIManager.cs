@@ -40,6 +40,14 @@ public class UIManager : MonoBehaviour {
     public Text countdownText;
     public Text getReadyText;
 
+    public Text nameText;
+    public Text dmgText;
+    public Text typeText;
+    public Text cdText;
+    public Text ctText;
+    public Text effText;
+
+
     public void Fade(float amount)
     {
         var sprites = playerUI.GetComponentsInChildren<Image>();
@@ -155,7 +163,12 @@ public class UIManager : MonoBehaviour {
 
     public void SetSpellDescription(Spell spell)
     {
-        spellDescription.text = "Damage: " + spell.damage.ToString() + "\n\nType: " + spell.GetSpellType() + "\n\nCooldown: " + spell.cooldown.ToString() + "\n\nCast type: " + spell.GetSpellCastType() + "\n\nEffect: " + spell.GetEffect();
+        nameText.text = spell.spellName;
+        dmgText.text = spell.damage.ToString();
+        cdText.text = spell.cooldown.ToString();
+        ctText.text = spell.GetSpellCastType();
+        typeText.text = spell.GetSpellType();
+        effText.text = spell.GetEffect();
         spellDifficulty.text = spell.GetDifficulty();
         switch (spell.diff)
         {
