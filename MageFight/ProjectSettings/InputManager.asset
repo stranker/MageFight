@@ -13,12 +13,12 @@ InputManager:
     positiveButton: d
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 100
-    dead: 0.2
-    sensitivity: 1000
+    gravity: 2
+    dead: 0.1
+    sensitivity: 2
     snap: 0
     invert: 0
-    type: 0
+    type: 2
     axis: 0
     joyNum: 1
   - serializedVersion: 3
@@ -29,12 +29,12 @@ InputManager:
     positiveButton: right
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 100
-    dead: 0.2
-    sensitivity: 1000
+    gravity: 2
+    dead: 0.1
+    sensitivity: 2
     snap: 0
     invert: 0
-    type: 0
+    type: 2
     axis: 0
     joyNum: 2
   - serializedVersion: 3
@@ -45,12 +45,12 @@ InputManager:
     positiveButton: w
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 5
-    dead: 0.2
-    sensitivity: 1000
+    gravity: 2
+    dead: 0.1
+    sensitivity: 2
     snap: 0
-    invert: 0
-    type: 0
+    invert: 1
+    type: 2
     axis: 1
     joyNum: 1
   - serializedVersion: 3
@@ -61,13 +61,13 @@ InputManager:
     positiveButton: up
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 5
-    dead: 0.2
-    sensitivity: 1000
+    gravity: 2
+    dead: 0.1
+    sensitivity: 2
     snap: 0
-    invert: 0
-    type: 0
-    axis: 3
+    invert: 1
+    type: 2
+    axis: 1
     joyNum: 2
   - serializedVersion: 3
     m_Name: P1_Jump
@@ -76,7 +76,7 @@ InputManager:
     negativeButton: 
     positiveButton: space
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick button 0
     gravity: 10000
     dead: 0
     sensitivity: 10000
@@ -140,7 +140,7 @@ InputManager:
     negativeButton: 
     positiveButton: j
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick 1 button 2
     gravity: 5
     dead: 0.2
     sensitivity: 1
@@ -156,7 +156,7 @@ InputManager:
     negativeButton: 
     positiveButton: '[1]'
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick 2 button 2
     gravity: 5
     dead: 0.2
     sensitivity: 1
@@ -172,7 +172,7 @@ InputManager:
     negativeButton: 
     positiveButton: k
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick 1 button 3
     gravity: 5
     dead: 0.2
     sensitivity: 1
@@ -188,7 +188,7 @@ InputManager:
     negativeButton: 
     positiveButton: '[2]'
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick 2 button 3
     gravity: 5
     dead: 0.2
     sensitivity: 1
@@ -204,14 +204,14 @@ InputManager:
     negativeButton: 
     positiveButton: l
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick 1 button 4
     gravity: 5
     dead: 0.2
     sensitivity: 1
     snap: 0
     invert: 0
     type: 0
-    axis: 0
+    axis: 8
     joyNum: 1
   - serializedVersion: 3
     m_Name: P2_ThirdSkill
@@ -220,7 +220,7 @@ InputManager:
     negativeButton: 
     positiveButton: '[3]'
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick 2 button 4
     gravity: 5
     dead: 0.2
     sensitivity: 1
@@ -236,7 +236,7 @@ InputManager:
     negativeButton: 
     positiveButton: '[3]'
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick 1 button 0
     gravity: 5
     dead: 0.2
     sensitivity: 1
@@ -244,7 +244,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 2
+    joyNum: 1
   - serializedVersion: 3
     m_Name: Cancel
     descriptiveName: 
@@ -252,7 +252,7 @@ InputManager:
     negativeButton: 
     positiveButton: '[3]'
     altNegativeButton: 
-    altPositiveButton: 
+    altPositiveButton: joystick 1 button 1
     gravity: 5
     dead: 0.2
     sensitivity: 1
@@ -260,7 +260,7 @@ InputManager:
     invert: 0
     type: 0
     axis: 0
-    joyNum: 2
+    joyNum: 1
   - serializedVersion: 3
     m_Name: Horizontal
     descriptiveName: 
@@ -301,13 +301,13 @@ InputManager:
     positiveButton: i
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 100
-    dead: 0.2
-    sensitivity: 1000
-    snap: 0
+    gravity: 2
+    dead: 0.1
+    sensitivity: 1
+    snap: 1
     invert: 0
-    type: 0
-    axis: 0
+    type: 2
+    axis: 9
     joyNum: 1
   - serializedVersion: 3
     m_Name: P2_Dodge
@@ -317,11 +317,11 @@ InputManager:
     positiveButton: '[5]'
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 5
-    dead: 0.2
+    gravity: 2
+    dead: 0.1
     sensitivity: 1
-    snap: 0
+    snap: 1
     invert: 0
-    type: 0
-    axis: 0
+    type: 2
+    axis: 9
     joyNum: 2

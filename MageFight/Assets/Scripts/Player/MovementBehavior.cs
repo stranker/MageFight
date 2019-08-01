@@ -82,12 +82,17 @@ public class MovementBehavior : MonoBehaviour {
 
     private void GetInput()
     {
+        print(Input.GetAxis(input.DPadX));
+        print(Input.GetAxis(input.DPadY));
         if(!immobilized)
         {
             if(canMove)
-                velocity.x = Input.GetAxis(input.movementAxisX);
-            else
-                velocity.x = 0;
+                if(Input.GetAxis(input.movementAxisX) > 0 || Input.GetAxis(input.movementAxisX) < 0)
+                    velocity.x = Input.GetAxis(input.movementAxisX);
+                else if (Input.GetAxis(input.DPadX) > 0 || Input.GetAxis(input.DPadX) < 0)
+                    velocity.x = Input.GetAxis(input.DPadX);
+                else
+                    velocity.x = 0;
 
             if(Input.GetButtonDown(input.jumpButton) && canJump && !flying)
             {
@@ -95,13 +100,20 @@ public class MovementBehavior : MonoBehaviour {
                 jumpParticles.Play();
                 canJump = !canJump;
             }
-            int upDir = (int)Input.GetAxis(input.aimAxisY);
-            int fwDir = Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f ? (int)transform.localScale.x : 0;
+
+            int upDir = 0;
+            if(Input.GetAxis(input.aimAxisY) > 0 || Input.GetAxis(input.aimAxisY) < 0)
+                upDir = (int)Input.GetAxis(input.aimAxisY);
+            else if(Input.GetAxis(input.DPadY) > 0 || Input.GetAxis(input.DPadY) < 0)
+                upDir = (int)Input.GetAxis(input.DPadY);
+
+            int fwDir = (Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f || Mathf.Abs(Input.GetAxis(input.DPadX)) > 0) ? (int)transform.localScale.x : 0;
             aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
             dashTrail.emitting = flying;
-            flying = Input.GetButton(input.dodgeButton) && canFly && flyStamina > 0;
+            flying = Input.GetAxis(input.dodgeButton) > 0 && canFly && flyStamina > 0;
             if(flying)
             {
+                print(aimDirection);
                 Fly(aimDirection);
             }
             else
