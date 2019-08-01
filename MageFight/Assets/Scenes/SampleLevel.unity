@@ -17396,6 +17396,8 @@ MonoBehaviour:
   dodgeButton: P2_Dodge
   movementAxisX: P2_MovementX
   aimAxisY: P2_AimY
+  DPadX: P2_Horizontal_Dpad
+  DPadY: P2_Vertical_Dpad
   firstSkillButton: P2_FirstSkill
   secondSkillButton: P2_SecondSkill
   thirdSkillButton: P2_ThirdSkill
@@ -31964,6 +31966,8 @@ MonoBehaviour:
   dodgeButton: P1_Dodge
   movementAxisX: P1_MovementX
   aimAxisY: P1_AimY
+  DPadX: P1_Horizontal_Dpad
+  DPadY: P1_Vertical_Dpad
   firstSkillButton: P1_FirstSkill
   secondSkillButton: P1_SecondSkill
   thirdSkillButton: P1_ThirdSkill
