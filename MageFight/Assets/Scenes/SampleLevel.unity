@@ -17394,8 +17394,11 @@ MonoBehaviour:
   jumpButton: P2_Jump
   blockButton: P2_Block
   dodgeButton: P2_Dodge
+  dodgeButtonKeyboard: P2_Dodge_Keyboard
   movementAxisX: P2_MovementX
+  AxisXKeyboard: P2_Horizontal_Keys
   aimAxisY: P2_AimY
+  AxisYKeyboard: P2_Vertical_Keys
   DPadX: P2_Horizontal_Dpad
   DPadY: P2_Vertical_Dpad
   firstSkillButton: P2_FirstSkill
@@ -31964,8 +31967,11 @@ MonoBehaviour:
   jumpButton: P1_Jump
   blockButton: P1_Block
   dodgeButton: P1_Dodge
+  dodgeButtonKeyboard: P1_Dodge_Keyboard
   movementAxisX: P1_MovementX
+  AxisXKeyboard: P1_Horizontal_Keys
   aimAxisY: P1_AimY
+  AxisYKeyboard: P1_Vertical_Keys
   DPadX: P1_Horizontal_Dpad
   DPadY: P1_Vertical_Dpad
   firstSkillButton: P1_FirstSkill
