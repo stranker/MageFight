@@ -28,7 +28,6 @@ public class AnimationController : MonoBehaviour {
             anim.SetFloat("VelocityY", movement.rd.velocity.y);
         }
         anim.SetBool("Fly", movement.flying);
-
     }
 
     internal void PlayerSpell(Spell.SpellType typeOfSpell)
@@ -46,6 +45,15 @@ public class AnimationController : MonoBehaviour {
                 break;
             default:
                 break;
+        }
+    }
+    public void ResetAnimation()
+    {
+        if(anim)
+        {
+            anim.SetFloat("VelocityX", 0);
+            anim.SetFloat("VelocityY", 0);
+            anim.SetBool("OnFloor", true);
         }
     }
 }

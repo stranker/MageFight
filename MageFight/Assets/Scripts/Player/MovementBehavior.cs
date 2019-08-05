@@ -249,6 +249,10 @@ public class MovementBehavior : MonoBehaviour {
     }
     public void StopRigidbody()
     {
+        onFloor = true;
+        velocity.x = 0;
+        velocity.y = 0;
+        flying = false;
         rd.bodyType = RigidbodyType2D.Static;
     }
     public void StartRigidbody()
