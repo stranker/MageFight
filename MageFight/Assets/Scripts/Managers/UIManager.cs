@@ -131,8 +131,7 @@ public class UIManager : MonoBehaviour {
     {
         countdownPanel.SetActive(true);
         getReadyText.enabled = true;
-        timer = 3.9f;
-        GameManager.Instance.InitializeRound();
+        timer = 3.9f;        
         onCountdown = true;
     }
 

@@ -21,11 +21,8 @@ public class GameManager : MonoBehaviour {
 	private int roundCounter;
 	private List<PlayerBehavior> players = new List<PlayerBehavior>();
 	[SerializeField] private int roundsToWin; //How much of a round-win advantage a player needs to be considered winner.
-	[SerializeField] private List<Transform> startingPositions = new List<Transform>();
-    private float timer;
-    private float frezeeDeathTime = 1f;
-    private bool playerDeath = false;
-    public AnimationCurve deathCurve;
+	[SerializeField] private List<Transform> startingPositions = new List<Transform>();    
+    public new CameraController camera;
 	
 	void Awake () {
 		//DontDestroyOnLoad(gameObject); //Single scene, might not be needed
@@ -48,25 +45,11 @@ public class GameManager : MonoBehaviour {
 		PowerPickingManager.Instance.Begin();
     }
 
-    private void Update()
-    {
-        if (playerDeath)
-        {
-            timer += Time.unscaledDeltaTime;
-            Time.timeScale = deathCurve.Evaluate(timer);
-            if (timer >= frezeeDeathTime)
-            {
-                Time.timeScale = 1;
-                timer = 0;
-                playerDeath = false;
-            }
-        }
-    }
-
     public void InitializeRound(){
 		for(int i = 0; i < players.Count; i++){
 			if(i <= startingPositions.Count -1){
-				players[i].Reset(startingPositions[i].position); 
+                players[i].Pause();
+                players[i].Reset(startingPositions[i].position); 
 			} else {
 				Debug.LogError("Out of starting positions, Players: " + players.Count + ", Positions: " + startingPositions.Count);
 			}
@@ -82,14 +65,16 @@ public class GameManager : MonoBehaviour {
     }
 
 	public void PlayerDeath(){ //checks if round should end
-        playerDeath = true;
-        timer = 0;
         Time.timeScale = 0f;
         bool isOnePlayerAlive = false;
 		int winner = -1; //Has to have a default value to not cause compiler errors
 		for(int i = 0; i < players.Count; i++){
 			if(players[i].isAlive == true){
-				if(!isOnePlayerAlive){ isOnePlayerAlive = true; winner = i;} //finds the first 'alive' player
+				if(!isOnePlayerAlive){
+                    isOnePlayerAlive = true;
+                    winner = i;
+                    camera.MoveTowards(players[i].transform);
+                } //finds the first 'alive' player
 				else {return;} //if more than one player is alive, the round continues
 			}
 		}
@@ -124,6 +109,8 @@ public class GameManager : MonoBehaviour {
         //runs at end of round, to update round wins and check if there's a winner
         //Stop gameplay
         roundCounter++;
+        camera.Reset();
+        InitializeRound();
         int winner = -1; //Has to have a default value to not cause compiler errors
         for(int i = 0; i < players.Count; i++)
         {

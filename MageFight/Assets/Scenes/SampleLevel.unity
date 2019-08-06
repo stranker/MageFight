@@ -16389,6 +16389,7 @@ GameObject:
   - component: {fileID: 472306428}
   - component: {fileID: 472306427}
   - component: {fileID: 472306426}
+  - component: {fileID: 472306429}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -16412,7 +16413,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -16456,6 +16457,88 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &472306429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 472306425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 604f6d20fc775ba4b9ad1a7dfd24f819, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.46523696
+      value: 0.6842374
+      inSlope: 0.58047384
+      outSlope: 0.58047384
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  travelTransitionTime: 2
+  cameraSizeTransitionTime: 2
+  target: {fileID: 1725477756}
+  endSize: 3
+  deathCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.54627484
+      value: 0.02095759
+      inSlope: 0.006493818
+      outSlope: 0.006493818
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.22908889
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  freezeDeathTime: 4
 --- !u!1 &515421995
 GameObject:
   m_ObjectHideFlags: 0
@@ -16635,30 +16718,7 @@ MonoBehaviour:
   - {fileID: 4495696290417934, guid: 57c7bef88383e934eaee2d530e9e4928, type: 2}
   - {fileID: 4689678425040772, guid: 57c7bef88383e934eaee2d530e9e4928, type: 2}
   - {fileID: 4458775268166670, guid: 57c7bef88383e934eaee2d530e9e4928, type: 2}
-  deathCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  camera: {fileID: 472306429}
 --- !u!4 &524297103
 Transform:
   m_ObjectHideFlags: 0
@@ -17322,8 +17382,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 2
-  health: 10
-  maxHealth: 10
+  health: 1
+  maxHealth: 1
   isAlive: 1
   headPos: {fileID: 1573874812}
   popText: {fileID: 114276423107348564, guid: f9dca02160058974b97973040e6c0f02, type: 2}
@@ -17399,8 +17459,11 @@ MonoBehaviour:
   jumpButton: P2_Jump
   blockButton: P2_Block
   dodgeButton: P2_Dodge
+  dodgeButtonKeyboard: P2_Dodge_Keyboard
   movementAxisX: P2_MovementX
+  AxisXKeyboard: P2_Horizontal_Keys
   aimAxisY: P2_AimY
+  AxisYKeyboard: P2_Vertical_Keys
   DPadX: P2_Horizontal_Dpad
   DPadY: P2_Vertical_Dpad
   firstSkillButton: P2_FirstSkill
@@ -31969,8 +32032,11 @@ MonoBehaviour:
   jumpButton: P1_Jump
   blockButton: P1_Block
   dodgeButton: P1_Dodge
+  dodgeButtonKeyboard: P1_Dodge_Keyboard
   movementAxisX: P1_MovementX
+  AxisXKeyboard: P1_Horizontal_Keys
   aimAxisY: P1_AimY
+  AxisYKeyboard: P1_Vertical_Keys
   DPadX: P1_Horizontal_Dpad
   DPadY: P1_Vertical_Dpad
   firstSkillButton: P1_FirstSkill

@@ -43,8 +43,15 @@ public class AttackBehavior : MonoBehaviour {
 
     private void GetInput()
     {
-        int upDir = (int)Input.GetAxis(input.aimAxisY);
-        int fwDir = Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f ? (int)transform.localScale.x : 0;
+        int upDir = 0;
+        if(Input.GetAxis(input.AxisYKeyboard) > 0 || Input.GetAxis(input.AxisYKeyboard) < 0)
+            upDir = (int)Input.GetAxis(input.AxisYKeyboard);
+        else if(Input.GetAxis(input.aimAxisY) > 0 || Input.GetAxis(input.aimAxisY) < 0)
+            upDir = (int)Input.GetAxis(input.aimAxisY);
+        else if(Input.GetAxis(input.DPadY) > 0 || Input.GetAxis(input.DPadY) < 0)
+            upDir = (int)Input.GetAxis(input.DPadY);
+
+        int fwDir = (Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f || Mathf.Abs(Input.GetAxis(input.DPadX)) > 0 || (Mathf.Abs(Input.GetAxis(input.AxisXKeyboard)) > 0)) ? (int)transform.localScale.x : 0;
         aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
         float angle;
         if(transform.localScale.x < 1)
@@ -82,7 +89,7 @@ public class AttackBehavior : MonoBehaviour {
     }
     private void GetSpellsInputs(String input,int spellIndex)
     {
-        if(Input.GetButtonDown(input) && !spellManager.SpellInvoked(spellIndex))
+        if(Input.GetButtonDown(input) && spellManager.CanInvokeSpell(spellIndex))
         {
             if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.OneTap)
             {

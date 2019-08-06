@@ -25,9 +25,9 @@ public class SpellsManager : MonoBehaviour {
 
     }
 
-    public void InvokeSpell(int index, Vector3 startPosition, Vector3 direction, GameObject owner)
-    {   if(index < spells.Count){
-            if (!spells[index].invoked)
+    public void InvokeSpell(int index, Vector3 startPosition, Vector3 direction, GameObject owner) {
+        if(index < spells.Count){
+            if (spells[index] && !spells[index].invoked)
             {
                 spells[index].InvokeSpell(startPosition, direction, owner);
                 spellParticlesMain.startColor = spells[index].spellColor;
@@ -96,8 +96,11 @@ public class SpellsManager : MonoBehaviour {
     {
         return spells[index].spellColor;
     }
-    public bool SpellInvoked(int spellIndex)
+    public bool CanInvokeSpell(int spellIndex)
     {
-        return spells[spellIndex].invoked;
+        if(spellIndex < spells.Count)
+            return !spells[spellIndex].invoked;
+        else
+            return false;
     }
 }

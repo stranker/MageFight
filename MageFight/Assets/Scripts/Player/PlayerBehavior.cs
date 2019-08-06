@@ -91,6 +91,8 @@ public class PlayerBehavior : MonoBehaviour {
         GetComponent<MovementBehavior>().StopRigidbody();
         GetComponent<AttackBehavior>().enabled = false;
         GetComponent<MovementBehavior>().enabled = false;
+        GetComponent<AnimationController>().ResetAnimation();
+
     }
     public void Resume(){
         if(isAlive){

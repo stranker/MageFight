@@ -8,8 +8,11 @@ public class InputManager : MonoBehaviour {
     public string jumpButton; // X?
     public string blockButton; // ?
     public string dodgeButton; // R1?
+    public string dodgeButtonKeyboard;
     public string movementAxisX; // L Stick
+    public string AxisXKeyboard; // L Stick
     public string aimAxisY; // L Stick
+    public string AxisYKeyboard; // L Stick
     public string DPadX; // D Pad Horizontal
     public string DPadY; // D Pad Vertical
     public string firstSkillButton; // Cuadrado ? 
