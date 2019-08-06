@@ -21,7 +21,6 @@ public class Bubble : MonoBehaviour {
 		}
 		Vector2 newPosition = transform.position;
 		newPosition.y += floatSpeed * Time.deltaTime;
-		Debug.Log(" bubble" + newPosition);
 		transform.position = newPosition;
 		}
 	}

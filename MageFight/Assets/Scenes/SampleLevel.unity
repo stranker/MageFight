@@ -17382,8 +17382,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: 2
-  health: 1
-  maxHealth: 1
+  health: 10
+  maxHealth: 10
   isAlive: 1
   headPos: {fileID: 1573874812}
   popText: {fileID: 114276423107348564, guid: f9dca02160058974b97973040e6c0f02, type: 2}
