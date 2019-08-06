@@ -150,6 +150,11 @@ MonoBehaviour:
   - {fileID: 114394342564051314, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc, type: 2}
   - {fileID: 114951534744336276, guid: a41a750c7c56cc34aa4170ddf4884173, type: 2}
   - {fileID: 114080733479666062, guid: d4eb113f809050047a789aefe4821342, type: 2}
+  - {fileID: 114707501711172516, guid: e48e671bcd4ddcc439a8a5048a18e0a9, type: 2}
+  - {fileID: 114261353051233270, guid: b2e51f936ff84c5478b7591a7dbadd57, type: 2}
+  - {fileID: 114498289543415858, guid: 6a8fee6128ab04e4d9f5bd6a0913c971, type: 2}
+  - {fileID: 114112406116683018, guid: 158e04fe046d54e4980043836dec623a, type: 2}
+  - {fileID: 114277863838140056, guid: 7f93b56fc9767a6448fcdc77611c0119, type: 2}
   powerPickingPanel: {fileID: 1301308509}
   descriptionPanel: {fileID: 917135611}
   nameLabel: {fileID: 1806954575}

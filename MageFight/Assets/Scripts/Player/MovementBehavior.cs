@@ -27,7 +27,7 @@ public class MovementBehavior : MonoBehaviour {
     public float flySpeed = 100;
     public float flyMaxStamina = 100;
 	public float flyStamina = 100;
-    public float flyConsumptionStamina = 10;
+    public float flyConsumptionStamina = 25;
     public float quickRechargeStaminaTime = 1f;
     private float staminaTimer = 0f;
 
@@ -82,8 +82,8 @@ public class MovementBehavior : MonoBehaviour {
 
     private void GetInput()
     {
-        print(Input.GetAxis(input.DPadX));
-        print(Input.GetAxis(input.DPadY));
+        //print(Input.GetAxis(input.DPadX));
+        //print(Input.GetAxis(input.DPadY));
         if(!immobilized)
         {
             if(canMove)
@@ -170,7 +170,7 @@ public class MovementBehavior : MonoBehaviour {
             if (timer >= knockbackTime)
             {
                 timer = 0;
-                knockback = !knockback;
+                knockback = false;
             }
         }
         if (onChangui)
@@ -214,13 +214,40 @@ public class MovementBehavior : MonoBehaviour {
 
     public void Knockback(Vector2 pos)
     {
-        knockback = !knockback;
+        knockback = true;
+        timer = 0;
         Vector2 knockDirection = ((Vector2)transform.position - pos).normalized;
         knockDirection.x *= 5;
         knockDirection.y = 10;
         rd.velocity = knockDirection;
     }
 
+    public void Pull(Vector2 pos){
+        Debug.Log("Pulled");
+        knockback = true;
+        timer = 0;
+        if(transform.position.x > pos.x){
+            pos.x += 0.5f;
+        } else {
+            pos.x -= 0.5f;
+        }
+        pos = pos - (Vector2)transform.position;
+        pos.Normalize();
+        pos *=15; 
+        rd.velocity = pos;
+
+    }
+    public void Drag (Vector2 pos){
+        knockback = true;
+        timer = 0;
+        pos = pos - (Vector2)transform.position;
+        rd.velocity = pos;
+    }
+    public void Throw(float force){
+        knockback = true;
+        timer = 0;
+        rd.velocity = Vector2.up * force;
+    }
     public void GroundControl()
     {
         RaycastHit2D hit1 = Physics2D.Raycast(rightFoot.transform.position, Vector2.down, rayCastFloorLenght, floorLayer);

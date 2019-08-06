@@ -66,6 +66,11 @@ public class MeleeSpell : Spell {
 	private void SetAnimation()
 	{
         int splitIndex = gameObject.name.IndexOf('(',0);
-        GetComponent<Animator>().SetTrigger(gameObject.name.Remove(splitIndex));
+        try {
+            GetComponent<Animator>().SetTrigger(gameObject.name.Remove(splitIndex));
+        } catch {
+            splitIndex = "Summoner Slap".IndexOf('(',0);
+            GetComponent<Animator>().SetTrigger("Summoner Slap".Remove(splitIndex));
+        }
 	}
 }

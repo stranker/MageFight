@@ -9,7 +9,13 @@ public class SpellEffect : MonoBehaviour {
     public enum EffectType
     {
         Burn,
-        Freeze
+        Freeze,
+        Curse,
+        Bubble,
+        Pull,
+        KnockBack,
+        Throw,
+        Stun
     }
     public EffectType type;
     public GameObject spriteEffect;
@@ -36,6 +42,25 @@ public class SpellEffect : MonoBehaviour {
             case EffectType.Freeze:
                 player.Freeze(duration);
                 break;
+            case EffectType.Curse:
+                player.Curse();
+                break;
+            case EffectType.Pull:
+                Vector2 pullDirection = (Vector2)GetComponent<Spell>().mageOwner.transform.position;
+                player.Pull(pullDirection);
+                break;
+            case EffectType.Throw:
+                player.Throw(30f);
+                break;
+            case EffectType.Stun:
+                player.Freeze(duration);
+                break;
+            case EffectType.Bubble:
+                GameObject go = Instantiate(new GameObject("Bubble"));
+                Bubble b = go.AddComponent<Bubble>();
+                b.trapInBubble(player.gameObject.transform.position, duration);
+                player.Drag(b.getBubble(), duration);
+                break;
             default:
                 break;
         }
@@ -46,9 +71,21 @@ public class SpellEffect : MonoBehaviour {
         switch (type)
         {
             case EffectType.Burn:
-                return "The target receives 1 dmg x 3 sec while on fire";
+                return "The target will receive 1 damage per second while on fire";
             case EffectType.Freeze:
                 return "The target will freeze and will be immobile";
+            case EffectType.Bubble:
+                return "The target will be trapped in a bubble";
+            case EffectType.Curse:
+                return "The target might recieve some damage at some point, maybe.";
+            case EffectType.KnockBack:
+                return "The target will be pushed away from the caster";
+            case EffectType.Stun:
+                return "The target will be stunned";
+            case EffectType.Pull:
+                return "The target will be pulled towards the caster";
+            case EffectType.Throw:
+                return "The target will be thrown into the air";
             default:
                 return "-";
         }

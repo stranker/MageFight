@@ -51,6 +51,33 @@ public class SpellStateManager : MonoBehaviour
                 isBurned = !isBurned;
             }
         }
+        if (isCursed)
+        {
+            curseTimer -= Time.deltaTime;
+            if(curseTimer <= 0)
+            {
+                player.TakeDamage(curseDamage,Vector2.zero);
+                curseTimer = 0.0f;
+                curseDamage = 0;
+                isCursed = false;
+            }
+        }
+        if(isDragged){
+            if(leadingObjectOnDrag){
+                movement.Drag((Vector2)leadingObjectOnDrag.position);
+                dragTimer -= Time.deltaTime;
+                if(dragTimer<= 0){
+                    player.TakeDamage(1,Vector2.zero);
+                    isDragged = false;
+                    attack.SetCanAttack(true);
+                }
+            } else {
+                dragTimer = 0.0f;
+                isDragged = false;
+                player.TakeDamage(1,Vector2.zero);
+                attack.SetCanAttack(true);
+            }
+        }
     }
 
     public void Freeze(float freezeTime)
@@ -67,4 +94,35 @@ public class SpellStateManager : MonoBehaviour
         burnTimer = burnTime;
     }
 
+    private bool isCursed = false;
+    private float curseTimer = 0.0f;
+    private int curseDamage;
+    public void Curse(){
+        isCursed = true;
+        curseTimer = UnityEngine.Random.Range(2.0f,5.0f);
+        int dmgRoll = UnityEngine.Random.Range(0,11); //max range is exclusive for integers
+        if(dmgRoll == 0) {
+            curseDamage = 0;
+        } else if(dmgRoll == 1) {
+            curseDamage = UnityEngine.Random.Range(3,6);
+        } else {
+            curseDamage = UnityEngine.Random.Range(1,3);
+        }
+    }
+
+    public void Pull(Vector2 targetPosition){
+        movement.Pull(targetPosition);
+    }
+    public void Throw(float force){
+        movement.Throw(force);
+    }
+    private bool isDragged = false;
+    private float dragTimer = 0.0f;
+    private Transform leadingObjectOnDrag;
+    public void Drag(Transform leadingObject, float duration){
+        isDragged = true;
+        leadingObjectOnDrag = leadingObject;
+        dragTimer = duration;
+        attack.SetCanAttack(false);
+    }
 }
