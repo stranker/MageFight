@@ -22,7 +22,7 @@ public class SpellsManager : MonoBehaviour {
         //spellParticlesMain = spellParticles.GetComponent<ParticleSystem>().main;
     }
 
-    public void InvokeSpell(int index, Vector3 startPosition, Vector3 direction, GameObject owner) {
+    public void ThrowSpell(int index, Vector3 startPosition, Vector3 direction, GameObject owner) {
         if(index < spells.Count){
             if (spells[index] && !spells[index].invoked)
             {

@@ -22,5 +22,12 @@ public class PlayerAnimation : MonoBehaviour {
         anim.SetFloat("VelocityX", Mathf.Abs(movement.velocity.x));
         anim.SetFloat("VelocityY", movement.velocity.y);
         anim.SetBool("InvokeSpell", attack.invoking);
+        anim.SetBool("OnAir", !movement.onFloor);
+        //if (attack.isHolding)
+        //{
+        //    anim.SetBool("InvokeSpell", attack.invoking);
+        //    anim.SetBool("HoldingSpell", attack.isHolding);
+        //}
+
     }
 }

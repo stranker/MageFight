@@ -4,16 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-    public enum MOVEMENT_STATES
-    {
-        IDLE,
-        RUN,
-        JUMP,
-        FLY
-    }
+
     public float floorSpeed;
     public float jumpSpeed;
     public float flySpeed;
+    public float flyAcceleration;
+    private float flyAccelerationIncrement = 1;
     public float initialGravityScale;
     public bool canMove = true;
     public RaycastHit2D onFloor;
@@ -22,9 +18,8 @@ public class PlayerMovement : MonoBehaviour {
     public bool jumping;
     public bool canFly = true;
     public bool flying;
-    public MOVEMENT_STATES movementState;
     public Vector2 velocity;
-    public Vector2 aimDirection;
+    public Vector2 flyDirection;
     public Vector2 attackDirection;
     public InputManager input;
     public AttackBehavior attackBehavior;
@@ -35,7 +30,6 @@ public class PlayerMovement : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        movementState = MOVEMENT_STATES.IDLE;
         initialGravityScale = rigidBody.gravityScale;
 	}
 	
@@ -59,8 +53,9 @@ public class PlayerMovement : MonoBehaviour {
         }
         else
         {
-            rigidBody.velocity = Vector2.zero;
             velocity = Vector2.zero;
+            rigidBody.velocity = velocity;
+            rigidBody.gravityScale = 0;
         }
     }
 
@@ -72,10 +67,20 @@ public class PlayerMovement : MonoBehaviour {
     private void GetInput()
     {
         onFloor = Physics2D.Raycast(feet.transform.position, Vector2.down, 1.2f, floorLayer);
-        velocity.x = (flying ? aimDirection.normalized.x * flySpeed : (GetKeyboardXAxis() + GetDPadXAxis()) * floorSpeed) * Time.deltaTime;
-        velocity.y = flying ? aimDirection.normalized.y * flySpeed * Time.deltaTime : rigidBody.velocity.y;
+        velocity.x = (flying ? flyDirection.normalized.x * flyAccelerationIncrement * flySpeed : (GetKeyboardXAxis() + GetDPadXAxis()) * floorSpeed) * Time.deltaTime;
+        velocity.y = flying ? flyDirection.normalized.y * flyAccelerationIncrement * flySpeed * Time.deltaTime : rigidBody.velocity.y;
         jumping = Input.GetButtonDown(input.jumpButton) && onFloor;
         flying = GetFlyInput() && canFly;
+        if (flying)
+            flyAccelerationIncrement += Time.deltaTime;
+        else
+        {
+            if (flyAccelerationIncrement > 0)
+                flyAccelerationIncrement -= Time.deltaTime * 5;
+            else
+                flyAccelerationIncrement = 0;
+        }
+        flyAccelerationIncrement = Mathf.Clamp(flyAccelerationIncrement, 1, flyAcceleration);
         FacingDirectionCheck();
         JumpCheck();
         GetAimDirection();
@@ -85,8 +90,8 @@ public class PlayerMovement : MonoBehaviour {
     {
         int yDir = (int)GetKeyboardYAxis() + (int)GetDPadYAxis();
         int xDir = (int)GetKeyboardXAxis() + (int)GetDPadXAxis();
-        aimDirection = new Vector2(currentDirection, yDir);
-        attackDirection = new Vector2(xDir, yDir);
+        flyDirection = new Vector2(xDir, yDir);
+        attackDirection = new Vector2(currentDirection, yDir);
     }
 
     private void JumpCheck()
@@ -97,9 +102,10 @@ public class PlayerMovement : MonoBehaviour {
 
     private void FacingDirectionCheck()
     {
-        if (GetKeyboardXAxis() + GetDPadXAxis() < 0)
+        float xDir = GetKeyboardXAxis() + GetDPadXAxis();
+        if (xDir < -0.1f)
             currentDirection = -1;
-        else if (GetKeyboardXAxis() + GetDPadXAxis() > 0)
+        else if (xDir > 0.1f)
             currentDirection = 1;
         visual.localScale = new Vector2(currentDirection, 1);
     }

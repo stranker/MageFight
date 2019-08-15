@@ -33,14 +33,14 @@ public class PlayerBehavior : MonoBehaviour {
             health -= val;
             GameObject pop = Instantiate(popText.gameObject, headPos.position, Quaternion.identity, transform.parent);
             pop.GetComponent<DamagePopUp>().SetDamage(val);
-			GetComponent<MovementBehavior>().Knockback(position);
+			//GetComponent<MovementBehavior>().Knockback(position);
             StopCoroutine("FlickerEffect");
             StartCoroutine("FlickerEffect");
             if (health <= 0)
             {
                 isAlive = !isAlive;
                 GetComponent<AttackBehavior>().enabled = false;
-                GetComponent<MovementBehavior>().enabled = false;
+                //GetComponent<MovementBehavior>().enabled = false;
                 SetSpritesVisibles(false);
                 deathParticles.Play();
                 GameManager.Instance.PlayerDeath();
@@ -84,9 +84,11 @@ public class PlayerBehavior : MonoBehaviour {
         playerID = ID;
         Debug.Log(gameObject + " ID: " + playerID);
     }
+
     public int GetID(){
         return playerID;
     }
+
     public void Pause(){
         GetComponent<MovementBehavior>().StopRigidbody();
         GetComponent<AttackBehavior>().enabled = false;
@@ -94,6 +96,7 @@ public class PlayerBehavior : MonoBehaviour {
         //GetComponent<AnimationController>().ResetAnimation();
 
     }
+
     public void Resume(){
         if(isAlive){
             GetComponent<MovementBehavior>().StartRigidbody();
