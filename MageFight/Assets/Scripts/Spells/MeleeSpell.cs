@@ -41,7 +41,7 @@ public class MeleeSpell : Spell {
         invoked = true;
         mageOwner = owner;
         transform.parent = mageOwner.transform;
-        mageOwner.GetComponent<MovementBehavior>().Immobilize(1f, true);
+        //mageOwner.GetComponent<MovementBehavior>().Immobilize(1f, true);
         transform.position = startPos;
         canHit = true;
         dir = direction;

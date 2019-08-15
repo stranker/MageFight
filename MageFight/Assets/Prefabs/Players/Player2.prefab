@@ -910,10 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14aaa0004897a5d48b77288785e71cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spells:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  spells: []
   spellIndexToReplace: 0
   powerIcons: {fileID: 0}
   spellParticles: {fileID: 0}

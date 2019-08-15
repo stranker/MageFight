@@ -15,14 +15,12 @@ public class PlayerBehavior : MonoBehaviour {
     private int playerID;
     public int winCount;
     private SpellsManager spellsManager;
-    private MovementBehavior movement;
     public Color playerColor;
     private SpriteRenderer sr;
 
     private void Awake(){
         winCount = 0;
         spellsManager = GetComponent<SpellsManager>();
-        movement = GetComponent<MovementBehavior>();
         sr = GetComponent<SpriteRenderer>();
     }
 
@@ -40,7 +38,7 @@ public class PlayerBehavior : MonoBehaviour {
             {
                 isAlive = !isAlive;
                 GetComponent<AttackBehavior>().enabled = false;
-                //GetComponent<MovementBehavior>().enabled = false;
+                GetComponent<PlayerMovement>().enabled = false;
                 SetSpritesVisibles(false);
                 deathParticles.Play();
                 GameManager.Instance.PlayerDeath();
@@ -77,7 +75,6 @@ public class PlayerBehavior : MonoBehaviour {
         isAlive = true;
         SetSpritesVisibles(true);
         transform.position = position;
-        movement.flyStamina = movement.flyMaxStamina;
     }
 
     public void RegisterPlayerID(int ID){
@@ -90,18 +87,16 @@ public class PlayerBehavior : MonoBehaviour {
     }
 
     public void Pause(){
-        GetComponent<MovementBehavior>().StopRigidbody();
         GetComponent<AttackBehavior>().enabled = false;
-        GetComponent<MovementBehavior>().enabled = false;
+        GetComponent<PlayerMovement>().enabled = false;
         //GetComponent<AnimationController>().ResetAnimation();
 
     }
 
     public void Resume(){
         if(isAlive){
-            GetComponent<MovementBehavior>().StartRigidbody();
             GetComponent<AttackBehavior>().enabled = true;
-            GetComponent<MovementBehavior>().enabled = true;
+            GetComponent<PlayerMovement>().enabled = true;
         }
     }
 

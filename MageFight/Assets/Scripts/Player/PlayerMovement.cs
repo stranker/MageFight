@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void GetInput()
     {
-        onFloor = Physics2D.Raycast(feet.transform.position, Vector2.down, 1.2f, floorLayer);
+        onFloor = Physics2D.Raycast(feet.transform.position, Vector2.down, 1.3f, floorLayer);
         velocity.x = (flying ? flyDirection.normalized.x * flyAccelerationIncrement * flySpeed : (GetKeyboardXAxis() + GetDPadXAxis()) * floorSpeed) * Time.deltaTime;
         velocity.y = flying ? flyDirection.normalized.y * flyAccelerationIncrement * flySpeed * Time.deltaTime : rigidBody.velocity.y;
         jumping = Input.GetButtonDown(input.jumpButton) && onFloor;
