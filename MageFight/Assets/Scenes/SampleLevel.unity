@@ -1385,6 +1385,26 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -7.68
       objectReference: {fileID: 0}
+    - target: {fileID: 114942571628359274, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: playerName
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942571628359274, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942571628359274, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: maxHealth
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942571628359274, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: playerColor.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4f71b467ae0ea445b9c978adb55f8d7, type: 2}
   m_IsPrefabAsset: 0
@@ -12186,6 +12206,21 @@ Prefab:
     - target: {fileID: 4460126163026780, guid: d9a5f7e81a895004da3a18ff1c487c9c, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114789643392479472, guid: d9a5f7e81a895004da3a18ff1c487c9c,
+        type: 2}
+      propertyPath: playerName
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114789643392479472, guid: d9a5f7e81a895004da3a18ff1c487c9c,
+        type: 2}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114789643392479472, guid: d9a5f7e81a895004da3a18ff1c487c9c,
+        type: 2}
+      propertyPath: maxHealth
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9a5f7e81a895004da3a18ff1c487c9c, type: 2}
