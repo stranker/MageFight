@@ -6,9 +6,8 @@ public class InputManager : MonoBehaviour {
 
     #region Input
     public string jumpButton; // X?
-    public string blockButton; // ?
-    public string dodgeButton; // R1?
-    public string dodgeButtonKeyboard;
+    public string flyButton; // ?
+    public string flyButtonKeyboard;
     public string movementAxisX; // L Stick
     public string AxisXKeyboard; // L Stick
     public string aimAxisY; // L Stick

@@ -6,23 +6,20 @@ using UnityEngine;
 public class SpellsManager : MonoBehaviour {
 
     [Header("Player spells")]
-    private List<Spell> spells = new List<Spell>();
-    private const int amountOfSpells = 3;
-    private int spellIndexToReplace = 0;
+    public List<Spell> spells = new List<Spell>();
+    public const int amountOfSpells = 3;
+    public int spellIndexToReplace = 0;
     public GameObject powerIcons; //set to corresponding player's UI "PowerIcons" object from hierarchy
     private List<PowerIcon> icons = new List<PowerIcon>();
     public ParticleSystem spellParticles;
     private ParticleSystem.MainModule spellParticlesMain;
-    public AnimationController anim;
 
     void Start () {
-        anim = GetComponent<AnimationController>();
-        PowerIcon[] pI = powerIcons.GetComponentsInChildren<PowerIcon>();
+        /*PowerIcon[] pI = powerIcons.GetComponentsInChildren<PowerIcon>();
         foreach(PowerIcon icon in pI){
             icons.Add(icon);
-        }
-        spellParticlesMain = spellParticles.GetComponent<ParticleSystem>().main;
-
+        }*/
+        //spellParticlesMain = spellParticles.GetComponent<ParticleSystem>().main;
     }
 
     public void InvokeSpell(int index, Vector3 startPosition, Vector3 direction, GameObject owner) {
@@ -30,37 +27,29 @@ public class SpellsManager : MonoBehaviour {
             if (spells[index] && !spells[index].invoked)
             {
                 spells[index].InvokeSpell(startPosition, direction, owner);
-                spellParticlesMain.startColor = spells[index].spellColor;
-                spellParticles.Play();
-                anim.PlayerSpell(spells[index].typeOfSpeel);
-                icons[index].StartCooldown(spells[index].cooldown);
+                //spellParticlesMain.startColor = spells[index].spellColor;
+                //spellParticles.Play();
+                //anim.PlayerSpell(spells[index].typeOfSpeel);
+                //icons[index].StartCooldown(spells[index].cooldown);
             }
-        } else {
-            Debug.LogWarning("Spell not available or out of index");
         }
     }
     public Spell.CastType GetSpellCastType(int index)
     {
-        if(spells.Count > index){
-            return spells[index].GetCastType();
-        } else{
-            Debug.LogWarning("GetSpellCastType index out of list range");
-            return Spell.CastType.Error;
-        }
+        return spells[index].GetCastType();
     }
+
     public void AddSpell(Spell spell){
         
         if(spells.Count < amountOfSpells){
             Spell sp = Instantiate(spell, transform.parent);
             sp.Kill();
             spells.Add(sp);
-
             foreach(PowerIcon icon in icons){
                 if(icon.GetSkillOrder() == spells.Count){
                     icon.SetSpell(spell);
                 }
             }
-
         } else {
             if(spellIndexToReplace >= amountOfSpells){ spellIndexToReplace = 0;}
 

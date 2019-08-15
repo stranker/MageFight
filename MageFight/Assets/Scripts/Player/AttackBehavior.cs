@@ -7,58 +7,31 @@ public class AttackBehavior : MonoBehaviour {
 
     [Header("Spell Manager")]
     public SpellsManager spellManager;
-
-    public bool onAttackMode = false;
-    private bool canAttack = true;
-    private bool isHolding = false;
-    private InputManager input;
-    private float timer;
-    public float attackModeTime = 0.5f;
-    public Vector2 aimDirection;
+    public PlayerMovement playerMovement;
+    public InputManager input;
+    public bool canAttack = true;
+    public bool isHolding = false;
+    public bool invoking;
+    public float timerBeforeAttack;
     public Transform handPos;
-    public ParticleSystem invokeParticles;
     public GameObject arrowSprite;
-    private bool invoking;
-
+    public ParticleSystem invokeParticles;
     private ParticleSystem.MainModule invokeParticlesMain;
     // Use this for initialization
+
     void Start () {
-        input = GetComponent<InputManager>();
         invokeParticlesMain = invokeParticles.GetComponent<ParticleSystem>().main;
     }
 
     // Update is called once per frame
     void Update () {
         GetInput();
-        if (onAttackMode)
-        {
-            timer += Time.deltaTime;
-            if (timer >= attackModeTime)
-            {
-                onAttackMode = !onAttackMode;
-                timer = 0;
-            }
-        }
     }
 
     private void GetInput()
     {
-        int upDir = 0;
-        if(Input.GetAxis(input.AxisYKeyboard) > 0 || Input.GetAxis(input.AxisYKeyboard) < 0)
-            upDir = (int)Input.GetAxis(input.AxisYKeyboard);
-        else if(Input.GetAxis(input.aimAxisY) > 0 || Input.GetAxis(input.aimAxisY) < 0)
-            upDir = (int)Input.GetAxis(input.aimAxisY);
-        else if(Input.GetAxis(input.DPadY) > 0 || Input.GetAxis(input.DPadY) < 0)
-            upDir = (int)Input.GetAxis(input.DPadY);
-
-        int fwDir = (Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f || Mathf.Abs(Input.GetAxis(input.DPadX)) > 0 || (Mathf.Abs(Input.GetAxis(input.AxisXKeyboard)) > 0)) ? (int)transform.localScale.x : 0;
-        aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
-        float angle;
-        if(transform.localScale.x < 1)
-            angle = Mathf.Atan2(-aimDirection.y, Mathf.Abs(aimDirection.x)) * Mathf.Rad2Deg;
-        else
-            angle = Mathf.Atan2(aimDirection.y, Mathf.Abs(aimDirection.x)) * Mathf.Rad2Deg;
-        arrowSprite.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        float arrowAngle = Mathf.Atan2(playerMovement.attackDirection.y, playerMovement.attackDirection.x) * Mathf.Rad2Deg;
+        arrowSprite.transform.rotation = Quaternion.Euler(0,0,arrowAngle);
         GetSpellsInputs(input.firstSkillButton, 0);
         GetSpellsInputs(input.secondSkillButton, 1);
         GetSpellsInputs(input.thirdSkillButton, 2);
@@ -66,26 +39,22 @@ public class AttackBehavior : MonoBehaviour {
 
     private void ThrowSpell(int spellIndex)
     {
-        if ((isHolding || !onAttackMode) && canAttack)
+        if (isHolding && canAttack)
         {
             isHolding = false;
-            onAttackMode = !onAttackMode;
-            Vector3 dir = aimDirection.normalized;
-            spellManager.InvokeSpell(spellIndex, handPos.position, dir, gameObject);
+            spellManager.InvokeSpell(spellIndex, handPos.position, playerMovement.aimDirection.normalized, gameObject);
             invokeParticles.Stop();
-        } else{ Debug.Log("not throwing "+isHolding + " " + !onAttackMode + " " + canAttack);}
+        }
     }
 
     private void InvokeSpell(int spellIndex)
     {
-        if (!onAttackMode && canAttack)
+        if (canAttack)
         {
             isHolding = true;
-            onAttackMode = !onAttackMode;
-            invokeParticlesMain.startColor = spellManager.GetSpellColor(spellIndex);
+            //invokeParticlesMain.startColor = spellManager.GetSpellColor(spellIndex);
             invokeParticles.Play();
         }
-
     }
     private void GetSpellsInputs(String input,int spellIndex)
     {
@@ -93,13 +62,11 @@ public class AttackBehavior : MonoBehaviour {
         {
             if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.OneTap)
             {
-                //Debug.Log("tap");
                 arrowSprite.gameObject.SetActive(false);
-                ThrowSpell(spellIndex);                
+                ThrowSpell(spellIndex);
             }
             else if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
             {
-                //Debug.Log("Hold");
                 arrowSprite.gameObject.SetActive(true);
                 InvokeSpell(spellIndex);
                 invoking = true;
@@ -107,7 +74,6 @@ public class AttackBehavior : MonoBehaviour {
         }
         if (Input.GetButtonUp(input) && spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold && invoking)
         {
-            //Debug.Log("Release");
             arrowSprite.gameObject.SetActive(false);
             ThrowSpell(spellIndex);
             invoking = false;

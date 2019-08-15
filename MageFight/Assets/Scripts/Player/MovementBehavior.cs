@@ -112,7 +112,7 @@ public class MovementBehavior : MonoBehaviour {
             int fwDir = (Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f || Mathf.Abs(Input.GetAxis(input.DPadX)) > 0 || (Mathf.Abs(Input.GetAxis(input.AxisXKeyboard)) > 0)) ? (int)transform.localScale.x : 0;
             aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
             dashTrail.emitting = flying;
-            flying = ((Input.GetAxis(input.dodgeButton) > 0 )|| Input.GetButton(input.dodgeButtonKeyboard)) && canFly && flyStamina > 0;
+            //flying = ((Input.GetAxis(input.dodgeButton) > 0 )|| Input.GetButton(input.dodgeButtonKeyboard)) && canFly && flyStamina > 0;
             if(flying)
             {
                 Fly(aimDirection);
