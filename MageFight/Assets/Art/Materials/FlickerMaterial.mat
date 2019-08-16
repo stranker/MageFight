@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: SpritesMaterial
+  m_Name: FlickerMaterial
   m_Shader: {fileID: 4800000, guid: fd3eaa3496b8f5a4bb63344e94c2929a, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4

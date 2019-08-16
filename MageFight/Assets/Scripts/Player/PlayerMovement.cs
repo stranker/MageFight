@@ -76,6 +76,14 @@ public class PlayerMovement : MonoBehaviour {
         velocity.y = flying ? flyDirection.normalized.y * flyAccelerationIncrement * flySpeed * Time.deltaTime : rigidBody.velocity.y;
         jumping = Input.GetButtonDown(input.jumpButton) && onFloor;
         flying = GetFlyInput() && canFly;
+        FlyAccelerationCheck();
+        FacingDirectionCheck();
+        JumpCheck();
+        GetAimDirection();
+    }
+
+    private void FlyAccelerationCheck()
+    {
         if (flying)
             flyAccelerationIncrement += Time.deltaTime;
         else
@@ -86,9 +94,6 @@ public class PlayerMovement : MonoBehaviour {
                 flyAccelerationIncrement = 0;
         }
         flyAccelerationIncrement = Mathf.Clamp(flyAccelerationIncrement, 1, flyAcceleration);
-        FacingDirectionCheck();
-        JumpCheck();
-        GetAimDirection();
     }
 
     private void GetAimDirection()
