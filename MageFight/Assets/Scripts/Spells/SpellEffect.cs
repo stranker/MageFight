@@ -10,7 +10,6 @@ public class SpellEffect : MonoBehaviour {
     {
         Burn,
         Freeze,
-        Curse,
         Bubble,
         Pull,
         KnockBack,
@@ -29,7 +28,6 @@ public class SpellEffect : MonoBehaviour {
             GameObject e = Instantiate(spriteEffect, enemy.transform.position + new Vector3(0,0.5f), Quaternion.identity, enemy.transform);
             e.GetComponent<SpellEffectDestroyer>().SetTimer(duration);
         }
-
     }
 
     private void SetEffectOnPlayer(SpellStateManager player)
@@ -41,9 +39,6 @@ public class SpellEffect : MonoBehaviour {
                 break;
             case EffectType.Freeze:
                 player.Freeze(duration);
-                break;
-            case EffectType.Curse:
-                player.Curse();
                 break;
             case EffectType.Pull:
                 Vector2 pullDirection = (Vector2)GetComponent<Spell>().mageOwner.transform.position;
@@ -76,8 +71,6 @@ public class SpellEffect : MonoBehaviour {
                 return "The target will freeze and will be immobile";
             case EffectType.Bubble:
                 return "The target will be trapped in a bubble";
-            case EffectType.Curse:
-                return "The target might recieve some damage at some point, maybe.";
             case EffectType.KnockBack:
                 return "The target will be pushed away from the caster";
             case EffectType.Stun:

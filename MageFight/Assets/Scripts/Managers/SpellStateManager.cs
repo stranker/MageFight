@@ -13,13 +13,14 @@ public class SpellStateManager : MonoBehaviour
     private float burnAttackTime = 0.5f;
     public bool isFreezed;
     public bool isBurned;
-    private MovementBehavior movement;
+    public bool isStuned;
+    private PlayerMovement movement;
     private AttackBehavior attack;
     private PlayerBehavior player;
 
     private void Start()
     {
-        movement = GetComponent<MovementBehavior>();
+        movement = GetComponent<PlayerMovement>();
         attack = GetComponent<AttackBehavior>();
         player = GetComponent<PlayerBehavior>();
     }
@@ -27,44 +28,22 @@ public class SpellStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isFreezed)
-        {
-            freezeTimer -= Time.deltaTime;
-            if (freezeTimer <= 0)
-            {
-                isFreezed = !isFreezed;
-                movement.Immobilize(0,false);
-                attack.SetCanAttack(true);
-            }
-        }
-        if (isBurned)
-        {
-            burnAttackTimer += Time.deltaTime;
-            if (burnAttackTimer >= burnAttackTime)
-            {
-                player.TakeDamage(1,new Vector2(UnityEngine.Random.Range(-1,1), UnityEngine.Random.Range(-1, 1)));
-                burnAttackTimer = 0;
-            }
-            burnTimer -= Time.deltaTime;
-            if (burnTimer <= 0)
-            {
-                isBurned = !isBurned;
-            }
-        }
-        if (isCursed)
-        {
-            curseTimer -= Time.deltaTime;
-            if(curseTimer <= 0)
-            {
-                player.TakeDamage(curseDamage,Vector2.zero);
-                curseTimer = 0.0f;
-                curseDamage = 0;
-                isCursed = false;
-            }
-        }
+        FreezeCheck();
+        BurnCheck();
+        //if (isCursed)
+        //{
+        //    curseTimer -= Time.deltaTime;
+        //    if(curseTimer <= 0)
+        //    {
+        //        player.TakeDamage(curseDamage,Vector2.zero);
+        //        curseTimer = 0.0f;
+        //        curseDamage = 0;
+        //        isCursed = false;
+        //    }
+        //}
         if(isDragged){
             if(leadingObjectOnDrag){
-                movement.Drag((Vector2)leadingObjectOnDrag.position);
+                //movement.Drag((Vector2)leadingObjectOnDrag.position);
                 dragTimer -= Time.deltaTime;
                 if(dragTimer<= 0){
                     player.TakeDamage(1,Vector2.zero);
@@ -80,11 +59,43 @@ public class SpellStateManager : MonoBehaviour
         }
     }
 
+    private void BurnCheck()
+    {
+        if (isBurned)
+        {
+            burnAttackTimer += Time.deltaTime;
+            if (burnAttackTimer >= burnAttackTime)
+            {
+                player.TakeDamage(1, new Vector2(UnityEngine.Random.Range(-1, 1), UnityEngine.Random.Range(-1, 1)));
+                burnAttackTimer = 0;
+            }
+            burnTimer -= Time.deltaTime;
+            if (burnTimer <= 0)
+            {
+                isBurned = !isBurned;
+            }
+        }
+    }
+
+    private void FreezeCheck()
+    {
+        if (isFreezed)
+        {
+            freezeTimer -= Time.deltaTime;
+            if (freezeTimer <= 0)
+            {
+                isFreezed = !isFreezed;
+                movement.SetCanMove(true);
+                attack.SetCanAttack(true);
+            }
+        }
+    }
+
     public void Freeze(float freezeTime)
     {
         isFreezed = true;
         freezeTimer = freezeTime;
-        movement.Immobilize(2, true);
+        movement.SetCanMove(false);
         attack.SetCanAttack(false);
     }
 
@@ -94,25 +105,26 @@ public class SpellStateManager : MonoBehaviour
         burnTimer = burnTime;
     }
 
-    private bool isCursed = false;
-    private float curseTimer = 0.0f;
-    private int curseDamage;
-    public void Curse(){
-        isCursed = true;
-        curseTimer = UnityEngine.Random.Range(2.0f,5.0f);
-        int dmgRoll = UnityEngine.Random.Range(0,11); //max range is exclusive for integers
-        if(dmgRoll == 0) {
-            curseDamage = 0;
-        } else if(dmgRoll == 1) {
-            curseDamage = UnityEngine.Random.Range(3,6);
-        } else {
-            curseDamage = UnityEngine.Random.Range(1,3);
-        }
-    }
+    //private bool isCursed = false;
+    //private float curseTimer = 0.0f;
+    //private int curseDamage;
+    //public void Curse(){
+    //    isCursed = true;
+    //    curseTimer = UnityEngine.Random.Range(2.0f,5.0f);
+    //    int dmgRoll = UnityEngine.Random.Range(0,11); //max range is exclusive for integers
+    //    if(dmgRoll == 0) {
+    //        curseDamage = 0;
+    //    } else if(dmgRoll == 1) {
+    //        curseDamage = UnityEngine.Random.Range(3,6);
+    //    } else {
+    //        curseDamage = UnityEngine.Random.Range(1,3);
+    //    }
+    //}
 
     public void Pull(Vector2 targetPosition){
         movement.Pull(targetPosition);
     }
+
     public void Throw(float force){
         movement.Throw(force);
     }

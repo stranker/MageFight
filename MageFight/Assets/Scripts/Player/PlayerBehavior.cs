@@ -99,14 +99,14 @@ public class PlayerBehavior : MonoBehaviour {
     public void Pause(){
         GetComponent<AttackBehavior>().enabled = false;
         GetComponent<PlayerMovement>().enabled = false;
-        //GetComponent<AnimationController>().ResetAnimation();
-
+        GetComponent<Rigidbody2D>().gravityScale = 0;
     }
 
     public void Resume(){
         if(isAlive){
             GetComponent<AttackBehavior>().enabled = true;
             GetComponent<PlayerMovement>().enabled = true;
+            GetComponent<Rigidbody2D>().gravityScale = 6;
         }
     }
 

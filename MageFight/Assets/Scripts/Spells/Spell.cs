@@ -9,7 +9,6 @@ public abstract class Spell : MonoBehaviour {
     {
         OneTap,
         Hold,
-        Error
     }
 
     public enum SpellType
@@ -114,8 +113,6 @@ public abstract class Spell : MonoBehaviour {
                 return "Instant";
             case CastType.Hold:
                 return "Hold";
-            case CastType.Error:
-                return "ERROR";
             default:
                 return "ERROR";
         }

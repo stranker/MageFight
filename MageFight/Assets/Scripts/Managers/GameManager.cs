@@ -50,8 +50,6 @@ public class GameManager : MonoBehaviour {
 			if(i <= startingPositions.Count -1){
                 players[i].Pause();
                 players[i].Reset(startingPositions[i].position); 
-			} else {
-				Debug.LogError("Out of starting positions, Players: " + players.Count + ", Positions: " + startingPositions.Count);
 			}
 		}
 

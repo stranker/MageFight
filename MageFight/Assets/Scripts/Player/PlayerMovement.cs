@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour {
     public Transform leftFoot;
     public LayerMask floorLayer;
     public Transform visual;
+    private float allPurposeTimer;
 
     // Use this for initialization
     void Start () {
@@ -48,8 +49,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void GeneralMovement()
     {
-        CheckCanMove();
-        if (canMove)
+        if (canMove && !IsPlayerInvoking())
         {
             rigidBody.velocity = velocity;
             rigidBody.gravityScale = flying || attackBehavior.invoking ? 0 : initialGravityScale;
@@ -62,15 +62,15 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    private void CheckCanMove()
+    private bool IsPlayerInvoking()
     {
-        canMove = !attackBehavior.invoking;
+        return attackBehavior.invoking;
     }
 
     private void GetInput()
     {
-        RightFootRaycast = Physics2D.Raycast(rightFoot.transform.position, Vector2.down, 1.3f, floorLayer);
-        LeftFootRaycast = Physics2D.Raycast(leftFoot.transform.position, Vector2.down, 1.3f, floorLayer);
+        RightFootRaycast = Physics2D.Raycast(rightFoot.transform.position, Vector2.down, 1.5f, floorLayer);
+        LeftFootRaycast = Physics2D.Raycast(leftFoot.transform.position, Vector2.down, 1.5f, floorLayer);
         onFloor = RightFootRaycast || LeftFootRaycast;
         velocity.x = (flying ? flyDirection.normalized.x * flyAccelerationIncrement * flySpeed : (GetKeyboardXAxis() + GetDPadXAxis()) * floorSpeed) * Time.deltaTime;
         velocity.y = flying ? flyDirection.normalized.y * flyAccelerationIncrement * flySpeed * Time.deltaTime : rigidBody.velocity.y;
@@ -120,6 +120,11 @@ public class PlayerMovement : MonoBehaviour {
         visual.localScale = new Vector2(currentDirection, 1);
     }
 
+    public void SetCanMove(bool val)
+    {
+        canMove = val;
+    }
+
     private bool GetFlyInput()
     {
         return Input.GetAxis(input.flyButton) + Input.GetAxis(input.flyButtonKeyboard) > 0;
@@ -144,4 +149,46 @@ public class PlayerMovement : MonoBehaviour {
     {
         return Input.GetAxis(input.DPadY);
     }
+
+
+    public void Knockback(Vector2 pos)
+    {
+        //knockback = true;
+        //timer = 0;
+        //Vector2 knockDirection = ((Vector2)transform.position - pos).normalized;
+        //knockDirection.x *= 5;
+        //knockDirection.y = 10;
+        //rd.velocity = knockDirection;
+    }
+
+    public void Pull(Vector2 pos)
+    {
+        Debug.Log("Pulled");
+        allPurposeTimer = 0;
+        if (transform.position.x > pos.x)
+        {
+            pos.x += 0.5f;
+        }
+        else
+        {
+            pos.x -= 0.5f;
+        }
+        pos = pos - (Vector2)transform.position;
+        pos.Normalize();
+        pos *= 15;
+        rigidBody.velocity = pos;
+
+    }
+    public void Drag(Vector2 pos)
+    {
+        allPurposeTimer = 0;
+        pos = pos - (Vector2)transform.position;
+        rigidBody.velocity = pos;
+    }
+    public void Throw(float force)
+    {
+        allPurposeTimer = 0;
+        rigidBody.velocity = Vector2.up * force;
+    }
+
 }

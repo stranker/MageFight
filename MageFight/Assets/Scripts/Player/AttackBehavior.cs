@@ -12,7 +12,8 @@ public class AttackBehavior : MonoBehaviour {
     public bool canAttack = true;
     public bool isHolding = false;
     public bool invoking;
-    public float timerBeforeAttack;
+    public float timeAfterAttack;
+    private float timerAfterAttack;
     public Transform handPos;
     public GameObject arrowSprite;
     public ParticleSystem invokeParticles;
@@ -27,6 +28,20 @@ public class AttackBehavior : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         GetInput();
+        CanAttackCheck();
+    }
+
+    private void CanAttackCheck()
+    {
+        if (!canAttack)
+        {
+            timerAfterAttack += Time.deltaTime;
+            if (timerAfterAttack > timeAfterAttack)
+            {
+                timerAfterAttack = 0;
+                canAttack = !canAttack;
+            }
+        }
     }
 
     private void GetInput()
@@ -43,9 +58,10 @@ public class AttackBehavior : MonoBehaviour {
         if (canAttack)
         {
             isHolding = false;
-            spellManager.ThrowSpell(spellIndex, handPos.position, playerMovement.attackDirection.normalized, gameObject);
+            spellManager.ThrowSpell(spellIndex, handPos.position, playerMovement.attackDirection, gameObject);
             invokeParticles.Stop();
             anim.SetTrigger("ThrowSpell");
+            canAttack = !canAttack;
         }
     }
 
