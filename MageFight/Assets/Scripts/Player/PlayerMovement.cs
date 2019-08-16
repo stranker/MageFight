@@ -12,7 +12,9 @@ public class PlayerMovement : MonoBehaviour {
     private float flyAccelerationIncrement = 1;
     public float initialGravityScale;
     public bool canMove = true;
-    public RaycastHit2D onFloor;
+    public bool onFloor;
+    public RaycastHit2D LeftFootRaycast;
+    public RaycastHit2D RightFootRaycast;
     public int currentDirection = 1;
     public bool canJump = true;
     public bool jumping;
@@ -24,7 +26,8 @@ public class PlayerMovement : MonoBehaviour {
     public InputManager input;
     public AttackBehavior attackBehavior;
     public Rigidbody2D rigidBody;
-    public Transform feet;
+    public Transform rightFoot;
+    public Transform leftFoot;
     public LayerMask floorLayer;
     public Transform visual;
 
@@ -66,7 +69,9 @@ public class PlayerMovement : MonoBehaviour {
 
     private void GetInput()
     {
-        onFloor = Physics2D.Raycast(feet.transform.position, Vector2.down, 1.3f, floorLayer);
+        RightFootRaycast = Physics2D.Raycast(rightFoot.transform.position, Vector2.down, 1.3f, floorLayer);
+        LeftFootRaycast = Physics2D.Raycast(leftFoot.transform.position, Vector2.down, 1.3f, floorLayer);
+        onFloor = RightFootRaycast || LeftFootRaycast;
         velocity.x = (flying ? flyDirection.normalized.x * flyAccelerationIncrement * flySpeed : (GetKeyboardXAxis() + GetDPadXAxis()) * floorSpeed) * Time.deltaTime;
         velocity.y = flying ? flyDirection.normalized.y * flyAccelerationIncrement * flySpeed * Time.deltaTime : rigidBody.velocity.y;
         jumping = Input.GetButtonDown(input.jumpButton) && onFloor;
