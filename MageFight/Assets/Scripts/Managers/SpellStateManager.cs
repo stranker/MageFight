@@ -111,5 +111,6 @@ public class SpellStateManager : MonoBehaviour
         leadingObjectOnDrag = leadingObject;
         dragTimer = duration;
         attack.SetCanAttack(false);
+        movement.SetCanMove(false);
     }
 }
