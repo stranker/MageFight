@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Hasty Hurricane
   castVelocity: 0
-  damage: 2
+  damage: 15
   cooldown: 5
   castType: 0
   diff: 1

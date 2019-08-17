@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Wizard's Whip
   castVelocity: 0
-  damage: 4
+  damage: 12
   cooldown: 3
   castType: 0
   diff: 2

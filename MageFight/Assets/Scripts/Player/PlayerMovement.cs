@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour {
     public bool jumping;
     public bool canFly = true;
     public bool flying;
+    public float flyStamina;
+    public float flyMaxStamina;
+    public float flyConsumption;
     public Vector2 velocity;
     public Vector2 flyDirection;
     public Vector2 attackDirection;
@@ -30,6 +33,7 @@ public class PlayerMovement : MonoBehaviour {
     public Transform leftFoot;
     public LayerMask floorLayer;
     public Transform visual;
+    public ParticleSystem jumpParticles;
     private float allPurposeTimer;
 
     // Use this for initialization
@@ -69,17 +73,33 @@ public class PlayerMovement : MonoBehaviour {
 
     private void GetInput()
     {
-        RightFootRaycast = Physics2D.Raycast(rightFoot.transform.position, Vector2.down, 1.5f, floorLayer);
-        LeftFootRaycast = Physics2D.Raycast(leftFoot.transform.position, Vector2.down, 1.5f, floorLayer);
+        RightFootRaycast = Physics2D.Raycast(rightFoot.transform.position, Vector2.down, 1.1f, floorLayer);
+        LeftFootRaycast = Physics2D.Raycast(leftFoot.transform.position, Vector2.down, 1.1f, floorLayer);
         onFloor = RightFootRaycast || LeftFootRaycast;
         velocity.x = (flying ? flyDirection.normalized.x * flyAccelerationIncrement * flySpeed : (GetKeyboardXAxis() + GetDPadXAxis()) * floorSpeed) * Time.deltaTime;
         velocity.y = flying ? flyDirection.normalized.y * flyAccelerationIncrement * flySpeed * Time.deltaTime : rigidBody.velocity.y;
         jumping = Input.GetButtonDown(input.jumpButton) && onFloor;
+        canFly = flyStamina > 0;
         flying = GetFlyInput() && canFly;
         FlyAccelerationCheck();
+        FlyStaminaCheck();
         FacingDirectionCheck();
         JumpCheck();
         GetAimDirection();
+    }
+
+    private void FlyStaminaCheck()
+    {
+        if (flying)
+        {
+            flyStamina -= flyConsumption * Time.deltaTime;
+        }
+        else
+        {
+            if (onFloor)
+                flyStamina += flyConsumption * Time.deltaTime * 2;
+        }
+        flyStamina = Mathf.Clamp(flyStamina, 0, flyMaxStamina);
     }
 
     private void FlyAccelerationCheck()
@@ -107,7 +127,10 @@ public class PlayerMovement : MonoBehaviour {
     private void JumpCheck()
     {
         if (jumping && canJump)
+        {
             velocity.y = jumpSpeed;
+            jumpParticles.Play();
+        }
     }
 
     private void FacingDirectionCheck()
@@ -154,11 +177,11 @@ public class PlayerMovement : MonoBehaviour {
     public void Knockback(Vector2 pos)
     {
         //knockback = true;
-        //timer = 0;
-        //Vector2 knockDirection = ((Vector2)transform.position - pos).normalized;
-        //knockDirection.x *= 5;
-        //knockDirection.y = 10;
-        //rd.velocity = knockDirection;
+        allPurposeTimer = 0;
+        Vector2 knockDirection = ((Vector2)transform.position - pos).normalized;
+        knockDirection.x *= 5;
+        knockDirection.y = 10;
+        rigidBody.velocity = knockDirection;
     }
 
     public void Pull(Vector2 pos)
@@ -177,14 +200,15 @@ public class PlayerMovement : MonoBehaviour {
         pos.Normalize();
         pos *= 15;
         rigidBody.velocity = pos;
-
     }
+
     public void Drag(Vector2 pos)
     {
         allPurposeTimer = 0;
         pos = pos - (Vector2)transform.position;
         rigidBody.velocity = pos;
     }
+
     public void Throw(float force)
     {
         allPurposeTimer = 0;

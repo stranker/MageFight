@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Compell Closer
   castVelocity: 0
-  damage: 2
+  damage: 20
   cooldown: 5
   castType: 0
   diff: 2

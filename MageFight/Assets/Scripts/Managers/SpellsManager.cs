@@ -15,10 +15,10 @@ public class SpellsManager : MonoBehaviour {
     private ParticleSystem.MainModule spellParticlesMain;
 
     void Start () {
-        /*PowerIcon[] pI = powerIcons.GetComponentsInChildren<PowerIcon>();
+        PowerIcon[] pI = powerIcons.GetComponentsInChildren<PowerIcon>();
         foreach(PowerIcon icon in pI){
             icons.Add(icon);
-        }*/
+        }
         //spellParticlesMain = spellParticles.GetComponent<ParticleSystem>().main;
     }
 
@@ -29,8 +29,7 @@ public class SpellsManager : MonoBehaviour {
                 spells[index].InvokeSpell(startPosition, direction, owner);
                 //spellParticlesMain.startColor = spells[index].spellColor;
                 //spellParticles.Play();
-                //anim.PlayerSpell(spells[index].typeOfSpeel);
-                //icons[index].StartCooldown(spells[index].cooldown);
+                icons[index].StartCooldown(spells[index].cooldown);
             }
         }
     }

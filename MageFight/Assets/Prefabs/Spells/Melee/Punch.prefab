@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Power Pummel
   castVelocity: 0
-  damage: 3
+  damage: 15
   cooldown: 3
   castType: 0
   diff: 1

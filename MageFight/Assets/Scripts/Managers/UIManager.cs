@@ -17,12 +17,6 @@ public class UIManager : MonoBehaviour {
     }
     public delegate void UIManagerActions(UIManager manager);
     public UIManagerActions OnLeaderboardShown;
-    public PlayerBehavior p1;
-    public PlayerBehavior p2;
-    public Image health1;
-    public Image health2;
-    public Image stamina1;
-    public Image stamina2;
     public GameObject playerUI;
     public UILeaderboard leaderboard;
     public GameObject PostGameUI;
@@ -61,18 +55,6 @@ public class UIManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (p1)
-        {
-            health1.fillAmount = (float)p1.health / (float)p1.maxHealth;
-            stamina1.fillAmount = (float)p1.GetComponent<MovementBehavior>().flyStamina / (float)p1.GetComponent<MovementBehavior>().flyMaxStamina;
-        }
-        if (p2)
-        {
-            health2.fillAmount = (float)p2.health / (float)p2.maxHealth;
-            stamina2.fillAmount = (float)p2.GetComponent<MovementBehavior>().flyStamina / (float)p2.GetComponent<MovementBehavior>().flyMaxStamina;
-        }
-
-
         if (showLeaderboard)
         {
             if (!leaderboardActive)

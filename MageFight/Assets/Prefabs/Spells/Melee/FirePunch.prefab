@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a864e62a2d46ef24f98d79cb8c82841b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2
+  duration: 3
   type: 0
   spriteEffect: {fileID: 1620679785542546, guid: a25f7dc58b031b54f8e1bb9751805446,
     type: 2}
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Flaming Fist
   castVelocity: 0
-  damage: 1
+  damage: 10
   cooldown: 2.5
   castType: 0
   diff: 0

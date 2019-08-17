@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Voluminous Ventilation
   castVelocity: 0
-  damage: 4
+  damage: 20
   cooldown: 5
   castType: 1
   diff: 0

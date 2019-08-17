@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Summoner Slap
   castVelocity: 0
-  damage: 1
+  damage: 5
   cooldown: 2
   castType: 0
   diff: 3

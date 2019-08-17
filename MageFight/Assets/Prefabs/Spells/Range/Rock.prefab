@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114394342564051314}
   - component: {fileID: 50453737925835492}
   - component: {fileID: 61840047202552924}
+  - component: {fileID: 114730571680022348}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Spell
@@ -101,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Behemoth Boulder
   castVelocity: 0
-  damage: 3
+  damage: 25
   cooldown: 4
   castType: 1
   diff: 0
@@ -114,6 +115,21 @@ MonoBehaviour:
   spellColor: {r: 0.61960787, g: 0.4666667, b: 0.2392157, a: 1}
   hasSecondAttack: 0
   travelVelocity: 20
+--- !u!114 &114730571680022348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975425221469212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a864e62a2d46ef24f98d79cb8c82841b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
+  type: 6
+  spriteEffect: {fileID: 1085410109743728, guid: e6db85a1656dfa74d909d7a5027fef4d,
+    type: 2}
 --- !u!212 &212677125395905808
 SpriteRenderer:
   m_ObjectHideFlags: 1

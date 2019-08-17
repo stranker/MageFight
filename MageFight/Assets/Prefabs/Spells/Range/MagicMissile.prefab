@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Magic Missile
   castVelocity: 0
-  damage: 3
+  damage: 15
   cooldown: 2.5
   castType: 0
   diff: 0

@@ -10,7 +10,6 @@ public class PlayerBehavior : MonoBehaviour {
     public int maxHealth;
     public bool isAlive = true;
     public Transform headPos;
-    public DamagePopUp popText;
     public ParticleSystem deathParticles;
     private int playerID;
     public int winCount;
@@ -27,8 +26,6 @@ public class PlayerBehavior : MonoBehaviour {
         if (isAlive)
         {
             health -= val;
-            GameObject pop = Instantiate(popText.gameObject, headPos.position, Quaternion.identity, transform.parent);
-            pop.GetComponent<DamagePopUp>().SetDamage(val);
 			//GetComponent<MovementBehavior>().Knockback(position);
             StopCoroutine("FlickerEffect");
             StartCoroutine("FlickerEffect");
@@ -42,7 +39,9 @@ public class PlayerBehavior : MonoBehaviour {
                 GameManager.Instance.PlayerDeath();
             }
         }
+        health = Mathf.Clamp(health, 0, maxHealth);
     }
+
     IEnumerator FlickerEffect()
     {
         for(int i = 0; i < 5; i++)

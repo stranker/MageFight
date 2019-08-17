@@ -102,8 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Polar Pike
   castVelocity: 0
-  damage: 2
-  cooldown: 2
+  damage: 15
+  cooldown: 3
   castType: 1
   diff: 1
   mageOwner: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b, type: 2}

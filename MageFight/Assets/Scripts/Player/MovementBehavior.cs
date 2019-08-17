@@ -238,12 +238,14 @@ public class MovementBehavior : MonoBehaviour {
         rd.velocity = pos;
 
     }
+
     public void Drag (Vector2 pos){
         knockback = true;
         timer = 0;
         pos = pos - (Vector2)transform.position;
         rd.velocity = pos;
     }
+
     public void Throw(float force){
         knockback = true;
         timer = 0;
