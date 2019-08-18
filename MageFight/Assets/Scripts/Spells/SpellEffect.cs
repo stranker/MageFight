@@ -14,7 +14,8 @@ public class SpellEffect : MonoBehaviour {
         Pull,
         KnockBack,
         Throw,
-        Stun
+        Stun,
+        Hammer
     }
     public EffectType type;
     public GameObject spriteEffect;
@@ -55,6 +56,9 @@ public class SpellEffect : MonoBehaviour {
                 Bubble b = go.AddComponent<Bubble>();
                 b.trapInBubble(player.gameObject.transform.position, duration);
                 player.Drag(b.getBubble(), duration);
+                break;
+            case EffectType.Hammer:
+                player.Hammerfall();
                 break;
             default:
                 break;

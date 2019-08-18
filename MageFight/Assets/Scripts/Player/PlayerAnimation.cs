@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour {
 
-    //public AttackBehavior attack;
     public PlayerMovement movement;
     public AttackBehavior attack;
-    //public SpellsManager sm;
-    //private Rigidbody2D rd;
+    public SpellStateManager ssm;
     private Animator anim;
 
     private void Start()
@@ -23,11 +21,6 @@ public class PlayerAnimation : MonoBehaviour {
         anim.SetFloat("VelocityY", movement.velocity.y);
         anim.SetBool("InvokeSpell", attack.invoking);
         anim.SetBool("OnAir", !movement.onFloor);
-        //if (attack.isHolding)
-        //{
-        //    anim.SetBool("InvokeSpell", attack.invoking);
-        //    anim.SetBool("HoldingSpell", attack.isHolding);
-        //}
-
+        anim.SetBool("Shrinked", ssm.isShrinked);
     }
 }

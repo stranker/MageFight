@@ -11,18 +11,22 @@ public class SpellStateManager : MonoBehaviour
     private float burnTimer;
     private float burnAttackTimer;
     private float burnAttackTime = 0.5f;
+    private float shrinkTimer;
     public bool isFreezed;
     public bool isBurned;
     public bool isStuned;
+    public bool isShrinked;
     private PlayerMovement movement;
     private AttackBehavior attack;
     private PlayerBehavior player;
+    private Animator playerAnim;
 
     private void Start()
     {
         movement = GetComponent<PlayerMovement>();
         attack = GetComponent<AttackBehavior>();
         player = GetComponent<PlayerBehavior>();
+        playerAnim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -30,6 +34,7 @@ public class SpellStateManager : MonoBehaviour
     {
         FreezeCheck();
         BurnCheck();
+        ShrinkCheck();
         if(isDragged){
             if(leadingObjectOnDrag){
                 movement.Drag(leadingObjectOnDrag.position);
@@ -37,13 +42,28 @@ public class SpellStateManager : MonoBehaviour
                 if(dragTimer<= 0){
                     player.TakeDamage(1,Vector2.zero);
                     isDragged = false;
-                    attack.SetCanAttack(true);
+                    attack.SetCanAttack(isDragged);
                 }
             } else {
                 dragTimer = 0.0f;
                 isDragged = false;
-                player.TakeDamage(1,Vector2.zero);
-                attack.SetCanAttack(true);
+                player.TakeDamage(10,Vector2.zero);
+                attack.SetCanAttack(!isDragged);
+            }
+        }
+    }
+
+    private void ShrinkCheck()
+    {
+        if (isShrinked)
+        {
+            shrinkTimer += Time.deltaTime;
+            if (shrinkTimer > 3)
+            {
+                isShrinked = false;
+                shrinkTimer = 0;
+                movement.SetCanFly(!isShrinked);
+                attack.SetCanAttack(!isShrinked);
             }
         }
     }
@@ -66,6 +86,8 @@ public class SpellStateManager : MonoBehaviour
         }
     }
 
+
+
     private void FreezeCheck()
     {
         if (isFreezed)
@@ -79,6 +101,7 @@ public class SpellStateManager : MonoBehaviour
             }
         }
     }
+
 
     public void Freeze(float freezeTime)
     {
@@ -112,5 +135,18 @@ public class SpellStateManager : MonoBehaviour
         dragTimer = duration;
         attack.SetCanAttack(false);
         movement.SetCanMove(false);
+    }
+
+    public void Shrink()
+    {
+        isShrinked = true;
+        movement.SetCanFly(false);
+        attack.SetCanAttack(false);
+    }
+
+    public void Hammerfall()
+    {
+        Shrink();
+        movement.FallFast(-300);
     }
 }

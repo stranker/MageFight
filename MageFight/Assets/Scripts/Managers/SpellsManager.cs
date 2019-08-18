@@ -15,10 +15,13 @@ public class SpellsManager : MonoBehaviour {
     private ParticleSystem.MainModule spellParticlesMain;
 
     void Start () {
-        PowerIcon[] pI = powerIcons.GetComponentsInChildren<PowerIcon>();
-        foreach(PowerIcon icon in pI){
-            icons.Add(icon);
+        if (powerIcons)
+        {
+            PowerIcon[] pI = powerIcons.GetComponentsInChildren<PowerIcon>();
+            foreach (PowerIcon icon in pI)
+                icons.Add(icon);
         }
+
         //spellParticlesMain = spellParticles.GetComponent<ParticleSystem>().main;
     }
 

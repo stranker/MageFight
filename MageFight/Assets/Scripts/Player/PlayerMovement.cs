@@ -58,12 +58,6 @@ public class PlayerMovement : MonoBehaviour {
             rigidBody.velocity = velocity;
             rigidBody.gravityScale = flying || attackBehavior.invoking ? 0 : initialGravityScale;
         }
-        else
-        {
-            velocity = Vector2.zero;
-            rigidBody.velocity = velocity;
-            rigidBody.gravityScale = 0;
-        }
     }
 
     private bool IsPlayerInvoking()
@@ -79,8 +73,7 @@ public class PlayerMovement : MonoBehaviour {
         velocity.x = (flying ? flyDirection.normalized.x * flyAccelerationIncrement * flySpeed : (GetKeyboardXAxis() + GetDPadXAxis()) * floorSpeed) * Time.deltaTime;
         velocity.y = flying ? flyDirection.normalized.y * flyAccelerationIncrement * flySpeed * Time.deltaTime : rigidBody.velocity.y;
         jumping = Input.GetButtonDown(input.jumpButton) && onFloor;
-        canFly = flyStamina > 0;
-        flying = GetFlyInput() && canFly;
+        flying = GetFlyInput() && flyStamina > 0 && canFly;
         FlyAccelerationCheck();
         FlyStaminaCheck();
         FacingDirectionCheck();
@@ -143,9 +136,25 @@ public class PlayerMovement : MonoBehaviour {
         visual.localScale = new Vector2(currentDirection, 1);
     }
 
-    public void SetCanMove(bool val)
+    public void SetCanMove(bool v)
     {
-        canMove = val;
+        canMove = v;
+        if (!canMove)
+        {
+            velocity = Vector2.zero;
+            rigidBody.velocity = velocity;
+            rigidBody.gravityScale = 0;
+        }
+    }
+
+    public void SetCanFly(bool v)
+    {
+        canFly = v;
+    }
+
+    public void FallFast(float v)
+    {
+        rigidBody.velocity = new Vector2(0,v);
     }
 
     private bool GetFlyInput()
