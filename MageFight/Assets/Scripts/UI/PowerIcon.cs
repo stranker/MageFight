@@ -11,11 +11,13 @@ public class PowerIcon : MonoBehaviour {
     private float cooldownTime;
     private bool onCooldown = false;
     private bool onTween = false;
+    private Animator anim;
 
 	void Awake(){
 		powerImage = GetComponent<Image>();
         circleSprite = transform.parent.GetComponent<Image>();
 		powerImage.enabled = false;
+        anim = GetComponent<Animator>();
 	}
 	public void SetSpell(Spell Spell){
 		SpriteRenderer sr = Spell.GetComponent<SpriteRenderer>();
@@ -48,16 +50,17 @@ public class PowerIcon : MonoBehaviour {
             timer += Time.deltaTime;
             powerImage.fillAmount = timer / cooldownTime;
             if (timer >= cooldownTime)
-            {
+            {                
                 onCooldown = false;
                 timer = 0;
                 powerImage.fillAmount = 1f;
                 onTween = true;
                 circleSprite.GetComponent<Transform>().localScale = new Vector2(1.5f, 1.5f);
+                anim.SetTrigger("isReady");
             }
         }
         if (onTween)
-        {
+        {            
             timer += Time.deltaTime;
             circleSprite.GetComponent<Transform>().localScale -= new Vector3(Time.deltaTime, Time.deltaTime);
             if (timer >= 0.5f)
