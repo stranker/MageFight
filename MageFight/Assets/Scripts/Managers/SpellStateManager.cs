@@ -42,13 +42,15 @@ public class SpellStateManager : MonoBehaviour
                 if(dragTimer<= 0){
                     player.TakeDamage(1,Vector2.zero);
                     isDragged = false;
-                    attack.SetCanAttack(isDragged);
+                    attack.SetCanAttack(true);
+                    movement.SetCanMove(true);
                 }
             } else {
                 dragTimer = 0.0f;
                 isDragged = false;
                 player.TakeDamage(10,Vector2.zero);
-                attack.SetCanAttack(!isDragged);
+                attack.SetCanAttack(true);
+                movement.SetCanMove(true);
             }
         }
     }

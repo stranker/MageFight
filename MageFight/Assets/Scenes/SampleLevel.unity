@@ -153,7 +153,7 @@ MonoBehaviour:
   - {fileID: 114261353051233270, guid: b2e51f936ff84c5478b7591a7dbadd57, type: 2}
   - {fileID: 114498289543415858, guid: 6a8fee6128ab04e4d9f5bd6a0913c971, type: 2}
   - {fileID: 114112406116683018, guid: 158e04fe046d54e4980043836dec623a, type: 2}
-  - {fileID: 0}
+  - {fileID: 114739452967932474, guid: de45edb107ecbfb40a0a62ef43a11a2a, type: 2}
   powerPickingPanel: {fileID: 1301308509}
   descriptionPanel: {fileID: 917135611}
   nameLabel: {fileID: 1806954575}
