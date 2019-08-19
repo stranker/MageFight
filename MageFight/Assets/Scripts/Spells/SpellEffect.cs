@@ -26,8 +26,11 @@ public class SpellEffect : MonoBehaviour {
         {
             SpellStateManager player = enemy.GetComponent<SpellStateManager>();
             SetEffectOnPlayer(player);
-            GameObject e = Instantiate(spriteEffect, enemy.transform.position + new Vector3(0,0.5f), Quaternion.identity, enemy.transform);
-            e.GetComponent<SpellEffectDestroyer>().SetTimer(duration);
+            if(spriteEffect)
+            {
+                GameObject e = Instantiate(spriteEffect, enemy.transform.position + new Vector3(0, 0.5f), Quaternion.identity, enemy.transform);
+                e.GetComponent<SpellEffectDestroyer>().SetTimer(duration);
+            }
         }
     }
 
