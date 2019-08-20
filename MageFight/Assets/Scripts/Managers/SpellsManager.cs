@@ -29,10 +29,14 @@ public class SpellsManager : MonoBehaviour {
         if(index < spells.Count){
             if (spells[index] && !spells[index].invoked)
             {
-                spells[index].InvokeSpell(startPosition, direction, owner);
+                if (spells.Count > 0)
+                {
+                    spells[index].InvokeSpell(startPosition, direction, owner);
+                }
                 //spellParticlesMain.startColor = spells[index].spellColor;
                 //spellParticles.Play();
-                icons[index].StartCooldown(spells[index].cooldown);
+                if (icons.Count > 0)
+                    icons[index].StartCooldown(spells[index].cooldown);
             }
         }
     }

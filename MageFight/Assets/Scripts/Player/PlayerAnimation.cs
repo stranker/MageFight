@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,5 +23,10 @@ public class PlayerAnimation : MonoBehaviour {
         anim.SetBool("InvokeSpell", attack.invoking);
         anim.SetBool("OnAir", !movement.onFloor);
         anim.SetBool("Shrinked", ssm.isShrinked);
+    }
+
+    public void ThrowSpell()
+    {
+        anim.SetTrigger("ThrowSpell");
     }
 }

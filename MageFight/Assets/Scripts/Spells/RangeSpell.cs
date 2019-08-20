@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class RangeSpell : Spell {
 
-    public float travelVelocity;
+    public float speed;
+    public float acceleration;
+    private float accelerationIncrement = 0;
+    private Vector2 velocity;
     protected Rigidbody2D rd;
 
     private void Start()
     {
         rd = GetComponent<Rigidbody2D>();
-        typeOfSpeel = SpellType.Range;
+    }
+
+    private void Update()
+    {
+        base.Update();
+        accelerationIncrement += Time.deltaTime * acceleration;
+        velocity = (speed + accelerationIncrement) * dir;
+        rd.velocity = velocity;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +47,8 @@ public class RangeSpell : Spell {
         mageOwner = owner;
         transform.position = startPos;
         dir = direction.normalized;
-        rd.velocity = travelVelocity * dir;
+        velocity = dir * speed;
+        accelerationIncrement = 0;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         timer = cooldown;

@@ -17,7 +17,7 @@ public class WindShuriken : RangeSpell
             if (onComeback)
             {
                 dir = (mageOwner.transform.position - transform.position).normalized;
-                rd.velocity = travelVelocity * dir;
+                rd.velocity = speed * dir;
                 if (Vector3.Distance(mageOwner.transform.position,transform.position)<1f)
                 {
                     Kill();

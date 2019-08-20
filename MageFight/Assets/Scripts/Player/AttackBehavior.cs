@@ -17,7 +17,7 @@ public class AttackBehavior : MonoBehaviour {
     public Transform handPos;
     public GameObject arrowSprite;
     public ParticleSystem invokeParticles;
-    public Animator anim;
+    public PlayerAnimation anim;
     private ParticleSystem.MainModule invokeParticlesMain;
     // Use this for initialization
 
@@ -60,7 +60,7 @@ public class AttackBehavior : MonoBehaviour {
             isHolding = false;
             spellManager.ThrowSpell(spellIndex, handPos.position, playerMovement.attackDirection, gameObject);
             invokeParticles.Stop();
-            anim.SetTrigger("ThrowSpell");
+            anim.ThrowSpell();
             canAttack = !canAttack;
         }
     }
