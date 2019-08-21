@@ -35,6 +35,9 @@ public class PlayerMovement : MonoBehaviour {
     public Transform visual;
     public ParticleSystem jumpParticles;
     private float allPurposeTimer;
+    private bool onPlayerRestoreHit = false;
+    private float playerRestoreOnHitTimer = 0;
+    public float playerRestoreOnHitTime;
 
     // Use this for initialization
     void Start () {
@@ -44,7 +47,22 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         GetInput();
+        CheckRestoreOnPlayerHit();
 	}
+
+    private void CheckRestoreOnPlayerHit()
+    {
+        if (onPlayerRestoreHit)
+        {
+            playerRestoreOnHitTimer += Time.deltaTime;
+            if (playerRestoreOnHitTimer >= playerRestoreOnHitTime)
+            {
+                playerRestoreOnHitTimer = 0;
+                onPlayerRestoreHit = false;
+                canMove = !onPlayerRestoreHit;
+            }
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -154,7 +172,9 @@ public class PlayerMovement : MonoBehaviour {
 
     public void FallFast(float v)
     {
+        canMove = false;
         rigidBody.velocity = new Vector2(0,v);
+        onPlayerRestoreHit = !canMove;
     }
 
     private bool GetFlyInput()
@@ -181,7 +201,6 @@ public class PlayerMovement : MonoBehaviour {
     {
         return Input.GetAxis(input.DPadY);
     }
-
 
     public void Knockback(Vector2 pos)
     {

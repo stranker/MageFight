@@ -222,12 +222,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed820bc51e0309a4588629a399e4fb78, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &114676569 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114472322982678124, guid: ed820bc51e0309a4588629a399e4fb78,
-    type: 2}
-  m_PrefabInternal: {fileID: 114676568}
-  m_Script: {fileID: 11500000, guid: af8904f024d9a1e43a98d17322398cd4, type: 3}
 --- !u!114 &141604644 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114837901144088624, guid: d4f71b467ae0ea445b9c978adb55f8d7,
@@ -571,6 +565,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114498289543415858, guid: 6a8fee6128ab04e4d9f5bd6a0913c971,
+        type: 2}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114498289543415858, guid: 6a8fee6128ab04e4d9f5bd6a0913c971,
+        type: 2}
+      propertyPath: acceleration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114498289543415858, guid: 6a8fee6128ab04e4d9f5bd6a0913c971,
+        type: 2}
+      propertyPath: spellName
+      value: BubbleBurst
+      objectReference: {fileID: 0}
+    - target: {fileID: 50716215767476828, guid: 6a8fee6128ab04e4d9f5bd6a0913c971,
+        type: 2}
+      propertyPath: m_GravityScale
+      value: -30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a8fee6128ab04e4d9f5bd6a0913c971, type: 2}
   m_IsPrefabAsset: 0
@@ -791,7 +805,7 @@ Prefab:
         type: 2}
       propertyPath: spells.Array.data[0]
       value: 
-      objectReference: {fileID: 114676569}
+      objectReference: {fileID: 1846341948}
     - target: {fileID: 114689177227851680, guid: d9a5f7e81a895004da3a18ff1c487c9c,
         type: 2}
       propertyPath: spells.Array.data[1]
@@ -827,6 +841,10 @@ Prefab:
       propertyPath: anim
       value: 
       objectReference: {fileID: 860140543}
+    - target: {fileID: 4627011466367584, guid: d9a5f7e81a895004da3a18ff1c487c9c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9a5f7e81a895004da3a18ff1c487c9c, type: 2}
   m_IsPrefabAsset: 0

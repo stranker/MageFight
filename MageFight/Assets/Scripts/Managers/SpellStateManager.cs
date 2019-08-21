@@ -149,6 +149,6 @@ public class SpellStateManager : MonoBehaviour
     public void Hammerfall()
     {
         Shrink();
-        movement.FallFast(-300);
+        movement.FallFast(-200);
     }
 }

@@ -18,9 +18,10 @@ public class RangeSpell : Spell {
     private void Update()
     {
         base.Update();
-        accelerationIncrement += Time.deltaTime * acceleration;
-        velocity = (speed + accelerationIncrement) * dir;
-        rd.velocity = velocity;
+        if (invoked)
+            SpellMovement();
+        else
+            StopSpell();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -41,6 +42,20 @@ public class RangeSpell : Spell {
         }
     }
 
+    public void SpellMovement()
+    {
+        accelerationIncrement += Time.deltaTime * acceleration;
+        velocity = (speed + accelerationIncrement) * dir;
+        rd.velocity = velocity;
+    }
+
+    public void StopSpell()
+    {
+        velocity = Vector2.zero;
+        rd.velocity = velocity;
+        accelerationIncrement = 0;
+    }
+
     public override void InvokeSpell(Vector3 startPos, Vector3 direction, GameObject owner)
     {
         invoked = true;
@@ -48,7 +63,6 @@ public class RangeSpell : Spell {
         transform.position = startPos;
         dir = direction.normalized;
         velocity = dir * speed;
-        accelerationIncrement = 0;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         timer = cooldown;

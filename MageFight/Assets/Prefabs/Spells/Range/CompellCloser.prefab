@@ -114,7 +114,8 @@ MonoBehaviour:
     type: 2}
   spellColor: {r: 0.13843894, g: 0.21919411, b: 0.5754717, a: 0}
   hasSecondAttack: 0
-  travelVelocity: 30
+  speed: 20
+  acceleration: 10
 --- !u!114 &114591939719611182
 MonoBehaviour:
   m_ObjectHideFlags: 1
