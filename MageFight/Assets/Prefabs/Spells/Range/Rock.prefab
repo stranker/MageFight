@@ -108,6 +108,7 @@ MonoBehaviour:
   diff: 0
   mageOwner: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b, type: 2}
   typeOfSpeel: 1
+  knockbackForce: {x: 10, y: 0}
   invoked: 0
   timer: 0
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,

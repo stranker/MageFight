@@ -68,8 +68,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1433513977834654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.38, y: 0.14, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -999, y: -999, z: 0}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 4128271659033948}
   m_Father: {fileID: 0}
@@ -157,6 +157,7 @@ MonoBehaviour:
   diff: 0
   mageOwner: {fileID: 0}
   typeOfSpeel: 0
+  knockbackForce: {x: 0, y: 0}
   invoked: 0
   timer: 0
   particlesExplosion: {fileID: 0}
@@ -182,6 +183,7 @@ MonoBehaviour:
   diff: 2
   mageOwner: {fileID: 0}
   typeOfSpeel: 0
+  knockbackForce: {x: 100, y: 1000}
   invoked: 0
   timer: 0
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
@@ -202,7 +204,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 3
   type: 7
-  spriteEffect: {fileID: 0}
+  spriteEffect: {fileID: 1085410109743728, guid: e6db85a1656dfa74d909d7a5027fef4d,
+    type: 2}
 --- !u!212 &212896765104725968
 SpriteRenderer:
   m_ObjectHideFlags: 1

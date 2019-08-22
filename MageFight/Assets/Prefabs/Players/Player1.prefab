@@ -206,6 +206,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1570307744608256
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4212402081448692}
+  m_Layer: 0
+  m_Name: SpellPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1604803464915130
 GameObject:
   m_ObjectHideFlags: 1
@@ -295,6 +310,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4212402081448692
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1570307744608256}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4440719268591132}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4273229490128428
 Transform:
   m_ObjectHideFlags: 1
@@ -356,7 +384,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.454, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4212402081448692}
   m_Father: {fileID: 4627011466367584}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -367,7 +396,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1628321354725430}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.38, y: -0.4, z: -3.1000721}
+  m_LocalPosition: {x: -2.22, y: -0.8, z: -3.1000721}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4895257390716980}
@@ -830,10 +859,11 @@ MonoBehaviour:
   isHolding: 0
   invoking: 0
   timeAfterAttack: 2
-  handPos: {fileID: 4440719268591132}
+  handPos: {fileID: 4212402081448692}
   arrowSprite: {fileID: 1104045794265576}
   invokeParticles: {fileID: 198161005211716228}
-  anim: {fileID: 95861296480187826}
+  anim: {fileID: 114533487064889746}
+  spellIndex: -1
 --- !u!114 &114264186750094604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -911,6 +941,7 @@ MonoBehaviour:
     m_Bits: 256
   visual: {fileID: 4862073991509136}
   jumpParticles: {fileID: 198616645388887972}
+  playerRestoreOnHitTime: 0
 --- !u!114 &114689177227851680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -922,7 +953,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14aaa0004897a5d48b77288785e71cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spells: []
+  spells:
+  - {fileID: 0}
+  - {fileID: 0}
   spellIndexToReplace: 0
   powerIcons: {fileID: 0}
   spellParticles: {fileID: 0}
@@ -937,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8049b95f63ca44a873eea08a190333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 1
+  playerName: 0
   health: 100
   maxHealth: 100
   isAlive: 1

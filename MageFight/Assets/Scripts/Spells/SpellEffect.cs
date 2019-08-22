@@ -82,6 +82,8 @@ public class SpellEffect : MonoBehaviour {
                 return "The target will be pushed away from the caster";
             case EffectType.Stun:
                 return "The target will be stunned";
+            case EffectType.Hammer:
+                return "The target will be shrinked";
             case EffectType.Pull:
                 return "The target will be pulled towards the caster";
             case EffectType.Throw:

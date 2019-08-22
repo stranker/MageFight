@@ -59,7 +59,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: -30
+  m_GravityScale: -5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -127,13 +127,14 @@ MonoBehaviour:
   diff: 3
   mageOwner: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b, type: 2}
   typeOfSpeel: 1
+  knockbackForce: {x: 0, y: 0}
   invoked: 0
   timer: 0
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
     type: 2}
   spellColor: {r: 0.4764151, g: 0.9530193, b: 1, a: 0}
   hasSecondAttack: 0
-  speed: 10
+  speed: 5
   acceleration: 2
 --- !u!114 &114989799662309170
 MonoBehaviour:

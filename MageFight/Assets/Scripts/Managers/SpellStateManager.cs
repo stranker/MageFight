@@ -63,6 +63,7 @@ public class SpellStateManager : MonoBehaviour
             if (shrinkTimer > 3)
             {
                 isShrinked = false;
+                playerAnim.SetTrigger("Unshrink");
                 shrinkTimer = 0;
                 movement.SetCanFly(!isShrinked);
                 attack.SetCanAttack(!isShrinked);
@@ -144,11 +145,11 @@ public class SpellStateManager : MonoBehaviour
         isShrinked = true;
         movement.SetCanFly(false);
         attack.SetCanAttack(false);
+        playerAnim.SetTrigger("Shrinked");
     }
 
     public void Hammerfall()
     {
         Shrink();
-        movement.FallFast(-200);
     }
 }

@@ -19,6 +19,7 @@ public class AttackBehavior : MonoBehaviour {
     public ParticleSystem invokeParticles;
     public PlayerAnimation anim;
     private ParticleSystem.MainModule invokeParticlesMain;
+    public int spellIndex = -1;
     // Use this for initialization
 
     void Start () {
@@ -53,16 +54,21 @@ public class AttackBehavior : MonoBehaviour {
         GetSpellsInputs(input.thirdSkillButton, 2);
     }
 
-    private void ThrowSpell(int spellIndex)
+    private void ThrowSpell(int _spellIndex)
     {
         if (canAttack)
         {
             isHolding = false;
-            spellManager.ThrowSpell(spellIndex, handPos.position, playerMovement.attackDirection, gameObject);
+            spellIndex = _spellIndex;
+            anim.PlaySpellAnim(spellManager.GetSpellByIdx(spellIndex));
             invokeParticles.Stop();
-            anim.ThrowSpell();
             canAttack = !canAttack;
         }
+    }
+
+    public void SpawnSpell()
+    {
+        spellManager.ThrowSpell(spellIndex, handPos.position, playerMovement.attackDirection, gameObject);
     }
 
     private void InvokeSpell(int spellIndex)

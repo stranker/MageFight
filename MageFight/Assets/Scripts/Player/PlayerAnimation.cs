@@ -22,11 +22,63 @@ public class PlayerAnimation : MonoBehaviour {
         anim.SetFloat("VelocityY", movement.velocity.y);
         anim.SetBool("InvokeSpell", attack.invoking);
         anim.SetBool("OnAir", !movement.onFloor);
-        anim.SetBool("Shrinked", ssm.isShrinked);
     }
 
-    public void ThrowSpell()
+    public void ThrowPunch()
     {
-        anim.SetTrigger("ThrowSpell");
+        anim.SetTrigger("ThrowPunch");
+    }
+
+    public void ThrowWhip()
+    {
+        anim.SetTrigger("ThrowWhip");
+    }
+
+    public void PlayRangeSpellAnim()
+    {
+        anim.SetTrigger("RangeSpell");
+    }
+
+    public void PlayMeleeAnim(MeleeSpell.MeleeType type)
+    {
+        switch (type)
+        {
+            case MeleeSpell.MeleeType.Punch:
+                ThrowPunch();
+                break;
+            case MeleeSpell.MeleeType.Whip:
+                ThrowWhip();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void SpawnSpell()
+    {
+        attack.SpawnSpell();
+    }
+
+    public void SetMageMotion(int i)
+    {
+        movement.SetMotion(i);
+    }
+
+    public void PlaySpellAnim(Spell spell)
+    {
+        switch (spell.typeOfSpeel)
+        {
+            case Spell.SpellType.Melee:
+                MeleeSpell melee = (MeleeSpell)spell;
+                PlayMeleeAnim(melee.type);
+                break;
+            case Spell.SpellType.Range:
+                PlayRangeSpellAnim();
+                break;
+            case Spell.SpellType.Utility:
+                break;
+            default:
+                break;
+        }
     }
 }

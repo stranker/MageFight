@@ -40,9 +40,10 @@ public class SpellsManager : MonoBehaviour {
             }
         }
     }
-    public Spell.CastType GetSpellCastType(int index)
+
+    public Spell GetSpellByIdx(int idx)
     {
-        return spells[index].GetCastType();
+        return spells[idx];
     }
 
     public void AddSpell(Spell spell){
@@ -78,6 +79,11 @@ public class SpellsManager : MonoBehaviour {
 
     public bool FullSpellInventory(){
         return spells.Count == amountOfSpells;
+    }
+
+    public Spell.CastType GetSpellCastType(int spellIndex)
+    {
+        return spells[spellIndex].GetCastType();
     }
 
     public void Reset(){

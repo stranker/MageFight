@@ -13,10 +13,7 @@ public class MeleeSpell : Spell {
 	}
 	public MeleeType type;
 
-    private void Start()
-    {
-        typeOfSpeel = SpellType.Melee;
-    }
+    public MeleeType GetMeleeType() { return type; }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,11 +22,11 @@ public class MeleeSpell : Spell {
             canHit = false;
             PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
             player.TakeDamage(damage, transform.position);
+            player.GetComponent<PlayerMovement>().KnockOut(transform, knockbackForce);
             CheckHasEffect(player);
             MakeExplosion();
         }
     }
-
 
     public override void InvokeSpell(Vector3 startPos, Vector3 direction, GameObject owner)
     {

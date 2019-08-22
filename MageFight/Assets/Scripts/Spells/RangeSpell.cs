@@ -30,6 +30,7 @@ public class RangeSpell : Spell {
         {
             PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
             player.TakeDamage(damage,transform.position);
+            player.GetComponent<PlayerMovement>().KnockOut(transform, knockbackForce);
             CheckHasEffect(player);
             MakeExplosion();
             Kill();

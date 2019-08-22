@@ -35,6 +35,7 @@ public abstract class Spell : MonoBehaviour {
     public Difficulty diff;
     public GameObject mageOwner;
     public SpellType typeOfSpeel;
+    public Vector2 knockbackForce;
 
     public bool invoked = false;
     protected Vector3 dir;
@@ -42,6 +43,7 @@ public abstract class Spell : MonoBehaviour {
 
     public abstract void InvokeSpell(Vector3 startPos, Vector3 direction, GameObject owner);
     public CastType GetCastType() { return castType; }
+    public SpellType GetSpellType() { return typeOfSpeel; }
 
     public GameObject particlesExplosion;
     public Color spellColor;
@@ -80,17 +82,17 @@ public abstract class Spell : MonoBehaviour {
         Instantiate(particlesExplosion, transform.position, Quaternion.identity, transform.parent);
     }
 
-    internal bool HasSecondAttack()
+    public bool HasSecondAttack()
     {
         return hasSecondAttack;
     }
 
-    internal void SecondAttack()
+    public void SecondAttack()
     {
         throw new NotImplementedException();
     }
 
-    internal string GetSpellType()
+    public string GetSpellTypeString()
     {
         switch (typeOfSpeel)
         {
@@ -105,7 +107,7 @@ public abstract class Spell : MonoBehaviour {
         }
     }
 
-    public string GetSpellCastType()
+    public string GetSpellCastTypeString()
     {
         switch (castType)
         {

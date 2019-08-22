@@ -50,6 +50,18 @@ public class PlayerMovement : MonoBehaviour {
         CheckRestoreOnPlayerHit();
 	}
 
+    public void SetMotion(int i)
+    {
+        if (i == 0) // No puedo moverme
+        {
+            SetCanMove(false);
+        }
+        else if(i == 1)
+        {
+            SetCanMove(true);
+        }
+    }
+
     private void CheckRestoreOnPlayerHit()
     {
         if (onPlayerRestoreHit)
@@ -168,6 +180,14 @@ public class PlayerMovement : MonoBehaviour {
     public void SetCanFly(bool v)
     {
         canFly = v;
+    }
+
+    public void KnockOut(Transform inDirection, Vector2 knockForce)
+    {
+        canMove = false;
+        Vector2 oppositeDir = (transform.position - inDirection.position).normalized;
+        rigidBody.velocity = oppositeDir * new Vector2(knockForce.x, knockForce.y);
+        onPlayerRestoreHit = !canMove;
     }
 
     public void FallFast(float v)

@@ -148,8 +148,8 @@ public class UIManager : MonoBehaviour {
         nameText.text = spell.spellName;
         dmgText.text = spell.damage.ToString();
         cdText.text = spell.cooldown.ToString();
-        ctText.text = spell.GetSpellCastType();
-        typeText.text = spell.GetSpellType();
+        ctText.text = spell.GetSpellCastTypeString();
+        typeText.text = spell.GetSpellTypeString();
         effText.text = spell.GetEffect();
         spellDifficulty.text = spell.GetDifficulty();
         switch (spell.diff)
