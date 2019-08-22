@@ -89,8 +89,6 @@ public class SpellStateManager : MonoBehaviour
         }
     }
 
-
-
     private void FreezeCheck()
     {
         if (isFreezed)

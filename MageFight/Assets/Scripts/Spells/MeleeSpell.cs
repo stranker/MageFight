@@ -5,8 +5,9 @@ using UnityEngine;
 public class MeleeSpell : Spell {
 
     private bool canHit = true;
+    public Vector2 knockDir;
 
-	public enum MeleeType 
+    public enum MeleeType 
 	{
 		Punch,
 		Whip
@@ -22,7 +23,7 @@ public class MeleeSpell : Spell {
             canHit = false;
             PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
             player.TakeDamage(damage, transform.position);
-            player.GetComponent<PlayerMovement>().KnockOut(transform, knockbackForce);
+            player.GetComponent<PlayerMovement>().KnockOut(knockDir, knockbackForce);
             CheckHasEffect(player);
             MakeExplosion();
         }

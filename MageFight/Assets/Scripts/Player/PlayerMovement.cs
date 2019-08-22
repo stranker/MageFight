@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour {
     public bool jumping;
     public bool canFly = true;
     public bool flying;
+    public bool knockback = false;
     public float flyStamina;
     public float flyMaxStamina;
     public float flyConsumption;
@@ -66,13 +67,14 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (onPlayerRestoreHit)
         {
-            playerRestoreOnHitTimer += Time.deltaTime;
-            if (playerRestoreOnHitTimer >= playerRestoreOnHitTime)
-            {
-                playerRestoreOnHitTimer = 0;
-                onPlayerRestoreHit = false;
-                canMove = !onPlayerRestoreHit;
-            }
+            //playerRestoreOnHitTimer += Time.deltaTime;
+            //if (playerRestoreOnHitTimer >= playerRestoreOnHitTime)
+            //{
+            //    playerRestoreOnHitTimer = 0;
+            //    onPlayerRestoreHit = false;
+            //    knockback = false;
+            //    canMove = !onPlayerRestoreHit;
+            //}
         }
     }
 
@@ -182,12 +184,12 @@ public class PlayerMovement : MonoBehaviour {
         canFly = v;
     }
 
-    public void KnockOut(Transform inDirection, Vector2 knockForce)
+    public void KnockOut(Vector2 dir, Vector2 knockForce)
     {
-        canMove = false;
-        Vector2 oppositeDir = (transform.position - inDirection.position).normalized;
-        rigidBody.velocity = oppositeDir * new Vector2(knockForce.x, knockForce.y);
-        onPlayerRestoreHit = !canMove;
+        //canMove = false;
+        //knockback = true;
+        //rigidBody.velocity = dir * new Vector2(knockForce.x, knockForce.y);
+        //onPlayerRestoreHit = !canMove;
     }
 
     public void FallFast(float v)

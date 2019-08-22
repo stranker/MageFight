@@ -26,7 +26,6 @@ public class PlayerBehavior : MonoBehaviour {
         if (isAlive)
         {
             health -= val;
-			//GetComponent<MovementBehavior>().Knockback(position);
             StopCoroutine("FlickerEffect");
             StartCoroutine("FlickerEffect");
             if (health <= 0)
@@ -113,7 +112,7 @@ public class PlayerBehavior : MonoBehaviour {
         spellsManager.AddSpell(s);
     }
 
-    public bool fullSpellInventory(){
+    public bool FullSpellInventory(){
         return spellsManager.FullSpellInventory();
     }
 

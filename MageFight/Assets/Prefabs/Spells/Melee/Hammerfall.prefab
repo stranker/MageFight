@@ -163,6 +163,7 @@ MonoBehaviour:
   particlesExplosion: {fileID: 0}
   spellColor: {r: 0, g: 0, b: 0, a: 0}
   hasSecondAttack: 0
+  knockDir: {x: 0, y: 0}
   type: 1
 --- !u!114 &114739452967932474
 MonoBehaviour:
@@ -183,13 +184,14 @@ MonoBehaviour:
   diff: 2
   mageOwner: {fileID: 0}
   typeOfSpeel: 0
-  knockbackForce: {x: 100, y: 1000}
+  knockbackForce: {x: 0, y: 60}
   invoked: 0
   timer: 0
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
     type: 2}
   spellColor: {r: 0.3647059, g: 0.15294118, b: 0.37647063, a: 1}
   hasSecondAttack: 0
+  knockDir: {x: 0, y: -1}
   type: 1
 --- !u!114 &114926516969530782
 MonoBehaviour:
