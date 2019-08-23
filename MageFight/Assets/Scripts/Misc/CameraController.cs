@@ -17,6 +17,7 @@ public class CameraController : MonoBehaviour
     private new Camera camera;
     public float offsetYCamera = 2f;
     public float minCameraSize = 8f;
+    public float maxCameraSize = 14f;
 
     public AnimationCurve deathCurve;
     private float deathTimer;
@@ -60,9 +61,13 @@ public class CameraController : MonoBehaviour
             Vector3 positionAverage = positionsSum / playerList.Length;
             float playerDistance = Vector3.Distance(playerList[0].position, playerList[1].position);
             camera.orthographicSize = minCameraSize + playerDistance * 0.2f;
+            camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minCameraSize, maxCameraSize);
             positionAverage.y += offsetYCamera;
             positionAverage.z = -10;
-            transform.position = positionAverage;
+            if (camera.orthographicSize != maxCameraSize)
+            {
+                transform.position = positionAverage;
+            }
         }
     }
     public void MoveTowards(Transform _target)

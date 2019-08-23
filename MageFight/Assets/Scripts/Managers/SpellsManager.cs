@@ -25,6 +25,17 @@ public class SpellsManager : MonoBehaviour {
         //spellParticlesMain = spellParticles.GetComponent<ParticleSystem>().main;
     }
 
+    internal void CancelSpells()
+    {
+        if (spells.Count > 0)
+        {
+            foreach (Spell sp in spells)
+            {
+                sp.Kill();
+            }
+        }
+    }
+
     public void ThrowSpell(int index, Vector3 startPosition, Vector3 direction, GameObject owner) {
         if(index < spells.Count){
             if (spells[index] && !spells[index].invoked)

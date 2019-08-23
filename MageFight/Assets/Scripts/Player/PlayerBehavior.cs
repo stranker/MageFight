@@ -28,6 +28,7 @@ public class PlayerBehavior : MonoBehaviour {
             health -= val;
             StopCoroutine("FlickerEffect");
             StartCoroutine("FlickerEffect");
+            spellsManager.CancelSpells();
             if (health <= 0)
             {
                 isAlive = !isAlive;

@@ -12,12 +12,12 @@ public class PlayerMovement : MonoBehaviour {
     private float flyAccelerationIncrement = 1;
     public float initialGravityScale;
     public bool canMove = true;
+    public bool stuned = false;
     public bool onFloor;
     public RaycastHit2D LeftFootRaycast;
     public RaycastHit2D RightFootRaycast;
     public int currentDirection = 1;
     public bool canJump = true;
-    public bool jumping;
     public bool canFly = true;
     public bool flying;
     public bool knockback = false;
@@ -48,8 +48,14 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         GetInput();
+        GeneralMovement();
         CheckRestoreOnPlayerHit();
 	}
+
+    private void CheckStun()
+    {
+        throw new NotImplementedException();
+    }
 
     public void SetMotion(int i)
     {
@@ -67,29 +73,30 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (onPlayerRestoreHit)
         {
-            //playerRestoreOnHitTimer += Time.deltaTime;
-            //if (playerRestoreOnHitTimer >= playerRestoreOnHitTime)
-            //{
-            //    playerRestoreOnHitTimer = 0;
-            //    onPlayerRestoreHit = false;
-            //    knockback = false;
-            //    canMove = !onPlayerRestoreHit;
-            //}
+            playerRestoreOnHitTimer += Time.deltaTime;
+            if (playerRestoreOnHitTimer >= playerRestoreOnHitTime)
+            {
+                playerRestoreOnHitTimer = 0;
+                onPlayerRestoreHit = false;
+                canMove = !onPlayerRestoreHit;
+            }
         }
-    }
-
-    private void FixedUpdate()
-    {
-        GeneralMovement();
     }
 
     private void GeneralMovement()
     {
-        if (canMove && !IsPlayerInvoking())
-        {
-            rigidBody.velocity = velocity;
-            rigidBody.gravityScale = flying || attackBehavior.invoking ? 0 : initialGravityScale;
-        }
+        RightFootRaycast = Physics2D.Raycast(rightFoot.transform.position, Vector2.down, 1.1f, floorLayer);
+        LeftFootRaycast = Physics2D.Raycast(leftFoot.transform.position, Vector2.down, 1.1f, floorLayer);
+        onFloor = RightFootRaycast || LeftFootRaycast;
+        canJump = onFloor;
+        FlyAccelerationCheck();
+        FlyStaminaCheck();
+        GetAimDirection();
+        JumpCheck();
+        if (!onPlayerRestoreHit && !stuned)
+            rigidBody.velocity = canMove && !IsPlayerInvoking() ? velocity : Vector2.zero;
+        FacingDirectionCheck();
+        rigidBody.gravityScale = flying || attackBehavior.invoking ? 0 : initialGravityScale;
     }
 
     private bool IsPlayerInvoking()
@@ -99,18 +106,9 @@ public class PlayerMovement : MonoBehaviour {
 
     private void GetInput()
     {
-        RightFootRaycast = Physics2D.Raycast(rightFoot.transform.position, Vector2.down, 1.1f, floorLayer);
-        LeftFootRaycast = Physics2D.Raycast(leftFoot.transform.position, Vector2.down, 1.1f, floorLayer);
-        onFloor = RightFootRaycast || LeftFootRaycast;
-        velocity.x = (flying ? flyDirection.normalized.x * flyAccelerationIncrement * flySpeed : (GetKeyboardXAxis() + GetDPadXAxis()) * floorSpeed) * Time.deltaTime;
-        velocity.y = flying ? flyDirection.normalized.y * flyAccelerationIncrement * flySpeed * Time.deltaTime : rigidBody.velocity.y;
-        jumping = Input.GetButtonDown(input.jumpButton) && onFloor;
         flying = GetFlyInput() && flyStamina > 0 && canFly;
-        FlyAccelerationCheck();
-        FlyStaminaCheck();
-        FacingDirectionCheck();
-        JumpCheck();
-        GetAimDirection();
+        velocity.x = flying ? flyDirection.normalized.x * flyAccelerationIncrement * flySpeed * Time.deltaTime : (GetKeyboardXAxis() + GetDPadXAxis()) * floorSpeed * Time.deltaTime;
+        velocity.y = flying ? flyDirection.normalized.y * flyAccelerationIncrement * flySpeed * Time.deltaTime : rigidBody.velocity.y;
     }
 
     private void FlyStaminaCheck()
@@ -151,8 +149,9 @@ public class PlayerMovement : MonoBehaviour {
 
     private void JumpCheck()
     {
-        if (jumping && canJump)
+        if (GetJumpInput() && onFloor && canJump)
         {
+            canJump = false;
             velocity.y = jumpSpeed;
             jumpParticles.Play();
         }
@@ -160,12 +159,15 @@ public class PlayerMovement : MonoBehaviour {
 
     private void FacingDirectionCheck()
     {
-        float xDir = GetKeyboardXAxis() + GetDPadXAxis();
-        if (xDir < -0.1f)
-            currentDirection = -1;
-        else if (xDir > 0.1f)
-            currentDirection = 1;
-        visual.localScale = new Vector2(currentDirection, 1);
+        if (canMove)
+        {
+            float xDir = GetKeyboardXAxis() + GetDPadXAxis();
+            if (xDir < -0.1f)
+                currentDirection = -1;
+            else if (xDir > 0.1f)
+                currentDirection = 1;
+            visual.localScale = new Vector2(currentDirection, 1);
+        }
     }
 
     public void SetCanMove(bool v)
@@ -186,17 +188,14 @@ public class PlayerMovement : MonoBehaviour {
 
     public void KnockOut(Vector2 dir, Vector2 knockForce)
     {
-        //canMove = false;
-        //knockback = true;
-        //rigidBody.velocity = dir * new Vector2(knockForce.x, knockForce.y);
-        //onPlayerRestoreHit = !canMove;
+        canMove = false;
+        rigidBody.velocity = dir * new Vector2(knockForce.x, knockForce.y);
+        onPlayerRestoreHit = !canMove;
     }
 
-    public void FallFast(float v)
+    private bool GetJumpInput()
     {
-        canMove = false;
-        rigidBody.velocity = new Vector2(0,v);
-        onPlayerRestoreHit = !canMove;
+        return Input.GetButtonDown(input.jumpButton);
     }
 
     private bool GetFlyInput()
