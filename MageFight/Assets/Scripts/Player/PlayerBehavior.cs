@@ -9,16 +9,15 @@ public class PlayerBehavior : MonoBehaviour {
     public int health;
     public int maxHealth;
     public bool isAlive = true;
-    public Transform headPos;
     public ParticleSystem deathParticles;
     private int playerID;
     public int winCount;
-    private SpellsManager spellsManager;
+    public SpellsManager spellsManager;
+    public PlayerAnimation pAnim;
     public Color playerColor;
 
     private void Awake(){
         winCount = 0;
-        spellsManager = GetComponent<SpellsManager>();
     }
 
     public void TakeDamage(int val, Vector2 position)
@@ -28,7 +27,8 @@ public class PlayerBehavior : MonoBehaviour {
             health -= val;
             StopCoroutine("FlickerEffect");
             StartCoroutine("FlickerEffect");
-            spellsManager.CancelSpells();
+            spellsManager.CancelMeleeSpells();
+            pAnim.ReceiveHit();
             if (health <= 0)
             {
                 isAlive = !isAlive;

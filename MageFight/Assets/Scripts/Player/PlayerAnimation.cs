@@ -22,6 +22,7 @@ public class PlayerAnimation : MonoBehaviour {
         anim.SetFloat("VelocityY", movement.velocity.y);
         anim.SetBool("InvokeSpell", attack.invoking);
         anim.SetBool("OnAir", !movement.onFloor);
+        anim.SetBool("Shrinked", ssm.isShrinked);
     }
 
     public void ThrowPunch()
@@ -37,6 +38,11 @@ public class PlayerAnimation : MonoBehaviour {
     public void PlayRangeSpellAnim()
     {
         anim.SetTrigger("RangeSpell");
+    }
+
+    public void ReceiveHit()
+    {
+        anim.SetTrigger("ReceiveHit");
     }
 
     public void PlayMeleeAnim(MeleeSpell.MeleeType type)
@@ -80,5 +86,10 @@ public class PlayerAnimation : MonoBehaviour {
             default:
                 break;
         }
+    }
+
+    public void Shrink()
+    {
+        anim.SetTrigger("Shrink");
     }
 }
