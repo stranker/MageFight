@@ -721,11 +721,6 @@ Prefab:
       propertyPath: spells.Array.data[1]
       value: 
       objectReference: {fileID: 43916008}
-    - target: {fileID: 114297562502344934, guid: d4f71b467ae0ea445b9c978adb55f8d7,
-        type: 2}
-      propertyPath: flyParticles
-      value: 
-      objectReference: {fileID: 1885029387}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4f71b467ae0ea445b9c978adb55f8d7, type: 2}
   m_IsPrefabAsset: 0
@@ -914,8 +909,3 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1159204232}
   m_Script: {fileID: 11500000, guid: af8904f024d9a1e43a98d17322398cd4, type: 3}
---- !u!198 &1885029387 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198090844564737088, guid: d4f71b467ae0ea445b9c978adb55f8d7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1302219626}

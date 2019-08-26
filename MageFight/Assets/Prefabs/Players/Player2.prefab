@@ -512,7 +512,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1899297724298984}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.6199999, y: 0.79999995, z: 0}
+  m_LocalPosition: {x: 4.28, y: 0.79999995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4216316750180978}
@@ -705,7 +705,7 @@ MonoBehaviour:
     m_Bits: 256
   visual: {fileID: 4191812891824476}
   jumpParticles: {fileID: 198068462350911012}
-  flyParticles: {fileID: 0}
+  flyParticles: {fileID: 198090844564737088}
   playerRestoreOnHitTime: 1
 --- !u!114 &114495054791587162
 MonoBehaviour:
