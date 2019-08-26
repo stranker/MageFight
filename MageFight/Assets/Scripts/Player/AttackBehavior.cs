@@ -11,6 +11,7 @@ public class AttackBehavior : MonoBehaviour {
     public InputManager input;
     public bool canAttack = true;
     public bool isHolding = false;
+    public bool aiming = false;
     public bool invoking;
     public float timeAfterAttack;
     private float timerAfterAttack;
@@ -20,6 +21,7 @@ public class AttackBehavior : MonoBehaviour {
     public PlayerAnimation anim;
     private ParticleSystem.MainModule invokeParticlesMain;
     public int spellIndex = -1;
+    public Vector2 spellDir = Vector2.zero;
     // Use this for initialization
 
     void Start () {
@@ -30,6 +32,14 @@ public class AttackBehavior : MonoBehaviour {
     void Update () {
         GetInput();
         CanAttackCheck();
+        UpdateSpellDir();
+        UpdateArrow();
+    }
+
+    private void UpdateArrow()
+    {
+        float arrowAngle = Mathf.Atan2(spellDir.y, spellDir.x) * Mathf.Rad2Deg;
+        arrowSprite.transform.rotation = Quaternion.Euler(0, 0, arrowAngle);
     }
 
     private void CanAttackCheck()
@@ -47,8 +57,7 @@ public class AttackBehavior : MonoBehaviour {
 
     private void GetInput()
     {
-        float arrowAngle = Mathf.Atan2(playerMovement.attackDirection.y, playerMovement.attackDirection.x) * Mathf.Rad2Deg;
-        arrowSprite.transform.rotation = Quaternion.Euler(0,0,arrowAngle);
+
         GetSpellsInputs(input.firstSkillButton, 0);
         GetSpellsInputs(input.secondSkillButton, 1);
         GetSpellsInputs(input.thirdSkillButton, 2);
@@ -68,7 +77,8 @@ public class AttackBehavior : MonoBehaviour {
 
     public void SpawnSpell()
     {
-        spellManager.ThrowSpell(spellIndex, handPos.position, playerMovement.attackDirection, gameObject);
+        spellManager.ThrowSpell(spellIndex, handPos.position, spellDir, gameObject);
+        spellDir = Vector2.zero;
     }
 
     private void InvokeSpell(int spellIndex)
@@ -80,6 +90,17 @@ public class AttackBehavior : MonoBehaviour {
             invokeParticles.Play();
         }
     }
+
+    private void UpdateSpellDir()
+    {
+        if (isHolding)
+        {
+            aiming = playerMovement.aimDirection != Vector2.zero;
+            if (aiming)
+                spellDir = playerMovement.aimDirection;
+        }
+    }
+
     private void GetSpellsInputs(String input,int spellIndex)
     {
         if(Input.GetButtonDown(input) && spellManager.CanInvokeSpell(spellIndex))

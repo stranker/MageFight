@@ -25,8 +25,7 @@ public class PlayerMovement : MonoBehaviour {
     public float flyMaxStamina;
     public float flyConsumption;
     public Vector2 velocity;
-    public Vector2 flyDirection;
-    public Vector2 attackDirection;
+    public Vector2 aimDirection;
     public InputManager input;
     public AttackBehavior attackBehavior;
     public Rigidbody2D rigidBody;
@@ -107,8 +106,8 @@ public class PlayerMovement : MonoBehaviour {
     private void GetInput()
     {
         flying = GetFlyInput() && flyStamina > 0 && canFly;
-        velocity.x = flying ? flyDirection.normalized.x * flyAccelerationIncrement * flySpeed * Time.deltaTime : (GetKeyboardXAxis() + GetDPadXAxis()) * floorSpeed * Time.deltaTime;
-        velocity.y = flying ? flyDirection.normalized.y * flyAccelerationIncrement * flySpeed * Time.deltaTime : rigidBody.velocity.y;
+        velocity.x = flying ? aimDirection.normalized.x * flyAccelerationIncrement * flySpeed * Time.deltaTime : (GetKeyboardXAxis() + GetDPadXAxis()) * floorSpeed * Time.deltaTime;
+        velocity.y = flying ? aimDirection.normalized.y * flyAccelerationIncrement * flySpeed * Time.deltaTime : rigidBody.velocity.y;
     }
 
     private void FlyStaminaCheck()
@@ -143,8 +142,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         int yDir = (int)GetKeyboardYAxis() + (int)GetDPadYAxis();
         int xDir = (int)GetKeyboardXAxis() + (int)GetDPadXAxis();
-        flyDirection = new Vector2(xDir, yDir);
-        attackDirection = new Vector2(currentDirection, yDir);
+        aimDirection = new Vector2(xDir, yDir);
     }
 
     private void JumpCheck()
