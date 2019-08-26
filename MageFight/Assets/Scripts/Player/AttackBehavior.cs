@@ -69,6 +69,7 @@ public class AttackBehavior : MonoBehaviour {
         {
             isHolding = false;
             spellIndex = _spellIndex;
+            spellDir = playerMovement.aimDirection;
             anim.PlaySpellAnim(spellManager.GetSpellByIdx(spellIndex));
             invokeParticles.Stop();
             canAttack = !canAttack;
@@ -85,9 +86,9 @@ public class AttackBehavior : MonoBehaviour {
     {
         if (canAttack)
         {
+            invokeParticles.Play();
             isHolding = true;
             //invokeParticlesMain.startColor = spellManager.GetSpellColor(spellIndex);
-            invokeParticles.Play();
         }
     }
 

@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour {
     public LayerMask floorLayer;
     public Transform visual;
     public ParticleSystem jumpParticles;
+    public ParticleSystem flyParticles;
     private float allPurposeTimer;
     private bool onPlayerRestoreHit = false;
     private float playerRestoreOnHitTimer = 0;
@@ -115,9 +116,11 @@ public class PlayerMovement : MonoBehaviour {
         if (flying)
         {
             flyStamina -= flyConsumption * Time.deltaTime;
+            flyParticles.Play();
         }
         else
         {
+            flyParticles.Stop();
             if (onFloor)
                 flyStamina += flyConsumption * Time.deltaTime * 2;
         }
@@ -127,7 +130,9 @@ public class PlayerMovement : MonoBehaviour {
     private void FlyAccelerationCheck()
     {
         if (flying)
+        {
             flyAccelerationIncrement += Time.deltaTime;
+        }
         else
         {
             if (flyAccelerationIncrement > 0)
