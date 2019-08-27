@@ -33,7 +33,6 @@ public class AttackBehavior : MonoBehaviour {
         GetInput();
         CanAttackCheck();
         UpdateSpellDir();
-        UpdateArrow();
     }
 
     private void UpdateArrow()
@@ -74,6 +73,7 @@ public class AttackBehavior : MonoBehaviour {
             invokeParticles.Stop();
             canAttack = !canAttack;
             invoking = false;
+            aiming = false;
         }
     }
 
@@ -89,6 +89,7 @@ public class AttackBehavior : MonoBehaviour {
         {
             invokeParticles.Play();
             isHolding = true;
+
             //invokeParticlesMain.startColor = spellManager.GetSpellColor(spellIndex);
         }
     }
@@ -100,6 +101,7 @@ public class AttackBehavior : MonoBehaviour {
             aiming = playerMovement.aimDirection != Vector2.zero;
             if (aiming)
                 spellDir = playerMovement.aimDirection;
+            UpdateArrow();
         }
     }
 
@@ -120,6 +122,7 @@ public class AttackBehavior : MonoBehaviour {
                     InvokeSpell(spellIndex);
                     invoking = true;
                 }
+                spellDir = new Vector2(playerMovement.currentDirection, 0);
             }
         }
         if (Input.GetButtonUp(input) && spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold && invoking)

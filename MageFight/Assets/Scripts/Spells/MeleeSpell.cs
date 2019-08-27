@@ -24,7 +24,7 @@ public class MeleeSpell : Spell {
             canHit = false;
             PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
             player.TakeDamage(damage, transform.position);
-            player.GetComponent<PlayerMovement>().KnockOut(knockDir, knockbackForce);
+            player.GetComponent<PlayerMovement>().KnockOut(new Vector2(knockDir.x * dir.x, knockDir.y), knockbackForce);
             CheckHasEffect(player);
             MakeExplosion();
         }

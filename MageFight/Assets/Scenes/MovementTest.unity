@@ -228,6 +228,54 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed820bc51e0309a4588629a399e4fb78, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &199626452
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4911292788479900, guid: d4eb113f809050047a789aefe4821342, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911292788479900, guid: d4eb113f809050047a789aefe4821342, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -999
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911292788479900, guid: d4eb113f809050047a789aefe4821342, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911292788479900, guid: d4eb113f809050047a789aefe4821342, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911292788479900, guid: d4eb113f809050047a789aefe4821342, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911292788479900, guid: d4eb113f809050047a789aefe4821342, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911292788479900, guid: d4eb113f809050047a789aefe4821342, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911292788479900, guid: d4eb113f809050047a789aefe4821342, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d4eb113f809050047a789aefe4821342, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!114 &199626453 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114080733479666062, guid: d4eb113f809050047a789aefe4821342,
+    type: 2}
+  m_PrefabInternal: {fileID: 199626452}
+  m_Script: {fileID: 11500000, guid: 4d30efb4848e5c842b3a2972add7eee1, type: 3}
 --- !u!4 &479164775 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4460126163026780, guid: d9a5f7e81a895004da3a18ff1c487c9c,
@@ -767,7 +815,7 @@ Prefab:
         type: 2}
       propertyPath: spells.Array.data[0]
       value: 
-      objectReference: {fileID: 1846341948}
+      objectReference: {fileID: 199626453}
     - target: {fileID: 114689177227851680, guid: d9a5f7e81a895004da3a18ff1c487c9c,
         type: 2}
       propertyPath: spells.Array.data[1]
