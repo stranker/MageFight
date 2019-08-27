@@ -73,6 +73,7 @@ public class AttackBehavior : MonoBehaviour {
             anim.PlaySpellAnim(spellManager.GetSpellByIdx(spellIndex));
             invokeParticles.Stop();
             canAttack = !canAttack;
+            invoking = false;
         }
     }
 
@@ -104,18 +105,21 @@ public class AttackBehavior : MonoBehaviour {
 
     private void GetSpellsInputs(String input,int spellIndex)
     {
-        if(Input.GetButtonDown(input) && spellManager.CanInvokeSpell(spellIndex))
+        if (Input.GetButtonDown(input) && spellManager.CanInvokeSpell(spellIndex))
         {
-            if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.OneTap)
+            if (!invoking && canAttack)
             {
-                arrowSprite.gameObject.SetActive(false);
-                ThrowSpell(spellIndex);
-            }
-            else if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
-            {
-                arrowSprite.gameObject.SetActive(true);
-                InvokeSpell(spellIndex);
-                invoking = true;
+                if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.OneTap)
+                {
+                    arrowSprite.gameObject.SetActive(false);
+                    ThrowSpell(spellIndex);
+                }
+                else if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
+                {
+                    arrowSprite.gameObject.SetActive(true);
+                    InvokeSpell(spellIndex);
+                    invoking = true;
+                }
             }
         }
         if (Input.GetButtonUp(input) && spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold && invoking)

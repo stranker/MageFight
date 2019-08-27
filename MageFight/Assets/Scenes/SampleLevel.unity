@@ -8132,6 +8132,16 @@ Prefab:
       propertyPath: powerIcons
       value: 
       objectReference: {fileID: 630161029}
+    - target: {fileID: 114789643392479472, guid: d9a5f7e81a895004da3a18ff1c487c9c,
+        type: 2}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114789643392479472, guid: d9a5f7e81a895004da3a18ff1c487c9c,
+        type: 2}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9a5f7e81a895004da3a18ff1c487c9c, type: 2}
   m_IsPrefabAsset: 0
@@ -10153,6 +10163,16 @@ Prefab:
       propertyPath: powerIcons
       value: 
       objectReference: {fileID: 80209622}
+    - target: {fileID: 114942571628359274, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114942571628359274, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4f71b467ae0ea445b9c978adb55f8d7, type: 2}
   m_IsPrefabAsset: 0
