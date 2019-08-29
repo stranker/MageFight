@@ -122,6 +122,7 @@ public class PlayerBehavior : MonoBehaviour {
     }
 	
 	public void Win(){
+        pAnim.WinState();
 		GetComponent<Animator>().SetTrigger("Win");
 	}
 	

@@ -8090,11 +8090,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1511467367}
     m_Modifications:
-    - target: {fileID: 114689177227851680, guid: d9a5f7e81a895004da3a18ff1c487c9c,
-        type: 2}
-      propertyPath: spells.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4460126163026780, guid: d9a5f7e81a895004da3a18ff1c487c9c, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.38
@@ -8132,15 +8127,25 @@ Prefab:
       propertyPath: powerIcons
       value: 
       objectReference: {fileID: 630161029}
-    - target: {fileID: 114789643392479472, guid: d9a5f7e81a895004da3a18ff1c487c9c,
+    - target: {fileID: 198785266332618164, guid: d9a5f7e81a895004da3a18ff1c487c9c,
         type: 2}
-      propertyPath: health
-      value: 100
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114789643392479472, guid: d9a5f7e81a895004da3a18ff1c487c9c,
+    - target: {fileID: 198785266332618164, guid: d9a5f7e81a895004da3a18ff1c487c9c,
         type: 2}
-      propertyPath: maxHealth
-      value: 100
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 40478
+      objectReference: {fileID: 0}
+    - target: {fileID: 198785266332618164, guid: d9a5f7e81a895004da3a18ff1c487c9c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 198785266332618164, guid: d9a5f7e81a895004da3a18ff1c487c9c,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9a5f7e81a895004da3a18ff1c487c9c, type: 2}
@@ -10121,11 +10126,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1511467367}
     m_Modifications:
-    - target: {fileID: 114053505750023586, guid: d4f71b467ae0ea445b9c978adb55f8d7,
-        type: 2}
-      propertyPath: spells.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4185246790156582, guid: d4f71b467ae0ea445b9c978adb55f8d7, type: 2}
       propertyPath: m_LocalPosition.x
       value: 18.92
@@ -10163,15 +10163,33 @@ Prefab:
       propertyPath: powerIcons
       value: 
       objectReference: {fileID: 80209622}
-    - target: {fileID: 114942571628359274, guid: d4f71b467ae0ea445b9c978adb55f8d7,
-        type: 2}
-      propertyPath: health
-      value: 100
+    - target: {fileID: 4814536502370244, guid: d4f71b467ae0ea445b9c978adb55f8d7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.23
       objectReference: {fileID: 0}
-    - target: {fileID: 114942571628359274, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+    - target: {fileID: 4814536502370244, guid: d4f71b467ae0ea445b9c978adb55f8d7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 198970815190007496, guid: d4f71b467ae0ea445b9c978adb55f8d7,
         type: 2}
-      propertyPath: maxHealth
-      value: 100
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198970815190007496, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 40478
+      objectReference: {fileID: 0}
+    - target: {fileID: 198970815190007496, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 198970815190007496, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 2}
+      propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4f71b467ae0ea445b9c978adb55f8d7, type: 2}

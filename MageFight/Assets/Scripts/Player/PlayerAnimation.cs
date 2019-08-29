@@ -8,6 +8,7 @@ public class PlayerAnimation : MonoBehaviour {
     public PlayerMovement movement;
     public AttackBehavior attack;
     public SpellStateManager ssm;
+    public ParticleSystem cookiesParticles;
     private Animator anim;
 
     private void Start()
@@ -91,5 +92,20 @@ public class PlayerAnimation : MonoBehaviour {
     public void Shrink()
     {
         anim.SetTrigger("Shrink");
+    }
+
+    public void MunchCookie()
+    {
+        cookiesParticles.Play();
+    }
+
+    public void WinState()
+    {
+        anim.SetTrigger("Win");
+    }
+
+    public void ResetAnimations()
+    {
+        anim.SetTrigger("ResetState");
     }
 }
