@@ -123,11 +123,10 @@ public class PlayerBehavior : MonoBehaviour {
 	
 	public void Win(){
         pAnim.WinState();
-		GetComponent<Animator>().SetTrigger("Win");
 	}
 	
 	public void ResetAnimation(){
-		GetComponent<Animator>().SetTrigger("Reset");
+        pAnim.ResetAnimations();
 	}    
 }
 
