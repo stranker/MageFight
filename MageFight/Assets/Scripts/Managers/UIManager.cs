@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour {
     private bool onCountdown = false;
     public Text countdownText;
     public Text getReadyText;
+    public GameObject PlayerPresentationCanvas;
 
     public Text nameText;
     public Text dmgText;
@@ -169,5 +170,15 @@ public class UIManager : MonoBehaviour {
             default:
                 break;
         }
+    }
+    public void SetPlayerPresentationUI(bool value)
+    {
+        if(value)
+        {
+            PlayerPresentationCanvas.SetActive(true);
+            PlayerPresentationCanvas.GetComponent<Animator>().SetTrigger("Start");
+        }
+        else
+            PlayerPresentationCanvas.SetActive(false);
     }
 }

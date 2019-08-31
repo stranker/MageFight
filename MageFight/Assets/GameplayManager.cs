@@ -98,9 +98,11 @@ public class GameplayManager : MonoBehaviour {
     public void PlayerPresentation()
     {
         CameraManager.Get().ActivateCamerasPlayerPresentation();
+        UIManager.Get().SetPlayerPresentationUI(true);
     }
     public void PowerSelection()
     {
+        UIManager.Get().SetPlayerPresentationUI(false);    
         CameraManager.Get().ActivateCamerasGameplay();
         PowerPickingManager.Instance.Begin();
     }
