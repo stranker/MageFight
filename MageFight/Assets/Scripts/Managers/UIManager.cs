@@ -95,7 +95,7 @@ public class UIManager : MonoBehaviour {
                 timer = 0;
                 onCountdown = false;
                 countdownPanel.SetActive(false);
-                GameManager.Instance.StartRound();
+                GameplayManager.Get().SendEvent(GameplayManager.Events.CountdownEnd);
             }
             if (timer<=1.1f)
             {
@@ -140,7 +140,7 @@ public class UIManager : MonoBehaviour {
     public void RematchPressed()
     {
         PostGameUI.SetActive(false);
-        GameManager.Instance.EndGame();
+        GameplayManager.Get().SendEvent(GameplayManager.Events.RematchSelected);
     }
 
     public void SetSpellDescription(Spell spell)

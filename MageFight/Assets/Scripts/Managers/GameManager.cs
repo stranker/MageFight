@@ -36,13 +36,13 @@ public class GameManager : MonoBehaviour {
 			activeplayers[i].RegisterPlayerID(i);
 			activeplayers[i].Pause();
 			}
-		}
+		}        
 	}
     private void Start()
     {
         UIManager.Get().OnLeaderboardShown += OnLeaderboardShown;
 		PowerPickingManager.Instance.SetPlayerList(players);
-		PowerPickingManager.Instance.Begin();
+        GameplayManager.Get().SendEvent(GameplayManager.Events.StartGame);
     }
 
     public void InitializeRound(){
@@ -71,18 +71,15 @@ public class GameManager : MonoBehaviour {
 				if(!isOnePlayerAlive){
                     isOnePlayerAlive = true;
                     winner = i;
-                    camera.MoveTowards(players[i].transform);
+                    camera.SetTarget(players[i].transform);
+                    GameplayManager.Get().SendEvent(GameplayManager.Events.PlayerDead);
                 } //finds the first 'alive' player
 				else {return;} //if more than one player is alive, the round continues
 			}
 		}
 		//if only one player is alive, then that player wins the round
-		if(isOnePlayerAlive){ //check in case of errors
+		if(isOnePlayerAlive)
 			players[winner].winCount+=1;
-			EndRound();
-		} else { 
-			Debug.LogError("No players are alive");
-		}
 	}
 
 	public void EndGame(){
@@ -90,12 +87,11 @@ public class GameManager : MonoBehaviour {
 		for(int i = 0; i < players.Count; i++){
 			players[i].winCount = 0;
 			players[i].ResetAnimation();
-		}
-		PowerPickingManager.Instance.Reset();
+		}		
         PowerPickingManager.Instance.Begin();
     }
 
-	private void EndRound(){
+	public void EndRound(){
         if(players[0].GetPlayerName() > players[1].GetPlayerName()){
             UIManager.Get().ShowLeaderboard(players[1].winCount, players[0].winCount);
         } else{
@@ -118,12 +114,13 @@ public class GameManager : MonoBehaviour {
         }
         if(winner > -1)
         {
+            GameplayManager.Get().SendEvent(GameplayManager.Events.LeaderboardShownWinner);
             UIManager.Get().ShowPostGame(players[winner].GetPlayerName()); //if a winner is found, the game ends
 			players[winner].Win();
         }
         else
         {
-            PowerPickingManager.Instance.Begin();
+            GameplayManager.Get().SendEvent(GameplayManager.Events.LeaderboardShownNoWinner);            
         }
     }
     private void OnDestroy()
