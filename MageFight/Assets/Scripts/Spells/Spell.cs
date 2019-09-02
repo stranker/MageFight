@@ -48,8 +48,6 @@ public abstract class Spell : MonoBehaviour {
     public GameObject particlesExplosion;
     public Color spellColor;
 
-    public bool hasSecondAttack = false;
-
     protected void Update()
     {
         if (invoked)
@@ -80,16 +78,6 @@ public abstract class Spell : MonoBehaviour {
     protected void MakeExplosion()
     {
         Instantiate(particlesExplosion, transform.position, Quaternion.identity, transform.parent);
-    }
-
-    public bool HasSecondAttack()
-    {
-        return hasSecondAttack;
-    }
-
-    public void SecondAttack()
-    {
-        throw new NotImplementedException();
     }
 
     public string GetSpellTypeString()
