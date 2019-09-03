@@ -45,14 +45,14 @@ public class RangeSpell : Spell {
         }
     }
 
-    public void SpellMovement()
+    protected void SpellMovement()
     {
         accelerationIncrement += Time.deltaTime * acceleration;
         velocity = (speed + accelerationIncrement) * dir;
         rd.velocity = velocity;
     }
 
-    public void StopSpell()
+    protected void StopSpell()
     {
         velocity = Vector2.zero;
         rd.velocity = velocity;
