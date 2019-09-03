@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour {
     private bool onCountdown = false;
     public Text countdownText;
     public Text getReadyText;
+    public GameObject PlayerPresentationCanvas;
 
     public Text nameText;
     public Text dmgText;
@@ -95,7 +96,7 @@ public class UIManager : MonoBehaviour {
                 timer = 0;
                 onCountdown = false;
                 countdownPanel.SetActive(false);
-                GameManager.Instance.StartRound();
+                GameplayManager.Get().SendEvent(GameplayManager.Events.CountdownEnd);
             }
             if (timer<=1.1f)
             {
@@ -140,7 +141,7 @@ public class UIManager : MonoBehaviour {
     public void RematchPressed()
     {
         PostGameUI.SetActive(false);
-        GameManager.Instance.EndGame();
+        GameplayManager.Get().SendEvent(GameplayManager.Events.RematchSelected);
     }
 
     public void SetSpellDescription(Spell spell)
@@ -169,5 +170,15 @@ public class UIManager : MonoBehaviour {
             default:
                 break;
         }
+    }
+    public void SetPlayerPresentationUI(bool value)
+    {
+        if(value)
+        {
+            PlayerPresentationCanvas.SetActive(true);
+            PlayerPresentationCanvas.GetComponent<Animator>().SetTrigger("Start");
+        }
+        else
+            PlayerPresentationCanvas.SetActive(false);
     }
 }

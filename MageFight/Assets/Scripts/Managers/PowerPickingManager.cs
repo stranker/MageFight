@@ -87,9 +87,9 @@ public class PowerPickingManager : MonoBehaviour {
         }
     }
 
-    private void End(){
-        UIManager.Get().StartCountdown();
+    private void End(){        
         powerPickingPanel.SetActive(false);
+        GameplayManager.Get().SendEvent(GameplayManager.Events.PowersSelected);
 	}
 
 	private void UpdateTurns(){

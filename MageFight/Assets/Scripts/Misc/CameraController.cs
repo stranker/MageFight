@@ -70,10 +70,13 @@ public class CameraController : MonoBehaviour
             }
         }
     }
-    public void MoveTowards(Transform _target)
+    public void MoveTowards()
     {
         moving = true;
-        slowmo = true;
+        slowmo = true;        
+    }
+    public void SetTarget(Transform _target)
+    {
         target = _target;
     }
 
