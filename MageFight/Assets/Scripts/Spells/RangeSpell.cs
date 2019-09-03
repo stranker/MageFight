@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,8 +30,9 @@ public class RangeSpell : Spell {
         if (collision.tag == "Player" && collision.gameObject != mageOwner)
         {
             PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
+            PlayerMovement pMovement = player.GetComponent<PlayerMovement>();
             player.TakeDamage(damage,transform.position);
-            player.GetComponent<PlayerMovement>().KnockOut(dir, knockbackForce);
+            pMovement.KnockOut(dir, knockbackForce);
             CheckHasEffect(player);
             MakeExplosion();
             Kill();
@@ -63,9 +65,18 @@ public class RangeSpell : Spell {
         mageOwner = owner;
         transform.position = startPos;
         dir = direction.normalized;
+        CheckZeroDir();
         velocity = dir * speed;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         timer = cooldown;
+    }
+
+    private void CheckZeroDir()
+    {
+        if (dir == Vector3.zero)
+        {
+            dir.x = mageOwner.GetComponent<PlayerMovement>().currentDirection;
+        }
     }
 }

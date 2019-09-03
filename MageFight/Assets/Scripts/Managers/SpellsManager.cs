@@ -25,13 +25,16 @@ public class SpellsManager : MonoBehaviour {
         //spellParticlesMain = spellParticles.GetComponent<ParticleSystem>().main;
     }
 
-    internal void CancelSpells()
+    internal void CancelMeleeSpells()
     {
         if (spells.Count > 0)
         {
             foreach (Spell sp in spells)
             {
-                sp.Kill();
+                if (sp.GetSpellType() == Spell.SpellType.Melee)
+                {
+                    sp.Kill();
+                }
             }
         }
     }

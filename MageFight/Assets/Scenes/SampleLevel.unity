@@ -7586,11 +7586,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1511467367}
     m_Modifications:
-    - target: {fileID: 114689177227851680, guid: d9a5f7e81a895004da3a18ff1c487c9c,
-        type: 2}
-      propertyPath: spells.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4460126163026780, guid: d9a5f7e81a895004da3a18ff1c487c9c, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.38
@@ -9636,11 +9631,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1511467367}
     m_Modifications:
-    - target: {fileID: 114053505750023586, guid: d4f71b467ae0ea445b9c978adb55f8d7,
-        type: 2}
-      propertyPath: spells.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4185246790156582, guid: d4f71b467ae0ea445b9c978adb55f8d7, type: 2}
       propertyPath: m_LocalPosition.x
       value: 18.92
@@ -10255,10 +10245,10 @@ RectTransform:
   m_Father: {fileID: 344254250}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00007323, y: 47}
-  m_SizeDelta: {x: 654.6, y: 184.31}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -1.5, y: -207}
+  m_SizeDelta: {x: 526.3, y: 148.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1452163310 stripped
 GameObject:
@@ -11596,10 +11586,10 @@ RectTransform:
   m_Father: {fileID: 344254250}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.5, y: 254}
-  m_SizeDelta: {x: 756.4, y: 212.96}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -1.5, y: -87}
+  m_SizeDelta: {x: 756.4, y: 212.96002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1779933792
 MonoBehaviour:
