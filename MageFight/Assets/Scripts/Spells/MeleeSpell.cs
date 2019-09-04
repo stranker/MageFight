@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class MeleeSpell : Spell {
 
-    private bool canHit = true;
     public Vector2 knockDir;
 
     public enum MeleeType 
@@ -19,14 +18,15 @@ public class MeleeSpell : Spell {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && collision.gameObject != mageOwner && canHit)
+        if (collision.tag == "Player" && collision.gameObject != mageOwner && canDamage)
         {
-            canHit = false;
             PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
             player.TakeDamage(damage, transform.position);
             player.GetComponent<PlayerMovement>().KnockOut(new Vector2(knockDir.x * dir.x, knockDir.y), knockbackForce);
             CheckHasEffect(player);
             MakeExplosion();
+            canDamage = false;
+            SpellShake();
         }
     }
 
@@ -36,7 +36,7 @@ public class MeleeSpell : Spell {
         mageOwner = owner;
         transform.parent = mageOwner.transform;
         transform.position = startPos;
-        canHit = true;
+        canDamage = true;
         dir = direction;
         CheckAimDirection();
         timer = cooldown;

@@ -6,6 +6,16 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
+    private static CameraController instance;
+    public static CameraController Get() { return instance; }
+    private void Awake()
+    {
+        if (!instance)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
+
     public enum CameraStates {Normal, Slowmo};
     public CameraStates cameraState = CameraStates.Normal;
     public AnimationCurve translationCurve;
@@ -19,6 +29,7 @@ public class CameraController : MonoBehaviour
     public float endSize = 3.0f;
     public Transform[] playerList;
     private new Camera camera;
+
     public float offsetYCamera = 2f;
     public float minCameraSize = 8f;
     public float maxCameraSize = 14f;
@@ -28,6 +39,12 @@ public class CameraController : MonoBehaviour
     public AnimationCurve deathCurve;
     private float deathTimer;
     public float freezeDeathTime = 4f;
+
+    public bool shaking = false;
+    public float shakeOffset = 0.1f;
+    public float shakeTime = 0.5f;
+    public float defaultSpellShakeTime = 0.5f;
+    private float shakeTimer = 0;
 
     private void Start()
     {
@@ -83,6 +100,24 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         CheckCameraState();
+        CheckCameraShaking();
+    }
+
+    private void CheckCameraShaking()
+    {
+        if (shaking)
+        {
+            float xOffset = UnityEngine.Random.Range(-shakeOffset, shakeOffset);
+            float yOffset = UnityEngine.Random.Range(-shakeOffset, shakeOffset);
+            Vector3 newPos = new Vector2(xOffset, yOffset);
+            transform.position += newPos;
+            shakeTimer -= Time.deltaTime;
+            if (shakeTimer <= 0)
+            {
+                shaking = false;
+                shakeTimer = 0;
+            }
+        }
     }
 
     public void MoveTowards()
@@ -103,6 +138,23 @@ public class CameraController : MonoBehaviour
         translationCurveTimer = 0;
         Time.timeScale = 1;
         deathTimer = 0;
+    }
+
+    public void CameraShake(float amount, float time)
+    {
+        shakeTime = time;
+        shakeOffset = amount;
+        shaking = true;
+    }
+
+    public void SpellShake(float amount)
+    {
+        if (amount != 0)
+        {
+            shakeTime = defaultSpellShakeTime;
+            shakeOffset = amount;
+            shaking = true;
+        }
     }
 
     private void OnDrawGizmos()
