@@ -15,6 +15,7 @@ public class PlayerBehavior : MonoBehaviour {
     public SpellsManager spellsManager;
     public PlayerAnimation pAnim;
     public Color playerColor;
+    public PlayerOffScreenIndicator pIndicator;
 
     private void Awake(){
         winCount = 0;
@@ -127,6 +128,16 @@ public class PlayerBehavior : MonoBehaviour {
 	
 	public void ResetAnimation(){
         pAnim.ResetAnimations();
-	}    
-}
+	}
 
+    private void OnBecameInvisible()
+    {
+        pIndicator.SetActivated(true);
+    }
+
+    private void OnBecameVisible()
+    {
+        pIndicator.SetActivated(false);
+    }
+
+}
