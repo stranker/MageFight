@@ -7,43 +7,43 @@ public class WindShuriken : RangeSpell
 {
     public float travelTime;
     public float travelTimer = 0f;
-    public bool onComeback = false;
+    public bool comeback = false;
 
     private void Update()
     {
         base.Update();
         if (invoked)
         {
-            if (onComeback)
+            if (!comeback)
             {
-                dir = (mageOwner.transform.position - transform.position).normalized;
-                rd.velocity = speed * dir;
-                if (Vector3.Distance(mageOwner.transform.position,transform.position)<1f)
+                SpellMovement();
+                travelTimer += Time.deltaTime;
+                if (travelTimer > travelTime)
                 {
-                    Kill();
+                    comeback = true;
                 }
             }
             else
             {
-                if (travelTimer < travelTime)
-                {
-                    travelTimer += Time.deltaTime;
-                }
-                else
-                {
-                    onComeback = true;
-                    travelTimer = 0;
-                }
+                ComebackBehavior();
             }
         }
         else
         {
-            onComeback = false;
+            comeback = false;
+            travelTimer = 0;
+            StopSpell();
         }
     }
 
-    public void SecondAttack()
+    public void ComebackBehavior()
     {
-        onComeback = true;
+        dir = (mageOwner.transform.position - transform.position).normalized;
+        rd.velocity = speed * dir;
+        if (Vector2.Distance(transform.position,mageOwner.transform.position) < 1)
+        {
+            Kill();
+        }
     }
+
 }

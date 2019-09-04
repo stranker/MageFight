@@ -11,6 +11,7 @@ public class AttackBehavior : MonoBehaviour {
     public InputManager input;
     public bool canAttack = true;
     public bool isHolding = false;
+    public bool aiming = false;
     public bool invoking;
     public float timeAfterAttack;
     private float timerAfterAttack;
@@ -20,6 +21,7 @@ public class AttackBehavior : MonoBehaviour {
     public PlayerAnimation anim;
     private ParticleSystem.MainModule invokeParticlesMain;
     public int spellIndex = -1;
+    public Vector2 spellDir = Vector2.zero;
     // Use this for initialization
 
     void Start () {
@@ -30,6 +32,13 @@ public class AttackBehavior : MonoBehaviour {
     void Update () {
         GetInput();
         CanAttackCheck();
+        UpdateSpellDir();
+    }
+
+    private void UpdateArrow()
+    {
+        float arrowAngle = Mathf.Atan2(spellDir.y, spellDir.x) * Mathf.Rad2Deg;
+        arrowSprite.transform.rotation = Quaternion.Euler(0, 0, arrowAngle);
     }
 
     private void CanAttackCheck()
@@ -47,8 +56,7 @@ public class AttackBehavior : MonoBehaviour {
 
     private void GetInput()
     {
-        float arrowAngle = Mathf.Atan2(playerMovement.attackDirection.y, playerMovement.attackDirection.x) * Mathf.Rad2Deg;
-        arrowSprite.transform.rotation = Quaternion.Euler(0,0,arrowAngle);
+
         GetSpellsInputs(input.firstSkillButton, 0);
         GetSpellsInputs(input.secondSkillButton, 1);
         GetSpellsInputs(input.thirdSkillButton, 2);
@@ -60,40 +68,61 @@ public class AttackBehavior : MonoBehaviour {
         {
             isHolding = false;
             spellIndex = _spellIndex;
+            spellDir = playerMovement.aimDirection;
             anim.PlaySpellAnim(spellManager.GetSpellByIdx(spellIndex));
             invokeParticles.Stop();
             canAttack = !canAttack;
+            invoking = false;
+            aiming = false;
         }
     }
 
     public void SpawnSpell()
     {
-        spellManager.ThrowSpell(spellIndex, handPos.position, playerMovement.attackDirection, gameObject);
+        spellManager.ThrowSpell(spellIndex, handPos.position, spellDir, gameObject);
+        spellDir = Vector2.zero;
     }
 
     private void InvokeSpell(int spellIndex)
     {
         if (canAttack)
         {
-            isHolding = true;
-            //invokeParticlesMain.startColor = spellManager.GetSpellColor(spellIndex);
             invokeParticles.Play();
+            isHolding = true;
+
+            //invokeParticlesMain.startColor = spellManager.GetSpellColor(spellIndex);
         }
     }
+
+    private void UpdateSpellDir()
+    {
+        if (isHolding)
+        {
+            aiming = playerMovement.aimDirection != Vector2.zero;
+            if (aiming)
+                spellDir = playerMovement.aimDirection;
+            UpdateArrow();
+        }
+    }
+
     private void GetSpellsInputs(String input,int spellIndex)
     {
-        if(Input.GetButtonDown(input) && spellManager.CanInvokeSpell(spellIndex))
+        if (Input.GetButtonDown(input) && spellManager.CanInvokeSpell(spellIndex))
         {
-            if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.OneTap)
+            if (!invoking && canAttack)
             {
-                arrowSprite.gameObject.SetActive(false);
-                ThrowSpell(spellIndex);
-            }
-            else if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
-            {
-                arrowSprite.gameObject.SetActive(true);
-                InvokeSpell(spellIndex);
-                invoking = true;
+                if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.OneTap)
+                {
+                    arrowSprite.gameObject.SetActive(false);
+                    ThrowSpell(spellIndex);
+                }
+                else if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
+                {
+                    arrowSprite.gameObject.SetActive(true);
+                    InvokeSpell(spellIndex);
+                    invoking = true;
+                }
+                spellDir = new Vector2(playerMovement.currentDirection, 0);
             }
         }
         if (Input.GetButtonUp(input) && spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold && invoking)

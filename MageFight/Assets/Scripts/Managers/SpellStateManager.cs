@@ -19,14 +19,14 @@ public class SpellStateManager : MonoBehaviour
     private PlayerMovement movement;
     private AttackBehavior attack;
     private PlayerBehavior player;
-    private Animator playerAnim;
+    private PlayerAnimation playerAnim;
 
     private void Start()
     {
         movement = GetComponent<PlayerMovement>();
         attack = GetComponent<AttackBehavior>();
         player = GetComponent<PlayerBehavior>();
-        playerAnim = GetComponentInChildren<Animator>();
+        playerAnim = GetComponentInChildren<PlayerAnimation>();
     }
 
     // Update is called once per frame
@@ -63,7 +63,6 @@ public class SpellStateManager : MonoBehaviour
             if (shrinkTimer > 3)
             {
                 isShrinked = false;
-                playerAnim.SetTrigger("Unshrink");
                 shrinkTimer = 0;
                 movement.SetCanFly(!isShrinked);
                 attack.SetCanAttack(!isShrinked);
@@ -144,7 +143,7 @@ public class SpellStateManager : MonoBehaviour
         isShrinked = true;
         movement.SetCanFly(false);
         attack.SetCanAttack(false);
-        playerAnim.SetTrigger("Shrinked");
+        playerAnim.Shrink();
     }
 
     public void Hammerfall()

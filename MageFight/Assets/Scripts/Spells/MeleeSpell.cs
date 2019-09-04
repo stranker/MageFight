@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ public class MeleeSpell : Spell {
             canHit = false;
             PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
             player.TakeDamage(damage, transform.position);
-            player.GetComponent<PlayerMovement>().KnockOut(knockDir, knockbackForce);
+            player.GetComponent<PlayerMovement>().KnockOut(new Vector2(knockDir.x * dir.x, knockDir.y), knockbackForce);
             CheckHasEffect(player);
             MakeExplosion();
         }
@@ -37,12 +38,21 @@ public class MeleeSpell : Spell {
         transform.position = startPos;
         canHit = true;
         dir = direction;
+        CheckAimDirection();
         timer = cooldown;
         transform.localScale = new Vector2(dir.x, 1);
         SetAnimation();
     }
-	
-	private void SetAnimation()
+
+    private void CheckAimDirection()
+    {
+        if (dir.x == 0)
+        {
+            dir.x = mageOwner.GetComponent<PlayerMovement>().currentDirection;
+        }
+    }
+
+    private void SetAnimation()
 	{
         GetComponent<Animator>().SetTrigger(spellName);
     }
