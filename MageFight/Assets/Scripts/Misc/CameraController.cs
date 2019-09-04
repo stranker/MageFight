@@ -18,6 +18,8 @@ public class CameraController : MonoBehaviour
     public float offsetYCamera = 2f;
     public float minCameraSize = 8f;
     public float maxCameraSize = 14f;
+    public float maxXPos = 3;
+    public float maxYPos = 3;
 
     public AnimationCurve deathCurve;
     private float deathTimer;
@@ -62,12 +64,10 @@ public class CameraController : MonoBehaviour
             float playerDistance = Vector3.Distance(playerList[0].position, playerList[1].position);
             camera.orthographicSize = minCameraSize + playerDistance * 0.2f;
             camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minCameraSize, maxCameraSize);
-            positionAverage.y += offsetYCamera;
+            positionAverage.x = Mathf.Clamp(positionAverage.x, -maxXPos, maxXPos);
+            positionAverage.y = Mathf.Clamp(positionAverage.y, -maxYPos, maxYPos);
             positionAverage.z = -10;
-            if (camera.orthographicSize != maxCameraSize)
-            {
-                transform.position = positionAverage;
-            }
+            transform.position = positionAverage;
         }
     }
     public void MoveTowards()
@@ -90,4 +90,10 @@ public class CameraController : MonoBehaviour
         deathTimer = 0;
         slowmo = false;
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawCube(transform.position, new Vector3(maxXPos, maxYPos, 0));
+    }
+
 }

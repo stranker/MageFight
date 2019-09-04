@@ -619,6 +619,8 @@ MonoBehaviour:
   offsetYCamera: 2
   minCameraSize: 8
   maxCameraSize: 14
+  maxXPos: 17.65
+  maxYPos: 3
   deathCurve:
     serializedVersion: 2
     m_Curve:
