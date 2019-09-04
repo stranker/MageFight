@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PowerPickingManager : MonoBehaviour {
+
 	private static PowerPickingManager instance;
 	public static PowerPickingManager Instance{
 		get{

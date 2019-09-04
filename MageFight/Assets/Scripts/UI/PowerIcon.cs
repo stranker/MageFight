@@ -55,7 +55,7 @@ public class PowerIcon : MonoBehaviour {
                 timer = 0;
                 powerImage.fillAmount = 1f;
                 onTween = true;
-                circleSprite.GetComponent<Transform>().localScale = new Vector2(1.5f, 1.5f);
+                circleSprite.GetComponent<Transform>().localScale = new Vector2(1.8f, 1.8f);
                 anim.SetTrigger("isReady");
             }
         }
@@ -67,7 +67,7 @@ public class PowerIcon : MonoBehaviour {
             {
                 timer = 0;
                 onTween = false;
-                circleSprite.GetComponent<Transform>().localScale = new Vector2(1, 1);
+                circleSprite.GetComponent<Transform>().localScale = new Vector2(1.3f, 1.3f);
             }
         }
     }
