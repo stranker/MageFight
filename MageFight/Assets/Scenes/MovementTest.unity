@@ -576,6 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604f6d20fc775ba4b9ad1a7dfd24f819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraState: 0
   translationCurve:
     serializedVersion: 2
     m_Curve:
@@ -617,8 +618,8 @@ MonoBehaviour:
   - {fileID: 479164775}
   - {fileID: 1598594915}
   offsetYCamera: 2
-  minCameraSize: 8
-  maxCameraSize: 14
+  minCameraSize: 4
+  maxCameraSize: 15
   maxXPos: 17.65
   maxYPos: 3
   deathCurve:

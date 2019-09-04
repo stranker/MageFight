@@ -1,9 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+
+    public enum CameraStates {Normal, Slowmo};
+    public CameraStates cameraState = CameraStates.Normal;
     public AnimationCurve translationCurve;
     private float translationCurveTimer;
     public float travelTransitionTime = 2f;
@@ -24,9 +28,6 @@ public class CameraController : MonoBehaviour
     public AnimationCurve deathCurve;
     private float deathTimer;
     public float freezeDeathTime = 4f;
-    
-    private bool moving;
-    private bool slowmo;
 
     private void Start()
     {
@@ -34,47 +35,61 @@ public class CameraController : MonoBehaviour
        startPos = transform.position;
        startSize = camera.orthographicSize;
     }
+
+    public void CheckCameraState()
+    {
+        switch (cameraState)
+        {
+            case CameraStates.Normal:
+                NormalMovement();
+                break;
+            case CameraStates.Slowmo:
+                SlowmotionMovement();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void NormalMovement()
+    {
+        Vector2 positionsSum = playerList[0].position + playerList[1].position;
+        Vector3 positionAverage = positionsSum / playerList.Length;
+        float playerDistance = Vector3.Distance(playerList[0].position, playerList[1].position);
+        camera.orthographicSize = minCameraSize + playerDistance * 0.2f;
+        camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minCameraSize, maxCameraSize);
+        positionAverage.x = Mathf.Clamp(positionAverage.x, -maxXPos, maxXPos);
+        positionAverage.y = Mathf.Clamp(positionAverage.y, -maxYPos, maxYPos);
+        positionAverage.z = -10;
+        transform.position = positionAverage;
+    }
+
+    private void SlowmotionMovement()
+    {
+        deathTimer += Time.unscaledDeltaTime;
+        Time.timeScale = deathCurve.Evaluate(deathTimer);
+        if (deathTimer >= freezeDeathTime)
+        {
+            Time.timeScale = 1;
+            deathTimer = 0;
+            cameraState = CameraStates.Normal;
+        }
+        translationCurveTimer += Time.unscaledDeltaTime;
+        endPos = new Vector3(target.position.x, target.position.y, transform.position.z);
+        transform.position = Vector3.Lerp(transform.position, endPos, translationCurve.Evaluate(translationCurveTimer / travelTransitionTime));
+        camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, endSize, translationCurve.Evaluate(translationCurveTimer / cameraSizeTransitionTime));
+    }
+
     private void Update()
     {
-        if(slowmo)
-        {
-            deathTimer += Time.unscaledDeltaTime;
-            Time.timeScale = deathCurve.Evaluate(deathTimer);
-            if(deathTimer >= freezeDeathTime)
-            {
-                Time.timeScale = 1;
-                deathTimer = 0;
-            }
-        }
-        if(moving)
-        {
-            translationCurveTimer += Time.unscaledDeltaTime;
-            endPos = new Vector3(target.position.x, target.position.y, transform.position.z);
-            transform.position = Vector3.Lerp(transform.position, endPos, translationCurve.Evaluate(translationCurveTimer / travelTransitionTime));
-            camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, endSize, translationCurve.Evaluate(translationCurveTimer / cameraSizeTransitionTime));
-        }
-        else
-        {
-            Vector2 positionsSum = Vector2.zero;
-            foreach (Transform transform in playerList)
-            {
-                positionsSum += (Vector2)transform.position;
-            }
-            Vector3 positionAverage = positionsSum / playerList.Length;
-            float playerDistance = Vector3.Distance(playerList[0].position, playerList[1].position);
-            camera.orthographicSize = minCameraSize + playerDistance * 0.2f;
-            camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minCameraSize, maxCameraSize);
-            positionAverage.x = Mathf.Clamp(positionAverage.x, -maxXPos, maxXPos);
-            positionAverage.y = Mathf.Clamp(positionAverage.y, -maxYPos, maxYPos);
-            positionAverage.z = -10;
-            transform.position = positionAverage;
-        }
+        CheckCameraState();
     }
+
     public void MoveTowards()
     {
-        moving = true;
-        slowmo = true;        
+        cameraState = CameraStates.Slowmo;
     }
+
     public void SetTarget(Transform _target)
     {
         target = _target;
@@ -82,18 +97,17 @@ public class CameraController : MonoBehaviour
 
     public void Reset()
     {
-        moving = false;
+        cameraState = CameraStates.Normal;
         transform.position = startPos;
         camera.orthographicSize = startSize;
         translationCurveTimer = 0;
         Time.timeScale = 1;
         deathTimer = 0;
-        slowmo = false;
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position, new Vector3(maxXPos, maxYPos, 0));
+        //Gizmos.DrawCube(transform.position, new Vector3(maxXPos, maxYPos, 0));
     }
 
 }
