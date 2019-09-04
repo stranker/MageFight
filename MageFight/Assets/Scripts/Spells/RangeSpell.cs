@@ -27,7 +27,7 @@ public class RangeSpell : Spell {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && collision.gameObject != mageOwner)
+        if (collision.tag == "Player" && collision.gameObject != mageOwner && canDamage)
         {
             PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
             PlayerMovement pMovement = player.GetComponent<PlayerMovement>();
@@ -35,8 +35,9 @@ public class RangeSpell : Spell {
             pMovement.KnockOut(dir, knockbackForce);
             CheckHasEffect(player);
             MakeExplosion();
+            canDamage = false;
             Kill();
-
+            SpellShake();
         }
         if (collision.tag == "Ground")
         {
@@ -57,6 +58,7 @@ public class RangeSpell : Spell {
         velocity = Vector2.zero;
         rd.velocity = velocity;
         accelerationIncrement = 0;
+        canDamage = false;
     }
 
     public override void InvokeSpell(Vector3 startPos, Vector3 direction, GameObject owner)
@@ -70,6 +72,7 @@ public class RangeSpell : Spell {
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         timer = cooldown;
+        canDamage = true;
     }
 
     private void CheckZeroDir()
