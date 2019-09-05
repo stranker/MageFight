@@ -6627,7 +6627,7 @@ MonoBehaviour:
   maxCameraSize: 14
   maxXPos: 3
   maxYPositionPositive: 8
-  maxYPositionNegative: -8
+  maxYPositionNegative: -5
   deathCurve:
     serializedVersion: 2
     m_Curve:

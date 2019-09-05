@@ -52,7 +52,7 @@ public class PlayerOffScreenIndicator : MonoBehaviour {
         Vector2 cameraPos = Camera.main.transform.position;
         Vector2 pos = transform.position;
         pos.x = Mathf.Clamp(pos.x, -screenWidth / 2 + cameraPos.x + offsetIndicator.x, screenWidth / 2 + cameraPos.x - offsetIndicator.x);
-        pos.y = Mathf.Clamp(pos.y, -screenHeight / 2 + cameraPos.y - offsetIndicator.y, screenHeight / 2 + cameraPos.y - offsetIndicator.y);
+        pos.y = Mathf.Clamp(pos.y, -screenHeight / 2 + cameraPos.y + offsetIndicator.y, screenHeight / 2 + cameraPos.y - offsetIndicator.y);
         transform.position = pos;
     }
 
