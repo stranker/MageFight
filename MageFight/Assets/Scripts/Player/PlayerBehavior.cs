@@ -16,6 +16,8 @@ public class PlayerBehavior : MonoBehaviour {
     public PlayerAnimation pAnim;
     public Color playerColor;
     public PlayerOffScreenIndicator pIndicator;
+    public AttackBehavior attack;
+    public PlayerMovement movement;
 
     private void Awake(){
         winCount = 0;
@@ -33,10 +35,11 @@ public class PlayerBehavior : MonoBehaviour {
             if (health <= 0)
             {
                 isAlive = !isAlive;
-                GetComponent<AttackBehavior>().enabled = false;
-                GetComponent<PlayerMovement>().enabled = false;
+                movement.SetActive(false);
+                attack.SetActive(false);
                 SetSpritesVisibles(false);
                 deathParticles.Play();
+                pAnim.ResetAnimations();
                 GameManager.Instance.PlayerDeath();
             }
         }
@@ -97,16 +100,14 @@ public class PlayerBehavior : MonoBehaviour {
     }
 
     public void Pause(){
-        GetComponent<AttackBehavior>().enabled = false;
-        GetComponent<PlayerMovement>().enabled = false;
-        GetComponent<Rigidbody2D>().gravityScale = 0;
+        attack.SetActive(false);
+        movement.SetActive(false);
     }
 
     public void Resume(){
         if(isAlive){
-            GetComponent<AttackBehavior>().enabled = true;
-            GetComponent<PlayerMovement>().enabled = true;
-            GetComponent<Rigidbody2D>().gravityScale = 6;
+            attack.SetActive(true);
+            movement.SetActive(true);
         }
     }
 
@@ -132,12 +133,18 @@ public class PlayerBehavior : MonoBehaviour {
 
     private void OnBecameInvisible()
     {
-        pIndicator.SetActivated(true);
+        if (pIndicator)
+        {
+            pIndicator.SetActivated(true);
+        }
     }
 
     private void OnBecameVisible()
     {
-        pIndicator.SetActivated(false);
+        if (pIndicator)
+        {
+            pIndicator.SetActivated(false);
+        }
     }
 
 }
