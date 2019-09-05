@@ -30,11 +30,11 @@ public class CameraController : MonoBehaviour
     public Transform[] playerList;
     private new Camera camera;
 
-    public float offsetYCamera = 2f;
     public float minCameraSize = 8f;
     public float maxCameraSize = 14f;
     public float maxXPos = 3;
-    public float maxYPos = 3;
+    public float maxYPositionPositive = 3;
+    public float maxYPositionNegative = 3;
 
     public AnimationCurve deathCurve;
     private float deathTimer;
@@ -76,7 +76,7 @@ public class CameraController : MonoBehaviour
         camera.orthographicSize = minCameraSize + playerDistance * 0.2f;
         camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minCameraSize, maxCameraSize);
         positionAverage.x = Mathf.Clamp(positionAverage.x, -maxXPos, maxXPos);
-        positionAverage.y = Mathf.Clamp(positionAverage.y, -maxYPos, maxYPos);
+        positionAverage.y = Mathf.Clamp(positionAverage.y, -maxYPositionNegative, maxYPositionPositive);
         positionAverage.z = -10;
         transform.position = positionAverage;
     }
@@ -111,8 +111,8 @@ public class CameraController : MonoBehaviour
             float yOffset = UnityEngine.Random.Range(-shakeOffset, shakeOffset);
             Vector3 newPos = new Vector2(xOffset, yOffset);
             transform.position += newPos;
-            shakeTimer -= Time.deltaTime;
-            if (shakeTimer <= 0)
+            shakeTimer += Time.deltaTime;
+            if (shakeTimer >= shakeTime)
             {
                 shaking = false;
                 shakeTimer = 0;
