@@ -34,7 +34,6 @@ public class UIManager : MonoBehaviour {
     public Text countdownText;
     public Text getReadyText;
     public GameObject PlayerPresentationCanvas;
-    public GameObject pauseMenuUI;
 
     public Text nameText;
     public Text dmgText;
@@ -141,7 +140,7 @@ public class UIManager : MonoBehaviour {
     }
     public void RematchPressed()
     {
-        PostGameUI.SetActive(false);        
+        PostGameUI.SetActive(false);
         GameplayManager.Get().SendEvent(GameplayManager.Events.RematchSelected);
     }
 
@@ -181,12 +180,5 @@ public class UIManager : MonoBehaviour {
         }
         else
             PlayerPresentationCanvas.SetActive(false);
-    }
-    public void SetPauseMenuUI(bool value)
-    {
-        if(value)
-            pauseMenuUI.SetActive(true);        
-        else
-            pauseMenuUI.SetActive(false);
     }
 }
