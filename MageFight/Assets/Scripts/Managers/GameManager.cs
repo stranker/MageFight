@@ -23,12 +23,12 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private int roundsToWin; //How much of a round-win advantage a player needs to be considered winner.
 	[SerializeField] private List<Transform> startingPositions = new List<Transform>();    
     public new CameraController camera;
+    private float timeScale;
+
+	void Awake () {
     private float playerDeathTimer;
     public float playerDeathTime;
     public bool playerDead = false;
-
-
-    void Awake () {
 		//DontDestroyOnLoad(gameObject); //Single scene, might not be needed
 		roundCounter = 0;
 		PlayerBehavior[] activeplayers = FindObjectsOfType<PlayerBehavior>();
@@ -47,8 +47,16 @@ public class GameManager : MonoBehaviour {
         UIManager.Get().OnLeaderboardShown += OnLeaderboardShown;
 		PowerPickingManager.Instance.SetPlayerList(players);
         GameplayManager.Get().SendEvent(GameplayManager.Events.StartGame);
+        timeScale = Time.timeScale;
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("StartButton"))
+        {
+            GameplayManager.Get().SendEvent(GameplayManager.Events.PauseGameplay);
+        }
+    }
     private void Update()
     {
         if (playerDead)
@@ -154,5 +162,12 @@ public class GameManager : MonoBehaviour {
     private void OnDestroy()
     {
         UIManager.Get().OnLeaderboardShown -= OnLeaderboardShown;
+    }
+    public void SetPause(bool value)
+    {
+        if(value)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = timeScale;
     }
 }
