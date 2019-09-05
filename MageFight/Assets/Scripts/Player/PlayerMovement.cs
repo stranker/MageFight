@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour {
     public RaycastHit2D LeftFootRaycast;
     public RaycastHit2D RightFootRaycast;
     public int currentDirection = 1;
-    public int initialDirection = 1;
     public bool canJump = true;
     public bool canFly = true;
     public bool flying;
@@ -33,7 +32,6 @@ public class PlayerMovement : MonoBehaviour {
     public Transform rightFoot;
     public Transform leftFoot;
     public LayerMask floorLayer;
-
     public Transform visual;
     public ParticleSystem jumpParticles;
     public ParticleSystem flyParticles;
@@ -267,17 +265,6 @@ public class PlayerMovement : MonoBehaviour {
     {
         allPurposeTimer = 0;
         rigidBody.velocity = Vector2.up * force;
-    }
-
-    public void SetActive(bool v)
-    {
-        velocity = Vector2.zero;
-        rigidBody.velocity = velocity;
-        rigidBody.gravityScale = v ? 6 : 0;
-        flyStamina = flyMaxStamina;
-        flying = false;
-        currentDirection = initialDirection;
-        enabled = v;
     }
 
 }
