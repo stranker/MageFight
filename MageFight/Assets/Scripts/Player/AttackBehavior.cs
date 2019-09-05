@@ -41,6 +41,8 @@ public class AttackBehavior : MonoBehaviour {
         arrowSprite.transform.rotation = Quaternion.Euler(0, 0, arrowAngle);
     }
 
+
+
     private void CanAttackCheck()
     {
         if (!canAttack)
@@ -136,6 +138,11 @@ public class AttackBehavior : MonoBehaviour {
     public void SetCanAttack(bool val)
     {
         canAttack = val;
+    }
+
+    public void SetActive(bool v)
+    {
+        enabled = v;
     }
 
 }
