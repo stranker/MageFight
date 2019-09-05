@@ -98,7 +98,7 @@ Transform:
   m_GameObject: {fileID: 1973537657204378}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.08, y: -0.41, z: 0}
-  m_LocalScale: {x: 0.872, y: 0.872, z: 0.872}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 4484330989977032}
   m_RootOrder: 0
@@ -176,6 +176,7 @@ MonoBehaviour:
   screenHeight: 0
   screenWidth: 0
   arrow: {fileID: 4642128741546052}
+  offsetIndicator: {x: 3, y: 3}
 --- !u!212 &212261716239579488
 SpriteRenderer:
   m_ObjectHideFlags: 1

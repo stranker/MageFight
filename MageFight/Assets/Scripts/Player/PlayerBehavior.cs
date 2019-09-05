@@ -39,6 +39,7 @@ public class PlayerBehavior : MonoBehaviour {
                 attack.SetActive(false);
                 SetSpritesVisibles(false);
                 deathParticles.Play();
+                pAnim.ResetAnimations();
                 GameManager.Instance.PlayerDeath();
             }
         }

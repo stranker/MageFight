@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour {
     public RaycastHit2D LeftFootRaycast;
     public RaycastHit2D RightFootRaycast;
     public int currentDirection = 1;
+    public int initialDirection = 1;
     public bool canJump = true;
     public bool canFly = true;
     public bool flying;
@@ -273,6 +274,9 @@ public class PlayerMovement : MonoBehaviour {
         velocity = Vector2.zero;
         rigidBody.velocity = velocity;
         rigidBody.gravityScale = v ? 6 : 0;
+        flyStamina = flyMaxStamina;
+        flying = false;
+        currentDirection = initialDirection;
         enabled = v;
     }
 
