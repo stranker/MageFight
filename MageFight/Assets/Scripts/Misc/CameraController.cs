@@ -111,8 +111,8 @@ public class CameraController : MonoBehaviour
             float yOffset = UnityEngine.Random.Range(-shakeOffset, shakeOffset);
             Vector3 newPos = new Vector2(xOffset, yOffset);
             transform.position += newPos;
-            shakeTimer -= Time.deltaTime;
-            if (shakeTimer <= 0)
+            shakeTimer += Time.deltaTime;
+            if (shakeTimer >= shakeTime)
             {
                 shaking = false;
                 shakeTimer = 0;

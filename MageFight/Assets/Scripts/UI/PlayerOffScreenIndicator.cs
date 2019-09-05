@@ -25,9 +25,17 @@ public class PlayerOffScreenIndicator : MonoBehaviour {
         {
             FollowPlayer();
             ClampToScreen();
+            CheckPlayerDead();
         }
-
 	}
+
+    private void CheckPlayerDead()
+    {
+        if (!target.GetComponent<PlayerBehavior>().isAlive)
+        {
+            SetActivated(false);
+        }
+    }
 
     private void FollowPlayer()
     {
