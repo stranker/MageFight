@@ -38,6 +38,7 @@ public abstract class Spell : MonoBehaviour {
     public Vector2 knockbackForce;
 
     public bool invoked = false;
+    public bool canDamage = true;
     protected Vector3 dir;
     public float timer = 0f;
 
@@ -47,6 +48,8 @@ public abstract class Spell : MonoBehaviour {
 
     public GameObject particlesExplosion;
     public Color spellColor;
+
+    public float shakeFactor = 0;
 
     protected void Update()
     {
@@ -73,6 +76,11 @@ public abstract class Spell : MonoBehaviour {
         {
             effect.ApplyEffect(player.gameObject);
         }
+    }
+
+    public void SpellShake()
+    {
+        CameraController.Get().SpellShake(shakeFactor);
     }
 
     protected void MakeExplosion()
