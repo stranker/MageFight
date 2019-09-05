@@ -24,11 +24,11 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private List<Transform> startingPositions = new List<Transform>();    
     public new CameraController camera;
     private float timeScale;
+
+	void Awake () {
     private float playerDeathTimer;
     public float playerDeathTime;
     public bool playerDead = false;
-
-    void Awake () {
 		//DontDestroyOnLoad(gameObject); //Single scene, might not be needed
 		roundCounter = 0;
 		PlayerBehavior[] activeplayers = FindObjectsOfType<PlayerBehavior>();
@@ -52,10 +52,13 @@ public class GameManager : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("StartButton"))
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("StartButton"))
         {
             GameplayManager.Get().SendEvent(GameplayManager.Events.PauseGameplay);
         }
+    }
+    private void Update()
+    {
         if (playerDead)
         {
             playerDeathTimer += Time.deltaTime;
@@ -67,6 +70,7 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
+
 
     public void InitializeRound(){
 		for(int i = 0; i < players.Count; i++){
