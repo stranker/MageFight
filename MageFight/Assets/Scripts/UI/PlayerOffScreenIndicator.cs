@@ -11,6 +11,7 @@ public class PlayerOffScreenIndicator : MonoBehaviour {
     public float screenHeight;
     public float screenWidth;
     public Transform arrow;
+    public Vector2 offsetIndicator;
 
     private void Start()
     {
@@ -40,9 +41,10 @@ public class PlayerOffScreenIndicator : MonoBehaviour {
     {
         screenHeight = 2f * Camera.main.orthographicSize;
         screenWidth = screenHeight * Camera.main.aspect;
+        Vector2 cameraPos = Camera.main.transform.position;
         Vector2 pos = transform.position;
-        pos.x = Mathf.Clamp(pos.x, -screenWidth / 2, screenWidth / 2);
-        pos.y = Mathf.Clamp(pos.y, -screenHeight / 2, screenHeight / 2);
+        pos.x = Mathf.Clamp(pos.x, -screenWidth / 2 + cameraPos.x + offsetIndicator.x, screenWidth / 2 + cameraPos.x - offsetIndicator.x);
+        pos.y = Mathf.Clamp(pos.y, -screenHeight / 2 + cameraPos.y - offsetIndicator.y, screenHeight / 2 + cameraPos.y - offsetIndicator.y);
         transform.position = pos;
     }
 

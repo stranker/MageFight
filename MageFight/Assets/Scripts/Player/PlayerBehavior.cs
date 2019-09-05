@@ -132,12 +132,18 @@ public class PlayerBehavior : MonoBehaviour {
 
     private void OnBecameInvisible()
     {
-        pIndicator.SetActivated(true);
+        if (pIndicator)
+        {
+            pIndicator.SetActivated(true);
+        }
     }
 
     private void OnBecameVisible()
     {
-        pIndicator.SetActivated(false);
+        if (pIndicator)
+        {
+            pIndicator.SetActivated(false);
+        }
     }
 
 }
