@@ -18,6 +18,8 @@ public class GameplayManager : MonoBehaviour {
         Leaderboard,
         PostGame,
         Rematch,
+        Pause,
+        ResumingGameplay,
         Count
     }
     public enum Events
@@ -33,6 +35,8 @@ public class GameplayManager : MonoBehaviour {
         ExitSelected,
         RematchSelected,
         GoToPowerSelection,
+        PauseGameplay,
+        ResumeGameplay,
         Count
     }
     private FSM fsm;
@@ -57,6 +61,10 @@ public class GameplayManager : MonoBehaviour {
         fsm.SetRelation((int)States.Leaderboard, (int)Events.LeaderboardShownWinner, (int)States.PostGame);
         fsm.SetRelation((int)States.PostGame, (int)Events.RematchSelected, (int)States.Rematch);
         fsm.SetRelation((int)States.Rematch, (int)Events.GoToPowerSelection, (int)States.PowerSelection);
+        fsm.SetRelation((int)States.Gameplay, (int)Events.PauseGameplay, (int)States.Pause);
+        fsm.SetRelation((int)States.Pause, (int)Events.PauseGameplay, (int)States.ResumingGameplay);
+        fsm.SetRelation((int)States.ResumingGameplay, (int)Events.ResumeGameplay, (int)States.Gameplay);
+        fsm.SetRelation((int)States.Pause, (int)Events.RematchSelected, (int)States.Rematch);
     }
     private void Update()
     {
@@ -90,10 +98,15 @@ public class GameplayManager : MonoBehaviour {
                 case (int)States.Rematch:
                     Rematch();
                 break;
+                case (int)States.Pause:
+                    Pause();
+                break;
+                case (int)States.ResumingGameplay:
+                    ResumingGameplay();
+                break;
             }
         }
     }
-
 
     public void PlayerPresentation()
     {
@@ -128,11 +141,24 @@ public class GameplayManager : MonoBehaviour {
     private void Rematch()
     {
         PowerPickingManager.Instance.Reset();
+        UIManager.Get().SetPauseMenuUI(false);
+        GameManager.Instance.InitializeRound();
         GameManager.Instance.EndGame();
         SendEvent(Events.GoToPowerSelection);
     }
     public void SendEvent(Events evt)
     {
         fsm.SendEvent((int)evt);
+    }
+    private void Pause()
+    {
+        UIManager.Get().SetPauseMenuUI(true);
+        GameManager.Instance.SetPause(true);
+    }
+    private void ResumingGameplay()
+    {
+        UIManager.Get().SetPauseMenuUI(false);
+        GameManager.Instance.SetPause(false);
+        SendEvent(Events.ResumeGameplay);
     }
 }
