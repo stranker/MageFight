@@ -7114,8 +7114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f56dae173a46342b5b113c0647fcd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players: []
   roundsToWin: 3
-  startingPositions: []
+  startingPositions:
+  - {fileID: 4475092082759341}
+  - {fileID: 4429958295938427}
   camera: {fileID: 472306429}
   playerDeathTime: 0
   playerDead: 0
@@ -13199,6 +13202,18 @@ MonoBehaviour:
   m_Spacing: {x: 50, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 3
+--- !u!4 &4429958295938427 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7420670900732343340, guid: 04adf9984dfe9ce4d83540c65050ca38,
+    type: 3}
+  m_PrefabInstance: {fileID: 7418618086659707223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4475092082759341 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7420770872690853882, guid: 04adf9984dfe9ce4d83540c65050ca38,
+    type: 3}
+  m_PrefabInstance: {fileID: 7418618086659707223}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4477953241823767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7420755109852703552, guid: 04adf9984dfe9ce4d83540c65050ca38,

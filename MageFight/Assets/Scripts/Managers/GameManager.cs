@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private int roundCounter;
-	private List<PlayerBehavior> players = new List<PlayerBehavior>();
+	public List<PlayerBehavior> players = new List<PlayerBehavior>();
 	[SerializeField] public int roundsToWin; //How much of a round-win  a player needs to be considered winner.
 	[SerializeField] private List<Transform> startingPositions = new List<Transform>();    
     public new CameraController camera;
@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour {
     }
 
 	public void EndRound(){
-        UIManager.Get().ShowLeaderboard(players[0].winCount, players[1].winCount);
+        UIManager.Get().ShowLeaderboard();
     }
     private void OnLeaderboardShown(UIManager manager)
     {
