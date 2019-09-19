@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
     private float playerDeathTimer;
     public float playerDeathTime;
     public bool playerDead = false;
-
+    public LevelBehavior currentMap;
 
     void Awake () {
 		//DontDestroyOnLoad(gameObject); //Single scene, might not be needed
