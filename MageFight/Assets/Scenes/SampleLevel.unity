@@ -9492,12 +9492,12 @@ PrefabInstance:
     - target: {fileID: 114942571628359274, guid: d4f71b467ae0ea445b9c978adb55f8d7,
         type: 3}
       propertyPath: maxHealth
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 114942571628359274, guid: d4f71b467ae0ea445b9c978adb55f8d7,
         type: 3}
       propertyPath: health
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 114297562502344934, guid: d4f71b467ae0ea445b9c978adb55f8d7,
         type: 3}
@@ -11776,12 +11776,12 @@ PrefabInstance:
     - target: {fileID: 114789643392479472, guid: d9a5f7e81a895004da3a18ff1c487c9c,
         type: 3}
       propertyPath: maxHealth
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 114789643392479472, guid: d9a5f7e81a895004da3a18ff1c487c9c,
         type: 3}
       propertyPath: health
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 114545843423548116, guid: d9a5f7e81a895004da3a18ff1c487c9c,
         type: 3}
