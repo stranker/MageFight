@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallingPlatform : MonoBehaviour {
+public class TweenPlatform : MonoBehaviour {
 
     public Vector3 initialScale;
     public Vector3 finalScale;
