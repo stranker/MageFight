@@ -60,7 +60,7 @@ public class GameplayManager : MonoBehaviour {
     }
     private void Update()
     {
-        if(lastState != fsm.GetState())
+        if (lastState != fsm.GetState())
         {
             lastState = fsm.GetState();
             print((States)lastState);

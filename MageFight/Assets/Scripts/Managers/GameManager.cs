@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
 
 	private int roundCounter;
 	private List<PlayerBehavior> players = new List<PlayerBehavior>();
-	[SerializeField] private int roundsToWin; //How much of a round-win advantage a player needs to be considered winner.
+	[SerializeField] public int roundsToWin; //How much of a round-win  a player needs to be considered winner.
 	[SerializeField] private List<Transform> startingPositions = new List<Transform>();    
     public new CameraController camera;
     private float playerDeathTimer;
@@ -120,11 +120,7 @@ public class GameManager : MonoBehaviour {
     }
 
 	public void EndRound(){
-        if(players[0].GetPlayerName() > players[1].GetPlayerName()){
-            UIManager.Get().ShowLeaderboard(players[1].winCount, players[0].winCount);
-        } else{
-            UIManager.Get().ShowLeaderboard(players[0].winCount, players[1].winCount);
-        }
+        UIManager.Get().ShowLeaderboard(players[0].winCount, players[1].winCount);
     }
     private void OnLeaderboardShown(UIManager manager)
     {

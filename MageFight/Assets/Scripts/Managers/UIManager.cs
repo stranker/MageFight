@@ -126,9 +126,9 @@ public class UIManager : MonoBehaviour {
 
     public void ShowLeaderboard(int firstPlayerScore, int secondPlayerScore)
     {
-        leaderboard.ShowLeaderboard(firstPlayerScore, secondPlayerScore);
         showLeaderboard = true;
         leaderboardActive = false;
+        leaderboard.SetScores(firstPlayerScore, secondPlayerScore);
     }
     public void ShowPostGame(int winnerName)
     {
