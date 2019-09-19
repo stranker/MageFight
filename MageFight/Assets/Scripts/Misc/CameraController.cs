@@ -46,6 +46,8 @@ public class CameraController : MonoBehaviour
     public float defaultSpellShakeTime = 0.5f;
     private float shakeTimer = 0;
 
+    public float playerDistanceZoomFactor = 0.5f;
+
     private void Start()
     {
        camera = GetComponent<Camera>();
@@ -73,7 +75,7 @@ public class CameraController : MonoBehaviour
         Vector2 positionsSum = playerList[0].position + playerList[1].position;
         Vector3 positionAverage = positionsSum / playerList.Length;
         float playerDistance = Vector3.Distance(playerList[0].position, playerList[1].position);
-        camera.orthographicSize = minCameraSize + playerDistance * 0.2f;
+        camera.orthographicSize = minCameraSize + playerDistance * playerDistanceZoomFactor;
         camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minCameraSize, maxCameraSize);
         positionAverage.x = Mathf.Clamp(positionAverage.x, -maxXPos, maxXPos);
         positionAverage.y = Mathf.Clamp(positionAverage.y, -maxYPositionNegative, maxYPositionPositive);
