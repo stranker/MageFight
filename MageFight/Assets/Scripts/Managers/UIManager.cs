@@ -114,6 +114,7 @@ public class UIManager : MonoBehaviour {
         getReadyText.enabled = true;
         timer = 3.9f;        
         onCountdown = true;
+        GameManager.Instance.currentMap.GenerateLevel();
     }
 
     public void PlayPickParticles(PlayerBehavior playerBehavior)

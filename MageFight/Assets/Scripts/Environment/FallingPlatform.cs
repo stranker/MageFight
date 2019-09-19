@@ -4,19 +4,40 @@ using UnityEngine;
 
 public class FallingPlatform : MonoBehaviour {
 
-    public float fallSpeed;
-    private Vector2 velocity;
-    public Rigidbody2D rig;
+    public Vector3 initialScale;
+    public Vector3 finalScale;
+    public float minTweenTime;
+    public float maxTweenTime;
+    private float timer;
+    private float tweenTime;
+    private bool isTweening = false;
+    public AnimationCurve tweenCurve;
 
     private void Start()
     {
-        rig = GetComponent<Rigidbody2D>();
-        velocity.y = -fallSpeed;
+        finalScale = transform.localScale;
+        transform.localScale = initialScale;
+        tweenTime = Random.Range(minTweenTime, maxTweenTime);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        rig.velocity = velocity;
+        if (isTweening)
+        {
+            timer += Time.deltaTime;
+            transform.localScale = new Vector3(tweenCurve.Evaluate(timer / tweenTime) * finalScale.x, tweenCurve.Evaluate(timer / tweenTime) * finalScale.y);
+            if (timer > tweenTime)
+            {
+                transform.localScale = finalScale;
+                timer = 0;
+                isTweening = false;
+            }
+        }
+    }
+
+    public void TweenScale()
+    {
+        isTweening = true;
     }
 
 }
