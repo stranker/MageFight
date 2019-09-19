@@ -15,8 +15,8 @@ public class LevelBehavior : MonoBehaviour
 
     public void GenerateLevel()
     {
-        var papitas = platforms.GetComponentsInChildren<FallingPlatform>();
-        foreach (FallingPlatform papita in papitas)
+        var papitas = platforms.GetComponentsInChildren<TweenPlatform>();
+        foreach (TweenPlatform papita in papitas)
         {
             papita.TweenScale();
         }
