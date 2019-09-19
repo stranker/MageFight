@@ -10,6 +10,7 @@ public class FallingPlatform : MonoBehaviour {
 
     private void Start()
     {
+        rig = GetComponent<Rigidbody2D>();
         velocity.y = -fallSpeed;
     }
 

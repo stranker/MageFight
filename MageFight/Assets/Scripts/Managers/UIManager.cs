@@ -20,9 +20,7 @@ public class UIManager : MonoBehaviour {
     public GameObject playerUI;
     public UILeaderboard leaderboard;
     public GameObject PostGameUI;
-    public Sprite[] playerLabelSprites;
-    public Image playerLabel;
-    public Text spellDescription;
+    public Text playerLabel;
     public Text spellDifficulty;
     private float timer = 0;
     public float leaderboardTime = 3f;
@@ -120,7 +118,10 @@ public class UIManager : MonoBehaviour {
 
     public void PlayPickParticles(PlayerBehavior playerBehavior)
     {
-        pickParticles.PlayParticles(playerBehavior);
+        if (pickParticles)
+        {
+            pickParticles.PlayParticles(playerBehavior);
+        }
     }
 
     public void ShowLeaderboard(int firstPlayerScore, int secondPlayerScore)
@@ -131,12 +132,8 @@ public class UIManager : MonoBehaviour {
     }
     public void ShowPostGame(int winnerName)
     {
-        int num = 0;
-        if(winnerName > 0 && winnerName-1 < playerLabelSprites.Length){
-            num = winnerName -1;
-        }
         PostGameUI.SetActive(true);
-        playerLabel.sprite = playerLabelSprites[num];
+        playerLabel.text = "PLAYER " + winnerName.ToString();
     }
     public void RematchPressed()
     {
