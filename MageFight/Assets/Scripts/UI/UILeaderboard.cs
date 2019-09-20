@@ -11,6 +11,7 @@ public class UILeaderboard : MonoBehaviour {
     public LeaderboardCookie leaderCookie;
     public List<LeaderboardCookie> cookieListP1 = new List<LeaderboardCookie>();
     public List<LeaderboardCookie> cookieListP2 = new List<LeaderboardCookie>();
+    private bool scoresSeted = false;
 
     private void Start()
     {
@@ -29,11 +30,23 @@ public class UILeaderboard : MonoBehaviour {
         cookieList.Add(cookie.GetComponent<LeaderboardCookie>());
     }
 
-    public void SetScores(int firstPlayerScore, int secondPlayerScore)
+    public void SetScores()
     {
-        if (firstPlayerScore != 0)
-            cookieListP1[firstPlayerScore - 1].ChangeToCookie();
-        if (secondPlayerScore != 0)
-            cookieListP2[secondPlayerScore - 1].ChangeToCookie();
+        if (!scoresSeted)
+        {
+            scoresSeted = true;
+            int p1WinCount = GameManager.Instance.players[0].winCount;
+            int p2WinCount = GameManager.Instance.players[1].winCount;
+            if (p1WinCount != 0)
+                cookieListP1[p1WinCount - 1].ChangeToCookie();
+            if (p2WinCount != 0)
+                cookieListP2[p2WinCount - 1].ChangeToCookie();
+        }
     }
+
+    private void OnDisable()
+    {
+        scoresSeted = false;
+    }
+
 }

@@ -41,15 +41,9 @@ public class UIManager : MonoBehaviour {
     public Text effText;
 
 
-    public void Fade(float amount)
+    private void Start()
     {
-        var sprites = playerUI.GetComponentsInChildren<Image>();
-        foreach (Image image in sprites)
-        {
-            Color actualColor = image.color;
-            actualColor.a = amount;
-            image.color = actualColor;
-        }
+        leaderboard.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -65,6 +59,7 @@ public class UIManager : MonoBehaviour {
                 else
                 {
                     leaderboard.gameObject.SetActive(true);
+                    leaderboard.SetScores();
                     leaderboardActive = true;
                     timer = 0;
                 }
@@ -125,11 +120,10 @@ public class UIManager : MonoBehaviour {
         }
     }
 
-    public void ShowLeaderboard(int firstPlayerScore, int secondPlayerScore)
+    public void ShowLeaderboard()
     {
         showLeaderboard = true;
         leaderboardActive = false;
-        leaderboard.SetScores(firstPlayerScore, secondPlayerScore);
     }
     public void ShowPostGame(int winnerName)
     {
