@@ -7120,7 +7120,7 @@ MonoBehaviour:
   - {fileID: 4475092082759341}
   - {fileID: 4429958295938427}
   camera: {fileID: 472306429}
-  playerDeathTime: 0
+  playerDeathTime: 1
   playerDead: 0
   currentMap: {fileID: 0}
 --- !u!4 &524297103
@@ -9544,6 +9544,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114495054791587162, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+        type: 3}
+      propertyPath: timeAfterAttack
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4f71b467ae0ea445b9c978adb55f8d7, type: 3}
 --- !u!4 &1042278866 stripped
@@ -11828,6 +11833,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114064571490622834, guid: d9a5f7e81a895004da3a18ff1c487c9c,
+        type: 3}
+      propertyPath: timeAfterAttack
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9a5f7e81a895004da3a18ff1c487c9c, type: 3}
 --- !u!4 &1876013426 stripped
@@ -12990,7 +13000,7 @@ MonoBehaviour:
   - {fileID: 1876013427}
   - {fileID: 1042278867}
   presTime: 5
-  deathCamTime: 5
+  deathCamTime: 3
 --- !u!4 &2052931260
 Transform:
   m_ObjectHideFlags: 0

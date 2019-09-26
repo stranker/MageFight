@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour {
     public Vector2 aimDirection;
     public InputManager input;
     public AttackBehavior attackBehavior;
+    public PlayerBehavior playerBehavior;
     public Rigidbody2D rigidBody;
     public Transform rightFoot;
     public Transform leftFoot;
@@ -45,13 +46,17 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
     void Start () {
         initialGravityScale = rigidBody.gravityScale;
+        playerBehavior = GetComponent<PlayerBehavior>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        GetInput();
-        GeneralMovement();
-        CheckRestoreOnPlayerHit();
+        if (playerBehavior.isAlive)
+        {
+            GetInput();
+            GeneralMovement();
+            CheckRestoreOnPlayerHit();
+        }
 	}
 
     private void CheckStun()
@@ -193,9 +198,12 @@ public class PlayerMovement : MonoBehaviour {
 
     public void KnockOut(Vector2 dir, Vector2 knockForce)
     {
-        canMove = false;
-        rigidBody.velocity = dir * new Vector2(knockForce.x, knockForce.y);
-        onPlayerRestoreHit = !canMove;
+        if (playerBehavior.isAlive)
+        {
+            canMove = false;
+            rigidBody.velocity = dir * new Vector2(knockForce.x, knockForce.y);
+            onPlayerRestoreHit = !canMove;
+        }
     }
 
     private bool GetJumpInput()
@@ -272,7 +280,7 @@ public class PlayerMovement : MonoBehaviour {
     public void SetActive(bool v)
     {
         velocity = Vector2.zero;
-        rigidBody.velocity = velocity;
+        rigidBody.velocity = Vector2.zero;
         rigidBody.gravityScale = v ? 6 : 0;
         flyStamina = flyMaxStamina;
         flying = false;

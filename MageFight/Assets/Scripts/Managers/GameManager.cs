@@ -71,7 +71,6 @@ public class GameManager : MonoBehaviour {
                 players[i].Reset(startingPositions[i].position); 
 			}
 		}
-
 		Debug.Log("Begin round: " + (roundCounter +1));
 	}
 
@@ -107,7 +106,13 @@ public class GameManager : MonoBehaviour {
         }
         //if only one player is alive, then that player wins the round
         if (isOnePlayerAlive)
+        {
             players[winner].winCount += 1;
+            foreach (PlayerBehavior player in players)
+            {
+                player.Pause();
+            }
+        }
     }
 
 	public void EndGame(){
