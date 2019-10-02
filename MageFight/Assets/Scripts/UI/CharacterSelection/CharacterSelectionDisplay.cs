@@ -4,8 +4,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public class Player
+{
+    CharacterSelection charData;
+    CharacterSelectionManager.InputType inputType;
+
+    public Player(CharacterSelection charData, CharacterSelectionManager.InputType inputType)
+    {
+        this.charData = charData;
+        this.inputType = inputType;
+    }
+}
+
+
 public class CharacterSelectionDisplay : MonoBehaviour
 {
+
+
 
     public List<CharacterSelection> characterDataList;
     public int characterIdx = 0;
@@ -33,6 +48,8 @@ public class CharacterSelectionDisplay : MonoBehaviour
     private float canConfirmTimer;
     private float canConfirmTime = 1.1f;
     private bool canConfirm = false;
+
+    Player player = null;
 
     // Start is called before the first frame update
     void Start()
@@ -118,18 +135,14 @@ public class CharacterSelectionDisplay : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.JoystickButton0) && canConfirm && !playerConfirmed)
             {
-                playerConfirmed = true;
-                characterName.text = "READY!";
-                CharacterSelectionManager.Instance.AddPlayerConfirm();
+                ConfirmPlayer();
             }
         }
         else
         {
             if (Input.GetKey(KeyCode.JoystickButton3) && playerConfirmed)
             {
-                playerConfirmed = false;
-                CharacterSelectionManager.Instance.RemovePlayerConfirm();
-                UpdateUI();
+                RemoveConfirmedPlayer();
             }
         }
     }
@@ -150,20 +163,32 @@ public class CharacterSelectionDisplay : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.Return) && canConfirm && !playerConfirmed)
             {
-                playerConfirmed = true;
-                characterName.text = "READY!";
-                CharacterSelectionManager.Instance.AddPlayerConfirm();
+                ConfirmPlayer();
             }
         }
         else
         {
             if (Input.GetKeyDown(KeyCode.Escape) && playerConfirmed)
             {
-                playerConfirmed = false;
-                CharacterSelectionManager.Instance.RemovePlayerConfirm();
-                UpdateUI();
+                RemoveConfirmedPlayer();
             }
         }
-
     }
+
+    private void ConfirmPlayer()
+    {
+        playerConfirmed = true;
+        characterName.text = "READY!";
+        player = new Player(characterData, inputType);
+        CharacterSelectionManager.Instance.AddPlayer(player);
+    }
+
+    private void RemoveConfirmedPlayer()
+    {
+        playerConfirmed = false;
+        CharacterSelectionManager.Instance.RemovePlayer(player);
+        UpdateUI();
+        player = null;
+    }
+
 }

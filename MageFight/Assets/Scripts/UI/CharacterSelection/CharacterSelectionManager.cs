@@ -29,7 +29,7 @@ public class CharacterSelectionManager : MonoBehaviour
     private int joystickIdx = 0;
     public int maxPlayers;
     public CharacterSelectionDisplay[] characterSelectionDisplays;
-    public int playersConfirmed = 0;
+    public List<Player> playersConfirmed = new List<Player>();
 
     public GameObject startUI;
     private float canStartTimer = 0;
@@ -52,7 +52,7 @@ public class CharacterSelectionManager : MonoBehaviour
 
     private void CheckPlayersConfirmedCount()
     {
-        startUI.SetActive(playersConfirmed > 1);
+        startUI.SetActive(playersConfirmed.Count > 1);
         if (canStart)
         {
             canStartTimer += Time.deltaTime;
@@ -99,16 +99,22 @@ public class CharacterSelectionManager : MonoBehaviour
         }
     }
 
-    public void AddPlayerConfirm()
+    public void AddPlayer(Player player)
     {
-        playersConfirmed++;
-        canStart = playersConfirmed > 1;
+        playersConfirmed.Add(player);
+        if (playersConfirmed.Count > 1)
+        {
+            canStart = true;
+        }
     }
 
-    public void RemovePlayerConfirm()
+    internal void RemovePlayer(Player player)
     {
-        playersConfirmed--;
-        canStart = false;
-        canStartTimer = 0;
+        playersConfirmed.Remove(player);
+        if (playersConfirmed.Count < 2)
+        {
+            canStart = false;
+            canStartTimer = 0;
+        }
     }
 }
