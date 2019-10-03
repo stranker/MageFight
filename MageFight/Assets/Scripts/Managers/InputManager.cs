@@ -46,5 +46,20 @@ public class InputManager : MonoBehaviour {
     public string secondSkillButton; // Circulo ?
     public string thirdSkillButton; // Triangulo ?
     public string pauseButton; // Start
+
+    public string GetXAxis()
+    {
+        return inputType == InputType.Keyboard ? AxisXKeyboard : movementAxisX;
+    }
+
+    public string GetYAxis()
+    {
+        return inputType == InputType.Keyboard ? AxisYKeyboard : aimAxisY;
+    }
+
+    public string GetFlyButton()
+    {
+        return inputType == InputType.Keyboard ? flyButtonKeyboard : flyButton;
+    }
     #endregion
 }

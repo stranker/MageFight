@@ -114,7 +114,7 @@ public class PlayerMovement : MonoBehaviour {
     private void GetInput()
     {
         flying = GetFlyInput() && flyStamina > 0 && canFly;
-        velocity.x = flying ? aimDirection.normalized.x * flyAccelerationIncrement * flySpeed * Time.deltaTime : (GetKeyboardXAxis() + GetDPadXAxis()) * floorSpeed * Time.deltaTime;
+        velocity.x = flying ? aimDirection.normalized.x * flyAccelerationIncrement * flySpeed * Time.deltaTime : GetXAxis() * floorSpeed * Time.deltaTime;
         velocity.y = flying ? aimDirection.normalized.y * flyAccelerationIncrement * flySpeed * Time.deltaTime : rigidBody.velocity.y;
     }
 
@@ -152,8 +152,8 @@ public class PlayerMovement : MonoBehaviour {
 
     private void GetAimDirection()
     {
-        int yDir = (int)GetKeyboardYAxis() + (int)GetDPadYAxis();
-        int xDir = (int)GetKeyboardXAxis() + (int)GetDPadXAxis();
+        int yDir = (int)GetYAxis();
+        int xDir = (int)GetXAxis();
         aimDirection = new Vector2(xDir, yDir);
     }
 
@@ -171,7 +171,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (canMove)
         {
-            float xDir = GetKeyboardXAxis() + GetDPadXAxis();
+            float xDir = GetXAxis();
             if (xDir < -0.1f)
                 currentDirection = -1;
             else if (xDir > 0.1f)
@@ -213,77 +213,17 @@ public class PlayerMovement : MonoBehaviour {
 
     private bool GetFlyInput()
     {
-        switch (input.inputType)
-        {
-            case InputType.Joystick:
-                return Input.GetAxis(input.flyButton) > 0;
-            case InputType.Keyboard:
-                return Input.GetAxis(input.flyButtonKeyboard) > 0;
-            case InputType.Count:
-                return false;
-            default:
-                return false;
-        }
+        return Input.GetAxis(input.GetFlyButton()) > 0;
     }
 
-    private float GetKeyboardXAxis()
+    private float GetXAxis()
     {
-        switch (input.inputType)
-        {
-            case InputType.Joystick:
-                return Input.GetAxis(input.movementAxisX);
-            case InputType.Keyboard:
-                return Input.GetAxis(input.AxisXKeyboard);
-            case InputType.Count:
-                return 0;
-            default:
-                return 0;
-        }
+        return Input.GetAxis(input.GetXAxis());
     }
 
-    private float GetDPadXAxis()
+    private float GetYAxis()
     {
-        switch (input.inputType)
-        {
-            case InputType.Joystick:
-                return Input.GetAxis(input.DPadX);
-            case InputType.Keyboard:
-                return 0;
-            case InputType.Count:
-                return 0;
-            default:
-                return 0;
-        }
-    }
-
-    private float GetKeyboardYAxis()
-    {
-        switch (input.inputType)
-        {
-            case InputType.Joystick:
-                return Input.GetAxis(input.aimAxisY);
-            case InputType.Keyboard:
-                return Input.GetAxis(input.AxisYKeyboard);
-            case InputType.Count:
-                return 0;
-            default:
-                return 0;
-        }
-    }
-
-    private float GetDPadYAxis()
-    {
-        switch (input.inputType)
-        {
-            case InputType.Joystick:
-                return Input.GetAxis(input.DPadY);
-            case InputType.Keyboard:
-                return 0;
-            case InputType.Count:
-                return 0;
-            default:
-                return 0;
-        }
+        return Input.GetAxis(input.GetYAxis());
     }
 
     public void Knockback(Vector2 pos)
