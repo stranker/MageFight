@@ -13,16 +13,20 @@ public class PlayerUI : MonoBehaviour {
     public GameObject playerTarget;
     private PlayerMovement movement;
     private PlayerBehavior player;
+    private SpellsManager playerSpells;
     private int playerHealth = 0;
     private float playerStamina = 0;
     public Gradient healthColorRamp;
     public Gradient staminaColorRamp;
     public Animator anim;
+    public int playerId = 0;
 
     // Use this for initialization
     void Start () {
+        playerTarget = GameManager.Instance.players[playerId - 1].gameObject;
         player = playerTarget.GetComponent<PlayerBehavior>();
         movement = playerTarget.GetComponent<PlayerMovement>();
+        playerSpells = playerTarget.GetComponent<SpellsManager>();
         UpdateText();
 	}
 
@@ -59,4 +63,9 @@ public class PlayerUI : MonoBehaviour {
     void Update () {
         UpdateText();
 	}
+
+    public void SetTarget(GameObject wizard)
+    {
+        playerTarget = wizard;
+    }
 }

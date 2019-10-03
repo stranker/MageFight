@@ -21,15 +21,19 @@ public class GameManager : MonoBehaviour {
 	private int roundCounter;
 	public List<PlayerBehavior> players = new List<PlayerBehavior>();
 	[SerializeField] public int roundsToWin; //How much of a round-win  a player needs to be considered winner.
-	[SerializeField] private List<Transform> startingPositions = new List<Transform>();    
+	[SerializeField] private List<Transform> startingPositions = new List<Transform>();
+    private int posIdx = 0;
     public new CameraController camera;
     private float playerDeathTimer;
     public float playerDeathTime;
     public bool playerDead = false;
     public LevelBehavior currentMap;
+    public List<GameObject> wizardsList = new List<GameObject>();
+    public GameObject playersParent;
 
     void Awake () {
-		//DontDestroyOnLoad(gameObject); //Single scene, might not be needed
+        //DontDestroyOnLoad(gameObject); //Single scene, might not be needed
+        CreateWizards();
 		roundCounter = 0;
 		PlayerBehavior[] activeplayers = FindObjectsOfType<PlayerBehavior>();
 		for(int i = 0; i < activeplayers.Length; i++){ //State all players are alive
@@ -42,6 +46,24 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 	}
+
+    private void CreateWizards()
+    {
+        foreach (Player player in CharactersSelected.Instance.playersConfirmed)
+        {
+            CreateWizard(player.playerId, player.charData.characterType, player.inputType, player.joistickId);
+        }
+    }
+
+    private void CreateWizard(int playerId, CharacterSelection.CharacterType characterType, InputType inputType, int joistickId)
+    {
+        GameObject wizard = new GameObject();
+        wizard = Instantiate(wizardsList[(int)characterType], startingPositions[posIdx].position, Quaternion.identity, playersParent.transform);
+        wizard.GetComponent<PlayerBehavior>().playerName = playerId;
+        wizard.GetComponent<InputManager>().SetInput(inputType, playerId);
+        posIdx++;
+    }
+
     private void Start()
     {
         UIManager.Get().OnLeaderboardShown += OnLeaderboardShown;

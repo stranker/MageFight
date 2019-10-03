@@ -8,6 +8,7 @@ TagManager:
   - UI
   - Spell
   - Destruible
+  - Portal
   layers:
   - Default
   - TransparentFX

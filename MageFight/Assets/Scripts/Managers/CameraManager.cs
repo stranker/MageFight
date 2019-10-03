@@ -13,11 +13,17 @@ public class CameraManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+
+
+        foreach (var player in GameManager.Instance.players)
+        {
+            playerList.Add(player.gameObject);
+        }
     }
     public Camera mainCamera;
     public Camera leftCamera;
     public Camera rightCamera;
-    public List<GameObject> playerList;
+    public List<GameObject> playerList = new List<GameObject>();
     private float timer = 0;
     public float presTime = 5f;
     public float deathCamTime = 5f;

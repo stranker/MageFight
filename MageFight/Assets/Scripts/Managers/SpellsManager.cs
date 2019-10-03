@@ -15,6 +15,7 @@ public class SpellsManager : MonoBehaviour {
     private ParticleSystem.MainModule spellParticlesMain;
 
     void Start () {
+        powerIcons = GameObject.Find("PowerIcons" + GetComponent<PlayerBehavior>().playerName);
         if (powerIcons)
         {
             PowerIcon[] pI = powerIcons.GetComponentsInChildren<PowerIcon>();

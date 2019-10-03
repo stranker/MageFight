@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
     public Transform target;
     private float startSize;
     public float endSize = 3.0f;
-    public Transform[] playerList;
+    public List<Transform> playerList = new List<Transform>();
     private new Camera camera;
 
     public float minCameraSize = 8f;
@@ -50,9 +50,13 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-       camera = GetComponent<Camera>();
-       startPos = transform.position;
-       startSize = camera.orthographicSize;
+        foreach (var player in GameManager.Instance.players)
+        {
+            playerList.Add(player.transform);
+        }
+        camera = GetComponent<Camera>();
+        startPos = transform.position;
+        startSize = camera.orthographicSize;
     }
 
     public void CheckCameraState()
@@ -73,7 +77,7 @@ public class CameraController : MonoBehaviour
     private void NormalMovement()
     {
         Vector2 positionsSum = playerList[0].position + playerList[1].position;
-        Vector3 positionAverage = positionsSum / playerList.Length;
+        Vector3 positionAverage = positionsSum / playerList.Count;
         float playerDistance = Vector3.Distance(playerList[0].position, playerList[1].position);
         camera.orthographicSize = minCameraSize + playerDistance * playerDistanceZoomFactor;
         camera.orthographicSize = Mathf.Clamp(camera.orthographicSize, minCameraSize, maxCameraSize);
