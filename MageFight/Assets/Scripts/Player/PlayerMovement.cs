@@ -213,27 +213,77 @@ public class PlayerMovement : MonoBehaviour {
 
     private bool GetFlyInput()
     {
-        return Input.GetAxis(input.flyButton) + Input.GetAxis(input.flyButtonKeyboard) > 0;
+        switch (input.inputType)
+        {
+            case InputType.Joystick:
+                return Input.GetAxis(input.flyButton) > 0;
+            case InputType.Keyboard:
+                return Input.GetAxis(input.flyButtonKeyboard) > 0;
+            case InputType.Count:
+                return false;
+            default:
+                return false;
+        }
     }
 
     private float GetKeyboardXAxis()
     {
-        return Input.GetAxis(input.movementAxisX) + Input.GetAxis(input.AxisXKeyboard);
+        switch (input.inputType)
+        {
+            case InputType.Joystick:
+                return Input.GetAxis(input.movementAxisX);
+            case InputType.Keyboard:
+                return Input.GetAxis(input.AxisXKeyboard);
+            case InputType.Count:
+                return 0;
+            default:
+                return 0;
+        }
     }
 
     private float GetDPadXAxis()
     {
-        return Input.GetAxis(input.DPadX);
+        switch (input.inputType)
+        {
+            case InputType.Joystick:
+                return Input.GetAxis(input.DPadX);
+            case InputType.Keyboard:
+                return 0;
+            case InputType.Count:
+                return 0;
+            default:
+                return 0;
+        }
     }
 
     private float GetKeyboardYAxis()
     {
-        return Input.GetAxis(input.aimAxisY) + Input.GetAxis(input.AxisYKeyboard);
+        switch (input.inputType)
+        {
+            case InputType.Joystick:
+                return Input.GetAxis(input.aimAxisY);
+            case InputType.Keyboard:
+                return Input.GetAxis(input.AxisYKeyboard);
+            case InputType.Count:
+                return 0;
+            default:
+                return 0;
+        }
     }
 
     private float GetDPadYAxis()
     {
-        return Input.GetAxis(input.DPadY);
+        switch (input.inputType)
+        {
+            case InputType.Joystick:
+                return Input.GetAxis(input.DPadY);
+            case InputType.Keyboard:
+                return 0;
+            case InputType.Count:
+                return 0;
+            default:
+                return 0;
+        }
     }
 
     public void Knockback(Vector2 pos)

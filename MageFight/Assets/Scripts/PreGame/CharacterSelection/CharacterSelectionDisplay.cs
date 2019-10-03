@@ -6,22 +6,23 @@ using UnityEngine.UI;
 
 public class Player
 {
-    CharacterSelection charData;
-    CharacterSelectionManager.InputType inputType;
+    public int playerId;
+    public CharacterSelection charData;
+    public InputType inputType;
+    public int joistickId;
 
-    public Player(CharacterSelection charData, CharacterSelectionManager.InputType inputType)
+    public Player(int playerId, CharacterSelection charData, InputType inputType, int joistickId)
     {
+        this.playerId = playerId;
         this.charData = charData;
         this.inputType = inputType;
+        this.joistickId = joistickId;
     }
 }
 
 
 public class CharacterSelectionDisplay : MonoBehaviour
 {
-
-
-
     public List<CharacterSelection> characterDataList;
     public int characterIdx = 0;
 
@@ -29,14 +30,16 @@ public class CharacterSelectionDisplay : MonoBehaviour
 
     public Text characterName;
     public Text characterDesc;
+    public Text inputIdText;
     public Image characterArtwork;
     public Image leftArrow;
     public Image rightArrow;
     public Image inputImage;
 
     public int playerId;
+    public ushort joystickId;
 
-    public CharacterSelectionManager.InputType inputType;
+    public InputType inputType;
     public Sprite[] inputImageList;
 
 
@@ -92,13 +95,19 @@ public class CharacterSelectionDisplay : MonoBehaviour
         inputImage.sprite = inputImageList[(ushort)inputType];
     }
 
-    public void Initialize(int currentPlayerId, CharacterSelectionManager.InputType inputType)
+    public void Initialize(int currentPlayerId, InputType inputType, ushort inputId)
     {
         playerId = currentPlayerId;
         this.inputType = inputType;
         initPanel.SetActive(false);
         playerPanel.SetActive(true);
         canConfirmTimer = canConfirmTime;
+        joystickId = inputId;
+        if (joystickId != 0)
+        {
+            inputIdText.gameObject.SetActive(true);
+            inputIdText.text = joystickId.ToString();
+        }
         UpdateUI();
     }
 
@@ -106,13 +115,13 @@ public class CharacterSelectionDisplay : MonoBehaviour
     {
         switch (inputType)
         {
-            case CharacterSelectionManager.InputType.Joystick:
+            case InputType.Joystick:
                 CheckJoystickInput();
                 break;
-            case CharacterSelectionManager.InputType.Keyboard:
+            case InputType.Keyboard:
                 CheckKeyboardInput();
                 break;
-            case CharacterSelectionManager.InputType.Count:
+            case InputType.Count:
                 break;
             default:
                 break;
@@ -121,19 +130,19 @@ public class CharacterSelectionDisplay : MonoBehaviour
 
     private void CheckJoystickInput()
     {
-        if (!playerConfirmed)
+        if (!playerConfirmed && joystickId != 0)
         {
-            if (Input.GetKey(KeyCode.JoystickButton1))
+            if (Input.GetKey("joystick " + joystickId.ToString() + " button 1"))
             {
                 characterIdx++;
                 SelectCharacterAt(characterIdx);
             }
-            if (Input.GetKey(KeyCode.JoystickButton2))
+            if (Input.GetKey("joystick " + joystickId.ToString() + " button 2"))
             {
                 characterIdx--;
                 SelectCharacterAt(characterIdx);
             }
-            if (Input.GetKey(KeyCode.JoystickButton0) && canConfirm && !playerConfirmed)
+            if (Input.GetKey("joystick "+ joystickId.ToString() + " button 0") && canConfirm && !playerConfirmed)
             {
                 ConfirmPlayer();
             }
@@ -179,7 +188,7 @@ public class CharacterSelectionDisplay : MonoBehaviour
     {
         playerConfirmed = true;
         characterName.text = "READY!";
-        player = new Player(characterData, inputType);
+        player = new Player(playerId, characterData, inputType, joystickId);
         CharacterSelectionManager.Instance.AddPlayer(player);
     }
 

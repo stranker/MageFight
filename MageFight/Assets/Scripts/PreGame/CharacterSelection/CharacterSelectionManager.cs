@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public enum InputType { Joystick = 0, Keyboard, Count }
 
 public class CharacterSelectionManager : MonoBehaviour
 {
@@ -22,13 +25,13 @@ public class CharacterSelectionManager : MonoBehaviour
         }
     }
 
-    public enum InputType {Joystick = 0, Keyboard, Count }
     public Dictionary<int, InputType> players = new Dictionary<int, InputType>();
-    public Dictionary<int, string> joystickList = new Dictionary<int, string>();
-    public int currentPlayerId = 0;
-    private int joystickIdx = 0;
+    public Dictionary<int, string> idPlayerToJoystickName = new Dictionary<int, string>();
+    private int currentPlayerId = 1;
     public int maxPlayers;
+    public GameObject characterPanel;
     public CharacterSelectionDisplay[] characterSelectionDisplays;
+    public CharactersSelected charsSelected;
     public List<Player> playersConfirmed = new List<Player>();
 
     public GameObject startUI;
@@ -39,13 +42,13 @@ public class CharacterSelectionManager : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        characterSelectionDisplays = GetComponentsInChildren<CharacterSelectionDisplay>();
+        characterSelectionDisplays = characterPanel.GetComponentsInChildren<CharacterSelectionDisplay>();
         maxPlayers = characterSelectionDisplays.Length;
     }
 
     private void Update()
     {
-        CheckGamepadInput();
+        CheckJoystickInput();
         CheckKeyboardInput();
         CheckPlayersConfirmedCount();
     }
@@ -65,35 +68,40 @@ public class CharacterSelectionManager : MonoBehaviour
 
     private void GoToNextScreen()
     {
-        print("Go to map selection");
+        charsSelected.SetPlayersConfirmed(playersConfirmed);
+        SceneManager.LoadScene("PreGameScene");
     }
 
-    private void CheckGamepadInput()
+    private void CheckJoystickInput()
     {
-        if (Input.GetKey(KeyCode.JoystickButton0))
+        if (currentPlayerId <= maxPlayers)
         {
-            if (currentPlayerId < maxPlayers)
+            if (Input.GetKey(KeyCode.Joystick1Button0) && !idPlayerToJoystickName.ContainsValue(Input.GetJoystickNames()[0]))
             {
-                if (joystickIdx < Input.GetJoystickNames().Length && !joystickList.ContainsValue(Input.GetJoystickNames()[joystickIdx]))
-                {
-                    players.Add(currentPlayerId, InputType.Joystick);
-                    joystickList.Add(currentPlayerId, Input.GetJoystickNames()[joystickIdx]);
-                    joystickIdx++;
-                    characterSelectionDisplays[currentPlayerId].Initialize(currentPlayerId, players[currentPlayerId]);
-                    currentPlayerId++;
-                }
+                players.Add(currentPlayerId, InputType.Joystick);
+                idPlayerToJoystickName.Add(currentPlayerId, Input.GetJoystickNames()[0]);
+                characterSelectionDisplays[currentPlayerId - 1].Initialize(currentPlayerId, players[currentPlayerId], 1);
+                currentPlayerId++;
+            }
+            if (Input.GetKey(KeyCode.Joystick2Button0) && !idPlayerToJoystickName.ContainsValue(Input.GetJoystickNames()[1]))
+            {
+                players.Add(currentPlayerId, InputType.Joystick);
+                idPlayerToJoystickName.Add(currentPlayerId, Input.GetJoystickNames()[1]);
+                characterSelectionDisplays[currentPlayerId - 1].Initialize(currentPlayerId, players[currentPlayerId], 2);
+                currentPlayerId++;
             }
         }
+
     }
 
     private void CheckKeyboardInput()
     {
         if (Input.GetKey(KeyCode.Return))
         {
-            if (!players.ContainsValue(InputType.Keyboard) && currentPlayerId < maxPlayers)
+            if (!players.ContainsValue(InputType.Keyboard) && currentPlayerId <= maxPlayers)
             {
                 players.Add(currentPlayerId, InputType.Keyboard);
-                characterSelectionDisplays[currentPlayerId].Initialize(currentPlayerId, players[currentPlayerId]);
+                characterSelectionDisplays[currentPlayerId - 1].Initialize(currentPlayerId, players[currentPlayerId], 0);
                 currentPlayerId++;
             }
         }

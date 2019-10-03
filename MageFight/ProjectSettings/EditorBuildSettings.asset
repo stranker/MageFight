@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleLevel.unity
     guid: d117e84b1541a064294d779f4844e897
+  - enabled: 1
+    path: Assets/Scenes/CharacterSelectionScene.unity
+    guid: 6cef8dc2ecf456447b4b08d1fc425302
+  - enabled: 1
+    path: Assets/Scenes/PreGameScene.unity
+    guid: b8e3a392df6f45b4f84a8a549c5531f7
   m_configObjects: {}
