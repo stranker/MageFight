@@ -9,20 +9,22 @@ public class SpellsManager : MonoBehaviour {
     public List<Spell> spells = new List<Spell>();
     public const int amountOfSpells = 3;
     public int spellIndexToReplace = 0;
-    public GameObject powerIcons; //set to corresponding player's UI "PowerIcons" object from hierarchy
     private List<PowerIcon> icons = new List<PowerIcon>();
     public ParticleSystem spellParticles;
     private ParticleSystem.MainModule spellParticlesMain;
 
     void Start () {
-        powerIcons = GameObject.Find("PowerIcons" + GetComponent<PlayerBehavior>().playerName);
-        if (powerIcons)
+        var playersUIs = GameObject.FindGameObjectsWithTag("PlayerUI");
+        foreach (var ui in playersUIs)
         {
-            PowerIcon[] pI = powerIcons.GetComponentsInChildren<PowerIcon>();
-            foreach (PowerIcon icon in pI)
-                icons.Add(icon);
+            if (ui.GetComponent<PlayerUI>().playerId == GetComponent<PlayerBehavior>().playerName)
+            {
+                PowerIcon[] pI = ui.GetComponentsInChildren<PowerIcon>();
+                foreach (PowerIcon icon in pI)
+                    icons.Add(icon);
+                break;
+            }
         }
-
         //spellParticlesMain = spellParticles.GetComponent<ParticleSystem>().main;
     }
 

@@ -22,6 +22,21 @@ public class GameManager : MonoBehaviour {
 	public List<PlayerBehavior> players = new List<PlayerBehavior>();
 	[SerializeField] public int roundsToWin; //How much of a round-win  a player needs to be considered winner.
 	[SerializeField] private List<Transform> startingPositions = new List<Transform>();
+
+    public object GetPlayerById(int playerId)
+    {
+        GameObject playerFound = null;
+        foreach (PlayerBehavior player in players)
+        {
+            if (player.playerName == playerId)
+            {
+                playerFound =  player.gameObject;
+                break;
+            }
+        }
+        return playerFound;
+    }
+
     private int posIdx = 0;
     public new CameraController camera;
     private float playerDeathTimer;

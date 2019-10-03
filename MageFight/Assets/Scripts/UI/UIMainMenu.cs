@@ -29,7 +29,7 @@ public class UIMainMenu : MonoBehaviour
 
     public void PlayButtonPressed()
     {
-        LoaderManager.Get().LoadScene("SampleLevel");
+        LoaderManager.Get().LoadScene("CharacterSelectionScene");
     }
 
 }
