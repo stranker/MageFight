@@ -10,6 +10,7 @@ public class PlayerUI : MonoBehaviour {
     public Text hpText;
     public Text staminaText;
     public Text fsText;
+    public Image playerHead;
     public GameObject playerTarget;
     private PlayerMovement movement;
     private PlayerBehavior player;
@@ -27,6 +28,7 @@ public class PlayerUI : MonoBehaviour {
         player = playerTarget.GetComponent<PlayerBehavior>();
         movement = playerTarget.GetComponent<PlayerMovement>();
         playerSpells = playerTarget.GetComponent<SpellsManager>();
+        playerHead.sprite = player.charData.artwork;
         UpdateText();
 	}
 

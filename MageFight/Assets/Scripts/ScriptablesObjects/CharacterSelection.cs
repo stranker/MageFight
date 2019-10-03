@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Wizard { Pedro, Pablo }
 
 [CreateAssetMenu(fileName = "New CharacterSelectionData", menuName = "CharacterSelection")]
 public class CharacterSelection : ScriptableObject
 {
-    public enum CharacterType {Pedro, Pablo}
     public string characterName;
     public string description;
-    public CharacterType characterType;
+    public Wizard wizardType;
     public Sprite artwork;
 
 }

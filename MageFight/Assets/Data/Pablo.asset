@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Pablo
   m_EditorClassIdentifier: 
   characterName: Pablo
-  description: Alto mogolico
-  characterType: 1
+  description: Pablito
+  wizardType: 1
   artwork: {fileID: 21300002, guid: 49e9fc2075c041f4699429a257682df4, type: 3}

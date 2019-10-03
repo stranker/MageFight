@@ -51,15 +51,16 @@ public class GameManager : MonoBehaviour {
     {
         foreach (Player player in CharactersSelected.Instance.playersConfirmed)
         {
-            CreateWizard(player.playerId, player.charData.characterType, player.inputType, player.joistickId);
+            CreateWizard(player.playerId, player.charData, player.inputType, player.joistickId);
         }
     }
 
-    private void CreateWizard(int playerId, CharacterSelection.CharacterType characterType, InputType inputType, int joistickId)
+    private void CreateWizard(int playerId, CharacterSelection charData, InputType inputType, int joistickId)
     {
         GameObject wizard = new GameObject();
-        wizard = Instantiate(wizardsList[(int)characterType], startingPositions[posIdx].position, Quaternion.identity, playersParent.transform);
+        wizard = Instantiate(wizardsList[(int)charData.wizardType], startingPositions[posIdx].position, Quaternion.identity, playersParent.transform);
         wizard.GetComponent<PlayerBehavior>().playerName = playerId;
+        wizard.GetComponent<PlayerBehavior>().charData = charData;
         wizard.GetComponent<InputManager>().SetInput(inputType, playerId);
         posIdx++;
     }

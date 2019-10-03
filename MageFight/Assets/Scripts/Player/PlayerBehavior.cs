@@ -18,6 +18,7 @@ public class PlayerBehavior : MonoBehaviour {
     public PlayerOffScreenIndicator pIndicator;
     public AttackBehavior attack;
     public PlayerMovement movement;
+    public CharacterSelection charData;
 
     private void Awake(){
         winCount = 0;

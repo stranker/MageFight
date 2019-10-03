@@ -15,11 +15,11 @@ public class PreGameManager : MonoBehaviour
     {
         foreach (Player player in CharactersSelected.Instance.playersConfirmed)
         {
-            CreateWizard(player.playerId, player.charData.characterType, player.inputType, player.joistickId);
+            CreateWizard(player.playerId, player.charData.wizardType, player.inputType, player.joistickId);
         }
     }
 
-    private void CreateWizard(int playerId, CharacterSelection.CharacterType characterType, InputType inputType, int joistickId)
+    private void CreateWizard(int playerId, Wizard characterType, InputType inputType, int joistickId)
     {
         GameObject wizard = new GameObject();
         wizard = Instantiate(wizardsList[(int)characterType], positions[posIdx].position, Quaternion.identity, transform.parent);
