@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.EventSystems;
 public class PowerPickingManager : MonoBehaviour {
 
 	private static PowerPickingManager instance;
@@ -46,7 +46,8 @@ public class PowerPickingManager : MonoBehaviour {
     private List<PlayerBehavior> players;
 	private List<turn> turns = new List<turn>();
 	private List<PowerButtonScript> buttons = new List<PowerButtonScript>();
-	private int turnCounter;
+    public List<PowerButtonScript> roundButtons = new List<PowerButtonScript>();
+    private int turnCounter;
     private bool endPickTurn = false;
     private float timer;
     public float endPickTime = 2f;
@@ -55,8 +56,11 @@ public class PowerPickingManager : MonoBehaviour {
 		for(int i = 0; i < spells.Count; i++){
 			GameObject go = Instantiate(powerButtonPrefab) as GameObject;
 			go.GetComponent<PowerButtonScript>().SetSpell(spells[i]);
-			buttons.Add(go.GetComponent<PowerButtonScript>());
-		}
+            SetNavigationOn(go, false);
+            buttons.Add(go.GetComponent<PowerButtonScript>());                   
+            if(i==0)
+                GameObject.FindObjectOfType<EventSystem>().firstSelectedGameObject = go;
+        }
 	}
 	
 	public void SetPlayerList(List<PlayerBehavior> playerList){
@@ -111,13 +115,18 @@ public class PowerPickingManager : MonoBehaviour {
 	}
 
 	public void SelectPower(Spell s){
-		players[turns[turnCounter].playerID].AddSpell(s);
+        EventSystem evt = EventSystem.current;
+        evt.SetSelectedGameObject(roundButtons[0].GetComponent<Button>().interactable ? roundButtons[0].gameObject : roundButtons[1].gameObject);        
+        players[turns[turnCounter].playerID].AddSpell(s);
         UIManager.Get().PlayPickParticles(players[turns[turnCounter].playerID]);
 		turnCounter++;
 		if(turnCounter >= players.Count){
             endPickTurn = true;
 			return;
 		} else {
+            Debug.Log(roundButtons[0].GetComponent<Button>().interactable);
+            Debug.Log(roundButtons[2].GetComponent<Button>().interactable);
+            Debug.Log(roundButtons[1].GetComponent<Button>().interactable);            
             SetColorAndTextRound(turnCounter);
         }
         if(!ShouldContinue())
@@ -138,11 +147,12 @@ public class PowerPickingManager : MonoBehaviour {
 	}
 
 	private void SetupButtons(){
-		List<PowerButtonScript> roundButtons = new List<PowerButtonScript>();
+
+        roundButtons.Clear();
 
 		foreach(PowerButtonScript button in buttons){
 			if(button.IsAvailable()){ roundButtons.Add(button);}
-			button.gameObject.transform.SetParent(null);
+            button.gameObject.transform.SetParent(null);
 		}
 
 		int difference = roundButtons.Count - powersPerRound;
@@ -152,9 +162,28 @@ public class PowerPickingManager : MonoBehaviour {
 		}
 
 		foreach(PowerButtonScript button in roundButtons){
-			button.gameObject.transform.SetParent(powerGrid.transform);
+            SetNavigationOn(button.gameObject,true);
+            button.gameObject.transform.SetParent(powerGrid.transform);
 		}
-	}
+        EventSystem evt = EventSystem.current;
+        evt.SetSelectedGameObject(roundButtons[0].GetComponent<Button>().interactable ? roundButtons[0].gameObject : roundButtons[1].gameObject);
+    }
+
+    private void SetNavigationOn(GameObject button,bool val)
+    {
+        if(val)
+        {
+            var navigation = button.GetComponent<Button>().navigation;
+            navigation.mode = Navigation.Mode.Horizontal;
+            button.GetComponent<Button>().navigation = navigation;
+        }
+        else
+        {
+            var navigation = button.GetComponent<Button>().navigation;
+            navigation.mode = Navigation.Mode.None;
+            button.GetComponent<Button>().navigation = navigation;
+        }
+    }
 
 	private bool ShouldContinue(){
 		bool spellsAvailable = false;
