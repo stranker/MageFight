@@ -56,13 +56,13 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void CreateWizard(int playerId, CharacterSelection charData, InputType inputType, int joistickId)
+    private void CreateWizard(int playerId, CharacterSelection charData, InputType inputType, int joistickId = -1)
     {
         GameObject wizard = new GameObject();
         wizard = Instantiate(wizardsList[(int)charData.wizardType], startingPositions[posIdx].position, Quaternion.identity, playersParent.transform);
         wizard.GetComponent<PlayerBehavior>().playerName = playerId;
         wizard.GetComponent<PlayerBehavior>().charData = charData;
-        wizard.GetComponent<InputManager>().SetInput(inputType, playerId);
+        wizard.GetComponent<InputManager>().SetInput(inputType, playerId, joistickId);
         posIdx++;
     }
 

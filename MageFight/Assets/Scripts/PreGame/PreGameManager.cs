@@ -19,12 +19,12 @@ public class PreGameManager : MonoBehaviour
         }
     }
 
-    private void CreateWizard(int playerId, Wizard characterType, InputType inputType, int joistickId)
+    private void CreateWizard(int playerId, Wizard characterType, InputType inputType, int joistickId = -1)
     {
         GameObject wizard = new GameObject();
         wizard = Instantiate(wizardsList[(int)characterType], positions[posIdx].position, Quaternion.identity, transform.parent);
         wizard.GetComponent<PlayerBehavior>().playerName = playerId;
-        wizard.GetComponent<InputManager>().SetInput(inputType, playerId);
+        wizard.GetComponent<InputManager>().SetInput(inputType, playerId, joistickId);
         posIdx++;
     }
 }

@@ -19865,6 +19865,7 @@ MonoBehaviour:
   pIndicator: {fileID: 0}
   attack: {fileID: 114064571490622834}
   movement: {fileID: 114545843423548116}
+  charData: {fileID: 0}
 --- !u!114 &114264186750094604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19879,18 +19880,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputType: 0
   playerId: 0
-  jumpButton: Jump
-  flyButton: Gamepad_Fly
-  flyButtonKeyboard: Keyboard_Fly
-  movementAxisX: MovementX
-  AxisXKeyboard: Horizontal_Keys
-  aimAxisY: AimY
-  AxisYKeyboard: Vertical_Keys
-  DPadX: Horizontal_Dpad
-  DPadY: Vertical_Dpad
-  firstSkillButton: FirstSkill
-  secondSkillButton: SecondSkill
-  thirdSkillButton: ThirdSkill
+  joystickId: 0
+  jumpButton: 
+  flyButton: 
+  xAxis: 
+  yAxis: 
+  firstSkillButton: 
+  secondSkillButton: 
+  thirdSkillButton: 
   pauseButton: 
 --- !u!114 &114545843423548116
 MonoBehaviour:
@@ -19976,7 +19973,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spells: []
   spellIndexToReplace: 0
-  powerIcons: {fileID: 0}
   spellParticles: {fileID: 0}
 --- !u!114 &114935230011151114
 MonoBehaviour:
