@@ -21,9 +21,7 @@ public class CharactersSelected : MonoBehaviour
         }
     }
 
-
     public List<Player> playersConfirmed = new List<Player>();
-
 
     private void Awake()
     {

@@ -24,7 +24,7 @@ public class PlayerUI : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        playerTarget = GameManager.Instance.players[playerId - 1].gameObject;
+        playerTarget = GameManager.Instance.GetPlayerById(playerId).gameObject;
         player = playerTarget.GetComponent<PlayerBehavior>();
         movement = playerTarget.GetComponent<PlayerMovement>();
         playerSpells = playerTarget.GetComponent<SpellsManager>();
