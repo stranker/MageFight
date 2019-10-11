@@ -1646,13 +1646,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 496cecf06de077a45882297bb77d80ff, type: 2}
   - {fileID: 11400000, guid: 55aac60000c0e94428fad9e9ad0798d7, type: 2}
   characterIdx: 0
-  characterName: {fileID: 0}
-  characterDesc: {fileID: 0}
-  inputIdText: {fileID: 0}
-  characterArtwork: {fileID: 0}
-  leftArrow: {fileID: 0}
-  rightArrow: {fileID: 0}
-  inputImage: {fileID: 0}
+  characterName: {fileID: 1095516508}
+  characterDesc: {fileID: 2015114475}
+  inputIdText: {fileID: 861811309}
+  characterArtwork: {fileID: 1112652738}
+  leftArrow: {fileID: 2118727664}
+  rightArrow: {fileID: 1332531150}
+  inputImage: {fileID: 559385107}
   playerId: 0
   joystickId: 0
   inputType: 0
@@ -1660,7 +1660,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8b7e069311a470542b1f189a85490799, type: 3}
   - {fileID: 21300000, guid: eb40e44e67b03f74098a7d17878913fa, type: 3}
   initPanel: {fileID: 288176111}
-  playerPanel: {fileID: 0}
+  playerPanel: {fileID: 1339872653}
   playerConfirmed: 0
 --- !u!114 &1149083189
 MonoBehaviour:
@@ -1735,7 +1735,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.02502, y: 0.000028635}
+  m_AnchoredPosition: {x: 0.025024414, y: 0.000030517578}
   m_SizeDelta: {x: -0.049957, y: -0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1332531148
@@ -1846,7 +1846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000089645, y: -0.0255}
+  m_AnchoredPosition: {x: 0.00012207031, y: -0.025512695}
   m_SizeDelta: {x: 0.00012207, y: -0.051025}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1338977381
@@ -1922,7 +1922,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000036597, y: -0.0000038147}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: -0.000030518, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1498841931
