@@ -18,8 +18,11 @@ public class GameplayManager : MonoBehaviour {
         Leaderboard,
         PostGame,
         Rematch,
+        Pause,
+        ResumingGameplay,
         Count
     }
+
     public enum Events
     { 
         StartGame,
@@ -33,8 +36,11 @@ public class GameplayManager : MonoBehaviour {
         ExitSelected,
         RematchSelected,
         GoToPowerSelection,
+        PauseGameplay,
+        ResumeGameplay,
         Count
     }
+
     private FSM fsm;
     int lastState = -1;
 
@@ -57,7 +63,12 @@ public class GameplayManager : MonoBehaviour {
         fsm.SetRelation((int)States.Leaderboard, (int)Events.LeaderboardShownWinner, (int)States.PostGame);
         fsm.SetRelation((int)States.PostGame, (int)Events.RematchSelected, (int)States.Rematch);
         fsm.SetRelation((int)States.Rematch, (int)Events.GoToPowerSelection, (int)States.PowerSelection);
+        fsm.SetRelation((int)States.Gameplay, (int)Events.PauseGameplay, (int)States.Pause);
+        fsm.SetRelation((int)States.Pause, (int)Events.PauseGameplay, (int)States.ResumingGameplay);
+        fsm.SetRelation((int)States.ResumingGameplay, (int)Events.ResumeGameplay, (int)States.Gameplay);
+        fsm.SetRelation((int)States.Pause, (int)Events.RematchSelected, (int)States.Rematch);
     }
+
     private void Update()
     {
         if (lastState != fsm.GetState())
@@ -90,47 +101,75 @@ public class GameplayManager : MonoBehaviour {
                 case (int)States.Rematch:
                     Rematch();
                 break;
+                case (int)States.Pause:
+                    Pause();
+                    break;
+                case (int)States.ResumingGameplay:
+                    ResumingGameplay();
+                    break;
             }
         }
     }
-
 
     public void PlayerPresentation()
     {
         CameraManager.Get().ActivateCamerasPlayerPresentation();
         UIManager.Get().SetPlayerPresentationUI(true);
     }
+
     public void PowerSelection()
     {
         UIManager.Get().SetPlayerPresentationUI(false);    
         CameraManager.Get().ActivateCamerasGameplay();
         PowerPickingManager.Instance.Begin();
     }
+
     public void Countdown()
     {
         UIManager.Get().StartCountdown();
     }
+
     public void Gameplay()
     {
         GameManager.Instance.StartRound();
     }
+
     public void DeathCamera()
     {
         CameraManager.Get().ActivateDeathcam();
     }
+
     public void Leaderboard()
     {
         GameManager.Instance.EndRound();
     }
+
     public void PostGame()
     {
     }
+
     private void Rematch()
     {
         PowerPickingManager.Instance.Reset();
+        UIManager.Get().SetPauseMenuUI(false);
+        GameManager.Instance.InitializeRound();
         GameManager.Instance.EndGame();
         SendEvent(Events.GoToPowerSelection);
     }
+
+    private void Pause()
+    {
+        UIManager.Get().SetPauseMenuUI(true);
+        GameManager.Instance.SetPause(true);
+    }
+
+    private void ResumingGameplay()
+    {
+        UIManager.Get().SetPauseMenuUI(false);
+        GameManager.Instance.SetPause(false);
+        SendEvent(Events.ResumeGameplay);
+    }
+
     public void SendEvent(Events evt)
     {
         fsm.SendEvent((int)evt);

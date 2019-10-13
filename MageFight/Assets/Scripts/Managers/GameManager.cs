@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] public int roundsToWin; //How much of a round-win  a player needs to be considered winner.
 	[SerializeField] private List<Transform> startingPositions = new List<Transform>();    
     public new CameraController camera;
+    private float timeScale;
     private float playerDeathTimer;
     public float playerDeathTime;
     public bool playerDead = false;
@@ -41,7 +42,9 @@ public class GameManager : MonoBehaviour {
 			activeplayers[i].Pause();
 			}
 		}
+        timeScale = Time.timeScale;
 	}
+
     private void Start()
     {
         UIManager.Get().OnLeaderboardShown += OnLeaderboardShown;
@@ -51,6 +54,10 @@ public class GameManager : MonoBehaviour {
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("StartButton"))
+        {
+            GameplayManager.Get().SendEvent(GameplayManager.Events.PauseGameplay);
+        }
         if (playerDead)
         {
             playerDeathTimer += Time.deltaTime;
@@ -62,7 +69,6 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
-
 
     public void InitializeRound(){
 		for(int i = 0; i < players.Count; i++){
@@ -127,6 +133,7 @@ public class GameManager : MonoBehaviour {
 	public void EndRound(){
         UIManager.Get().ShowLeaderboard();
     }
+
     private void OnLeaderboardShown(UIManager manager)
     {
         //runs at end of round, to update round wins and check if there's a winner
@@ -152,6 +159,23 @@ public class GameManager : MonoBehaviour {
             GameplayManager.Get().SendEvent(GameplayManager.Events.LeaderboardShownNoWinner);            
         }
     }
+
+    public void SetPause(bool value)
+    {
+        if(value)
+        {
+            foreach(PlayerBehavior p in players)
+                p.Pause();
+            Time.timeScale = 0;
+        }
+        else
+        {
+            foreach(PlayerBehavior p in players)
+                p.Resume();
+            Time.timeScale = timeScale;
+        }
+    }
+
     private void OnDestroy()
     {
         UIManager.Get().OnLeaderboardShown -= OnLeaderboardShown;

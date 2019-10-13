@@ -34,21 +34,21 @@ public class UIManager : MonoBehaviour {
     public Text getReadyText;
     public GameObject PlayerPresentationCanvas;
 
+    public GameObject pauseMenuUI;
     public Text nameText;
     public Text dmgText;
     public Text typeText;
     public Text cdText;
     public Text ctText;
     public Text effText;
-    public GameObject rematchButton;
-
+    public GameObject rematchButtonPostGame;
+    public GameObject rematchButtonPauseMenu;
 
     private void Start()
     {
         leaderboard.gameObject.SetActive(true);
     }
 
-    // Update is called once per frame
     void Update () {
         if (showLeaderboard)
         {
@@ -127,13 +127,15 @@ public class UIManager : MonoBehaviour {
         showLeaderboard = true;
         leaderboardActive = false;
     }
+
     public void ShowPostGame(int winnerName)
     {
         EventSystem evt = EventSystem.current;
-        evt.SetSelectedGameObject(rematchButton);
+        evt.SetSelectedGameObject(rematchButtonPostGame);
         PostGameUI.SetActive(true);
         playerLabel.text = "PLAYER " + winnerName.ToString();
     }
+
     public void RematchPressed()
     {
         PostGameUI.SetActive(false);
@@ -167,6 +169,7 @@ public class UIManager : MonoBehaviour {
                 break;
         }
     }
+
     public void SetPlayerPresentationUI(bool value)
     {
         if(value)
@@ -176,5 +179,17 @@ public class UIManager : MonoBehaviour {
         }
         else
             PlayerPresentationCanvas.SetActive(false);
+    }
+
+    public void SetPauseMenuUI(bool value)
+    {
+        if(value)
+        {
+            EventSystem evt = EventSystem.current;
+            evt.SetSelectedGameObject(rematchButtonPauseMenu);
+            pauseMenuUI.SetActive(true);
+        }
+        else
+            pauseMenuUI.SetActive(false);
     }
 }
