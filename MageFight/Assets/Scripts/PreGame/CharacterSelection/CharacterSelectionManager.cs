@@ -33,11 +33,13 @@ public class CharacterSelectionManager : MonoBehaviour
     public CharacterSelectionDisplay[] characterSelectionDisplays;
     public CharactersSelected charsSelected;
     public List<Player> playersConfirmed = new List<Player>();
-
+    private bool keyboardAdded = false;
     public GameObject startUI;
     private float canStartTimer = 0;
     private float canStartTime = 1;
     public bool canStart = false;
+    public GameObject enterInfoPanel1;
+    public GameObject enterInfoPanel2;
 
     // Start is called before the first frame update
     private void Start()
@@ -103,6 +105,9 @@ public class CharacterSelectionManager : MonoBehaviour
                 players.Add(currentPlayerId, InputType.Keyboard);
                 characterSelectionDisplays[currentPlayerId - 1].Initialize(currentPlayerId, players[currentPlayerId], 0);
                 currentPlayerId++;
+                keyboardAdded = true;
+                enterInfoPanel1.SetActive(!keyboardAdded);
+                enterInfoPanel2.SetActive(!keyboardAdded);
             }
         }
     }
