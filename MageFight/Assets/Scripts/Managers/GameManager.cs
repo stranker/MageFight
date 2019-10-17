@@ -59,8 +59,7 @@ public class GameManager : MonoBehaviour {
     {
         GameObject wizard = new GameObject();
         wizard = Instantiate(wizardData.wizardPrefab, startingPositions[posIdx].position, Quaternion.identity, playersParent.transform);
-        wizard.GetComponent<PlayerBehavior>().playerName = playerId;
-        wizard.GetComponent<PlayerBehavior>().charData = wizardData;
+        wizard.GetComponent<PlayerBehavior>().Initialize(playerId,wizardData);
         wizard.GetComponent<InputManager>().SetInput(inputType, playerId, joistickId);
         posIdx++;
     }

@@ -84,6 +84,23 @@ public class PlayerBehavior : MonoBehaviour {
         }
     }
 
+    public void Initialize(int playerId, WizardDataScriptable wizardData)
+    {
+        playerName = playerId;
+        charData = wizardData;
+        switch (playerName)
+        {
+            case 1:
+                playerColor = Color.red;
+                break;
+            case 2:
+                playerColor = Color.blue;
+                break;
+            default:
+                break;
+        }
+    }
+
     public void Reset(Vector3 position){
         health = maxHealth;
         isAlive = true;

@@ -34,7 +34,6 @@ public class PowerPickingManager : MonoBehaviour {
 	[SerializeField] private Text damageLabel;
 	[SerializeField] private Text typeLabel;
 	[SerializeField] private Text cdLabel;
-	[SerializeField] private Text ctLabel;
 	[SerializeField] private Text effLabel;
     [SerializeField] private Text diffLabel;
     [SerializeField] private Image powerPickingImage;
@@ -51,13 +50,15 @@ public class PowerPickingManager : MonoBehaviour {
     private bool endPickTurn = false;
     private float timer;
     public float endPickTime = 2f;
+    public Image powerGridCream;
+    public Image powerButtonsCream;
 
     private void Awake(){
 		for(int i = 0; i < spells.Count; i++){
 			GameObject go = Instantiate(powerButtonPrefab) as GameObject;
 			go.GetComponent<PowerButtonScript>().SetSpell(spells[i]);
             SetNavigationOn(go, false);
-            buttons.Add(go.GetComponent<PowerButtonScript>());                   
+            buttons.Add(go.GetComponent<PowerButtonScript>());
             if(i==0)
                 GameObject.FindObjectOfType<EventSystem>().firstSelectedGameObject = go;
         }
@@ -126,7 +127,7 @@ public class PowerPickingManager : MonoBehaviour {
 		} else {
             Debug.Log(roundButtons[0].GetComponent<Button>().interactable);
             Debug.Log(roundButtons[2].GetComponent<Button>().interactable);
-            Debug.Log(roundButtons[1].GetComponent<Button>().interactable);            
+            Debug.Log(roundButtons[1].GetComponent<Button>().interactable);
             SetColorAndTextRound(turnCounter);
         }
         if(!ShouldContinue())
@@ -208,15 +209,8 @@ public class PowerPickingManager : MonoBehaviour {
     public void SetColorAndTextRound(int turnIndex)
     {
         pickTurnText.color = turns[turnIndex].playerColor;
-        diffLabel.color = pickTurnText.color;
-        powerPickingImage.color = pickTurnText.color;
-        descriptionPanel.color = pickTurnText.color;
-        nameLabel.color = pickTurnText.color;
-        damageLabel.color = pickTurnText.color;
-        typeLabel.color = pickTurnText.color;
-        cdLabel.color = pickTurnText.color;
-        ctLabel.color = pickTurnText.color;
-        effLabel.color = pickTurnText.color;
+        powerGridCream.color = pickTurnText.color;
+        powerButtonsCream.color = pickTurnText.color;
         pickTurnText.text = "PLAYER " + turns[turnIndex].PlayerName.ToString() + " CHOOSE!";
     }
 }
