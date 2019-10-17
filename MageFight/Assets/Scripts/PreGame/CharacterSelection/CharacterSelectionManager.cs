@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public enum InputType { Joystick = 0, Keyboard, Count }
@@ -28,41 +29,46 @@ public class CharacterSelectionManager : MonoBehaviour
     public Dictionary<int, InputType> players = new Dictionary<int, InputType>();
     public Dictionary<int, string> idPlayerToJoystickName = new Dictionary<int, string>();
     private int currentPlayerId = 1;
-    public int maxPlayers;
-    public GameObject characterPanel;
+    public int maxPlayers = 2;
     public CharacterSelectionDisplay[] characterSelectionDisplays;
     public CharactersSelected charsSelected;
     public List<Player> playersConfirmed = new List<Player>();
     private bool keyboardAdded = false;
-    public GameObject startUI;
     private float canStartTimer = 0;
     private float canStartTime = 1;
     public bool canStart = false;
-    public GameObject enterInfoPanel1;
-    public GameObject enterInfoPanel2;
+
+    public GameObject wizardsPanel;
+    public WizardSelectionButton[] wizardsSelectionButtons; 
 
     // Start is called before the first frame update
     private void Start()
     {
-        characterSelectionDisplays = characterPanel.GetComponentsInChildren<CharacterSelectionDisplay>();
-        maxPlayers = characterSelectionDisplays.Length;
+        wizardsSelectionButtons = wizardsPanel.GetComponentsInChildren<WizardSelectionButton>();
     }
 
     private void Update()
     {
+        CheckPlayersConfirmedCount();
+    }
+
+    private void OnGUI()
+    {
         CheckJoystickInput();
         CheckKeyboardInput();
-        CheckPlayersConfirmedCount();
+        if (Input.GetButton("Cancel"))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     private void CheckPlayersConfirmedCount()
     {
-        startUI.SetActive(playersConfirmed.Count > 1);
         if (canStart)
         {
             canStartTimer += Time.deltaTime;
         }
-        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKey(KeyCode.JoystickButton10)) && canStartTimer >= canStartTime)
+        if (playersConfirmed.Count >= maxPlayers && canStart)
         {
             GoToNextScreen();
         }
@@ -98,16 +104,15 @@ public class CharacterSelectionManager : MonoBehaviour
 
     private void CheckKeyboardInput()
     {
-        if (Input.GetKey(KeyCode.Return))
+        if (Input.anyKeyDown)
         {
-            if (!players.ContainsValue(InputType.Keyboard) && currentPlayerId <= maxPlayers)
+            Event ev = Event.current;
+            if (ev.isKey && !players.ContainsValue(InputType.Keyboard) && currentPlayerId <= maxPlayers)
             {
                 players.Add(currentPlayerId, InputType.Keyboard);
                 characterSelectionDisplays[currentPlayerId - 1].Initialize(currentPlayerId, players[currentPlayerId], 0);
                 currentPlayerId++;
                 keyboardAdded = true;
-                enterInfoPanel1.SetActive(!keyboardAdded);
-                enterInfoPanel2.SetActive(!keyboardAdded);
             }
         }
     }
@@ -115,7 +120,7 @@ public class CharacterSelectionManager : MonoBehaviour
     public void AddPlayer(Player player)
     {
         playersConfirmed.Add(player);
-        if (playersConfirmed.Count > 1)
+        if (playersConfirmed.Count >= maxPlayers)
         {
             canStart = true;
         }

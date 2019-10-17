@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83cf847a82d1a154c8f1eb74382369f8, type: 3}
   m_Name: Pedro
   m_EditorClassIdentifier: 
-  characterName: Pedro
-  description: Pedrito
-  characterType: 0
-  artwork: {fileID: 21300002, guid: 042e63d3dda3d854e89912ad516d9d3d, type: 3}
+  wizardName: Pedro
+  wizardPrefab: {fileID: 1662829118410914, guid: d4f71b467ae0ea445b9c978adb55f8d7,
+    type: 3}
+  artwork: {fileID: 21300002, guid: 49e9fc2075c041f4699429a257682df4, type: 3}

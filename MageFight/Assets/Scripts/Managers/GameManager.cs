@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour {
     public float playerDeathTime;
     public bool playerDead = false;
     public LevelBehavior currentMap;
-    public List<GameObject> wizardsList = new List<GameObject>();
     public GameObject playersParent;
 
     void Awake () {
@@ -56,12 +55,12 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void CreateWizard(int playerId, CharacterSelection charData, InputType inputType, int joistickId = -1)
+    private void CreateWizard(int playerId, WizardDataScriptable wizardData, InputType inputType, int joistickId = -1)
     {
         GameObject wizard = new GameObject();
-        wizard = Instantiate(wizardsList[(int)charData.wizardType], startingPositions[posIdx].position, Quaternion.identity, playersParent.transform);
+        wizard = Instantiate(wizardData.wizardPrefab, startingPositions[posIdx].position, Quaternion.identity, playersParent.transform);
         wizard.GetComponent<PlayerBehavior>().playerName = playerId;
-        wizard.GetComponent<PlayerBehavior>().charData = charData;
+        wizard.GetComponent<PlayerBehavior>().charData = wizardData;
         wizard.GetComponent<InputManager>().SetInput(inputType, playerId, joistickId);
         posIdx++;
     }

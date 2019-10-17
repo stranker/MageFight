@@ -6,7 +6,6 @@ using UnityEngine;
 public class PreGameManager : MonoBehaviour
 {
 
-    public List<GameObject> wizardsList = new List<GameObject>();
     public List<Transform> positions = new List<Transform>();
     public int posIdx = 0;
 
@@ -15,14 +14,14 @@ public class PreGameManager : MonoBehaviour
     {
         foreach (Player player in CharactersSelected.Instance.playersConfirmed)
         {
-            CreateWizard(player.playerId, player.charData.wizardType, player.inputType, player.joistickId);
+            CreateWizard(player.playerId, player.charData.wizardPrefab, player.inputType, player.joistickId);
         }
     }
 
-    private void CreateWizard(int playerId, Wizard characterType, InputType inputType, int joistickId = -1)
+    private void CreateWizard(int playerId, GameObject wizardPrefab, InputType inputType, int joistickId = -1)
     {
         GameObject wizard = new GameObject();
-        wizard = Instantiate(wizardsList[(int)characterType], positions[posIdx].position, Quaternion.identity, transform.parent);
+        wizard = Instantiate(wizardPrefab, positions[posIdx].position, Quaternion.identity, transform.parent);
         wizard.GetComponent<PlayerBehavior>().playerName = playerId;
         wizard.GetComponent<InputManager>().SetInput(inputType, playerId, joistickId);
         posIdx++;

@@ -2,16 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Player
 {
     public int playerId;
-    public CharacterSelection charData;
+    public WizardDataScriptable charData;
     public InputType inputType;
     public int joistickId;
 
-    public Player(int playerId, CharacterSelection charData, InputType inputType, int joistickId)
+    public Player(int playerId, WizardDataScriptable charData, InputType inputType, int joistickId)
     {
         this.playerId = playerId;
         this.charData = charData;
@@ -23,17 +24,12 @@ public class Player
 
 public class CharacterSelectionDisplay : MonoBehaviour
 {
-    public List<CharacterSelection> characterDataList;
-    public int characterIdx = 0;
+    public bool isActive = false;
 
-    private CharacterSelection characterData;
-
-    public Text characterName;
-    public Text characterDesc;
+    public Text wizardName;
     public Text inputIdText;
-    public Image characterArtwork;
-    public Image leftArrow;
-    public Image rightArrow;
+    public Text playerText;
+    public Image wizardArtwork;
     public Image inputImage;
 
     public int playerId;
@@ -41,7 +37,6 @@ public class CharacterSelectionDisplay : MonoBehaviour
 
     public InputType inputType;
     public Sprite[] inputImageList;
-
 
     public GameObject initPanel;
     public GameObject playerPanel;
@@ -54,15 +49,17 @@ public class CharacterSelectionDisplay : MonoBehaviour
 
     Player player = null;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        leftArrow.gameObject.SetActive(false);
-        SelectCharacterAt(characterIdx);
-    }
+    public int wizardIdx = 0;
+    public WizardSelectionButton currentWizard;
+
+    public Image keyboardImage;
+
+    public Color playerColor;
+
 
     private void Update()
     {
+        keyboardImage.gameObject.SetActive(!CharacterSelectionManager.Instance.players.ContainsValue(InputType.Keyboard));
         if (!canConfirm && playerPanel.activeInHierarchy)
         {
             if (canConfirmTimer > 0)
@@ -78,25 +75,17 @@ public class CharacterSelectionDisplay : MonoBehaviour
 
     }
 
-    private void SelectCharacterAt(int idx)
-    {
-        characterIdx = Mathf.Clamp(idx, 0, characterDataList.Count - 1);
-        characterData = characterDataList[characterIdx];
-        UpdateUI();
-    }
 
     private void UpdateUI()
     {
-        leftArrow.gameObject.SetActive(characterIdx != 0);
-        rightArrow.gameObject.SetActive(characterIdx != characterDataList.Count - 1);
-        characterName.text = characterData.characterName;
-        characterDesc.text = characterData.description;
-        characterArtwork.sprite = characterData.artwork;
+        wizardName.text = currentWizard.wizardData.wizardName;
+        wizardArtwork.sprite = currentWizard.wizardData.artwork;
         inputImage.sprite = inputImageList[(ushort)inputType];
     }
 
     public void Initialize(int currentPlayerId, InputType inputType, ushort inputId)
     {
+        isActive = true;
         playerId = currentPlayerId;
         this.inputType = inputType;
         initPanel.SetActive(false);
@@ -108,11 +97,23 @@ public class CharacterSelectionDisplay : MonoBehaviour
             inputIdText.gameObject.SetActive(true);
             inputIdText.text = joystickId.ToString();
         }
+        SelectWizardAt(wizardIdx);
+    }
+
+    public void SelectWizardAt(int idx)
+    {
+        if (currentWizard)
+            currentWizard.Unselect(playerColor);
+        wizardIdx = Mathf.Clamp(idx, 0, CharacterSelectionManager.Instance.wizardsSelectionButtons.Length - 1);
+        currentWizard = CharacterSelectionManager.Instance.wizardsSelectionButtons[wizardIdx];
+        currentWizard.Select(playerColor);
         UpdateUI();
     }
 
     private void OnGUI()
     {
+        if (!isActive)
+            return;
         switch (inputType)
         {
             case InputType.Joystick:
@@ -130,31 +131,26 @@ public class CharacterSelectionDisplay : MonoBehaviour
 
     private void CheckJoystickInput()
     {
-        if (!playerConfirmed && joystickId != 0)
+
+        if (!playerConfirmed)
         {
-            if (Input.GetKey("joystick " + joystickId.ToString() + " button 1"))
+            if (Input.GetAxis("J" + joystickId.ToString() + "_Axis_X") > 0.5f)
             {
-                characterIdx++;
-                SelectCharacterAt(characterIdx);
+                wizardIdx++;
+                SelectWizardAt(wizardIdx);
             }
-            if (Input.GetKey("joystick " + joystickId.ToString() + " button 2"))
+            else if (Input.GetAxis("J" + joystickId.ToString() + "_Axis_X") < -0.5f)
             {
-                characterIdx--;
-                SelectCharacterAt(characterIdx);
+                wizardIdx--;
+                SelectWizardAt(wizardIdx);
             }
-            if (Input.GetKey("joystick "+ joystickId.ToString() + " button 0") && canConfirm && !playerConfirmed)
+            if (Input.GetKey("joystick " + joystickId.ToString() + " button 9") && canConfirm && !currentWizard.IsConfirmed())
             {
-                ConfirmPlayer();
-            }
-        }
-        else
-        {
-            if (Input.GetKey(KeyCode.JoystickButton3) && playerConfirmed)
-            {
-                RemoveConfirmedPlayer();
+                OnPlayerConfirm();
             }
         }
     }
+
 
     private void CheckKeyboardInput()
     {
@@ -162,42 +158,27 @@ public class CharacterSelectionDisplay : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                characterIdx++;
-                SelectCharacterAt(characterIdx);
+                wizardIdx++;
+                SelectWizardAt(wizardIdx);
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                characterIdx--;
-                SelectCharacterAt(characterIdx);
+                wizardIdx--;
+                SelectWizardAt(wizardIdx);
             }
-            if (Input.GetKeyDown(KeyCode.Return) && canConfirm && !playerConfirmed)
+            if (Input.GetKey(KeyCode.Return) && canConfirm && !currentWizard.IsConfirmed())
             {
-                ConfirmPlayer();
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Escape) && playerConfirmed)
-            {
-                RemoveConfirmedPlayer();
+                OnPlayerConfirm();
             }
         }
     }
 
-    private void ConfirmPlayer()
+    private void OnPlayerConfirm()
     {
+        currentWizard.Confirm();
         playerConfirmed = true;
-        characterName.text = "READY!";
-        player = new Player(playerId, characterData, inputType, joystickId);
+        player = new Player(playerId, currentWizard.wizardData, inputType, joystickId);
         CharacterSelectionManager.Instance.AddPlayer(player);
+        playerText.text = "READY!";
     }
-
-    private void RemoveConfirmedPlayer()
-    {
-        playerConfirmed = false;
-        CharacterSelectionManager.Instance.RemovePlayer(player);
-        UpdateUI();
-        player = null;
-    }
-
 }
