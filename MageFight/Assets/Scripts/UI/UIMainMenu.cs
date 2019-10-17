@@ -13,6 +13,13 @@ public class UIMainMenu : MonoBehaviour
 
     public int selectionIdx = 0;
 
+    private void Awake()
+    {
+        GameObject charSelection = GameObject.Find("CharactersSelected");
+        if (charSelection)
+            Destroy(charSelection);
+    }
+
     private void Start()
     {
         currentPanel = mainMenuCanvas;
