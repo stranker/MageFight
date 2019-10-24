@@ -93,7 +93,7 @@ public class UIManager : MonoBehaviour {
                 countdownPanel.SetActive(false);
                 GameplayManager.Get().SendEvent(GameplayManager.Events.CountdownEnd);
             }
-            if (timer<=1.1f)
+            if (timer <= 1.1f)
             {
                 getReadyText.enabled = false;
                 countdownText.text = "FIGHT!";
@@ -136,6 +136,7 @@ public class UIManager : MonoBehaviour {
     }
     public void RematchPressed()
     {
+        leaderboard.ResetScores();
         PostGameUI.SetActive(false);
         GameplayManager.Get().SendEvent(GameplayManager.Events.RematchSelected);
     }

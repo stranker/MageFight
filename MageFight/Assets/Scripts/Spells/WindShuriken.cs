@@ -31,6 +31,7 @@ public class WindShuriken : RangeSpell
         else
         {
             comeback = false;
+            Kill();
             travelTimer = 0;
             StopSpell();
         }
