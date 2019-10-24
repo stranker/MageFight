@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class SpellInfoPanel : MonoBehaviour
@@ -17,6 +18,8 @@ public class SpellInfoPanel : MonoBehaviour
     public int maxCooldown;
     public int minCooldown;
 
+    public bool isSelected = false;
+
     public void SetSpell(Spell spell)
     {
         currentSpell = spell;
@@ -28,17 +31,28 @@ public class SpellInfoPanel : MonoBehaviour
         spellName.text = currentSpell.spellData.spellName;
         spellArtwork.sprite = currentSpell.spellData.spellArtwork;
         damageBar.fillAmount = CalculateDamage(currentSpell.damage);
-        cooldownBar.fillAmount = CalculateCooldown(currentSpell.damage);
+        cooldownBar.fillAmount = CalculateCooldown(currentSpell.cooldown);
         difficultyBar.fillAmount = CalculateCooldown(currentSpell.spellData.spellDifficulty);
     }
 
-    private float CalculateDamage(int damage)
+    private float CalculateDamage(float damage)
     {
-        return 1 - Mathf.InverseLerp(minDamage, maxDamage, damage);
+        return Mathf.InverseLerp(minDamage, maxDamage, damage);
     }
 
-    private float CalculateCooldown(int damage)
+    private float CalculateCooldown(float cd)
     {
-        return 1 - Mathf.InverseLerp(minCooldown, maxCooldown, damage);
+        return 1 - Mathf.InverseLerp(minCooldown, maxCooldown, cd);
+    }
+
+    public void Selected(bool value)
+    {
+        isSelected = value;
+        spellName.color = isSelected ? Color.white : Color.black;
+    }
+
+    public void Confirm()
+    {
+        throw new NotImplementedException();
     }
 }

@@ -14,6 +14,7 @@ public class Player
     public int joistickId;
     public int winRounds = 0;
     public Color playerColor;
+    public List<Spell> spellList = new List<Spell>();
 
     public Player(int playerId, WizardDataScriptable charData, InputType inputType, int joistickId, Color playerColor)
     {
@@ -22,6 +23,11 @@ public class Player
         this.inputType = inputType;
         this.joistickId = joistickId;
         this.playerColor = playerColor;
+    }
+
+    public void AddSpell(Spell spell)
+    {
+        spellList.Add(spell);
     }
 
     public void ResetWins()
