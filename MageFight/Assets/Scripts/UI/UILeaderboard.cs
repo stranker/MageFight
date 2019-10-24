@@ -48,6 +48,15 @@ public class UILeaderboard : MonoBehaviour {
         }
     }
 
+    public void ResetScores()
+    {
+        for (int i = 0; i < cookieListP1.Count; i++)
+        {
+            cookieListP1[i].ChangeToEmpty();
+            cookieListP2[i].ChangeToEmpty();
+        }
+    }
+
     private void OnDisable()
     {
         scoresSeted = false;

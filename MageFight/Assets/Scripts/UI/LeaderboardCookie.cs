@@ -20,4 +20,9 @@ public class LeaderboardCookie : MonoBehaviour
         }
     }
 
+    public void ChangeToEmpty()
+    {
+        image.sprite = empty;
+    }
+
 }
