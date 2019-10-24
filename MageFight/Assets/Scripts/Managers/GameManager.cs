@@ -21,15 +21,19 @@ public class GameManager : MonoBehaviour {
 	private int roundCounter;
 	public List<PlayerBehavior> players = new List<PlayerBehavior>();
 	[SerializeField] public int roundsToWin; //How much of a round-win  a player needs to be considered winner.
-	[SerializeField] private List<Transform> startingPositions = new List<Transform>();    
+	[SerializeField] private List<Transform> startingPositions = new List<Transform>();
+
+    private int posIdx = 0;
     public new CameraController camera;
     private float playerDeathTimer;
     public float playerDeathTime;
     public bool playerDead = false;
     public LevelBehavior currentMap;
+    public GameObject playersParent;
 
     void Awake () {
-		//DontDestroyOnLoad(gameObject); //Single scene, might not be needed
+        //DontDestroyOnLoad(gameObject); //Single scene, might not be needed
+        CreateWizards();
 		roundCounter = 0;
 		PlayerBehavior[] activeplayers = FindObjectsOfType<PlayerBehavior>();
 		for(int i = 0; i < activeplayers.Length; i++){ //State all players are alive
@@ -42,6 +46,24 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 	}
+
+    private void CreateWizards()
+    {
+        foreach (Player player in CharactersSelected.Instance.playersConfirmed)
+        {
+            CreateWizard(player.playerId, player.charData, player.inputType, player.joistickId);
+        }
+    }
+
+    private void CreateWizard(int playerId, WizardDataScriptable wizardData, InputType inputType, int joistickId = -1)
+    {
+        GameObject wizard = new GameObject();
+        wizard = Instantiate(wizardData.wizardPrefab, startingPositions[posIdx].position, Quaternion.identity, playersParent.transform);
+        wizard.GetComponent<PlayerBehavior>().Initialize(playerId,wizardData);
+        wizard.GetComponent<InputManager>().SetInput(inputType, playerId, joistickId);
+        posIdx++;
+    }
+
     private void Start()
     {
         UIManager.Get().OnLeaderboardShown += OnLeaderboardShown;
@@ -152,8 +174,24 @@ public class GameManager : MonoBehaviour {
             GameplayManager.Get().SendEvent(GameplayManager.Events.LeaderboardShownNoWinner);            
         }
     }
+
     private void OnDestroy()
     {
         UIManager.Get().OnLeaderboardShown -= OnLeaderboardShown;
     }
+
+    public GameObject GetPlayerById(int playerId)
+    {
+        GameObject playerFound = null;
+        foreach (PlayerBehavior player in players)
+        {
+            if (player.playerName == playerId)
+            {
+                playerFound = player.gameObject;
+                break;
+            }
+        }
+        return playerFound;
+    }
+
 }

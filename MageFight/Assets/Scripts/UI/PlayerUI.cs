@@ -10,19 +10,25 @@ public class PlayerUI : MonoBehaviour {
     public Text hpText;
     public Text staminaText;
     public Text fsText;
+    public Image playerHead;
     public GameObject playerTarget;
     private PlayerMovement movement;
     private PlayerBehavior player;
+    private SpellsManager playerSpells;
     private int playerHealth = 0;
     private float playerStamina = 0;
     public Gradient healthColorRamp;
     public Gradient staminaColorRamp;
     public Animator anim;
+    public int playerId = 0;
 
     // Use this for initialization
     void Start () {
+        playerTarget = GameManager.Instance.GetPlayerById(playerId).gameObject;
         player = playerTarget.GetComponent<PlayerBehavior>();
         movement = playerTarget.GetComponent<PlayerMovement>();
+        playerSpells = playerTarget.GetComponent<SpellsManager>();
+        playerHead.sprite = player.charData.artwork;
         UpdateText();
 	}
 
@@ -59,4 +65,9 @@ public class PlayerUI : MonoBehaviour {
     void Update () {
         UpdateText();
 	}
+
+    public void SetTarget(GameObject wizard)
+    {
+        playerTarget = wizard;
+    }
 }

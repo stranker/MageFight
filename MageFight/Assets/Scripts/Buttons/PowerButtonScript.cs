@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.EventSystems;
 
 public class PowerButtonScript : MonoBehaviour, IPointerEnterHandler{
 
@@ -8,7 +9,8 @@ public class PowerButtonScript : MonoBehaviour, IPointerEnterHandler{
 
 	public void PickSpell(){
 		GetComponent<Button>().interactable = false;
-		PowerPickingManager.Instance.SelectPower(spell);
+        GameObject.FindObjectOfType<EventSystem>().firstSelectedGameObject = null;
+        PowerPickingManager.Instance.SelectPower(spell);
 	}
 	public void SetSpell(Spell s){
 		spell = s;

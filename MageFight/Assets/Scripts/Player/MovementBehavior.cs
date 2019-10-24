@@ -85,12 +85,8 @@ public class MovementBehavior : MonoBehaviour {
         if(!immobilized)
         {
             if(canMove)
-                if(Input.GetAxis(input.AxisXKeyboard) > 0 || Input.GetAxis(input.AxisXKeyboard) < 0)
-                    velocity.x = Input.GetAxis(input.AxisXKeyboard);
-                else if (Input.GetAxis(input.movementAxisX) > 0 || Input.GetAxis(input.movementAxisX) < 0)
-                    velocity.x = Input.GetAxis(input.movementAxisX);
-                else if (Input.GetAxis(input.DPadX) > 0 || Input.GetAxis(input.DPadX) < 0)
-                    velocity.x = Input.GetAxis(input.DPadX);
+                if(Input.GetAxis(input.GetXAxis()) > 0)
+                    velocity.x = Input.GetAxis(input.GetXAxis());
                 else
                     velocity.x = 0;
 
@@ -102,17 +98,12 @@ public class MovementBehavior : MonoBehaviour {
             }
 
             int upDir = 0;
-            if(Input.GetAxis(input.AxisYKeyboard) > 0 || Input.GetAxis(input.AxisYKeyboard) < 0)
-                upDir = (int)Input.GetAxis(input.AxisYKeyboard);
-            else if(Input.GetAxis(input.aimAxisY) > 0 || Input.GetAxis(input.aimAxisY) < 0)
-                upDir = (int)Input.GetAxis(input.aimAxisY);
-            else if(Input.GetAxis(input.DPadY) > 0 || Input.GetAxis(input.DPadY) < 0)
-                upDir = (int)Input.GetAxis(input.DPadY);
+            if(Input.GetAxis(input.GetYAxis()) > 0)
+                upDir = (int)Input.GetAxis(input.GetYAxis());
 
-            int fwDir = (Mathf.Abs(Input.GetAxis(input.movementAxisX)) > 0.1f || Mathf.Abs(Input.GetAxis(input.DPadX)) > 0 || (Mathf.Abs(Input.GetAxis(input.AxisXKeyboard)) > 0)) ? (int)transform.localScale.x : 0;
+            int fwDir = Mathf.Abs(Input.GetAxis(input.GetXAxis())) > 0.1f ? (int)transform.localScale.x : 0;
             aimDirection = new Vector2(fwDir == 0 && upDir == 0 ? transform.localScale.x : fwDir, upDir);
             dashTrail.emitting = flying;
-            //flying = ((Input.GetAxis(input.dodgeButton) > 0 )|| Input.GetButton(input.dodgeButtonKeyboard)) && canFly && flyStamina > 0;
             if(flying)
             {
                 Fly(aimDirection);

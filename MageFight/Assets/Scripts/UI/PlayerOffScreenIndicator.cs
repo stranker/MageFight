@@ -12,9 +12,11 @@ public class PlayerOffScreenIndicator : MonoBehaviour {
     public float screenWidth;
     public Transform arrow;
     public Vector2 offsetIndicator;
+    public int playerId;
 
     private void Start()
     {
+        target = GameManager.Instance.players[playerId - 1].transform;
         screenHeight = 2f * Camera.main.orthographicSize;
         screenWidth = screenHeight * Camera.main.aspect;
     }

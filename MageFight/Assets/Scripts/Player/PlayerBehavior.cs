@@ -18,6 +18,7 @@ public class PlayerBehavior : MonoBehaviour {
     public PlayerOffScreenIndicator pIndicator;
     public AttackBehavior attack;
     public PlayerMovement movement;
+    public WizardDataScriptable charData;
 
     private void Awake(){
         winCount = 0;
@@ -80,6 +81,23 @@ public class PlayerBehavior : MonoBehaviour {
         foreach (SpriteRenderer sprite in sprites)
         {
             sprite.material.SetFloat("_FlashAmount",amount);
+        }
+    }
+
+    public void Initialize(int playerId, WizardDataScriptable wizardData)
+    {
+        playerName = playerId;
+        charData = wizardData;
+        switch (playerName)
+        {
+            case 1:
+                playerColor = Color.red;
+                break;
+            case 2:
+                playerColor = Color.blue;
+                break;
+            default:
+                break;
         }
     }
 

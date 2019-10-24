@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour {
 
@@ -39,6 +40,7 @@ public class UIManager : MonoBehaviour {
     public Text cdText;
     public Text ctText;
     public Text effText;
+    public GameObject rematchButton;
 
 
     private void Start()
@@ -127,6 +129,8 @@ public class UIManager : MonoBehaviour {
     }
     public void ShowPostGame(int winnerName)
     {
+        EventSystem evt = EventSystem.current;
+        evt.SetSelectedGameObject(rematchButton);
         PostGameUI.SetActive(true);
         playerLabel.text = "PLAYER " + winnerName.ToString();
     }
