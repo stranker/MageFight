@@ -157,22 +157,16 @@ MonoBehaviour:
   - {fileID: 114080733479666062, guid: d4eb113f809050047a789aefe4821342, type: 3}
   powerPickingPanel: {fileID: 1301308509}
   descriptionPanel: {fileID: 0}
-  nameLabel: {fileID: 0}
-  damageLabel: {fileID: 0}
-  typeLabel: {fileID: 0}
-  cdLabel: {fileID: 0}
-  effLabel: {fileID: 0}
-  diffLabel: {fileID: 0}
-  powerPickingImage: {fileID: 1487311266}
+  powerPickingImage: {fileID: 0}
   pickTurnText: {fileID: 1882329785}
   powerButtonPrefab: {fileID: 1361063501272560, guid: 87fc5011ee3c30747a139efe0e3015d0,
     type: 3}
-  powerGrid: {fileID: 800194578}
+  powerGrid: {fileID: 0}
   powersPerRound: 3
   roundButtons: []
   endPickTime: 2
   powerGridCream: {fileID: 0}
-  powerButtonsCream: {fileID: 666096657}
+  powerButtonsCream: {fileID: 0}
 --- !u!4 &7970468
 Transform:
   m_ObjectHideFlags: 0
@@ -2570,18 +2564,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661372919}
   m_CullTransparentMesh: 0
---- !u!114 &666096657 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8810455508602080084, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
-    type: 3}
-  m_PrefabInstance: {fileID: 8810455508074864453}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &671344020
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,12 +3146,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59b74b9fd0cf01b40b3d8f632e641d8e, type: 3}
---- !u!1 &800194578 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8810455508736384855, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
-    type: 3}
-  m_PrefabInstance: {fileID: 8810455508074864453}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &806807590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4133,19 +4109,11 @@ MonoBehaviour:
   leaderboard: {fileID: 689178892}
   PostGameUI: {fileID: 344254249}
   playerLabel: {fileID: 182371438}
-  spellDifficulty: {fileID: 0}
   leaderboardTime: 3
-  pickParticles: {fileID: 0}
   countdownPanel: {fileID: 671344020}
   countdownText: {fileID: 790902213}
   getReadyText: {fileID: 232187891}
   PlayerPresentationCanvas: {fileID: 834985739}
-  nameText: {fileID: 0}
-  dmgText: {fileID: 0}
-  typeText: {fileID: 0}
-  cdText: {fileID: 0}
-  ctText: {fileID: 0}
-  effText: {fileID: 0}
   rematchButton: {fileID: 679610047}
 --- !u!1 &1237356242
 GameObject:
@@ -4521,6 +4489,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d5d80d0782641343a95c227b3516108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spellList: []
+  spellsPerRound: 0
+  spellsPanel: {fileID: 0}
+  spellPanelPrefab: {fileID: 0}
+  timeEndPickRound: 0
 --- !u!1 &1306235349
 GameObject:
   m_ObjectHideFlags: 0
@@ -4716,18 +4689,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1487311266 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8810455506872766183, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
-    type: 3}
-  m_PrefabInstance: {fileID: 8810455508074864453}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1492624990
 GameObject:
   m_ObjectHideFlags: 0
@@ -6254,7 +6215,7 @@ PrefabInstance:
     - target: {fileID: 8810455507094469400, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
         type: 3}
       propertyPath: m_Name
-      value: PowerSelectionPanel
+      value: SpellsSelectionPanel
       objectReference: {fileID: 0}
     - target: {fileID: 8810455507094469403, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
         type: 3}
