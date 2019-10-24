@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New CharacterSelectionData", menuName = "CharacterSelection")]
+[CreateAssetMenu(fileName = "New Wizard Data", menuName = "Create Wizard Data")]
 public class WizardDataScriptable : ScriptableObject
 {
     public string wizardName;

@@ -30,9 +30,10 @@ public class GameManager : MonoBehaviour {
     public bool playerDead = false;
     public LevelBehavior currentMap;
     public GameObject playersParent;
+    public List<Player> playerList = new List<Player>();
 
     void Awake () {
-        //DontDestroyOnLoad(gameObject); //Single scene, might not be needed
+        AddPlayers();
         CreateWizards();
 		roundCounter = 0;
 		PlayerBehavior[] activeplayers = FindObjectsOfType<PlayerBehavior>();
@@ -47,9 +48,17 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-    private void CreateWizards()
+    private void AddPlayers()
     {
         foreach (Player player in CharactersSelected.Instance.playersConfirmed)
+        {
+            playerList.Add(player);
+        }
+    }
+
+    private void CreateWizards()
+    {
+        foreach (Player player in playerList)
         {
             CreateWizard(player.playerId, player.charData, player.inputType, player.joistickId);
         }

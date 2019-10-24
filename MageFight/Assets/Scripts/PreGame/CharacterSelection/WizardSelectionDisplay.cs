@@ -7,22 +7,31 @@ using UnityEngine.UI;
 
 public class Player
 {
+    public string playerName;
     public int playerId;
     public WizardDataScriptable charData;
     public InputType inputType;
     public int joistickId;
+    public int winRounds = 0;
+    public Color playerColor;
 
-    public Player(int playerId, WizardDataScriptable charData, InputType inputType, int joistickId)
+    public Player(int playerId, WizardDataScriptable charData, InputType inputType, int joistickId, Color playerColor)
     {
         this.playerId = playerId;
         this.charData = charData;
         this.inputType = inputType;
         this.joistickId = joistickId;
+        this.playerColor = playerColor;
+    }
+
+    public void ResetWins()
+    {
+        winRounds = 0;
     }
 }
 
 
-public class CharacterSelectionDisplay : MonoBehaviour
+public class WizardSelectionDisplay : MonoBehaviour
 {
     public bool isActive = false;
 
@@ -59,7 +68,7 @@ public class CharacterSelectionDisplay : MonoBehaviour
 
     private void Update()
     {
-        keyboardImage.gameObject.SetActive(!CharacterSelectionManager.Instance.players.ContainsValue(InputType.Keyboard));
+        keyboardImage.gameObject.SetActive(!WizardSelectionManager.Instance.players.ContainsValue(InputType.Keyboard));
         if (!canConfirm && playerPanel.activeInHierarchy)
         {
             if (canConfirmTimer > 0)
@@ -104,8 +113,8 @@ public class CharacterSelectionDisplay : MonoBehaviour
     {
         if (currentWizard)
             currentWizard.Unselect(playerColor);
-        wizardIdx = Mathf.Clamp(idx, 0, CharacterSelectionManager.Instance.wizardsSelectionButtons.Length - 1);
-        currentWizard = CharacterSelectionManager.Instance.wizardsSelectionButtons[wizardIdx];
+        wizardIdx = Mathf.Clamp(idx, 0, WizardSelectionManager.Instance.wizardsSelectionButtons.Length - 1);
+        currentWizard = WizardSelectionManager.Instance.wizardsSelectionButtons[wizardIdx];
         currentWizard.Select(playerColor);
         UpdateUI();
     }
@@ -177,8 +186,8 @@ public class CharacterSelectionDisplay : MonoBehaviour
     {
         currentWizard.Confirm();
         playerConfirmed = true;
-        player = new Player(playerId, currentWizard.wizardData, inputType, joystickId);
-        CharacterSelectionManager.Instance.AddPlayer(player);
+        player = new Player(playerId, currentWizard.wizardData, inputType, joystickId, playerId == 1? Color.red : Color.blue);
+        WizardSelectionManager.Instance.AddPlayer(player);
         playerText.text = "READY!";
     }
 }

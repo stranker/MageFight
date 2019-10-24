@@ -7,19 +7,19 @@ using UnityEngine.SceneManagement;
 
 public enum InputType { Joystick = 0, Keyboard, Count }
 
-public class CharacterSelectionManager : MonoBehaviour
+public class WizardSelectionManager : MonoBehaviour
 {
 
-    private static CharacterSelectionManager instance;
-    public static CharacterSelectionManager Instance
+    private static WizardSelectionManager instance;
+    public static WizardSelectionManager Instance
     {
         get
         {
-            instance = FindObjectOfType<CharacterSelectionManager>();
+            instance = FindObjectOfType<WizardSelectionManager>();
             if (instance == null)
             {
                 GameObject go = new GameObject("CharacterSelectionManager");
-                instance = go.AddComponent<CharacterSelectionManager>();
+                instance = go.AddComponent<WizardSelectionManager>();
             }
             return instance;
 
@@ -30,7 +30,7 @@ public class CharacterSelectionManager : MonoBehaviour
     public Dictionary<int, string> idPlayerToJoystickName = new Dictionary<int, string>();
     private int currentPlayerId = 1;
     public int maxPlayers = 2;
-    public CharacterSelectionDisplay[] characterSelectionDisplays;
+    public WizardSelectionDisplay[] characterSelectionDisplays;
     public CharactersSelected charsSelected;
     public List<Player> playersConfirmed = new List<Player>();
     private bool keyboardAdded = false;

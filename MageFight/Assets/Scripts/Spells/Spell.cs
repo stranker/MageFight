@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class Spell : MonoBehaviour {
 
-    public enum CastType 
+    public enum CastType
     {
         OneTap,
         Hold,
@@ -18,21 +15,12 @@ public abstract class Spell : MonoBehaviour {
         Utility
     }
 
-    public enum Difficulty
-    {
-        Easy,
-        Medium,
-        Hard,
-        BeyondMagelike
-    }
-
     [Header("Spell Stats")]
-    public string spellName;
+    public SpellData spellData;
     public float castVelocity;
     public int damage;
     public float cooldown;
     public CastType castType;
-    public Difficulty diff;
     public GameObject mageOwner;
     public SpellType typeOfSpeel;
     public Vector2 knockbackForce;
@@ -118,39 +106,6 @@ public abstract class Spell : MonoBehaviour {
 
     public string GetEffect()
     {
-        if (spellName == "Summoner Slap")
-        {
-            return "Humiliation of your rival";
-        }
-        if (spellName == "Breeze Boomerang")
-        {
-            return "After 1 sec It comes back!";
-        }
-        else
-        {
-            SpellEffect effect = GetComponent<SpellEffect>();
-            if (effect)
-                return effect.GetSpellEffect();
-            else
-                return "-";
-        }
-
-    }
-
-    public string GetDifficulty()
-    {
-        switch (diff)
-        {
-            case Difficulty.Easy:
-                return "Easy";
-            case Difficulty.Medium:
-                return "Medium";
-            case Difficulty.Hard:
-                return "Hard";
-            case Difficulty.BeyondMagelike:
-                return "Beyond Magelike";
-            default:
-                return "ERROR";
-        }
+        return spellData.spellEffect;
     }
 }

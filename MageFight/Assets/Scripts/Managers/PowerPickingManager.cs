@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
+
 public class PowerPickingManager : MonoBehaviour {
 
 	private static PowerPickingManager instance;
@@ -18,7 +20,8 @@ public class PowerPickingManager : MonoBehaviour {
 		}
 	}
 
-	struct turn{
+	struct Turn{
+        public PlayerBehavior playerBehavior;
 		public int   playerID;
 		public int   PlayerName;
 		public int   wins;
@@ -30,12 +33,6 @@ public class PowerPickingManager : MonoBehaviour {
 	[Header("UI")]
 	[SerializeField] private GameObject powerPickingPanel;
 	[SerializeField] private Image descriptionPanel;
-	[SerializeField] private Text nameLabel;
-	[SerializeField] private Text damageLabel;
-	[SerializeField] private Text typeLabel;
-	[SerializeField] private Text cdLabel;
-	[SerializeField] private Text effLabel;
-    [SerializeField] private Text diffLabel;
     [SerializeField] private Image powerPickingImage;
     [SerializeField] private Text pickTurnText;
 	[SerializeField] private GameObject powerButtonPrefab;
@@ -43,7 +40,7 @@ public class PowerPickingManager : MonoBehaviour {
 	[Header("Settings")]
 	[SerializeField][Range(1,9)] private int powersPerRound;
     private List<PlayerBehavior> players;
-	private List<turn> turns = new List<turn>();
+	private List<Turn> turns = new List<Turn>();
 	private List<PowerButtonScript> buttons = new List<PowerButtonScript>();
     public List<PowerButtonScript> roundButtons = new List<PowerButtonScript>();
     private int turnCounter;
@@ -63,8 +60,13 @@ public class PowerPickingManager : MonoBehaviour {
                 GameObject.FindObjectOfType<EventSystem>().firstSelectedGameObject = go;
         }
 	}
-	
-	public void SetPlayerList(List<PlayerBehavior> playerList){
+
+    private void CreateSpellsPanels()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SetPlayerList(List<PlayerBehavior> playerList){
 		players = playerList;
 	}
 	public void Begin(){
@@ -93,7 +95,7 @@ public class PowerPickingManager : MonoBehaviour {
         }
     }
 
-    private void End(){        
+    private void End(){
         powerPickingPanel.SetActive(false);
         GameplayManager.Get().SendEvent(GameplayManager.Events.PowersSelected);
 	}
@@ -101,7 +103,7 @@ public class PowerPickingManager : MonoBehaviour {
 	private void UpdateTurns(){
 		turns.Clear();
 		for(int i = 0; i < players.Count; i++){
-			turn t = new turn();
+			Turn t = new Turn();
 			t.playerID    = players[i].GetID();
 			t.PlayerName  = players[i].GetPlayerName();
 			t.wins        = players[i].winCount;
@@ -119,7 +121,6 @@ public class PowerPickingManager : MonoBehaviour {
         EventSystem evt = EventSystem.current;
         evt.SetSelectedGameObject(roundButtons[0].GetComponent<Button>().interactable ? roundButtons[0].gameObject : roundButtons[1].gameObject);        
         players[turns[turnCounter].playerID].AddSpell(s);
-        UIManager.Get().PlayPickParticles(players[turns[turnCounter].playerID]);
 		turnCounter++;
 		if(turnCounter >= players.Count){
             endPickTurn = true;
@@ -158,7 +159,7 @@ public class PowerPickingManager : MonoBehaviour {
 
 		int difference = roundButtons.Count - powersPerRound;
 		for(int i = 0; i < difference; i++ ){
-			PowerButtonScript but = roundButtons[Random.Range(0, roundButtons.Count -1)];
+			PowerButtonScript but = roundButtons[UnityEngine.Random.Range(0, roundButtons.Count -1)];
 			roundButtons.Remove(but);
 		}
 

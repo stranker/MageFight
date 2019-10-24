@@ -54,6 +54,6 @@ public class MeleeSpell : Spell {
 
     private void SetAnimation()
 	{
-        GetComponent<Animator>().SetTrigger(spellName);
+        GetComponent<Animator>().SetTrigger(spellData.spellName);
     }
 }

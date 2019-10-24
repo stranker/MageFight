@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.EventSystems;
 
-public class PowerButtonScript : MonoBehaviour, IPointerEnterHandler{
+public class PowerButtonScript : MonoBehaviour{
 
 	private Spell spell;
 
@@ -30,10 +29,5 @@ public class PowerButtonScript : MonoBehaviour, IPointerEnterHandler{
 	public Spell GetSpell(){
 		return spell;
 	}
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        UIManager.Get().SetSpellDescription(spell);
-    }
 
 }
