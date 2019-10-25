@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpellSelectionPanel : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class SpellSelectionPanel : MonoBehaviour
     private List<SpellInfoPanel> spellsInfoPanelList = new List<SpellInfoPanel>();
     Player currentPlayerTurn = null;
     SpellInfoPanel currentSpellInfoPanel = null;
+    public Text wizardName;
 
     public int turnCounter = 0;
 
@@ -31,6 +33,13 @@ public class SpellSelectionPanel : MonoBehaviour
         Player testPlayer = new Player(1, wizardDataTest, InputType.Keyboard, 0, Color.red);
         playerList.Add(testPlayer);
         currentPlayerTurn = playerList[turnCounter];
+        UpdateUI();
+    }
+
+    private void UpdateUI()
+    {
+        wizardName.text = currentPlayerTurn.charData.wizardName;
+        wizardName.color = currentPlayerTurn.playerColor;
     }
 
     private void CreateSpellsPanel()
@@ -54,19 +63,15 @@ public class SpellSelectionPanel : MonoBehaviour
                 EndSpellSelection();
             }
         }
-    }
-
-    private void EndSpellSelection()
-    {
-        GameplayManager.Get().SendEvent(GameplayManager.Events.PowersSelected);
-    }
-
-    private void OnGUI()
-    {
         if (!endSpellSelection && Input.anyKeyDown)
         {
             CheckPlayerInput();
         }
+    }
+
+    private void EndSpellSelection()
+    {
+        //GameplayManager.Get().SendEvent(GameplayManager.Events.PowersSelected);
     }
 
     private void CheckPlayerInput()
@@ -133,6 +138,7 @@ public class SpellSelectionPanel : MonoBehaviour
             endSpellSelection = true;
         else
             currentPlayerTurn = playerList[turnCounter];
+        UpdateUI();
     }
 
     private void SelectPanelAt(int idx)

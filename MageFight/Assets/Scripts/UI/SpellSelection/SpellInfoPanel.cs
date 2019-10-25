@@ -53,6 +53,6 @@ public class SpellInfoPanel : MonoBehaviour
 
     public void Confirm()
     {
-        throw new NotImplementedException();
+        Destroy(this.gameObject);
     }
 }
