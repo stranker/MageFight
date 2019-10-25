@@ -20,7 +20,7 @@ public class MeleeSpell : Spell {
     {
         if (collision.tag == "Player" && collision.gameObject != mageOwner && canDamage)
         {
-            PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
+            WizardBehavior player = collision.GetComponent<WizardBehavior>();
             player.TakeDamage(damage, transform.position);
             player.GetComponent<PlayerMovement>().KnockOut(new Vector2(knockDir.x * dir.x, knockDir.y), knockbackForce);
             CheckHasEffect(player);

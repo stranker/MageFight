@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour {
     public Vector2 aimDirection;
     public InputManager input;
     public AttackBehavior attackBehavior;
-    public PlayerBehavior playerBehavior;
+    public WizardBehavior playerBehavior;
     public Rigidbody2D rigidBody;
     public Transform rightFoot;
     public Transform leftFoot;
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
     void Start () {
         initialGravityScale = rigidBody.gravityScale;
-        playerBehavior = GetComponent<PlayerBehavior>();
+        playerBehavior = GetComponent<WizardBehavior>();
 	}
 	
 	// Update is called once per frame

@@ -50,7 +50,7 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        foreach (var player in GameManager.Instance.players)
+        foreach (var player in GameManager.Instance.activeWizardList)
         {
             playerList.Add(player.transform);
         }

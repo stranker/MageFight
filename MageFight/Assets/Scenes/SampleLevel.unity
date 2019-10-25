@@ -112,75 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &7970466
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7970468}
-  - component: {fileID: 7970467}
-  m_Layer: 0
-  m_Name: Power Picking Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &7970467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7970466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27923b434c1f95b4c8e589a4516d668c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spells:
-  - {fileID: 114968378377795178, guid: b60f7ba977f55ab41bdc451e2919b3a0, type: 3}
-  - {fileID: 114739452967932474, guid: de45edb107ecbfb40a0a62ef43a11a2a, type: 3}
-  - {fileID: 114112406116683018, guid: 158e04fe046d54e4980043836dec623a, type: 3}
-  - {fileID: 114194034602317248, guid: 2d6a795219e15fb40b08e595adb8715d, type: 3}
-  - {fileID: 114194034602317248, guid: 416e2dcfddece1b4b955d69c4a7f262d, type: 3}
-  - {fileID: 114786596358402696, guid: b164b286bf25c304bb28c1b2dbf4d06f, type: 3}
-  - {fileID: 114498289543415858, guid: 6a8fee6128ab04e4d9f5bd6a0913c971, type: 3}
-  - {fileID: 114261353051233270, guid: b2e51f936ff84c5478b7591a7dbadd57, type: 3}
-  - {fileID: 114353543599955174, guid: 4d844d2b7c016f54d9d412cfb21218c1, type: 3}
-  - {fileID: 114472322982678124, guid: ed820bc51e0309a4588629a399e4fb78, type: 3}
-  - {fileID: 114394342564051314, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc, type: 3}
-  - {fileID: 114951534744336276, guid: a41a750c7c56cc34aa4170ddf4884173, type: 3}
-  - {fileID: 114080733479666062, guid: d4eb113f809050047a789aefe4821342, type: 3}
-  powerPickingPanel: {fileID: 1301308509}
-  descriptionPanel: {fileID: 0}
-  powerPickingImage: {fileID: 0}
-  pickTurnText: {fileID: 1882329785}
-  powerButtonPrefab: {fileID: 1361063501272560, guid: 87fc5011ee3c30747a139efe0e3015d0,
-    type: 3}
-  powerGrid: {fileID: 0}
-  powersPerRound: 3
-  roundButtons: []
-  endPickTime: 2
-  powerGridCream: {fileID: 0}
-  powerButtonsCream: {fileID: 0}
---- !u!4 &7970468
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7970466}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 320.6313, y: 187.52246, z: -3.1000721}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1398916838}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &38125219
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,7 +2527,7 @@ RectTransform:
   m_Children:
   - {fileID: 577190768}
   m_Father: {fileID: 1142840498}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4080,13 +4011,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1620487371}
-  - {fileID: 671344021}
   - {fileID: 1301308510}
+  - {fileID: 671344021}
   - {fileID: 689178888}
   - {fileID: 344254250}
   - {fileID: 834985740}
   m_Father: {fileID: 1398916838}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4114,6 +4045,7 @@ MonoBehaviour:
   countdownText: {fileID: 790902213}
   getReadyText: {fileID: 232187891}
   PlayerPresentationCanvas: {fileID: 834985739}
+  spellSelectionPanel: {fileID: 1301308509}
   rematchButton: {fileID: 679610047}
 --- !u!1 &1237356242
 GameObject:
@@ -4156,7 +4088,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1398916838}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1244664927
 GameObject:
@@ -4477,23 +4409,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8810455508074864453}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1301308511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1301308509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d5d80d0782641343a95c227b3516108, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellList: []
-  spellsPerRound: 0
-  spellsPanel: {fileID: 0}
-  spellPanelPrefab: {fileID: 0}
-  timeEndPickRound: 0
 --- !u!1 &1306235349
 GameObject:
   m_ObjectHideFlags: 0
@@ -4682,7 +4597,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 524297103}
-  - {fileID: 7970468}
   - {fileID: 1142840498}
   - {fileID: 1237356244}
   - {fileID: 2052931260}
@@ -5087,7 +5001,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &1659462437
 GameObject:
@@ -5372,18 +5286,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1788323265}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1882329785 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8810455507268374012, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
-    type: 3}
-  m_PrefabInstance: {fileID: 8810455508074864453}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1902965464
 GameObject:
   m_ObjectHideFlags: 0
@@ -5922,7 +5824,7 @@ Transform:
   - {fileID: 742227631}
   - {fileID: 472306428}
   m_Father: {fileID: 1398916838}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2074280533
 GameObject:
@@ -6217,6 +6119,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpellsSelectionPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8810455507094469400, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8810455507094469403, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6255,7 +6162,7 @@ PrefabInstance:
     - target: {fileID: 8810455507094469403, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8810455507094469403, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
         type: 3}
@@ -6466,6 +6373,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8810455507094469412, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40c1badf1ad021742bdbacfb8dbd7d07, type: 3}

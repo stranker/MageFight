@@ -324,11 +324,16 @@ MonoBehaviour:
   - {fileID: 114951534744336276, guid: a41a750c7c56cc34aa4170ddf4884173, type: 3}
   - {fileID: 114080733479666062, guid: d4eb113f809050047a789aefe4821342, type: 3}
   spellsPerRound: 3
+  spellCounter: 0
   spellsPanel: {fileID: 7282207720864658645}
   spellPanelPrefab: {fileID: 3184766083569941918, guid: ca4570e21eae8d74b8d2b752a34e35ae,
     type: 3}
-  timeEndPickRound: 1.5
+  wizardName: {fileID: 8810455507268374012}
+  turnCounter: 0
+  endSpellSelection: 0
+  timeEndSpellSelection: 0
   wizardDataTest: {fileID: 11400000, guid: 496cecf06de077a45882297bb77d80ff, type: 2}
+  debugMode: 0
 --- !u!1 &8810455507268374002
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 0.88235295}
+  m_Color: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:

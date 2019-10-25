@@ -23,8 +23,8 @@ public class UILeaderboard : MonoBehaviour {
             CreatePlayerCookies(cookiePanelP1, cookieListP1);
             CreatePlayerCookies(cookiePanelP2, cookieListP2);
         }
-        player1.sprite = GameManager.Instance.GetPlayerById(1).GetComponent<PlayerBehavior>().charData.artwork;
-        player2.sprite = GameManager.Instance.GetPlayerById(2).GetComponent<PlayerBehavior>().charData.artwork;
+        player1.sprite = GameManager.Instance.GetPlayerById(1).GetComponent<WizardBehavior>().charData.artwork;
+        player2.sprite = GameManager.Instance.GetPlayerById(2).GetComponent<WizardBehavior>().charData.artwork;
         gameObject.SetActive(false);
     }
 
@@ -39,8 +39,8 @@ public class UILeaderboard : MonoBehaviour {
         if (!scoresSeted)
         {
             scoresSeted = true;
-            int p1WinCount = GameManager.Instance.players[0].winCount;
-            int p2WinCount = GameManager.Instance.players[1].winCount;
+            int p1WinCount = GameManager.Instance.activeWizardList[0].winCount;
+            int p2WinCount = GameManager.Instance.activeWizardList[1].winCount;
             if (p1WinCount != 0)
                 cookieListP1[p1WinCount - 1].ChangeToCookie();
             if (p2WinCount != 0)

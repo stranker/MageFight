@@ -9,7 +9,7 @@ public class PickParticles : MonoBehaviour
     ParticleSystem _system;
     public Color colorParticles;
 
-    internal void PlayParticles(PlayerBehavior playerBehavior)
+    internal void PlayParticles(WizardBehavior playerBehavior)
     {
         ParticleSystem.MainModule main = _system.main;
         main.startColor = playerBehavior.playerColor;

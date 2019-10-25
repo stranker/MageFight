@@ -15,7 +15,7 @@ public class CameraManager : MonoBehaviour
             Destroy(gameObject);
 
 
-        foreach (var player in GameManager.Instance.players)
+        foreach (var player in GameManager.Instance.activeWizardList)
         {
             playerList.Add(player.gameObject);
         }

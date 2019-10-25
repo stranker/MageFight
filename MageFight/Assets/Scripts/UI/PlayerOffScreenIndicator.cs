@@ -16,7 +16,7 @@ public class PlayerOffScreenIndicator : MonoBehaviour {
 
     private void Start()
     {
-        target = GameManager.Instance.players[playerId - 1].transform;
+        target = GameManager.Instance.activeWizardList[playerId - 1].transform;
         screenHeight = 2f * Camera.main.orthographicSize;
         screenWidth = screenHeight * Camera.main.aspect;
     }
@@ -33,7 +33,7 @@ public class PlayerOffScreenIndicator : MonoBehaviour {
 
     private void CheckPlayerDead()
     {
-        if (!target.GetComponent<PlayerBehavior>().isAlive)
+        if (!target.GetComponent<WizardBehavior>().isAlive)
         {
             SetActivated(false);
         }

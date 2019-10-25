@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d30efb4848e5c842b3a2972add7eee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellData: {fileID: 11400000, guid: ef296ad337dfe6b47843c54be03f722b, type: 2}
+  spellData: {fileID: 11400000, guid: 4a42ed81469f2d746b5a59ee15d9f840, type: 2}
   castVelocity: 0
   damage: 20
   cooldown: 2.5

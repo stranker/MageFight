@@ -30,9 +30,10 @@ public class Player
         spellList.Add(spell);
     }
 
-    public void ResetWins()
+    public void Reset()
     {
         winRounds = 0;
+        spellList.Clear();
     }
 }
 
@@ -87,7 +88,7 @@ public class WizardSelectionDisplay : MonoBehaviour
                 canConfirmTimer = 0;
             }
         }
-
+        CheckInput();
     }
 
 
@@ -125,7 +126,7 @@ public class WizardSelectionDisplay : MonoBehaviour
         UpdateUI();
     }
 
-    private void OnGUI()
+    private void CheckInput()
     {
         if (!isActive)
             return;

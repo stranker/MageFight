@@ -17,7 +17,7 @@ public class SpellsManager : MonoBehaviour {
         var playersUIs = GameObject.FindGameObjectsWithTag("PlayerUI");
         foreach (var ui in playersUIs)
         {
-            if (ui.GetComponent<PlayerUI>().playerId == GetComponent<PlayerBehavior>().playerName)
+            if (ui.GetComponent<PlayerUI>().playerId == GetComponent<WizardBehavior>().playerName)
             {
                 PowerIcon[] pI = ui.GetComponentsInChildren<PowerIcon>();
                 foreach (PowerIcon icon in pI)
@@ -78,7 +78,6 @@ public class SpellsManager : MonoBehaviour {
             if(spellIndexToReplace >= amountOfSpells){ spellIndexToReplace = 0;}
 
             spells[spellIndexToReplace].Kill();
-            PowerPickingManager.Instance.RecicleSpell(spells[spellIndexToReplace]);
 
             Spell sp = Instantiate(spell, transform.parent);
             sp.Kill();
@@ -110,10 +109,20 @@ public class SpellsManager : MonoBehaviour {
             icon.Reset();
         }
     }
+
+    public void AddSpells(List<Spell> spellList)
+    {
+        foreach (Spell spell in spellList)
+        {
+            AddSpell(spell);
+        }
+    }
+
     public Color GetSpellColor(int index)
     {
         return spells[index].spellColor;
     }
+
     public bool CanInvokeSpell(int spellIndex)
     {
         if(spellIndex < spells.Count)

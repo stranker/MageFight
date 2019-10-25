@@ -26,14 +26,36 @@ public class SpellSelectionPanel : MonoBehaviour
 
     public WizardDataScriptable wizardDataTest;
 
-    private void Awake()
+    private bool isActive = false;
+
+    public bool debugMode = false;
+
+    private void Start()
     {
         CreateSpellsPanel();
-        //playerList = GameManager.Instance.playerList;
-        Player testPlayer = new Player(1, wizardDataTest, InputType.Keyboard, 0, Color.red);
-        playerList.Add(testPlayer);
+        if (debugMode)
+        {
+            Player testPlayer = new Player(1, wizardDataTest, InputType.Keyboard, 0, Color.red);
+            Player testPlayer2 = new Player(2, wizardDataTest, InputType.Joystick, 1, Color.red);
+            playerList.Add(testPlayer);
+            playerList.Add(testPlayer2);
+        }
+        else
+        {
+            playerList = GameManager.Instance.playerList;
+        }
         currentPlayerTurn = playerList[turnCounter];
         UpdateUI();
+    }
+
+    private void OnEnable()
+    {
+        isActive = true;
+    }
+
+    private void OnDisable()
+    {
+        isActive = false;
     }
 
     private void UpdateUI()
@@ -55,23 +77,23 @@ public class SpellSelectionPanel : MonoBehaviour
 
     private void Update()
     {
-        if (endSpellSelection)
+        if (isActive)
         {
-            timer += Time.deltaTime;
-            if (timer > timeEndSpellSelection)
+            if (endSpellSelection)
             {
-                EndSpellSelection();
+                timer += Time.deltaTime;
+                if (timer > timeEndSpellSelection)
+                    EndSpellSelection();
             }
-        }
-        if (!endSpellSelection && Input.anyKeyDown)
-        {
-            CheckPlayerInput();
+            else
+                CheckPlayerInput();
         }
     }
 
     private void EndSpellSelection()
     {
-        //GameplayManager.Get().SendEvent(GameplayManager.Events.PowersSelected);
+        GameplayManager.Get().SendEvent(GameplayManager.Events.SpellsSelected);
+        gameObject.SetActive(false);
     }
 
     private void CheckPlayerInput()
@@ -132,12 +154,12 @@ public class SpellSelectionPanel : MonoBehaviour
         currentSpellInfoPanel.Confirm();
         spellsInfoPanelList.Remove(currentSpellInfoPanel);
         currentPlayerTurn.AddSpell(currentSpellInfoPanel.currentSpell);
-        currentSpellInfoPanel = null;
         turnCounter++;
         if (turnCounter >= playerList.Count)
             endSpellSelection = true;
         else
             currentPlayerTurn = playerList[turnCounter];
+        SelectPanelAt(0);
         UpdateUI();
     }
 

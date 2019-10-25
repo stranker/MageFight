@@ -22,7 +22,7 @@ public class PreGameManager : MonoBehaviour
     {
         GameObject wizard = new GameObject();
         wizard = Instantiate(wizardPrefab, positions[posIdx].position, Quaternion.identity, transform.parent);
-        wizard.GetComponent<PlayerBehavior>().playerName = playerId;
+        wizard.GetComponent<WizardBehavior>().playerName = playerId;
         wizard.GetComponent<InputManager>().SetInput(inputType, playerId, joistickId);
         posIdx++;
     }

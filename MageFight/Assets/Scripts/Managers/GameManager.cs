@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private int roundCounter;
-	public List<PlayerBehavior> players = new List<PlayerBehavior>();
+	public List<WizardBehavior> activeWizardList = new List<WizardBehavior>();
 	[SerializeField] public int roundsToWin; //How much of a round-win  a player needs to be considered winner.
 	[SerializeField] private List<Transform> startingPositions = new List<Transform>();
 
@@ -36,16 +36,6 @@ public class GameManager : MonoBehaviour {
         AddPlayers();
         CreateWizards();
 		roundCounter = 0;
-		PlayerBehavior[] activeplayers = FindObjectsOfType<PlayerBehavior>();
-		for(int i = 0; i < activeplayers.Length; i++){ //State all players are alive
-			if(activeplayers[i].gameObject.activeInHierarchy){
-			players.Add(activeplayers[i]);
-			activeplayers[i].isAlive = true;
-			activeplayers[i].winCount = 0;
-			activeplayers[i].RegisterPlayerID(i);
-			activeplayers[i].Pause();
-			}
-		}
 	}
 
     private void AddPlayers()
@@ -60,23 +50,23 @@ public class GameManager : MonoBehaviour {
     {
         foreach (Player player in playerList)
         {
-            CreateWizard(player.playerId, player.charData, player.inputType, player.joistickId);
+            CreateWizard(player);
         }
     }
 
-    private void CreateWizard(int playerId, WizardDataScriptable wizardData, InputType inputType, int joistickId = -1)
+    private void CreateWizard(Player player)
     {
         GameObject wizard = new GameObject();
-        wizard = Instantiate(wizardData.wizardPrefab, startingPositions[posIdx].position, Quaternion.identity, playersParent.transform);
-        wizard.GetComponent<PlayerBehavior>().Initialize(playerId,wizardData);
-        wizard.GetComponent<InputManager>().SetInput(inputType, playerId, joistickId);
+        wizard = Instantiate(player.charData.wizardPrefab, startingPositions[posIdx].position, Quaternion.identity, playersParent.transform);
+        wizard.GetComponent<WizardBehavior>().Initialize(player);
+        wizard.GetComponent<InputManager>().SetInput(player.inputType, player.playerId, player.joistickId);
+        activeWizardList.Add(wizard.GetComponent<WizardBehavior>());
         posIdx++;
     }
 
     private void Start()
     {
         UIManager.Get().OnLeaderboardShown += OnLeaderboardShown;
-		PowerPickingManager.Instance.SetPlayerList(players);
         GameplayManager.Get().SendEvent(GameplayManager.Events.StartGame);
     }
 
@@ -96,19 +86,19 @@ public class GameManager : MonoBehaviour {
 
 
     public void InitializeRound(){
-		for(int i = 0; i < players.Count; i++){
+		for(int i = 0; i < activeWizardList.Count; i++){
 			if(i <= startingPositions.Count -1){
-                players[i].Pause();
-                players[i].Reset(startingPositions[i].position); 
+                activeWizardList[i].Pause();
+                activeWizardList[i].Reset(startingPositions[i].position); 
 			}
 		}
 		Debug.Log("Begin round: " + (roundCounter +1));
 	}
 
     public void StartRound(){
-        for(int i = 0; i < players.Count; i++)
+        foreach (WizardBehavior wizard in activeWizardList)
         {
-            players[i].Resume();
+            wizard.Resume();
         }
     }
 
@@ -121,15 +111,15 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 0f;
         bool isOnePlayerAlive = false;
         int winner = -1; //Has to have a default value to not cause compiler errors
-        for (int i = 0; i < players.Count; i++)
+        for (int i = 0; i < activeWizardList.Count; i++)
         {
-            if (players[i].isAlive == true)
+            if (activeWizardList[i].isAlive == true)
             {
                 if (!isOnePlayerAlive)
                 {
                     isOnePlayerAlive = true;
                     winner = i;
-                    camera.SetTarget(players[i].transform);
+                    camera.SetTarget(activeWizardList[i].transform);
                     GameplayManager.Get().SendEvent(GameplayManager.Events.PlayerDead);
                 } //finds the first 'alive' player
                 else { return; } //if more than one player is alive, the round continues
@@ -138,8 +128,8 @@ public class GameManager : MonoBehaviour {
         //if only one player is alive, then that player wins the round
         if (isOnePlayerAlive)
         {
-            players[winner].winCount += 1;
-            foreach (PlayerBehavior player in players)
+            activeWizardList[winner].winCount += 1;
+            foreach (WizardBehavior player in activeWizardList)
             {
                 player.Pause();
             }
@@ -148,11 +138,10 @@ public class GameManager : MonoBehaviour {
 
 	public void EndGame(){
 		roundCounter = 0; //Reset round counter
-		for(int i = 0; i < players.Count; i++){
-			players[i].winCount = 0;
-			players[i].ResetAnimation();
-		}		
-        PowerPickingManager.Instance.Begin();
+        foreach (Player player in playerList)
+        {
+            player.Reset();
+        }
     }
 
 	public void EndRound(){
@@ -166,17 +155,17 @@ public class GameManager : MonoBehaviour {
         camera.Reset();
         InitializeRound();
         int winner = -1; //Has to have a default value to not cause compiler errors
-        for(int i = 0; i < players.Count; i++)
+        for(int i = 0; i < activeWizardList.Count; i++)
         {
-            players[i].Pause();
-            Debug.Log("Player " + players[i].GetPlayerName() + " has won " + players[i].winCount + " rounds.");
-            if(players[i].winCount >= roundsToWin) { winner = i; }
+            activeWizardList[i].Pause();
+            Debug.Log("Player " + activeWizardList[i].GetPlayerName() + " has won " + activeWizardList[i].winCount + " rounds.");
+            if(activeWizardList[i].winCount >= roundsToWin) { winner = i; }
         }
         if(winner > -1)
         {
             GameplayManager.Get().SendEvent(GameplayManager.Events.LeaderboardShownWinner);
-            UIManager.Get().ShowPostGame(players[winner].GetPlayerName()); //if a winner is found, the game ends
-			players[winner].Win();
+            UIManager.Get().ShowPostGame(activeWizardList[winner].GetPlayerName()); //if a winner is found, the game ends
+			activeWizardList[winner].Win();
         }
         else
         {
@@ -192,7 +181,7 @@ public class GameManager : MonoBehaviour {
     public GameObject GetPlayerById(int playerId)
     {
         GameObject playerFound = null;
-        foreach (PlayerBehavior player in players)
+        foreach (WizardBehavior player in activeWizardList)
         {
             if (player.playerName == playerId)
             {

@@ -50,6 +50,11 @@ public class WizardSelectionManager : MonoBehaviour
     private void Update()
     {
         CheckPlayersConfirmedCount();
+
+    }
+
+    private void OnGUI()
+    {
         CheckJoystickInput();
         CheckKeyboardInput();
         if (Input.GetButton("Cancel"))

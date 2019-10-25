@@ -11,7 +11,7 @@ public class GameplayManager : MonoBehaviour {
     {
         GameStart,
         PlayerPresentation,
-        PowerSelection,
+        SpellSelection,
         Countdown,
         Gameplay,
         DeathCamera,
@@ -24,12 +24,12 @@ public class GameplayManager : MonoBehaviour {
     { 
         StartGame,
         PlayerPresentationEnd,
-        PowersSelected,
+        SpellsSelected,
         CountdownEnd,
         PlayerDead,
         DeathCameraEnd,
         LeaderboardShownWinner,
-        LeaderboardShownNoWinner,        
+        LeaderboardShownNoWinner,
         ExitSelected,
         RematchSelected,
         GoToPowerSelection,
@@ -48,15 +48,15 @@ public class GameplayManager : MonoBehaviour {
         fsm = new FSM((int)States.Count, (int)Events.Count, (int)States.GameStart);
 
         fsm.SetRelation((int)States.GameStart, (int)Events.StartGame, (int)States.PlayerPresentation);
-        fsm.SetRelation((int)States.PlayerPresentation, (int)Events.PlayerPresentationEnd, (int)States.PowerSelection);
-        fsm.SetRelation((int)States.PowerSelection, (int)Events.PowersSelected, (int)States.Countdown);
+        fsm.SetRelation((int)States.PlayerPresentation, (int)Events.PlayerPresentationEnd, (int)States.SpellSelection);
+        fsm.SetRelation((int)States.SpellSelection, (int)Events.SpellsSelected, (int)States.Countdown);
         fsm.SetRelation((int)States.Countdown, (int)Events.CountdownEnd, (int)States.Gameplay);
         fsm.SetRelation((int)States.Gameplay, (int)Events.PlayerDead, (int)States.DeathCamera);
         fsm.SetRelation((int)States.DeathCamera, (int)Events.DeathCameraEnd, (int)States.Leaderboard);
-        fsm.SetRelation((int)States.Leaderboard, (int)Events.LeaderboardShownNoWinner, (int)States.PowerSelection);
+        fsm.SetRelation((int)States.Leaderboard, (int)Events.LeaderboardShownNoWinner, (int)States.SpellSelection);
         fsm.SetRelation((int)States.Leaderboard, (int)Events.LeaderboardShownWinner, (int)States.PostGame);
         fsm.SetRelation((int)States.PostGame, (int)Events.RematchSelected, (int)States.Rematch);
-        fsm.SetRelation((int)States.Rematch, (int)Events.GoToPowerSelection, (int)States.PowerSelection);
+        fsm.SetRelation((int)States.Rematch, (int)Events.GoToPowerSelection, (int)States.SpellSelection);
     }
     private void Update()
     {
@@ -69,8 +69,8 @@ public class GameplayManager : MonoBehaviour {
                 case (int)States.PlayerPresentation:
                     PlayerPresentation();
                     break;
-                case (int)States.PowerSelection:
-                    PowerSelection();
+                case (int)States.SpellSelection:
+                    SpellSelection();
                     break;
                 case (int)States.Countdown:
                     Countdown();
@@ -100,11 +100,10 @@ public class GameplayManager : MonoBehaviour {
         CameraManager.Get().ActivateCamerasPlayerPresentation();
         UIManager.Get().SetPlayerPresentationUI(true);
     }
-    public void PowerSelection()
+    public void SpellSelection()
     {
-        UIManager.Get().SetPlayerPresentationUI(false);    
+        UIManager.Get().SetPlayerPresentationUI(false);
         CameraManager.Get().ActivateCamerasGameplay();
-        PowerPickingManager.Instance.Begin();
     }
     public void Countdown()
     {
@@ -127,7 +126,7 @@ public class GameplayManager : MonoBehaviour {
     }
     private void Rematch()
     {
-        PowerPickingManager.Instance.Reset();
+        //PowerPickingManager.Instance.Reset();
         GameManager.Instance.EndGame();
         SendEvent(Events.GoToPowerSelection);
     }

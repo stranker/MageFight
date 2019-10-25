@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour {
     public Text countdownText;
     public Text getReadyText;
     public GameObject PlayerPresentationCanvas;
+    public GameObject spellSelectionPanel;
     public GameObject rematchButton;
 
 
@@ -132,6 +133,9 @@ public class UIManager : MonoBehaviour {
             PlayerPresentationCanvas.GetComponent<Animator>().SetTrigger("Start");
         }
         else
+        {
             PlayerPresentationCanvas.SetActive(false);
+            spellSelectionPanel.SetActive(true);
+        }
     }
 }

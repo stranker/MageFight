@@ -16,7 +16,7 @@ public abstract class Spell : MonoBehaviour {
     }
 
     [Header("Spell Stats")]
-    public SpellData spellData;
+    public SpellDataScriptable spellData;
     public float castVelocity;
     public int damage;
     public float cooldown;
@@ -57,7 +57,7 @@ public abstract class Spell : MonoBehaviour {
         transform.position = new Vector2(-999, -999);
     }
 
-    protected void CheckHasEffect(PlayerBehavior player)
+    protected void CheckHasEffect(WizardBehavior player)
     {
         SpellEffect effect = GetComponentInChildren<SpellEffect>();
         if (effect)
