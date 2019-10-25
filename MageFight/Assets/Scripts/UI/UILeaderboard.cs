@@ -39,8 +39,8 @@ public class UILeaderboard : MonoBehaviour {
         if (!scoresSeted)
         {
             scoresSeted = true;
-            int p1WinCount = GameManager.Instance.activeWizardList[0].winCount;
-            int p2WinCount = GameManager.Instance.activeWizardList[1].winCount;
+            int p1WinCount = GameManager.Instance.activeWizardList[0].playerRef.winRounds;
+            int p2WinCount = GameManager.Instance.activeWizardList[1].playerRef.winRounds;
             if (p1WinCount != 0)
                 cookieListP1[p1WinCount - 1].ChangeToCookie();
             if (p2WinCount != 0)

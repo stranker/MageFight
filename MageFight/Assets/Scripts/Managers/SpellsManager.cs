@@ -112,10 +112,20 @@ public class SpellsManager : MonoBehaviour {
 
     public void AddSpells(List<Spell> spellList)
     {
+        ClearSpells();
         foreach (Spell spell in spellList)
         {
             AddSpell(spell);
         }
+    }
+
+    private void ClearSpells()
+    {
+        foreach (Spell spell in spells)
+        {
+            Destroy(spell.gameObject);
+        }
+        spells.Clear();
     }
 
     public Color GetSpellColor(int index)

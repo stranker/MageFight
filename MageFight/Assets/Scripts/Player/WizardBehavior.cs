@@ -11,7 +11,6 @@ public class WizardBehavior : MonoBehaviour {
     public bool isAlive = true;
     public ParticleSystem deathParticles;
     private int playerID;
-    public int winCount;
     public SpellsManager spellsManager;
     public PlayerAnimation pAnim;
     public Color playerColor;
@@ -20,10 +19,6 @@ public class WizardBehavior : MonoBehaviour {
     public PlayerMovement movement;
     public WizardDataScriptable charData;
     public Player playerRef;
-
-    private void Awake(){
-        winCount = 0;
-    }
 
     public void TakeDamage(int val, Vector2 position)
     {
@@ -64,8 +59,6 @@ public class WizardBehavior : MonoBehaviour {
         }
         SetFlashAmountSprites(0);
     }
-
-
 
     private void SetSpritesVisibles(bool v)
     {
@@ -108,15 +101,6 @@ public class WizardBehavior : MonoBehaviour {
         isAlive = true;
         SetSpritesVisibles(true);
         transform.position = position;
-    }
-
-    public void RegisterPlayerID(int ID){
-        playerID = ID;
-        Debug.Log(gameObject + " ID: " + playerID);
-    }
-
-    public int GetID(){
-        return playerID;
     }
 
     public void Pause(){

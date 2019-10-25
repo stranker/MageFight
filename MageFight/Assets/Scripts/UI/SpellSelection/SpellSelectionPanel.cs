@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ public class SpellSelectionPanel : MonoBehaviour
     Player currentPlayerTurn = null;
     SpellInfoPanel currentSpellInfoPanel = null;
     public Text wizardName;
+    public Text playerName;
 
     public int turnCounter = 0;
 
@@ -32,7 +34,6 @@ public class SpellSelectionPanel : MonoBehaviour
 
     private void Start()
     {
-        CreateSpellsPanel();
         if (debugMode)
         {
             Player testPlayer = new Player(1, wizardDataTest, InputType.Keyboard, 0, Color.red);
@@ -44,13 +45,24 @@ public class SpellSelectionPanel : MonoBehaviour
         {
             playerList = GameManager.Instance.playerList;
         }
-        currentPlayerTurn = playerList[turnCounter];
-        UpdateUI();
+        PrepareNewTurn();
     }
 
     private void OnEnable()
     {
+        CreateSpellsPanel();
         isActive = true;
+        PrepareNewTurn();
+    }
+
+    private void PrepareNewTurn()
+    {
+        playerList.OrderBy(player => player.winRounds);
+        print(playerList[0].playerId);
+        print(playerList[1].playerId);
+        turnCounter = 0;
+        currentPlayerTurn = playerList[turnCounter];
+        UpdateUI();
     }
 
     private void OnDisable()
@@ -62,10 +74,14 @@ public class SpellSelectionPanel : MonoBehaviour
     {
         wizardName.text = currentPlayerTurn.charData.wizardName;
         wizardName.color = currentPlayerTurn.playerColor;
+        playerName.text = "Player " + currentPlayerTurn.playerId.ToString();
+        playerName.color = currentPlayerTurn.playerColor;
+
     }
 
     private void CreateSpellsPanel()
     {
+        ClearPrevData();
         for (int i = 0; i < spellsPerRound; i++)
         {
             SpellInfoPanel spellInfoPanel = Instantiate(spellPanelPrefab, spellsPanel.transform).GetComponent<SpellInfoPanel>();
@@ -73,6 +89,18 @@ public class SpellSelectionPanel : MonoBehaviour
             spellsInfoPanelList.Add(spellInfoPanel);
         }
         SelectPanelAt(0);
+    }
+
+    private void ClearPrevData()
+    {
+        if (spellsInfoPanelList.Count > 0)
+        {
+            foreach (SpellInfoPanel spellInfo in spellsInfoPanelList)
+            {
+                Destroy(spellInfo.gameObject);
+            }
+        }
+        spellsInfoPanelList.Clear();
     }
 
     private void Update()
@@ -93,11 +121,15 @@ public class SpellSelectionPanel : MonoBehaviour
     private void EndSpellSelection()
     {
         GameplayManager.Get().SendEvent(GameplayManager.Events.SpellsSelected);
+        endSpellSelection = false;
+        isActive = false;
         gameObject.SetActive(false);
     }
 
     private void CheckPlayerInput()
     {
+        if (currentPlayerTurn == null)
+            return;
         switch (currentPlayerTurn.inputType)
         {
             case InputType.Joystick:
