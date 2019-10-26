@@ -18,6 +18,9 @@ public class WizardBehavior : MonoBehaviour {
     public AttackBehavior attack;
     public PlayerMovement movement;
     public WizardDataScriptable charData;
+
+
+
     public Player playerRef;
 
     public void TakeDamage(int val, Vector2 position)
@@ -83,6 +86,7 @@ public class WizardBehavior : MonoBehaviour {
         playerRef = player;
         playerName = player.playerId;
         charData = player.charData;
+        name = charData.wizardName;
         switch (playerName)
         {
             case 1:
@@ -146,6 +150,11 @@ public class WizardBehavior : MonoBehaviour {
         {
             pIndicator.SetActivated(false);
         }
+    }
+
+    public void SetOffScreenIndicator(PlayerOffScreenIndicator indicator)
+    {
+        pIndicator = indicator;
     }
 
 }

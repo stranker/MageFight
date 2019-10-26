@@ -59,7 +59,8 @@ public class SpellSelectionPanel : MonoBehaviour
     {
         playerList = playerList.OrderBy(player => player.winRounds).ToList();
         turnCounter = 0;
-        currentPlayerTurn = playerList[turnCounter];
+        if (playerList.Count>0)
+            currentPlayerTurn = playerList[turnCounter];
         UpdateUI();
     }
 
@@ -70,10 +71,13 @@ public class SpellSelectionPanel : MonoBehaviour
 
     private void UpdateUI()
     {
-        wizardName.text = currentPlayerTurn.charData.wizardName;
-        wizardName.color = currentPlayerTurn.playerColor;
-        playerName.text = "Player " + currentPlayerTurn.playerId.ToString();
-        playerName.color = currentPlayerTurn.playerColor;
+        if (currentPlayerTurn != null)
+        {
+            wizardName.text = currentPlayerTurn.charData.wizardName;
+            wizardName.color = currentPlayerTurn.playerColor;
+            playerName.text = "Player " + currentPlayerTurn.playerId.ToString();
+            playerName.color = currentPlayerTurn.playerColor;
+        }
 
     }
 

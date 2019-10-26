@@ -11,6 +11,7 @@ public class PlayerUI : MonoBehaviour {
     public Text staminaText;
     public Text fsText;
     public Image playerHead;
+    public Image background;
     public GameObject wizardTarget;
     private PlayerMovement movement;
     private WizardBehavior wizard;
@@ -29,6 +30,7 @@ public class PlayerUI : MonoBehaviour {
         movement = wizardTarget.GetComponent<PlayerMovement>();
         playerSpells = wizardTarget.GetComponent<SpellsManager>();
         playerHead.sprite = wizard.charData.artwork;
+        background.color = wizard.playerColor;
         UpdateText();
 	}
 

@@ -28,7 +28,7 @@ public class UILeaderboard : MonoBehaviour {
         player1.sprite = GameManager.Instance.GetPlayerById(1).charData.artwork;
         player2.sprite = GameManager.Instance.GetPlayerById(2).charData.artwork;
         player1Text.color = GameManager.Instance.GetPlayerById(1).playerColor;
-        player2Text.color = GameManager.Instance.GetPlayerById(1).playerColor;
+        player2Text.color = GameManager.Instance.GetPlayerById(2).playerColor;
         gameObject.SetActive(false);
     }
 
