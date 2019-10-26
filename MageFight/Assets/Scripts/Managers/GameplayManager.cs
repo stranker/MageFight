@@ -32,7 +32,7 @@ public class GameplayManager : MonoBehaviour {
         LeaderboardShownNoWinner,
         ExitSelected,
         RematchSelected,
-        GoToPowerSelection,
+        GoToSpellSelection,
         Count
     }
     private FSM fsm;
@@ -56,7 +56,7 @@ public class GameplayManager : MonoBehaviour {
         fsm.SetRelation((int)States.Leaderboard, (int)Events.LeaderboardShownNoWinner, (int)States.SpellSelection);
         fsm.SetRelation((int)States.Leaderboard, (int)Events.LeaderboardShownWinner, (int)States.PostGame);
         fsm.SetRelation((int)States.PostGame, (int)Events.RematchSelected, (int)States.Rematch);
-        fsm.SetRelation((int)States.Rematch, (int)Events.GoToPowerSelection, (int)States.SpellSelection);
+        fsm.SetRelation((int)States.Rematch, (int)Events.GoToSpellSelection, (int)States.SpellSelection);
     }
     private void Update()
     {
@@ -126,9 +126,8 @@ public class GameplayManager : MonoBehaviour {
     }
     private void Rematch()
     {
-        //PowerPickingManager.Instance.Reset();
         GameManager.Instance.EndGame();
-        SendEvent(Events.GoToPowerSelection);
+        SendEvent(Events.GoToSpellSelection);
     }
     public void SendEvent(Events evt)
     {

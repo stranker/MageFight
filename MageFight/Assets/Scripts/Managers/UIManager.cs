@@ -111,6 +111,7 @@ public class UIManager : MonoBehaviour {
         showLeaderboard = true;
         leaderboardActive = false;
     }
+
     public void ShowPostGame(int winnerName)
     {
         EventSystem evt = EventSystem.current;
@@ -118,6 +119,7 @@ public class UIManager : MonoBehaviour {
         PostGameUI.SetActive(true);
         playerLabel.text = "PLAYER " + winnerName.ToString();
     }
+
     public void RematchPressed()
     {
         leaderboard.ResetScores();

@@ -11,9 +11,9 @@ public class PlayerUI : MonoBehaviour {
     public Text staminaText;
     public Text fsText;
     public Image playerHead;
-    public GameObject playerTarget;
+    public GameObject wizardTarget;
     private PlayerMovement movement;
-    private WizardBehavior player;
+    private WizardBehavior wizard;
     private SpellsManager playerSpells;
     private int playerHealth = 0;
     private float playerStamina = 0;
@@ -24,11 +24,11 @@ public class PlayerUI : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        playerTarget = GameManager.Instance.GetPlayerById(playerId).gameObject;
-        player = playerTarget.GetComponent<WizardBehavior>();
-        movement = playerTarget.GetComponent<PlayerMovement>();
-        playerSpells = playerTarget.GetComponent<SpellsManager>();
-        playerHead.sprite = player.charData.artwork;
+        wizardTarget = GameManager.Instance.GetPlayerById(playerId).wizardRef;
+        wizard = wizardTarget.GetComponent<WizardBehavior>();
+        movement = wizardTarget.GetComponent<PlayerMovement>();
+        playerSpells = wizardTarget.GetComponent<SpellsManager>();
+        playerHead.sprite = wizard.charData.artwork;
         UpdateText();
 	}
 
@@ -51,9 +51,9 @@ public class PlayerUI : MonoBehaviour {
 
     private void UpdateHealthText()
     {
-        if (playerHealth != player.health)
+        if (playerHealth != wizard.health)
         {
-            playerHealth = player.health;
+            playerHealth = wizard.health;
             healthText.text = playerHealth.ToString();
             healthText.color = healthColorRamp.Evaluate(playerHealth * 0.01f);
             hpText.color = healthColorRamp.Evaluate(playerHealth * 0.01f);
@@ -66,8 +66,4 @@ public class PlayerUI : MonoBehaviour {
         UpdateText();
 	}
 
-    public void SetTarget(GameObject wizard)
-    {
-        playerTarget = wizard;
-    }
 }

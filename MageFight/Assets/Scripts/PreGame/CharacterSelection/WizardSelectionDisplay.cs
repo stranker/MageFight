@@ -15,6 +15,7 @@ public class Player
     public int winRounds = 0;
     public Color playerColor;
     public List<Spell> spellList = new List<Spell>();
+    public GameObject wizardRef;
 
     public Player(int playerId, WizardDataScriptable charData, InputType inputType, int joistickId, Color playerColor)
     {
@@ -34,6 +35,13 @@ public class Player
     {
         winRounds = 0;
         spellList.Clear();
+        if (wizardRef)
+            wizardRef.GetComponent<SpellsManager>().Reset();
+    }
+
+    public void AddWizard(GameObject wizard)
+    {
+        wizardRef = wizard;
     }
 }
 

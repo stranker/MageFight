@@ -57,9 +57,7 @@ public class SpellSelectionPanel : MonoBehaviour
 
     private void PrepareNewTurn()
     {
-        playerList.OrderBy(player => player.winRounds);
-        print(playerList[0].playerId);
-        print(playerList[1].playerId);
+        playerList = playerList.OrderBy(player => player.winRounds).ToList();
         turnCounter = 0;
         currentPlayerTurn = playerList[turnCounter];
         UpdateUI();
@@ -206,10 +204,16 @@ public class SpellSelectionPanel : MonoBehaviour
 
     private Spell GetNewSpell()
     {
+        int count = 0;
         Spell spell = spellList[UnityEngine.Random.Range(0, spellList.Count)];
         while (spellInSelection.Contains(spell) && spellInSelection.Count != 0)
         {
             spell = spellList[UnityEngine.Random.Range(0, spellList.Count)];
+            count++;
+            if (count >= spellList.Count)
+            {
+                spellInSelection.Clear();
+            }
         }
         spellInSelection.Add(spell);
         return spell;

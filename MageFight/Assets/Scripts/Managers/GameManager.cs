@@ -59,8 +59,10 @@ public class GameManager : MonoBehaviour {
         GameObject wizard = new GameObject();
         wizard = Instantiate(player.charData.wizardPrefab, startingPositions[posIdx].position, Quaternion.identity, playersParent.transform);
         wizard.GetComponent<WizardBehavior>().Initialize(player);
+        wizard.GetComponent<WizardBehavior>().Pause();
         wizard.GetComponent<InputManager>().SetInput(player.inputType, player.playerId, player.joistickId);
         activeWizardList.Add(wizard.GetComponent<WizardBehavior>());
+        player.AddWizard(wizard);
         posIdx++;
     }
 
@@ -86,6 +88,7 @@ public class GameManager : MonoBehaviour {
 
 
     public void InitializeRound(){
+        roundCounter++;
         int count = 0;
         foreach (WizardBehavior wizard in activeWizardList)
         {
@@ -115,8 +118,8 @@ public class GameManager : MonoBehaviour {
             if (wizard.isAlive)
             {
                 camera.SetTarget(wizard.transform);
-                GameplayManager.Get().SendEvent(GameplayManager.Events.PlayerDead);
                 wizard.playerRef.winRounds += 1;
+                GameplayManager.Get().SendEvent(GameplayManager.Events.PlayerDead);
             }
         }
     }
@@ -137,7 +140,6 @@ public class GameManager : MonoBehaviour {
     {
         //runs at end of round, to update round wins and check if there's a winner
         //Stop gameplay
-        roundCounter++;
         camera.Reset();
         InitializeRound();
         CheckIfAPlayerIsWinner();
@@ -150,9 +152,9 @@ public class GameManager : MonoBehaviour {
         {
             if (player.winRounds >= roundsToWin)
             {
-                GameplayManager.Get().SendEvent(GameplayManager.Events.LeaderboardShownWinner);
                 UIManager.Get().ShowPostGame(player.playerId);
                 winner = true;
+                break;
             }
         }
         if (winner)
@@ -166,14 +168,14 @@ public class GameManager : MonoBehaviour {
         UIManager.Get().OnLeaderboardShown -= OnLeaderboardShown;
     }
 
-    public GameObject GetPlayerById(int playerId)
+    public Player GetPlayerById(int playerId)
     {
-        GameObject playerFound = null;
-        foreach (WizardBehavior player in activeWizardList)
+        Player playerFound = null;
+        foreach (Player player in playerList)
         {
-            if (player.playerName == playerId)
+            if (player.playerId == playerId)
             {
-                playerFound = player.gameObject;
+                playerFound = player;
                 break;
             }
         }

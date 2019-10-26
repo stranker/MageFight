@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class UILeaderboard : MonoBehaviour {
 
     public Text objective;
+    public Text player1Text;
+    public Text player2Text;
     public Image player1;
     public Image player2;
     public Transform cookiePanelP1;
@@ -23,8 +25,10 @@ public class UILeaderboard : MonoBehaviour {
             CreatePlayerCookies(cookiePanelP1, cookieListP1);
             CreatePlayerCookies(cookiePanelP2, cookieListP2);
         }
-        player1.sprite = GameManager.Instance.GetPlayerById(1).GetComponent<WizardBehavior>().charData.artwork;
-        player2.sprite = GameManager.Instance.GetPlayerById(2).GetComponent<WizardBehavior>().charData.artwork;
+        player1.sprite = GameManager.Instance.GetPlayerById(1).charData.artwork;
+        player2.sprite = GameManager.Instance.GetPlayerById(2).charData.artwork;
+        player1Text.color = GameManager.Instance.GetPlayerById(1).playerColor;
+        player2Text.color = GameManager.Instance.GetPlayerById(1).playerColor;
         gameObject.SetActive(false);
     }
 
