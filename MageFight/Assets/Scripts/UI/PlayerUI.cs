@@ -12,7 +12,10 @@ public class PlayerUI : MonoBehaviour {
     public Text fsText;
     public Image playerHead;
     public Image background;
+    public GameObject cookie;
+    public GameObject cookiePanel;
     public GameObject wizardTarget;
+    private Player player;
     private PlayerMovement movement;
     private WizardBehavior wizard;
     private SpellsManager playerSpells;
@@ -22,10 +25,12 @@ public class PlayerUI : MonoBehaviour {
     public Gradient staminaColorRamp;
     public Animator anim;
     public int playerId = 0;
+    public int cookies = 0;
 
     // Use this for initialization
     void Start () {
-        wizardTarget = GameManager.Instance.GetPlayerById(playerId).wizardRef;
+        player = GameManager.Instance.GetPlayerById(playerId);
+        wizardTarget = player.wizardRef;
         wizard = wizardTarget.GetComponent<WizardBehavior>();
         movement = wizardTarget.GetComponent<PlayerMovement>();
         playerSpells = wizardTarget.GetComponent<SpellsManager>();
@@ -66,6 +71,19 @@ public class PlayerUI : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         UpdateText();
+        UpdateCookies();
 	}
 
+    private void UpdateCookies()
+    {
+        if (cookies != player.winRounds)
+        {
+            cookies = player.winRounds;
+            var cookiesInPanel = cookiePanel.GetComponentsInChildren<Transform>();
+            for (int i = 0; i < cookies; i++)
+            {
+                cookiesInPanel[i+1].gameObject.SetActive(true);
+            }
+        }
+    }
 }
