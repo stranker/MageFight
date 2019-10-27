@@ -31,5 +31,4 @@ public class UIMainMenu : MonoBehaviour
     {
         LoaderManager.Get().LoadScene("SampleLevel");
     }
-
 }
