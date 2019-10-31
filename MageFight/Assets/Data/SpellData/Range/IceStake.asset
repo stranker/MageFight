@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: IceStake
   m_EditorClassIdentifier: 
   spellName: Ice Stake
-  spellArtwork: {fileID: 21300000, guid: 9097503063b0b974c89890eb04aa82da, type: 3}
+  spellArtwork: {fileID: 21300000, guid: 4b679ad4289f0d8439b97128711df417, type: 3}
   spellDifficulty: 0
   spellEffect: 

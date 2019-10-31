@@ -31,6 +31,9 @@ public class SpellSelectionPanel : MonoBehaviour
     private bool isActive = false;
 
     public bool debugMode = false;
+    private bool canSelect;
+    private float bufferTimer;
+    private float bufferTime = 0.2f;
 
     private void Start()
     {
@@ -132,6 +135,11 @@ public class SpellSelectionPanel : MonoBehaviour
     {
         if (currentPlayerTurn == null)
             return;
+        if (bufferTimer >= bufferTime)
+            canSelect = true;
+        if (!canSelect)
+            bufferTimer += Time.deltaTime;
+
         switch (currentPlayerTurn.inputType)
         {
             case InputType.Joystick:
@@ -149,12 +157,12 @@ public class SpellSelectionPanel : MonoBehaviour
 
     private void CheckJoystickInput()
     {
-        if (Input.GetAxis("J" + currentPlayerTurn.joistickId.ToString() + "_Axis_X") > 0.5f)
+        if (Input.GetAxis("J" + currentPlayerTurn.joistickId.ToString() + "_Axis_X") > 0.5f && canSelect)
         {
             spellCounter++;
             SelectPanelAt(spellCounter);
         }
-        else if (Input.GetAxis("J" + currentPlayerTurn.joistickId.ToString() + "_Axis_X") < -0.5f)
+        else if (Input.GetAxis("J" + currentPlayerTurn.joistickId.ToString() + "_Axis_X") < -0.5f && canSelect)
         {
             spellCounter--;
             SelectPanelAt(spellCounter);
@@ -167,12 +175,12 @@ public class SpellSelectionPanel : MonoBehaviour
 
     private void CheckKeyboardInput()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow) && canSelect)
         {
             spellCounter++;
             SelectPanelAt(spellCounter);
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && canSelect)
         {
             spellCounter--;
             SelectPanelAt(spellCounter);
@@ -198,7 +206,9 @@ public class SpellSelectionPanel : MonoBehaviour
     }
 
     private void SelectPanelAt(int idx)
-    {
+    {        
+        bufferTimer = 0f;
+        canSelect = false;
         if (currentSpellInfoPanel)
             currentSpellInfoPanel.Selected(false);
         spellCounter = Mathf.Clamp(idx, 0, spellsInfoPanelList.Count - 1);
