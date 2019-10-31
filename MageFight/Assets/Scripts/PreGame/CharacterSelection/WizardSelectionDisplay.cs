@@ -168,7 +168,7 @@ public class WizardSelectionDisplay : MonoBehaviour
                 wizardIdx--;
                 SelectWizardAt(wizardIdx);
             }
-            if (Input.GetKey("joystick " + joystickId.ToString() + " button 9") && canConfirm && !currentWizard.IsConfirmed())
+            if (Input.GetKey("joystick " + joystickId.ToString() + " button 0") && canConfirm && !currentWizard.IsConfirmed())
             {
                 OnPlayerConfirm();
             }
