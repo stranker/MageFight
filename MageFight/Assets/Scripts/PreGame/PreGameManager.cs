@@ -12,18 +12,24 @@ public class PreGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CreateWizards();
+    }
+
+    private void CreateWizards()
+    {
         foreach (Player player in CharactersSelected.Instance.playersConfirmed)
         {
-            CreateWizard(player.playerId, player.charData.wizardPrefab, player.inputType, player.joistickId);
+            CreateWizard(player);
         }
     }
 
-    private void CreateWizard(int playerId, GameObject wizardPrefab, InputType inputType, int joistickId = -1)
+    private void CreateWizard(Player player)
     {
         GameObject wizard = new GameObject();
-        wizard = Instantiate(wizardPrefab, positions[posIdx].position, Quaternion.identity, transform.parent);
-        wizard.GetComponent<PlayerBehavior>().playerName = playerId;
-        wizard.GetComponent<InputManager>().SetInput(inputType, playerId, joistickId);
+        wizard = Instantiate(player.charData.wizardPrefab, positions[posIdx].position, Quaternion.identity, transform);
+        wizard.GetComponent<WizardBehavior>().Initialize(player);
+        wizard.GetComponent<InputManager>().SetInput(player.inputType, player.playerId, player.joistickId);
+        player.AddWizard(wizard);
         posIdx++;
     }
 }

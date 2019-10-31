@@ -12,7 +12,7 @@ public class LimitDeadLine : MonoBehaviour {
     {
         if (collision.transform.tag == "Player")
         {
-            collision.transform.GetComponent<PlayerBehavior>().TakeDamage(9999, Vector2.zero);
+            collision.transform.GetComponent<WizardBehavior>().TakeDamage(9999, Vector2.zero);
             particlesTrans.position = collision.transform.position;
             Vector2 dir = (mapCenter.position - particlesTrans.position).normalized;
             float particlesAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;

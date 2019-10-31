@@ -29,7 +29,7 @@ public class RangeSpell : Spell {
     {
         if (collision.tag == "Player" && collision.gameObject != mageOwner && canDamage)
         {
-            PlayerBehavior player = collision.GetComponent<PlayerBehavior>();
+            WizardBehavior player = collision.GetComponent<WizardBehavior>();
             PlayerMovement pMovement = player.GetComponent<PlayerMovement>();
             player.TakeDamage(damage,transform.position);
             pMovement.KnockOut(dir, knockbackForce);

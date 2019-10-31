@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PreGamePortal : MonoBehaviour
 {
     public int playerCount = 0;
-    public List<PlayerBehavior> players = new List<PlayerBehavior>(); 
+    public List<WizardBehavior> players = new List<WizardBehavior>(); 
 
     // Start is called before the first frame update
     void Start()
@@ -16,9 +16,9 @@ public class PreGamePortal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && !players.Contains(collision.gameObject.GetComponent<PlayerBehavior>()))
+        if (collision.tag == "Player" && !players.Contains(collision.gameObject.GetComponent<WizardBehavior>()))
         {
-            players.Add(collision.gameObject.GetComponent<PlayerBehavior>());
+            players.Add(collision.gameObject.GetComponent<WizardBehavior>());
             collision.gameObject.SetActive(false);
             CheckPlayers();
         }

@@ -11,9 +11,13 @@ public class PlayerUI : MonoBehaviour {
     public Text staminaText;
     public Text fsText;
     public Image playerHead;
-    public GameObject playerTarget;
+    public Image background;
+    public GameObject cookie;
+    public GameObject cookiePanel;
+    public GameObject wizardTarget;
+    private Player player;
     private PlayerMovement movement;
-    private PlayerBehavior player;
+    private WizardBehavior wizard;
     private SpellsManager playerSpells;
     private int playerHealth = 0;
     private float playerStamina = 0;
@@ -21,14 +25,17 @@ public class PlayerUI : MonoBehaviour {
     public Gradient staminaColorRamp;
     public Animator anim;
     public int playerId = 0;
+    public int cookies = 0;
 
     // Use this for initialization
     void Start () {
-        playerTarget = GameManager.Instance.GetPlayerById(playerId).gameObject;
-        player = playerTarget.GetComponent<PlayerBehavior>();
-        movement = playerTarget.GetComponent<PlayerMovement>();
-        playerSpells = playerTarget.GetComponent<SpellsManager>();
-        playerHead.sprite = player.charData.artwork;
+        player = GameManager.Instance.GetPlayerById(playerId);
+        wizardTarget = player.wizardRef;
+        wizard = wizardTarget.GetComponent<WizardBehavior>();
+        movement = wizardTarget.GetComponent<PlayerMovement>();
+        playerSpells = wizardTarget.GetComponent<SpellsManager>();
+        playerHead.sprite = wizard.charData.artwork;
+        background.color = wizard.playerColor;
         UpdateText();
 	}
 
@@ -51,9 +58,9 @@ public class PlayerUI : MonoBehaviour {
 
     private void UpdateHealthText()
     {
-        if (playerHealth != player.health)
+        if (playerHealth != wizard.health)
         {
-            playerHealth = player.health;
+            playerHealth = wizard.health;
             healthText.text = playerHealth.ToString();
             healthText.color = healthColorRamp.Evaluate(playerHealth * 0.01f);
             hpText.color = healthColorRamp.Evaluate(playerHealth * 0.01f);
@@ -64,10 +71,19 @@ public class PlayerUI : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         UpdateText();
+        UpdateCookies();
 	}
 
-    public void SetTarget(GameObject wizard)
+    private void UpdateCookies()
     {
-        playerTarget = wizard;
+        if (cookies != player.winRounds)
+        {
+            cookies = player.winRounds;
+            var cookiesInPanel = cookiePanel.GetComponentsInChildren<Transform>();
+            for (int i = 0; i < cookies; i++)
+            {
+                cookiesInPanel[i+1].gameObject.SetActive(true);
+            }
+        }
     }
 }

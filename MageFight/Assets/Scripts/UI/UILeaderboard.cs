@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class UILeaderboard : MonoBehaviour {
 
     public Text objective;
+    public Text player1Text;
+    public Text player2Text;
     public Image player1;
     public Image player2;
     public Transform cookiePanelP1;
@@ -23,8 +25,10 @@ public class UILeaderboard : MonoBehaviour {
             CreatePlayerCookies(cookiePanelP1, cookieListP1);
             CreatePlayerCookies(cookiePanelP2, cookieListP2);
         }
-        player1.sprite = GameManager.Instance.GetPlayerById(1).GetComponent<PlayerBehavior>().charData.artwork;
-        player2.sprite = GameManager.Instance.GetPlayerById(2).GetComponent<PlayerBehavior>().charData.artwork;
+        player1.sprite = GameManager.Instance.GetPlayerById(1).charData.artwork;
+        player2.sprite = GameManager.Instance.GetPlayerById(2).charData.artwork;
+        player1Text.color = GameManager.Instance.GetPlayerById(1).playerColor;
+        player2Text.color = GameManager.Instance.GetPlayerById(2).playerColor;
         gameObject.SetActive(false);
     }
 
@@ -39,8 +43,8 @@ public class UILeaderboard : MonoBehaviour {
         if (!scoresSeted)
         {
             scoresSeted = true;
-            int p1WinCount = GameManager.Instance.players[0].winCount;
-            int p2WinCount = GameManager.Instance.players[1].winCount;
+            int p1WinCount = GameManager.Instance.activeWizardList[0].playerRef.winRounds;
+            int p2WinCount = GameManager.Instance.activeWizardList[1].playerRef.winRounds;
             if (p1WinCount != 0)
                 cookieListP1[p1WinCount - 1].ChangeToCookie();
             if (p2WinCount != 0)
