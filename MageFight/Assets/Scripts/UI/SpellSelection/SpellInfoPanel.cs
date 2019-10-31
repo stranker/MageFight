@@ -48,7 +48,8 @@ public class SpellInfoPanel : MonoBehaviour
     public void Selected(bool value)
     {
         isSelected = value;
-        spellName.color = isSelected ? Color.white : Color.black;
+        spellName.color = isSelected ? Color.white : Color.red;
+        transform.localScale = isSelected ? Vector3.one * 1.1f : Vector3.one;
     }
 
     public void Confirm()

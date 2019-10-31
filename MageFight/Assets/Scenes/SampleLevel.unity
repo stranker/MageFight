@@ -7333,5 +7333,10 @@ PrefabInstance:
       propertyPath: timeEndSpellSelection
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8810455507997067116, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40c1badf1ad021742bdbacfb8dbd7d07, type: 3}
