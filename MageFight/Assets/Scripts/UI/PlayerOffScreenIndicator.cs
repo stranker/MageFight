@@ -8,15 +8,20 @@ public class PlayerOffScreenIndicator : MonoBehaviour {
     public bool activated = false;
     public Transform target;
     public float moveSpeed;
-    public float screenHeight;
-    public float screenWidth;
+    private float screenHeight;
+    private float screenWidth;
     public Transform arrow;
+    public SpriteRenderer wizardFace;
+    public SpriteRenderer arrowSprite;
     public Vector2 offsetIndicator;
     public int playerId;
 
     private void Start()
     {
-        target = GameManager.Instance.players[playerId - 1].transform;
+        target = GameManager.Instance.GetPlayerById(playerId).wizardRef.transform;
+        target.GetComponent<WizardBehavior>().SetOffScreenIndicator(this);
+        wizardFace.sprite = target.GetComponent<WizardBehavior>().charData.artwork;
+        arrowSprite.color = target.GetComponent<WizardBehavior>().playerColor;
         screenHeight = 2f * Camera.main.orthographicSize;
         screenWidth = screenHeight * Camera.main.aspect;
     }
@@ -33,7 +38,7 @@ public class PlayerOffScreenIndicator : MonoBehaviour {
 
     private void CheckPlayerDead()
     {
-        if (!target.GetComponent<PlayerBehavior>().isAlive)
+        if (!target.GetComponent<WizardBehavior>().isAlive)
         {
             SetActivated(false);
         }

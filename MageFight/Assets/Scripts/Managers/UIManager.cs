@@ -22,24 +22,16 @@ public class UIManager : MonoBehaviour {
     public UILeaderboard leaderboard;
     public GameObject PostGameUI;
     public Text playerLabel;
-    public Text spellDifficulty;
     private float timer = 0;
     public float leaderboardTime = 3f;
     private bool showLeaderboard = false;
     private bool leaderboardActive = false;
-    public PickParticles pickParticles;
     public GameObject countdownPanel;
     private bool onCountdown = false;
     public Text countdownText;
     public Text getReadyText;
     public GameObject PlayerPresentationCanvas;
-
-    public Text nameText;
-    public Text dmgText;
-    public Text typeText;
-    public Text cdText;
-    public Text ctText;
-    public Text effText;
+    public GameObject spellSelectionPanel;
     public GameObject rematchButton;
 
 
@@ -114,19 +106,12 @@ public class UIManager : MonoBehaviour {
         GameManager.Instance.currentMap.GenerateLevel();
     }
 
-    public void PlayPickParticles(PlayerBehavior playerBehavior)
-    {
-        if (pickParticles)
-        {
-            pickParticles.PlayParticles(playerBehavior);
-        }
-    }
-
     public void ShowLeaderboard()
     {
         showLeaderboard = true;
         leaderboardActive = false;
     }
+
     public void ShowPostGame(int winnerName)
     {
         EventSystem evt = EventSystem.current;
@@ -134,6 +119,7 @@ public class UIManager : MonoBehaviour {
         PostGameUI.SetActive(true);
         playerLabel.text = "PLAYER " + winnerName.ToString();
     }
+
     public void RematchPressed()
     {
         leaderboard.ResetScores();
@@ -141,33 +127,6 @@ public class UIManager : MonoBehaviour {
         GameplayManager.Get().SendEvent(GameplayManager.Events.RematchSelected);
     }
 
-    public void SetSpellDescription(Spell spell)
-    {
-        nameText.text = spell.spellName;
-        dmgText.text = spell.damage.ToString();
-        cdText.text = spell.cooldown.ToString();
-        ctText.text = spell.GetSpellCastTypeString();
-        typeText.text = spell.GetSpellTypeString();
-        effText.text = spell.GetEffect();
-        spellDifficulty.text = spell.GetDifficulty();
-        switch (spell.diff)
-        {
-            case Spell.Difficulty.Easy:
-                spellDifficulty.color = Color.green;
-                break;
-            case Spell.Difficulty.Medium:
-                spellDifficulty.color = Color.yellow;
-                break;
-            case Spell.Difficulty.Hard:
-                spellDifficulty.color = new Color32(0xFF, 0x45, 0x00, 0xFF);
-                break;
-            case Spell.Difficulty.BeyondMagelike:
-                spellDifficulty.color = Color.red;
-                break;
-            default:
-                break;
-        }
-    }
     public void SetPlayerPresentationUI(bool value)
     {
         if(value)
@@ -176,6 +135,9 @@ public class UIManager : MonoBehaviour {
             PlayerPresentationCanvas.GetComponent<Animator>().SetTrigger("Start");
         }
         else
+        {
             PlayerPresentationCanvas.SetActive(false);
+            spellSelectionPanel.SetActive(true);
+        }
     }
 }

@@ -18,14 +18,14 @@ public class SpellStateManager : MonoBehaviour
     public bool isShrinked;
     private PlayerMovement movement;
     private AttackBehavior attack;
-    private PlayerBehavior player;
+    private WizardBehavior player;
     private PlayerAnimation playerAnim;
 
     private void Start()
     {
         movement = GetComponent<PlayerMovement>();
         attack = GetComponent<AttackBehavior>();
-        player = GetComponent<PlayerBehavior>();
+        player = GetComponent<WizardBehavior>();
         playerAnim = GetComponentInChildren<PlayerAnimation>();
     }
 
