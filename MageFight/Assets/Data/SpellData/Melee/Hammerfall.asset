@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db515f8576d33c44fabe40d2a2a2b5d7, type: 3}
   m_Name: Hammerfall
   m_EditorClassIdentifier: 
-  spellName: Hamerfall
+  spellName: Hammerfall
   spellArtwork: {fileID: 21300000, guid: 39562444e88e5dc4685765f35da9364f, type: 3}
   spellDifficulty: 3
   spellEffect: 

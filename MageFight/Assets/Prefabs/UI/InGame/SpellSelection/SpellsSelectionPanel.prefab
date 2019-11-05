@@ -330,9 +330,11 @@ MonoBehaviour:
     type: 3}
   wizardName: {fileID: 8810455507268374012}
   playerName: {fileID: 69643549230617501}
+  forceSpellDebug: 0
+  spellDebug: {fileID: 0}
   turnCounter: 0
   endSpellSelection: 0
-  timeEndSpellSelection: 0
+  timeEndSpellSelection: 1.5
   wizardDataTest: {fileID: 11400000, guid: 496cecf06de077a45882297bb77d80ff, type: 2}
   debugMode: 0
 --- !u!1 &8810455507268374002

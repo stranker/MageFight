@@ -20,6 +20,10 @@ public class SpellSelectionPanel : MonoBehaviour
     public Text wizardName;
     public Text playerName;
 
+    public bool forceSpellDebug;
+    public Spell spellDebug;
+    private bool spellDebugCreated = false;
+
     public int turnCounter = 0;
 
     public bool endSpellSelection = false;
@@ -220,6 +224,11 @@ public class SpellSelectionPanel : MonoBehaviour
     {
         int count = 0;
         Spell spell = spellList[UnityEngine.Random.Range(0, spellList.Count)];
+        if (forceSpellDebug && !spellDebugCreated)
+        {
+            spellDebugCreated = true;
+            spell = spellDebug;
+        }
         while (spellInSelection.Contains(spell) && spellInSelection.Count != 0)
         {
             spell = spellList[UnityEngine.Random.Range(0, spellList.Count)];
