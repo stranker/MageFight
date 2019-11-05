@@ -132,7 +132,7 @@ MonoBehaviour:
   castType: 0
   mageOwner: {fileID: 0}
   typeOfSpeel: 0
-  knockbackForce: {x: 20000, y: 10}
+  knockbackForce: {x: 15, y: 10}
   invoked: 0
   canDamage: 1
   timer: 0

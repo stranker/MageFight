@@ -8,11 +8,9 @@ public class PlayerUI : MonoBehaviour {
 
     public Text healthText;
     public Text hpText;
-    public Text staminaText;
-    public Text fsText;
+    public Image flyBar;
     public Image playerHead;
     public Image background;
-    public GameObject cookie;
     public GameObject cookiePanel;
     public GameObject wizardTarget;
     private Player player;
@@ -22,7 +20,6 @@ public class PlayerUI : MonoBehaviour {
     private int playerHealth = 0;
     private float playerStamina = 0;
     public Gradient healthColorRamp;
-    public Gradient staminaColorRamp;
     public Animator anim;
     public int playerId = 0;
     public int cookies = 0;
@@ -42,17 +39,16 @@ public class PlayerUI : MonoBehaviour {
     private void UpdateText()
     {
         UpdateHealthText();
-        UpdateStaminaText();
+        UpdateStaminaBar();
     }
 
-    private void UpdateStaminaText()
+    private void UpdateStaminaBar()
     {
         if (playerStamina != movement.flyStamina)
         {
             playerStamina = movement.flyStamina;
-            staminaText.text = playerStamina < 100 ? playerStamina.ToString(".0") : playerStamina.ToString();
-            staminaText.color = staminaColorRamp.Evaluate(playerStamina * 0.01f);
-            fsText.color = staminaColorRamp.Evaluate(playerStamina * 0.01f);
+            float playerMaxStamina = movement.flyMaxStamina;
+            flyBar.fillAmount = playerStamina / playerMaxStamina;
         }
     }
 

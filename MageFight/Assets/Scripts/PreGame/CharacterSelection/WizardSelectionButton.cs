@@ -11,8 +11,7 @@ public class WizardSelectionButton : MonoBehaviour
 
     public Image wizardImage;
     public Text wizardName;
-
-    ColorBlock buttonColors;
+    public Image playerColor;
 
     private List<Color> playersColors = new List<Color>();
 
@@ -22,7 +21,6 @@ public class WizardSelectionButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        buttonColors = GetComponent<Button>().colors;
         wizardImage.sprite = wizardData.artwork;
         wizardName.text = wizardData.wizardName;
     }
@@ -50,11 +48,9 @@ public class WizardSelectionButton : MonoBehaviour
     private void UpdateButtonColor()
     {
         if (isSelected)
-            buttonColors.normalColor = CombineColors(playersColors);
+            playerColor.color = CombineColors(playersColors);
         else
-            buttonColors.normalColor = Color.black;
-        buttonColors.highlightedColor = buttonColors.normalColor;
-        GetComponent<Button>().colors = buttonColors;
+            playerColor.color = new Color(0,0,0,0);
     }
 
     public Color CombineColors(List<Color> colorList)

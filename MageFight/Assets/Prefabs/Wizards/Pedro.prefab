@@ -10322,7 +10322,7 @@ MonoBehaviour:
   aimDirection: {x: 0, y: 0}
   input: {fileID: 114226811614715812}
   attackBehavior: {fileID: 114495054791587162}
-  playerBehavior: {fileID: 0}
+  wizardBehavior: {fileID: 0}
   rigidBody: {fileID: 50785477708904820}
   rightFoot: {fileID: 4685868602179690}
   leftFoot: {fileID: 4220859447679774}
@@ -10352,7 +10352,7 @@ MonoBehaviour:
   isHolding: 0
   aiming: 0
   invoking: 0
-  timeAfterAttack: 2
+  timeAfterAttack: 0.5
   handPos: {fileID: 4529157113557564}
   arrowSprite: {fileID: 1569003104082648}
   invokeParticles: {fileID: 198340200331228538}

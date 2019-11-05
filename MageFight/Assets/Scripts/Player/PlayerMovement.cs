@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour {
     public Vector2 aimDirection;
     public InputManager input;
     public AttackBehavior attackBehavior;
-    public WizardBehavior playerBehavior;
+    public WizardBehavior wizardBehavior;
     public Rigidbody2D rigidBody;
     public Transform rightFoot;
     public Transform leftFoot;
@@ -46,18 +46,27 @@ public class PlayerMovement : MonoBehaviour {
     // Use this for initialization
     void Start () {
         initialGravityScale = rigidBody.gravityScale;
-        playerBehavior = GetComponent<WizardBehavior>();
+        wizardBehavior = GetComponent<WizardBehavior>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (playerBehavior.isAlive)
+        if (wizardBehavior.isAlive)
         {
             GetInput();
             GeneralMovement();
             CheckRestoreOnPlayerHit();
+            CheckOutbounds();
         }
 	}
+
+    private void CheckOutbounds()
+    {
+        if (transform.position.y < -5)
+        {
+            wizardBehavior.TakeDamage(500, Vector2.zero);
+        }
+    }
 
     private void CheckStun()
     {
@@ -198,7 +207,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public void KnockOut(Vector2 dir, Vector2 knockForce)
     {
-        if (playerBehavior.isAlive)
+        if (wizardBehavior.isAlive)
         {
             canMove = false;
             rigidBody.velocity = dir * new Vector2(knockForce.x, knockForce.y);
