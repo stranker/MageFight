@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour {
 
     public Text healthText;
-    public Text hpText;
     public Image flyBar;
     public Image playerHead;
     public Image background;
@@ -57,9 +56,8 @@ public class PlayerUI : MonoBehaviour {
         if (playerHealth != wizard.health)
         {
             playerHealth = wizard.health;
-            healthText.text = playerHealth.ToString();
+            healthText.text = playerHealth.ToString() + "hp";
             healthText.color = healthColorRamp.Evaluate(playerHealth * 0.01f);
-            hpText.color = healthColorRamp.Evaluate(playerHealth * 0.01f);
             anim.SetTrigger("Damaged");
         }
     }
