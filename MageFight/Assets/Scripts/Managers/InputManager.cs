@@ -42,7 +42,7 @@ public class InputManager : MonoBehaviour {
 
 
     public string GetXAxis()
-    {
+    {        
         return xAxis;
     }
 
