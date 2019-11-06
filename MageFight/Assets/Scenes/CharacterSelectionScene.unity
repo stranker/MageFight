@@ -2474,7 +2474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea7be8b1f62defa49b56a27b01aba437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wizardData: {fileID: 11400000, guid: 55aac60000c0e94428fad9e9ad0798d7, type: 2}
+  wizardData: {fileID: 11400000, guid: 5d622dd8ddd6fa94997fc2a6e48d40fb, type: 2}
   wizardImage: {fileID: 1286521136}
   wizardName: {fileID: 1816381643}
   playerColor: {fileID: 1074291920}
