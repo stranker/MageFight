@@ -20,8 +20,7 @@ public class PlayerAnimation : MonoBehaviour {
     void Update () {
         anim.SetBool("Fly", movement.flying);
         anim.SetFloat("VelocityX", Mathf.Abs(movement.velocity.x));
-        anim.SetFloat("VelocityY", movement.velocity.y);
-        anim.SetBool("InvokeSpell", attack.invoking);
+        anim.SetFloat("VelocityY", movement.velocity.y);        
         anim.SetBool("OnAir", !movement.onFloor);
         anim.SetBool("Shrinked", ssm.isShrinked);
     }

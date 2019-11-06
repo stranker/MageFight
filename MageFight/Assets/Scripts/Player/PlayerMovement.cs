@@ -110,14 +110,9 @@ public class PlayerMovement : MonoBehaviour {
         GetAimDirection();
         JumpCheck();
         if (!onPlayerRestoreHit && !stuned)
-            rigidBody.velocity = canMove && !IsPlayerInvoking() ? velocity : Vector2.zero;
+            rigidBody.velocity = canMove ? velocity : Vector2.zero;
         FacingDirectionCheck();
-        rigidBody.gravityScale = flying || attackBehavior.invoking ? 0 : initialGravityScale;
-    }
-
-    private bool IsPlayerInvoking()
-    {
-        return attackBehavior.invoking;
+        rigidBody.gravityScale = flying ? 0 : initialGravityScale;
     }
 
     private void GetInput()
@@ -227,6 +222,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private float GetXAxis()
     {
+        Debug.Log(Input.GetAxis(input.GetXAxis()));
         return Input.GetAxis(input.GetXAxis());
     }
 
