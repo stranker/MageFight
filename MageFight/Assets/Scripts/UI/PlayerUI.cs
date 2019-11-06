@@ -23,6 +23,7 @@ public class PlayerUI : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        healthBar.material = Instantiate(healthBar.material);
         player = GameManager.Instance.GetPlayerById(playerId);
         wizardTarget = player.wizardRef;
         wizard = wizardTarget.GetComponent<WizardBehavior>();
