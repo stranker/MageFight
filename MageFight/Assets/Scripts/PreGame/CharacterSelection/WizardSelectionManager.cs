@@ -33,7 +33,6 @@ public class WizardSelectionManager : MonoBehaviour
     public WizardSelectionDisplay[] characterSelectionDisplays;
     public CharactersSelected charsSelected;
     public List<Player> playersConfirmed = new List<Player>();
-    private bool keyboardAdded = false;
     private float canStartTimer = 0;
     private float canStartTime = 1;
     public bool canStart = false;
@@ -69,7 +68,7 @@ public class WizardSelectionManager : MonoBehaviour
         {
             canStartTimer += Time.deltaTime;
         }
-        if (playersConfirmed.Count >= maxPlayers && canStart)
+        if (playersConfirmed.Count >= maxPlayers && canStartTimer > canStartTime)
         {
             GoToNextScreen();
         }
@@ -113,7 +112,6 @@ public class WizardSelectionManager : MonoBehaviour
                 players.Add(currentPlayerId, InputType.Keyboard);
                 characterSelectionDisplays[currentPlayerId - 1].Initialize(currentPlayerId, players[currentPlayerId], 0);
                 currentPlayerId++;
-                keyboardAdded = true;
             }
         }
     }

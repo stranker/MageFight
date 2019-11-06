@@ -9,6 +9,18 @@ public class InputManager : MonoBehaviour {
     public int playerId;
     public int joystickId;
 
+    public bool debugMode = false;
+    private bool onDebug = false;
+
+    private void Update()
+    {
+        if (debugMode && !onDebug)
+        {
+            onDebug = true;
+            SetInput(InputType.Keyboard, 1, -1);
+        }
+    }
+
     public void SetInput(InputType type, int playerId, int joystickId = -1)
     {
         inputType = type;

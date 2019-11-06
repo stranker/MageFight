@@ -12,16 +12,22 @@ public class WizardBehavior : MonoBehaviour {
     public ParticleSystem deathParticles;
     private int playerID;
     public SpellsManager spellsManager;
-    public PlayerAnimation pAnim;
+    public AnimationBehavior pAnim;
     public Color playerColor;
     public PlayerOffScreenIndicator pIndicator;
     public AttackBehavior attack;
-    public PlayerMovement movement;
+    public MovementBehavior movement;
     public WizardDataScriptable charData;
-
-
-
     public Player playerRef;
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            TakeDamage(5, Vector2.one);
+        }
+    }
 
     public void TakeDamage(int val, Vector2 position)
     {
