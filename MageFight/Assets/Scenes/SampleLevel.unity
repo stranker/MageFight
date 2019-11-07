@@ -7678,8 +7678,13 @@ PrefabInstance:
         type: 3}
       propertyPath: spellDebug
       value: 
-      objectReference: {fileID: 114739452967932474, guid: de45edb107ecbfb40a0a62ef43a11a2a,
+      objectReference: {fileID: 114786596358402696, guid: b164b286bf25c304bb28c1b2dbf4d06f,
         type: 3}
+    - target: {fileID: 3777950989664352117, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
+        type: 3}
+      propertyPath: debugMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8810455507997067116, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
         type: 3}
       propertyPath: m_AnchoredPosition.y

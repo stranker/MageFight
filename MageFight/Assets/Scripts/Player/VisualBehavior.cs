@@ -46,5 +46,6 @@ public class VisualBehavior : MonoBehaviour
     {
         body.SetActive(!v);
         playerName.SetActive(!v);
+        SetFlashAmountSprites(0);
     }
 }
