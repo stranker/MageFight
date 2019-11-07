@@ -2670,7 +2670,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 7
   m_TargetDisplay: 0
 --- !u!1 &671630577
 GameObject:
@@ -2976,7 +2976,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 11
   m_TargetDisplay: 0
 --- !u!114 &689178892
 MonoBehaviour:
@@ -3683,7 +3683,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 13
   m_TargetDisplay: 0
 --- !u!95 &834985744
 Animator:
@@ -4381,7 +4381,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 15
   m_TargetDisplay: 0
 --- !u!1001 &1129180568
 PrefabInstance:
@@ -7667,7 +7667,7 @@ PrefabInstance:
     - target: {fileID: 8810455507094469412, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3777950989664352117, guid: 40c1badf1ad021742bdbacfb8dbd7d07,
         type: 3}

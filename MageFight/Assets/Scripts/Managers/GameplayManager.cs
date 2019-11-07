@@ -142,6 +142,7 @@ public class GameplayManager : MonoBehaviour {
     {
         GameManager.Instance.EndGame();
         UIManager.Get().SetPauseMenuUI(false);
+        UIManager.Get().ResetUI();
         GameManager.Instance.InitializeRound();
         SendEvent(Events.GoToSpellSelection);
     }

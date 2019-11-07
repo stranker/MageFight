@@ -152,4 +152,13 @@ public class UIManager : MonoBehaviour {
         else
             pauseMenuUI.SetActive(false);
     }
+
+    public void ResetUI()
+    {
+        var playersUI = playerUI.GetComponentsInChildren<PlayerUI>();
+        foreach (PlayerUI pUI in playersUI)
+        {
+            pUI.ResetUICookies();
+        }
+    }
 }

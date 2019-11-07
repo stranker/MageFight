@@ -69,6 +69,15 @@ public class PlayerUI : MonoBehaviour {
         UpdateCookies();
 	}
 
+    public void ResetUICookies()
+    {
+        var cookiesInPanel = cookiePanel.GetComponentsInChildren<Image>();
+        for (int i = 0; i < GameManager.Instance.roundsToWin; i++)
+        {
+            cookiesInPanel[i].color = new Color(0,0,0,0);
+        }
+    }
+
     private void UpdateCookies()
     {
         if (cookies != player.winRounds)
