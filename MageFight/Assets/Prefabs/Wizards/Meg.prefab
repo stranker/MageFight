@@ -16282,7 +16282,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6
+      scalar: 10
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -16684,8 +16684,8 @@ ParticleSystem:
         ctime6: 55531
         ctime7: 65535
         atime0: 0
-        atime1: 7104
-        atime2: 57996
+        atime1: 1928
+        atime2: 63415
         atime3: 65535
         atime4: 65535
         atime5: 0
