@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellData: {fileID: 11400000, guid: 035946eb541db114284cf839ef6b8805, type: 2}
   castVelocity: 0
-  damage: 12
+  damage: 15
   cooldown: 3
   castType: 0
   mageOwner: {fileID: 0}

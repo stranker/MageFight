@@ -74,10 +74,10 @@ public class PlayerUI : MonoBehaviour {
         if (cookies != player.winRounds)
         {
             cookies = player.winRounds;
-            var cookiesInPanel = cookiePanel.GetComponentsInChildren<Transform>();
+            var cookiesInPanel = cookiePanel.GetComponentsInChildren<Image>();
             for (int i = 0; i < cookies; i++)
             {
-                cookiesInPanel[i+1].gameObject.SetActive(true);
+                cookiesInPanel[i].color = Color.white;
             }
         }
     }

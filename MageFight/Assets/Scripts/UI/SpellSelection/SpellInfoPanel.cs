@@ -32,7 +32,8 @@ public class SpellInfoPanel : MonoBehaviour
         spellArtwork.sprite = currentSpell.spellData.spellArtwork;
         damageBar.fillAmount = CalculateDamage(currentSpell.damage);
         cooldownBar.fillAmount = CalculateCooldown(currentSpell.cooldown);
-        difficultyBar.fillAmount = CalculateCooldown(currentSpell.spellData.spellDifficulty);
+        difficultyBar.fillAmount = currentSpell.spellData.spellDifficulty / 5.0f;
+        print(currentSpell.spellData.spellDifficulty / 5.0f);
     }
 
     private float CalculateDamage(float damage)
