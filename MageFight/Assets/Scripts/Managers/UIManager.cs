@@ -26,15 +26,12 @@ public class UIManager : MonoBehaviour {
     public float leaderboardTime = 3f;
     private bool showLeaderboard = false;
     private bool leaderboardActive = false;
-    public GameObject countdownPanel;
-    private bool onCountdown = false;
-    public Text countdownText;
-    public Text getReadyText;
     public GameObject PlayerPresentationCanvas;
     public GameObject spellSelectionPanel;
     public GameObject rematchButton;
     public GameObject pauseMenuUI;
     public GameObject firstSelectedButtonPauseMenu;
+    public BeginMatch beginMatchPanel;
 
     private void Start()
     {
@@ -75,35 +72,12 @@ public class UIManager : MonoBehaviour {
                 }
             }
         }
-
-        if (onCountdown)
-        {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
-            {
-                timer = 0;
-                onCountdown = false;
-                countdownPanel.SetActive(false);
-                GameplayManager.Get().SendEvent(GameplayManager.Events.CountdownEnd);
-            }
-            if (timer <= 1.1f)
-            {
-                getReadyText.enabled = false;
-                countdownText.text = "FIGHT!";
-            }
-            else
-            {
-                countdownText.text = Mathf.Floor(timer).ToString("0");
-            }
-        }
     }
 
-    internal void StartCountdown()
+    public void StartCountdown()
     {
-        countdownPanel.SetActive(true);
-        getReadyText.enabled = true;
-        timer = 3.9f;        
-        onCountdown = true;
+        beginMatchPanel.gameObject.SetActive(true);
+        beginMatchPanel.BeginCountdown();
         GameManager.Instance.currentMap.GenerateLevel();
     }
 

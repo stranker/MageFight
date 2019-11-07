@@ -61,7 +61,7 @@ public class MovementBehavior : MonoBehaviour {
 
     private void CheckOutbounds()
     {
-        if (transform.position.y < -5)
+        if (transform.position.y < -50)
         {
             wizardBehavior.TakeDamage(500, Vector2.zero);
         }
