@@ -221,7 +221,6 @@ public class MovementBehavior : MonoBehaviour {
 
     private float GetXAxis()
     {
-        Debug.Log(Input.GetAxis(input.GetXAxis()));
         return Input.GetAxis(input.GetXAxis());
     }
 

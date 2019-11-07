@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private List<Transform> startingPositions = new List<Transform>();
 
     private int posIdx = 0;
+    private float timeScale;
     public new CameraController camera;
     private float playerDeathTimer;
     public float playerDeathTime;
@@ -70,10 +71,15 @@ public class GameManager : MonoBehaviour {
     {
         UIManager.Get().OnLeaderboardShown += OnLeaderboardShown;
         GameplayManager.Get().SendEvent(GameplayManager.Events.StartGame);
+        timeScale = Time.timeScale;
     }
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("StartButton"))
+        {
+            GameplayManager.Get().SendEvent(GameplayManager.Events.PauseGameplay);
+        }
         if (playerDead)
         {
             playerDeathTimer += Time.deltaTime;
@@ -182,4 +188,11 @@ public class GameManager : MonoBehaviour {
         return playerFound;
     }
 
+    public void SetPause(bool value)
+    {
+        if(value)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = timeScale;
+    }
 }

@@ -33,7 +33,8 @@ public class UIManager : MonoBehaviour {
     public GameObject PlayerPresentationCanvas;
     public GameObject spellSelectionPanel;
     public GameObject rematchButton;
-
+    public GameObject pauseMenuUI;
+    public GameObject firstSelectedButtonPauseMenu;
 
     private void Start()
     {
@@ -139,5 +140,16 @@ public class UIManager : MonoBehaviour {
             PlayerPresentationCanvas.SetActive(false);
             spellSelectionPanel.SetActive(true);
         }
+    }
+    public void SetPauseMenuUI(bool value)
+    {
+        if(value)
+        {
+            pauseMenuUI.SetActive(true);
+            EventSystem evt = EventSystem.current;
+            evt.SetSelectedGameObject(firstSelectedButtonPauseMenu);
+        }
+        else
+            pauseMenuUI.SetActive(false);
     }
 }
