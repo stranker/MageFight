@@ -48,7 +48,7 @@ public class SpellStateManager : MonoBehaviour
             } else {
                 dragTimer = 0.0f;
                 isDragged = false;
-                player.TakeDamage(10,Vector2.zero);
+                player.TakeDamage(1, Vector2.zero);
                 attack.SetCanAttack(true);
                 movement.SetCanMove(true);
             }
