@@ -126,6 +126,7 @@ public class GameManager : MonoBehaviour {
                 camera.SetTarget(wizard.transform);
                 wizard.playerRef.winRounds += 1;
                 GameplayManager.Get().SendEvent(GameplayManager.Events.PlayerDead);
+                wizard.Pause();
             }
         }
     }
