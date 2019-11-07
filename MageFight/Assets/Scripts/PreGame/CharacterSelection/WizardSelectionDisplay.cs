@@ -180,12 +180,12 @@ public class WizardSelectionDisplay : MonoBehaviour
     {
         if (!playerConfirmed)
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 wizardIdx++;
                 SelectWizardAt(wizardIdx);
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 wizardIdx--;
                 SelectWizardAt(wizardIdx);

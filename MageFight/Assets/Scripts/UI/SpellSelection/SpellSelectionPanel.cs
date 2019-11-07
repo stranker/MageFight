@@ -171,7 +171,7 @@ public class SpellSelectionPanel : MonoBehaviour
             spellCounter--;
             SelectPanelAt(spellCounter);
         }
-        if (Input.GetKey("joystick " + currentPlayerTurn.joistickId.ToString() + " button 9"))
+        if (Input.GetKey("joystick " + currentPlayerTurn.joistickId.ToString() + " button 0"))
         {
             OnSpellConfirm();
         }
@@ -179,12 +179,12 @@ public class SpellSelectionPanel : MonoBehaviour
 
     private void CheckKeyboardInput()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) && canSelect)
+        if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && canSelect)
         {
             spellCounter++;
             SelectPanelAt(spellCounter);
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && canSelect)
+        else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && canSelect)
         {
             spellCounter--;
             SelectPanelAt(spellCounter);
