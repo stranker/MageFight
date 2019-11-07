@@ -18,6 +18,7 @@ public class WizardBehavior : MonoBehaviour {
     public AttackBehavior attack;
     public MovementBehavior movement;
     public WizardDataScriptable charData;
+    public VisualBehavior visual;
     public Player playerRef;
 
 
@@ -34,57 +35,21 @@ public class WizardBehavior : MonoBehaviour {
         if (isAlive)
         {
             health -= val;
-            StopCoroutine("FlickerEffect");
-            StartCoroutine("FlickerEffect");
             spellsManager.CancelMeleeSpells();
             pAnim.ReceiveHit();
+            visual.ReceiveHit();
             if (health <= 0)
             {
                 isAlive = !isAlive;
                 movement.SetActive(false);
                 attack.SetActive(false);
-                SetSpritesVisibles(false);
                 deathParticles.Play();
+                visual.SetPlayerDead(true);
                 pAnim.ResetAnimations();
                 GameManager.Instance.PlayerDeath();
             }
         }
         health = Mathf.Clamp(health, 0, maxHealth);
-    }
-
-    IEnumerator FlickerEffect()
-    {
-        for(int i = 0; i < 5; i++)
-        {
-            if(i % 2 == 0)
-            {
-                SetFlashAmountSprites(0.7f);
-            }
-            else
-            {
-                SetFlashAmountSprites(0);
-            }
-            yield return new WaitForSeconds(0.07f);
-        }
-        SetFlashAmountSprites(0);
-    }
-
-    private void SetSpritesVisibles(bool v)
-    {
-        var sprites = GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer sprite in sprites)
-        {
-            sprite.enabled = v;
-        }
-    }
-
-    private void SetFlashAmountSprites(float amount)
-    {
-        var sprites = GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer sprite in sprites)
-        {
-            sprite.material.SetFloat("_FlashAmount",amount);
-        }
     }
 
     public void Initialize(Player player)
@@ -109,7 +74,7 @@ public class WizardBehavior : MonoBehaviour {
     public void Reset(Vector3 position){
         health = maxHealth;
         isAlive = true;
-        SetSpritesVisibles(true);
+        visual.SetPlayerDead(false);
         transform.position = position;
     }
 

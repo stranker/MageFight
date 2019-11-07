@@ -77,7 +77,7 @@ public class SpellStateManager : MonoBehaviour
             burnAttackTimer += Time.deltaTime;
             if (burnAttackTimer >= burnAttackTime)
             {
-                player.TakeDamage(1, new Vector2(UnityEngine.Random.Range(-1, 1), UnityEngine.Random.Range(-1, 1)));
+                player.TakeDamage(5, new Vector2(UnityEngine.Random.Range(-1, 1), UnityEngine.Random.Range(-1, 1)));
                 burnAttackTimer = 0;
             }
             burnTimer -= Time.deltaTime;

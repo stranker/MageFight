@@ -626,11 +626,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meg
       objectReference: {fileID: 0}
-    - target: {fileID: 7865775988933451487, guid: 3727bfc88199d0f4ea60678a9a682ad1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7865775988933451486, guid: 3727bfc88199d0f4ea60678a9a682ad1,
         type: 3}
       propertyPath: m_LocalPosition.x
