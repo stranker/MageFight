@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
     public bool playerDead = false;
     public LevelBehavior currentMap;
     public GameObject playersParent;
+    public Dictionary<int, Player> playerDict = new Dictionary<int, Player>();
     public List<Player> playerList = new List<Player>();
 
     void Awake () {
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour {
     {
         foreach (Player player in CharactersSelected.Instance.playersConfirmed)
         {
+            playerDict[player.playerId] = player;
             playerList.Add(player);
         }
     }
@@ -177,16 +179,7 @@ public class GameManager : MonoBehaviour {
 
     public Player GetPlayerById(int playerId)
     {
-        Player playerFound = null;
-        foreach (Player player in playerList)
-        {
-            if (player.playerId == playerId)
-            {
-                playerFound = player;
-                break;
-            }
-        }
-        return playerFound;
+        return playerDict[playerId];
     }
 
     public void SetPause(bool value)
