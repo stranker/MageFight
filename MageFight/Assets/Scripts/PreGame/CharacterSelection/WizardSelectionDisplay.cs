@@ -168,7 +168,7 @@ public class WizardSelectionDisplay : MonoBehaviour
                 wizardIdx--;
                 SelectWizardAt(wizardIdx);
             }
-            if (Input.GetKey("joystick " + joystickId.ToString() + " button 0") && canConfirm && !currentWizard.IsConfirmed())
+            if (Input.GetKey("joystick " + joystickId.ToString() + " button 0") && canConfirm)
             {
                 OnPlayerConfirm();
             }
@@ -190,7 +190,7 @@ public class WizardSelectionDisplay : MonoBehaviour
                 wizardIdx--;
                 SelectWizardAt(wizardIdx);
             }
-            if (Input.GetKey(KeyCode.Return) && canConfirm && !currentWizard.IsConfirmed())
+            if (Input.GetKey(KeyCode.Return) && canConfirm)
             {
                 OnPlayerConfirm();
             }
@@ -199,10 +199,14 @@ public class WizardSelectionDisplay : MonoBehaviour
 
     private void OnPlayerConfirm()
     {
+        
+        if (!currentWizard.IsConfirmed())
+        {
+            playerConfirmed = true;
+            player = new Player(playerId, currentWizard.wizardData, inputType, joystickId, playerId == 1 ? Color.red : Color.blue);
+            WizardSelectionManager.Instance.AddPlayer(player);
+            playerText.text = "READY!";
+        }
         currentWizard.Confirm();
-        playerConfirmed = true;
-        player = new Player(playerId, currentWizard.wizardData, inputType, joystickId, playerId == 1? Color.red : Color.blue);
-        WizardSelectionManager.Instance.AddPlayer(player);
-        playerText.text = "READY!";
     }
 }

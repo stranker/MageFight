@@ -18,6 +18,8 @@ public class WizardSelectionButton : MonoBehaviour
     private bool isSelected = false;
     public bool isConfirmed = false;
 
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,6 +76,11 @@ public class WizardSelectionButton : MonoBehaviour
         if (!isConfirmed)
         {
             isConfirmed = true;
+            transform.localScale = Vector2.one * 0.9f;
+        }
+        else
+        {
+            anim.SetTrigger("Cancel");
         }
     }
 }

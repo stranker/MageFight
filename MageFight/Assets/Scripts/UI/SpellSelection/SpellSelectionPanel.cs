@@ -39,6 +39,9 @@ public class SpellSelectionPanel : MonoBehaviour
     private float bufferTimer;
     private float bufferTime = 0.2f;
 
+    public Sprite[] inputConfirmationImages;
+    public Image inputConfirmation;
+
     private void Start()
     {
         if (debugMode)
@@ -84,6 +87,7 @@ public class SpellSelectionPanel : MonoBehaviour
             wizardName.color = currentPlayerTurn.playerColor;
             playerName.text = "Player " + currentPlayerTurn.playerId.ToString();
             playerName.color = currentPlayerTurn.playerColor;
+            inputConfirmation.sprite = currentPlayerTurn.inputType == InputType.Keyboard ? inputConfirmationImages[0] : inputConfirmationImages[1];
         }
 
     }
