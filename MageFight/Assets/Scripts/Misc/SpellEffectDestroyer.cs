@@ -28,6 +28,15 @@ public class SpellEffectDestroyer : MonoBehaviour {
                 isActivated = !isActivated;
                 Destroy(gameObject);
             }
+            var parent = transform.parent.GetComponent<WizardBehavior>();
+            if (parent)
+            {
+                if (!parent.isAlive)
+                {
+                    Destroy(this.gameObject);
+
+                }
+            }
         }
 	}
 

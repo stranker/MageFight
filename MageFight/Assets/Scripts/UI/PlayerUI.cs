@@ -6,33 +6,32 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour {
 
-    public Text healthText;
     public Image flyBar;
+    public Image healthBar;
     public Image playerHead;
     public Image background;
     public GameObject cookiePanel;
     public GameObject wizardTarget;
     private Player player;
-    private PlayerMovement movement;
+    private MovementBehavior movement;
     private WizardBehavior wizard;
-    private SpellsManager playerSpells;
     private int playerHealth = 0;
     private float playerStamina = 0;
-    public Gradient healthColorRamp;
     public Animator anim;
     public int playerId = 0;
     public int cookies = 0;
 
     // Use this for initialization
     void Start () {
+        healthBar.material = Instantiate(healthBar.material);
         player = GameManager.Instance.GetPlayerById(playerId);
         wizardTarget = player.wizardRef;
         wizard = wizardTarget.GetComponent<WizardBehavior>();
-        movement = wizardTarget.GetComponent<PlayerMovement>();
-        playerSpells = wizardTarget.GetComponent<SpellsManager>();
+        movement = wizardTarget.GetComponent<MovementBehavior>();
         playerHead.sprite = wizard.charData.artwork;
         background.color = wizard.playerColor;
-        UpdateText();
+        playerHealth = wizard.maxHealth;
+        playerStamina = movement.flyMaxStamina;
 	}
 
     private void UpdateText()
@@ -56,8 +55,10 @@ public class PlayerUI : MonoBehaviour {
         if (playerHealth != wizard.health)
         {
             playerHealth = wizard.health;
-            healthText.text = playerHealth.ToString() + "hp";
-            healthText.color = healthColorRamp.Evaluate(playerHealth * 0.01f);
+            float playerMaxHealth = wizard.maxHealth;
+            healthBar.fillAmount = playerHealth / playerMaxHealth;
+            StopCoroutine("FlickerEffect");
+            StartCoroutine("FlickerEffect");
             anim.SetTrigger("Damaged");
         }
     }
@@ -68,16 +69,47 @@ public class PlayerUI : MonoBehaviour {
         UpdateCookies();
 	}
 
+    public void ResetUICookies()
+    {
+        var cookiesInPanel = cookiePanel.GetComponentsInChildren<Image>();
+        for (int i = 0; i < GameManager.Instance.roundsToWin; i++)
+        {
+            cookiesInPanel[i].color = new Color(0,0,0,0);
+        }
+    }
+
     private void UpdateCookies()
     {
         if (cookies != player.winRounds)
         {
             cookies = player.winRounds;
-            var cookiesInPanel = cookiePanel.GetComponentsInChildren<Transform>();
+            var cookiesInPanel = cookiePanel.GetComponentsInChildren<Image>();
             for (int i = 0; i < cookies; i++)
             {
-                cookiesInPanel[i+1].gameObject.SetActive(true);
+                cookiesInPanel[i].color = Color.white;
             }
         }
+    }
+
+    IEnumerator FlickerEffect()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (i % 2 == 0)
+            {
+                SetFlashAmountSprites(0.7f);
+            }
+            else
+            {
+                SetFlashAmountSprites(0);
+            }
+            yield return new WaitForSeconds(0.07f);
+        }
+        SetFlashAmountSprites(0);
+    }
+
+    private void SetFlashAmountSprites(float amount)
+    {
+        healthBar.material.SetFloat("_FlashAmount", amount);
     }
 }

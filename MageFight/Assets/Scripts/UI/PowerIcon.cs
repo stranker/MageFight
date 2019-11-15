@@ -20,11 +20,8 @@ public class PowerIcon : MonoBehaviour {
         anim = GetComponent<Animator>();
 	}
 	public void SetSpell(Spell Spell){
-		SpriteRenderer sr = Spell.GetComponent<SpriteRenderer>();
-		if(!sr){ sr = Spell.GetComponentInChildren<SpriteRenderer>();}
-		powerImage.sprite = sr.sprite;
+		powerImage.sprite = Spell.spellData.spellArtwork;
         backgroundSprite.sprite = powerImage.sprite;
-		powerImage.color = sr.color;
 		powerImage.enabled = true;
         backgroundSprite.enabled = true;
 	}

@@ -151,6 +151,7 @@ public class CameraController : MonoBehaviour
         shakeTime = time;
         shakeOffset = amount;
         shaking = true;
+        print("shaking");
     }
 
     public void SpellShake(float amount)

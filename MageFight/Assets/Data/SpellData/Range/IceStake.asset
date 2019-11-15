@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Ice Stake
   spellArtwork: {fileID: 21300000, guid: 4b679ad4289f0d8439b97128711df417, type: 3}
-  spellDifficulty: 2
+  spellDifficulty: 1
   spellEffect: 
