@@ -199,7 +199,6 @@ public class WizardSelectionDisplay : MonoBehaviour
 
     private void OnPlayerConfirm()
     {
-        
         if (!currentWizard.IsConfirmed())
         {
             playerConfirmed = true;
