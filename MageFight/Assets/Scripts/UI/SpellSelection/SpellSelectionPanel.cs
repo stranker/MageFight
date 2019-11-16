@@ -46,8 +46,7 @@ public class SpellSelectionPanel : MonoBehaviour
     public Sprite[] inputConfirmationImages;
     public Image inputConfirmation;
 
-    [SerializeField] private GameObject currentSpellsPanel;
-    [SerializeField] private SpellMiniature spellMiniature;
+    public SpellMiniature[] currentSpells;
 
     private void Start()
     {
@@ -95,34 +94,29 @@ public class SpellSelectionPanel : MonoBehaviour
             playerName.text = "Player " + currentPlayerTurn.playerId.ToString();
             playerName.color = currentPlayerTurn.playerColor;
             inputConfirmation.sprite = currentPlayerTurn.inputType == InputType.Keyboard ? inputConfirmationImages[0] : inputConfirmationImages[1];
-            CreateCurrentSpellsPanel();
+            CreateCurrentSpellsMiniatures();
         }
     }
 
     private void ClearPrevCurrentSpellData()
     {
-        var currentSpells = currentSpellsPanel.GetComponentsInChildren<SpellMiniature>();
         foreach (SpellMiniature sm in currentSpells)
         {
-            Destroy(sm.gameObject);
+            sm.gameObject.SetActive(false);
         }
     }
 
-    private void CreateCurrentSpellsPanel()
+    private void CreateCurrentSpellsMiniatures()
     {
         ClearPrevCurrentSpellData();
         var count = 0;
         foreach (Spell spell in currentPlayerTurn.spellList)
         {
-            GameObject spellMiniatureGo = Instantiate(spellMiniature.gameObject, currentSpellsPanel.transform);
-            SpellMiniature sm = spellMiniatureGo.GetComponent<SpellMiniature>();
-            sm.SetSpellArtwork(spell.spellData.spellArtwork);
-            if (count == currentPlayerTurn.spellList.Count - 1)
-            {
-                sm.Appear();
-            }
+            currentSpells[count].gameObject.SetActive(true);
+            currentSpells[count].SetSpellArtwork(spell.spellData.spellArtwork);
             count++;
         }
+        currentSpells[GameManager.Instance.GetCurrentRound()%3].Appear();
     }
 
     private void CreateSpellsPanel()
@@ -249,12 +243,14 @@ public class SpellSelectionPanel : MonoBehaviour
 
     private void OnSpellConfirm()
     {
+        currentPlayerTurn.AddSpell(currentSpellInfoPanel.currentSpell);
         currentSpellInfoPanel.Confirm();
         spellsInfoPanelList.Remove(currentSpellInfoPanel);
-        currentPlayerTurn.AddSpell(currentSpellInfoPanel.currentSpell);
+        CreateCurrentSpellsMiniatures();
         spellConfirmed = true;
-        CreateCurrentSpellsPanel();
     }
+
+
 
     private void NextTurn()
     {

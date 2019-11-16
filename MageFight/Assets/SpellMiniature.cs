@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SpellMiniature : MonoBehaviour
 {
-    [SerializeField] private Image spellArtwork;
+    [SerializeField] public Image spellArtwork;
     [SerializeField] private Animator anim;
 
     public void SetSpellArtwork(Sprite spr)

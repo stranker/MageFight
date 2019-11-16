@@ -28,7 +28,15 @@ public class Player
 
     public void AddSpell(Spell spell)
     {
-        spellList.Add(spell);
+        if (spellList.Count < 3)
+        {
+            spellList.Add(spell);
+        }
+        else
+        {
+            spellList.RemoveAt(0);
+            spellList.Insert(0, spell);
+        }
     }
 
     public void Reset()
