@@ -48,6 +48,8 @@ public class SpellSelectionPanel : MonoBehaviour
 
     public SpellMiniature[] currentSpells;
 
+    [SerializeField] private Animator anim;
+
     private void Start()
     {
         if (debugMode)
@@ -95,6 +97,7 @@ public class SpellSelectionPanel : MonoBehaviour
             playerName.color = currentPlayerTurn.playerColor;
             inputConfirmation.sprite = currentPlayerTurn.inputType == InputType.Keyboard ? inputConfirmationImages[0] : inputConfirmationImages[1];
             CreateCurrentSpellsMiniatures();
+            anim.SetTrigger("NewTurn");
         }
     }
 

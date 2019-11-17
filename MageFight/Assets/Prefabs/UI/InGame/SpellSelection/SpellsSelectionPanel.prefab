@@ -476,6 +476,7 @@ GameObject:
   - component: {fileID: 7658306417920356916}
   - component: {fileID: 2797745134985925822}
   - component: {fileID: 6508422028927646518}
+  - component: {fileID: 5917795600864214208}
   m_Layer: 5
   m_Name: ConfirmPanel
   m_TagString: Untagged
@@ -541,6 +542,25 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!95 &5917795600864214208
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8523241072983561424}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bf87a902b2038904687166497e8c87e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8798878444456827424
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,6 +669,7 @@ GameObject:
   - component: {fileID: 8810455507094469413}
   - component: {fileID: 8810455507094469402}
   - component: {fileID: 3777950989664352117}
+  - component: {fileID: 1404242213123093108}
   m_Layer: 5
   m_Name: SpellsSelectionPanel
   m_TagString: Untagged
@@ -791,6 +812,26 @@ MonoBehaviour:
   - {fileID: 5724242816066071661}
   - {fileID: 3923259315081927311}
   - {fileID: 5051962195344468362}
+  anim: {fileID: 1404242213123093108}
+--- !u!95 &1404242213123093108
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8810455507094469400}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 076b55e90aaf0704ab5f3cdd7a47b47d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8810455507268374002
 GameObject:
   m_ObjectHideFlags: 0

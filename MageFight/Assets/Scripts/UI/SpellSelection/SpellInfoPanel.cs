@@ -24,6 +24,8 @@ public class SpellInfoPanel : MonoBehaviour
 
     public AnimationCurve curve;
 
+    [SerializeField] private Animator anim;
+
 
     public void SetSpell(Spell spell)
     {
@@ -48,10 +50,10 @@ public class SpellInfoPanel : MonoBehaviour
         {
             timer += Time.deltaTime * 0.7f;
             timer = timer > 1 ? 1 : timer;
+            damageBar.fillAmount = curve.Evaluate(timer) * CalculateDamage(currentSpell.damage);
+            cooldownBar.fillAmount = curve.Evaluate(timer) * CalculateCooldown(currentSpell.cooldown);
+            difficultyBar.fillAmount = curve.Evaluate(timer) * currentSpell.spellData.spellDifficulty / 5.0f;
         }
-        damageBar.fillAmount = curve.Evaluate(timer) * CalculateDamage(currentSpell.damage);
-        cooldownBar.fillAmount = curve.Evaluate(timer) * CalculateCooldown(currentSpell.cooldown);
-        difficultyBar.fillAmount = curve.Evaluate(timer) * currentSpell.spellData.spellDifficulty / 5.0f;
     }
 
     private float CalculateDamage(float damage)
@@ -67,12 +69,19 @@ public class SpellInfoPanel : MonoBehaviour
     public void Selected(bool value)
     {
         isSelected = value;
+        anim.SetBool("Selected", value);
         spellName.color = isSelected ? Color.white : spellNameInitialColor;
         transform.localScale = isSelected ? Vector3.one * 1.1f : Vector3.one;
     }
 
     public void Confirm()
     {
+        anim.SetTrigger("Confirmed");
+    }
+
+    public void OnEndConfirmedAnim()
+    {
         Destroy(this.gameObject);
     }
+
 }

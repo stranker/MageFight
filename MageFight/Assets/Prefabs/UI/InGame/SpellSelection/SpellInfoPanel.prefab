@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 8025036504693072722}
   - component: {fileID: 2411157152128028496}
   - component: {fileID: 3902470393285033224}
+  - component: {fileID: 5210058821294047100}
   m_Layer: 5
   m_Name: SpellInfoPanel
   m_TagString: Untagged
@@ -262,14 +263,14 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.5025528
-      value: 1.0738325
-      inSlope: 1.3551135
-      outSlope: 1.3551135
+      time: 0.50588304
+      value: 1.024858
+      inSlope: 0.8899979
+      outSlope: 0.8899979
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.48515952
     - serializedVersion: 3
       time: 0.7999878
       value: 0.9976425
@@ -282,6 +283,26 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  anim: {fileID: 5210058821294047100}
+--- !u!95 &5210058821294047100
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3184766083569941918}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ea83c521c9a7f7048ab496d9d7169c09, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3241073675142546837
 GameObject:
   m_ObjectHideFlags: 0
