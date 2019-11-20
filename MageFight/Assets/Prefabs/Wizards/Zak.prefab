@@ -5065,6 +5065,7 @@ MonoBehaviour:
   effects: {fileID: 4877554393922435311}
   playerName: {fileID: 4877554392048387940}
   body: {fileID: 4877554392103956503}
+  arrowSprite: {fileID: 4877554393854386380}
 --- !u!1 &4877554392564340729
 GameObject:
   m_ObjectHideFlags: 0

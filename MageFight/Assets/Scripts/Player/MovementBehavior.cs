@@ -46,6 +46,9 @@ public class MovementBehavior : MonoBehaviour {
     private float timerSpellInvoked;
     private float timeSpellInvoked = 2f;
 
+    private float timerCanMove;
+    private float timeCanMoveException = 0.8f;
+
     // Use this for initialization
     void Start () {
         initialGravityScale = rigidBody.gravityScale;
@@ -76,7 +79,16 @@ public class MovementBehavior : MonoBehaviour {
             {
                 timerSpellInvoked = 0;
                 spellInvoked = false;
-                SetCanMove(!spellInvoked);
+                SetCanMove(true);
+            }
+        }
+        if (!canMove)
+        {
+            timerCanMove += Time.deltaTime;
+            if (timerCanMove > timeCanMoveException)
+            {
+                timerCanMove = 0;
+                SetCanMove(true);
             }
         }
     }
@@ -92,14 +104,7 @@ public class MovementBehavior : MonoBehaviour {
 
     public void SetMotion(int i)
     {
-        if (i == 0) // No puedo moverme
-        {
-            SetCanMove(false);
-        }
-        else if(i == 1)
-        {
-            SetCanMove(true);
-        }
+        SetCanMove(i == 1);
     }
 
     private void CheckRestoreOnPlayerHit()
@@ -208,7 +213,6 @@ public class MovementBehavior : MonoBehaviour {
 
     public void SetCanMove(bool v)
     {
-        print(v);
         canMove = v;
         if (!canMove)
         {
@@ -227,7 +231,6 @@ public class MovementBehavior : MonoBehaviour {
     {
         if (wizardBehavior.isAlive)
         {
-            canMove = false;
             rigidBody.velocity = dir * new Vector2(knockForce.x, knockForce.y);
             onPlayerRestoreHit = !canMove;
         }
@@ -251,15 +254,6 @@ public class MovementBehavior : MonoBehaviour {
     private float GetYAxis()
     {
         return Input.GetAxis(input.GetYAxis());
-    }
-
-    public void Knockback(Vector2 pos)
-    {
-        //knockback = true;
-        Vector2 knockDirection = ((Vector2)transform.position - pos).normalized;
-        knockDirection.x *= 5;
-        knockDirection.y = 10;
-        rigidBody.velocity = knockDirection;
     }
 
     public void Pull(Vector2 pos)
