@@ -40,6 +40,11 @@ public class GameManager : MonoBehaviour {
 		roundCounter = 0;
 	}
 
+    public int GetCurrentRound()
+    {
+        return roundCounter;
+    }
+
     private void AddPlayers()
     {
         foreach (Player player in CharactersSelected.Instance.playersConfirmed)

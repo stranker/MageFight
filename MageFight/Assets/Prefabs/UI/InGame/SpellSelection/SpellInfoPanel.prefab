@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 48}
-  m_SizeDelta: {x: 270, y: 157.4}
+  m_AnchoredPosition: {x: 0, y: 70.778}
+  m_SizeDelta: {x: 246.54, y: 141.56}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7250339546358704053
 CanvasRenderer:
@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 8025036504693072722}
   - component: {fileID: 2411157152128028496}
   - component: {fileID: 3902470393285033224}
+  - component: {fileID: 5210058821294047100}
   m_Layer: 5
   m_Name: SpellInfoPanel
   m_TagString: Untagged
@@ -187,8 +188,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 350, y: 450}
+  m_AnchoredPosition: {x: 0, y: 200}
+  m_SizeDelta: {x: 300, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8025036504693072722
 CanvasRenderer:
@@ -246,9 +247,7 @@ MonoBehaviour:
   cooldownBar: {fileID: 583926634005073378}
   difficultyBar: {fileID: 1395040555241233695}
   maxDamage: 25
-  minDamage: 5
   maxCooldown: 5
-  minCooldown: 2
   isSelected: 0
   spellNameInitialColor: {r: 0, g: 0, b: 0, a: 0}
   curve:
@@ -264,16 +263,16 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.8442276
-      value: 1.1312323
-      inSlope: 1.3551135
-      outSlope: 1.3551135
+      time: 0.50588304
+      value: 1.024858
+      inSlope: 0.8899979
+      outSlope: 0.8899979
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0.48515952
     - serializedVersion: 3
-      time: 1
+      time: 0.7999878
       value: 0.9976425
       inSlope: 0.121302254
       outSlope: 0.121302254
@@ -284,6 +283,26 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  anim: {fileID: 5210058821294047100}
+--- !u!95 &5210058821294047100
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3184766083569941918}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ea83c521c9a7f7048ab496d9d7169c09, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3241073675142546837
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,8 +755,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 350, y: 172.5}
+  m_AnchoredPosition: {x: 0, y: 113.2}
+  m_SizeDelta: {x: 350, y: 176.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6125255581406536311
 CanvasRenderer:
@@ -1026,8 +1045,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.95, y: -44.55}
-  m_SizeDelta: {x: 338.59, y: 77.79}
+  m_AnchoredPosition: {x: -0.0012541, y: -32.050003}
+  m_SizeDelta: {x: 300, y: 52.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &415289270263898066
 CanvasRenderer:
@@ -1063,7 +1082,7 @@ MonoBehaviour:
     m_FontStyle: 2
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 33
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

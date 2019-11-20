@@ -27,8 +27,12 @@ public class SpellSelectionPanel : MonoBehaviour
     public int turnCounter = 0;
 
     public bool endSpellSelection = false;
-    float timer;
+    private float timer;
     public float timeEndSpellSelection;
+
+    private bool spellConfirmed = false;
+    private float timerBetweenSelections;
+    [SerializeField] private float timeBetweenSelections = 1f;
 
     public WizardDataScriptable wizardDataTest;
 
@@ -41,6 +45,10 @@ public class SpellSelectionPanel : MonoBehaviour
 
     public Sprite[] inputConfirmationImages;
     public Image inputConfirmation;
+
+    public SpellMiniature[] currentSpells;
+
+    [SerializeField] private Animator anim;
 
     private void Start()
     {
@@ -69,7 +77,7 @@ public class SpellSelectionPanel : MonoBehaviour
     {
         playerList = playerList.OrderBy(player => player.winRounds).ToList();
         turnCounter = 0;
-        if (playerList.Count>0)
+        if (playerList.Count > 0)
             currentPlayerTurn = playerList[turnCounter];
         UpdateUI();
     }
@@ -81,15 +89,37 @@ public class SpellSelectionPanel : MonoBehaviour
 
     private void UpdateUI()
     {
-        if (currentPlayerTurn != null)
+        if (currentPlayerTurn != null && !endSpellSelection)
         {
             wizardName.text = currentPlayerTurn.charData.wizardName;
             wizardName.color = currentPlayerTurn.playerColor;
             playerName.text = "Player " + currentPlayerTurn.playerId.ToString();
             playerName.color = currentPlayerTurn.playerColor;
             inputConfirmation.sprite = currentPlayerTurn.inputType == InputType.Keyboard ? inputConfirmationImages[0] : inputConfirmationImages[1];
+            CreateCurrentSpellsMiniatures();
+            anim.SetTrigger("NewTurn");
         }
+    }
 
+    private void ClearPrevCurrentSpellData()
+    {
+        foreach (SpellMiniature sm in currentSpells)
+        {
+            sm.gameObject.SetActive(false);
+        }
+    }
+
+    private void CreateCurrentSpellsMiniatures()
+    {
+        ClearPrevCurrentSpellData();
+        var count = 0;
+        foreach (Spell spell in currentPlayerTurn.spellList)
+        {
+            currentSpells[count].gameObject.SetActive(true);
+            currentSpells[count].SetSpellArtwork(spell.spellData.spellArtwork);
+            count++;
+        }
+        currentSpells[GameManager.Instance.GetCurrentRound()%3].Appear();
     }
 
     private void CreateSpellsPanel()
@@ -127,9 +157,23 @@ public class SpellSelectionPanel : MonoBehaviour
                     EndSpellSelection();
             }
             else
+            {
                 CheckPlayerInput();
+                if (spellConfirmed)
+                {
+                    timerBetweenSelections += Time.deltaTime;
+                    if (timerBetweenSelections > timeBetweenSelections)
+                    {
+                        timerBetweenSelections = 0;
+                        spellConfirmed = false;
+                        NextTurn();
+                    }
+                }
+            }
         }
     }
+
+
 
     private void EndSpellSelection()
     {
@@ -137,6 +181,7 @@ public class SpellSelectionPanel : MonoBehaviour
         endSpellSelection = false;
         isActive = false;
         gameObject.SetActive(false);
+        timer = 0;
     }
 
     private void CheckPlayerInput()
@@ -175,7 +220,7 @@ public class SpellSelectionPanel : MonoBehaviour
             spellCounter--;
             SelectPanelAt(spellCounter);
         }
-        if (Input.GetKey("joystick " + currentPlayerTurn.joistickId.ToString() + " button 0"))
+        if (Input.GetKey("joystick " + currentPlayerTurn.joistickId.ToString() + " button 0") && !spellConfirmed)
         {
             OnSpellConfirm();
         }
@@ -193,7 +238,7 @@ public class SpellSelectionPanel : MonoBehaviour
             spellCounter--;
             SelectPanelAt(spellCounter);
         }
-        if (Input.GetKey(KeyCode.Return))
+        if (Input.GetKey(KeyCode.Return) && !spellConfirmed)
         {
             OnSpellConfirm();
         }
@@ -201,16 +246,32 @@ public class SpellSelectionPanel : MonoBehaviour
 
     private void OnSpellConfirm()
     {
+        currentPlayerTurn.AddSpell(currentSpellInfoPanel.currentSpell);
         currentSpellInfoPanel.Confirm();
         spellsInfoPanelList.Remove(currentSpellInfoPanel);
-        currentPlayerTurn.AddSpell(currentSpellInfoPanel.currentSpell);
+        CreateCurrentSpellsMiniatures();
+        spellConfirmed = true;
+    }
+
+
+
+    private void NextTurn()
+    {
         turnCounter++;
         if (turnCounter >= playerList.Count)
             endSpellSelection = true;
         else
             currentPlayerTurn = playerList[turnCounter];
-        SelectPanelAt(0);
-        UpdateUI();
+        if (endSpellSelection)
+        {
+            currentSpellInfoPanel = spellsInfoPanelList[0];
+            currentSpellInfoPanel.Disappear();
+        }
+        else
+        {
+            SelectPanelAt(0);
+            UpdateUI();
+        }
     }
 
     private void SelectPanelAt(int idx)
