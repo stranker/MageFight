@@ -24,12 +24,14 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] private List<Transform> startingPositions = new List<Transform>();
 
     private int posIdx = 0;
+    private float timeScale;
     public new CameraController camera;
     private float playerDeathTimer;
     public float playerDeathTime;
     public bool playerDead = false;
     public LevelBehavior currentMap;
     public GameObject playersParent;
+    public Dictionary<int, Player> playerDict = new Dictionary<int, Player>();
     public List<Player> playerList = new List<Player>();
 
     void Awake () {
@@ -38,10 +40,16 @@ public class GameManager : MonoBehaviour {
 		roundCounter = 0;
 	}
 
+    public int GetCurrentRound()
+    {
+        return roundCounter;
+    }
+
     private void AddPlayers()
     {
         foreach (Player player in CharactersSelected.Instance.playersConfirmed)
         {
+            playerDict[player.playerId] = player;
             playerList.Add(player);
         }
     }
@@ -70,10 +78,15 @@ public class GameManager : MonoBehaviour {
     {
         UIManager.Get().OnLeaderboardShown += OnLeaderboardShown;
         GameplayManager.Get().SendEvent(GameplayManager.Events.StartGame);
+        timeScale = Time.timeScale;
     }
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("StartButton"))
+        {
+            GameplayManager.Get().SendEvent(GameplayManager.Events.PauseGameplay);
+        }
         if (playerDead)
         {
             playerDeathTimer += Time.deltaTime;
@@ -120,6 +133,7 @@ public class GameManager : MonoBehaviour {
                 camera.SetTarget(wizard.transform);
                 wizard.playerRef.winRounds += 1;
                 GameplayManager.Get().SendEvent(GameplayManager.Events.PlayerDead);
+                wizard.Pause();
             }
         }
     }
@@ -170,16 +184,14 @@ public class GameManager : MonoBehaviour {
 
     public Player GetPlayerById(int playerId)
     {
-        Player playerFound = null;
-        foreach (Player player in playerList)
-        {
-            if (player.playerId == playerId)
-            {
-                playerFound = player;
-                break;
-            }
-        }
-        return playerFound;
+        return playerDict[playerId];
     }
 
+    public void SetPause(bool value)
+    {
+        if(value)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = timeScale;
+    }
 }

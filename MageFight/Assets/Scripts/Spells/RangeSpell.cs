@@ -30,7 +30,7 @@ public class RangeSpell : Spell {
         if (collision.tag == "Player" && collision.gameObject != mageOwner && canDamage)
         {
             WizardBehavior player = collision.GetComponent<WizardBehavior>();
-            PlayerMovement pMovement = player.GetComponent<PlayerMovement>();
+            MovementBehavior pMovement = player.GetComponent<MovementBehavior>();
             player.TakeDamage(damage,transform.position);
             pMovement.KnockOut(dir, knockbackForce);
             CheckHasEffect(player);
@@ -79,7 +79,7 @@ public class RangeSpell : Spell {
     {
         if (dir == Vector3.zero)
         {
-            dir.x = mageOwner.GetComponent<PlayerMovement>().currentDirection;
+            dir.x = mageOwner.GetComponent<MovementBehavior>().currentDirection;
         }
     }
 }

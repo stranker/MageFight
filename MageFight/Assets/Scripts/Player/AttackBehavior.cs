@@ -7,7 +7,7 @@ public class AttackBehavior : MonoBehaviour {
 
     [Header("Spell Manager")]
     public SpellsManager spellManager;
-    public PlayerMovement playerMovement;
+    public MovementBehavior playerMovement;
     public InputManager input;
     public bool canAttack = true;
     public bool isHolding = false;
@@ -18,7 +18,7 @@ public class AttackBehavior : MonoBehaviour {
     public Transform handPos;
     public GameObject arrowSprite;
     public ParticleSystem invokeParticles;
-    public PlayerAnimation anim;
+    public AnimationBehavior anim;
     private ParticleSystem.MainModule invokeParticlesMain;
     public int spellIndex = -1;
     public Vector2 spellDir = Vector2.zero;

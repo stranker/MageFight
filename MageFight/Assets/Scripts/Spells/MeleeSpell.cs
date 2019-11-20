@@ -22,7 +22,7 @@ public class MeleeSpell : Spell {
         {
             WizardBehavior player = collision.GetComponent<WizardBehavior>();
             player.TakeDamage(damage, transform.position);
-            player.GetComponent<PlayerMovement>().KnockOut(new Vector2(knockDir.x * dir.x, knockDir.y), knockbackForce);
+            player.GetComponent<MovementBehavior>().KnockOut(new Vector2(knockDir.x * dir.x, knockDir.y), knockbackForce);
             CheckHasEffect(player);
             MakeExplosion();
             canDamage = false;
@@ -48,7 +48,7 @@ public class MeleeSpell : Spell {
     {
         if (dir.x == 0)
         {
-            dir.x = mageOwner.GetComponent<PlayerMovement>().currentDirection;
+            dir.x = mageOwner.GetComponent<MovementBehavior>().currentDirection;
         }
     }
 

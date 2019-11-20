@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class PreGamePortal : MonoBehaviour
 {
     public int playerCount = 0;
-    public List<WizardBehavior> players = new List<WizardBehavior>(); 
+    public List<WizardBehavior> players = new List<WizardBehavior>();
+    public TutorialUI tut;
 
     // Start is called before the first frame update
     void Start()
@@ -27,9 +28,9 @@ public class PreGamePortal : MonoBehaviour
     public void CheckPlayers()
     {
         if (players.Count >= playerCount)
-        {
-            SceneManager.LoadScene("SampleLevel");
-        }
+            tut.AllPlayers();
+        else
+            tut.PlayerEnterPortal();
     }
 
 }

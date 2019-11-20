@@ -16,17 +16,17 @@ public class SpellStateManager : MonoBehaviour
     public bool isBurned;
     public bool isStuned;
     public bool isShrinked;
-    private PlayerMovement movement;
+    private MovementBehavior movement;
     private AttackBehavior attack;
     private WizardBehavior player;
-    private PlayerAnimation playerAnim;
+    private AnimationBehavior playerAnim;
 
     private void Start()
     {
-        movement = GetComponent<PlayerMovement>();
+        movement = GetComponent<MovementBehavior>();
         attack = GetComponent<AttackBehavior>();
         player = GetComponent<WizardBehavior>();
-        playerAnim = GetComponentInChildren<PlayerAnimation>();
+        playerAnim = GetComponentInChildren<AnimationBehavior>();
     }
 
     // Update is called once per frame
@@ -48,7 +48,7 @@ public class SpellStateManager : MonoBehaviour
             } else {
                 dragTimer = 0.0f;
                 isDragged = false;
-                player.TakeDamage(10,Vector2.zero);
+                player.TakeDamage(1, Vector2.zero);
                 attack.SetCanAttack(true);
                 movement.SetCanMove(true);
             }
@@ -77,7 +77,7 @@ public class SpellStateManager : MonoBehaviour
             burnAttackTimer += Time.deltaTime;
             if (burnAttackTimer >= burnAttackTime)
             {
-                player.TakeDamage(1, new Vector2(UnityEngine.Random.Range(-1, 1), UnityEngine.Random.Range(-1, 1)));
+                player.TakeDamage(5, new Vector2(UnityEngine.Random.Range(-1, 1), UnityEngine.Random.Range(-1, 1)));
                 burnAttackTimer = 0;
             }
             burnTimer -= Time.deltaTime;
@@ -143,7 +143,7 @@ public class SpellStateManager : MonoBehaviour
         isShrinked = true;
         movement.SetCanFly(false);
         attack.SetCanAttack(false);
-        playerAnim.Shrink();
+        print("HACER EL SHRINK");
     }
 
     public void Hammerfall()

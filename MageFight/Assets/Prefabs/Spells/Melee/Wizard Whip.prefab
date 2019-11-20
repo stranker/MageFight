@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellData: {fileID: 11400000, guid: 035946eb541db114284cf839ef6b8805, type: 2}
   castVelocity: 0
-  damage: 12
+  damage: 15
   cooldown: 3
   castType: 0
   mageOwner: {fileID: 0}
@@ -95,7 +95,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04147458, y: -0.00000023841858}
+  m_Offset: {x: 1.9797668, y: 0.048675537}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -106,7 +106,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0447454, y: 1.0465145}
+  m_Size: {x: 3.4962769, y: 2.0855103}
   m_EdgeRadius: 0
 --- !u!1 &1215832200652722
 GameObject:
@@ -118,7 +118,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4739844161260550}
   - component: {fileID: 212206363492256120}
-  - component: {fileID: 114224559674013510}
   - component: {fileID: 50523779118265182}
   m_Layer: 0
   m_Name: Sprite
@@ -177,46 +176,18 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 8c91b1f159a259f4d886e82ef6521145, type: 3}
+  m_SortingOrder: 30
+  m_Sprite: {fileID: 21300000, guid: a1c011ed55ed32b4585b2a89b2bb76c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 4, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &114224559674013510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215832200652722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f40031b22025e0419aad238c572bdd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spellData: {fileID: 0}
-  castVelocity: 0
-  damage: 3
-  cooldown: 3
-  castType: 0
-  mageOwner: {fileID: 0}
-  typeOfSpeel: 0
-  knockbackForce: {x: 0, y: 0}
-  invoked: 0
-  canDamage: 1
-  timer: 0
-  particlesExplosion: {fileID: 0}
-  spellColor: {r: 0, g: 0, b: 0, a: 0}
-  shakeFactor: 0
-  knockDir: {x: 0, y: 0}
-  type: 1
 --- !u!50 &50523779118265182
 Rigidbody2D:
   serializedVersion: 4

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellName: Rock
   spellArtwork: {fileID: 21300000, guid: 78be2a6cf2606fe4b87c623558ced40a, type: 3}
-  spellDifficulty: 3
+  spellDifficulty: 2
   spellEffect: 
