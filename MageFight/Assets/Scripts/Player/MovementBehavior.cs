@@ -42,6 +42,10 @@ public class MovementBehavior : MonoBehaviour {
     private float playerRestoreOnHitTimer = 0;
     public float playerRestoreOnHitTime;
 
+    private bool spellInvoked = false;
+    private float timerSpellInvoked;
+    private float timeSpellInvoked = 2f;
+
     // Use this for initialization
     void Start () {
         initialGravityScale = rigidBody.gravityScale;
@@ -53,11 +57,29 @@ public class MovementBehavior : MonoBehaviour {
         if (wizardBehavior.isAlive)
         {
             GetInput();
-            GeneralMovement();
+            if (canMove)
+            {
+                GeneralMovement();
+            }
             CheckRestoreOnPlayerHit();
             CheckOutbounds();
+            TimersCheck();
         }
 	}
+
+    private void TimersCheck()
+    {
+        if (spellInvoked)
+        {
+            timerSpellInvoked += Time.deltaTime;
+            if (timerSpellInvoked >= timeSpellInvoked)
+            {
+                timerSpellInvoked = 0;
+                spellInvoked = false;
+                SetCanMove(!spellInvoked);
+            }
+        }
+    }
 
     private void CheckOutbounds()
     {
@@ -67,10 +89,6 @@ public class MovementBehavior : MonoBehaviour {
         }
     }
 
-    private void CheckStun()
-    {
-        throw new NotImplementedException();
-    }
 
     public void SetMotion(int i)
     {
@@ -93,7 +111,6 @@ public class MovementBehavior : MonoBehaviour {
             {
                 playerRestoreOnHitTimer = 0;
                 onPlayerRestoreHit = false;
-                canMove = !onPlayerRestoreHit;
             }
         }
     }
@@ -112,6 +129,12 @@ public class MovementBehavior : MonoBehaviour {
             rigidBody.velocity = canMove ? velocity : Vector2.zero;
         FacingDirectionCheck();
         rigidBody.gravityScale = flying ? 0 : initialGravityScale;
+    }
+
+    public void SpellInvoked(int val)
+    {
+        spellInvoked = val == 0;
+        SetCanMove(false);
     }
 
     private void GetInput()
@@ -185,6 +208,7 @@ public class MovementBehavior : MonoBehaviour {
 
     public void SetCanMove(bool v)
     {
+        print(v);
         canMove = v;
         if (!canMove)
         {

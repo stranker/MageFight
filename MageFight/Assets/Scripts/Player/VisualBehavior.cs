@@ -8,6 +8,13 @@ public class VisualBehavior : MonoBehaviour
     public EffectsBehavior effects;
     public GameObject playerName;
     public GameObject body;
+    public SpriteRenderer arrowSprite;
+
+    private void Start()
+    {
+        WizardBehavior wizard = transform.parent.GetComponent<WizardBehavior>();
+        arrowSprite.color = new Color(wizard.playerColor.r, wizard.playerColor.g, wizard.playerColor.b, 0.5f);
+    }
 
     public void ReceiveHit()
     {
