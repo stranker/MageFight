@@ -84,4 +84,8 @@ public class SpellInfoPanel : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    public void Disappear()
+    {
+        anim.SetTrigger("Disappear");
+    }
 }

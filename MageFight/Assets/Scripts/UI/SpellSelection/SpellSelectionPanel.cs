@@ -262,8 +262,16 @@ public class SpellSelectionPanel : MonoBehaviour
             endSpellSelection = true;
         else
             currentPlayerTurn = playerList[turnCounter];
-        SelectPanelAt(0);
-        UpdateUI();
+        if (endSpellSelection)
+        {
+            currentSpellInfoPanel = spellsInfoPanelList[0];
+            currentSpellInfoPanel.Disappear();
+        }
+        else
+        {
+            SelectPanelAt(0);
+            UpdateUI();
+        }
     }
 
     private void SelectPanelAt(int idx)
