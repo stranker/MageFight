@@ -27,6 +27,11 @@ public class WizardSelectionButton : MonoBehaviour
         wizardName.text = wizardData.wizardName;
     }
 
+    private void Update()
+    {
+        anim.SetBool("Selected", isSelected);
+    }
+
     public void Select(Color playerColor)
     {
         if (!playersColors.Contains(playerColor))
@@ -76,7 +81,7 @@ public class WizardSelectionButton : MonoBehaviour
         if (!isConfirmed)
         {
             isConfirmed = true;
-            transform.localScale = Vector2.one * 0.9f;
+            anim.SetTrigger("Confirmed");
         }
         else
         {
