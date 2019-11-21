@@ -88,6 +88,8 @@ public class WizardSelectionDisplay : MonoBehaviour
 
     public Color playerColor;
 
+    public Animator anim;
+
 
     private void Update()
     {
@@ -120,8 +122,7 @@ public class WizardSelectionDisplay : MonoBehaviour
         isActive = true;
         playerId = currentPlayerId;
         this.inputType = inputType;
-        initPanel.SetActive(false);
-        playerPanel.SetActive(true);
+        anim.SetTrigger("PlayerEnter");
         canConfirmTimer = canConfirmTime;
         joystickId = inputId;
         if (joystickId != 0)
@@ -212,7 +213,8 @@ public class WizardSelectionDisplay : MonoBehaviour
             playerConfirmed = true;
             player = new Player(playerId, currentWizard.wizardData, inputType, joystickId, playerId == 1 ? Color.red : Color.blue);
             WizardSelectionManager.Instance.AddPlayer(player);
-            playerText.text = "READY!";
+            anim.SetTrigger("Ready");
+
         }
         currentWizard.Confirm();
     }

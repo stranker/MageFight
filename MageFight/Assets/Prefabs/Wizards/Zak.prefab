@@ -5354,7 +5354,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 5266ab46d94137341ace847586a51d22, type: 3}
+    m_Font: {fileID: 12800000, guid: 8bea5c91c7fda5a4c9abecb6d69f05fa, type: 3}
     m_FontSize: 157
     m_FontStyle: 0
     m_BestFit: 0
@@ -15208,11 +15208,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8049b95f63ca44a873eea08a190333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: 1
   health: 100
   maxHealth: 100
   isAlive: 1
   deathParticles: {fileID: 4877554392261958333}
+  playerID: 0
   spellsManager: {fileID: 4877554393673381727}
   pAnim: {fileID: 4877554392550580946}
   playerColor: {r: 0.65887386, g: 0, b: 0.8207547, a: 1}

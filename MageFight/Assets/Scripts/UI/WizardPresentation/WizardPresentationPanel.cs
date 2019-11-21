@@ -20,5 +20,6 @@ public class WizardPresentationPanel : MonoBehaviour
         wizardArtwork.sprite = player.wizardData.presentationArtwork;
         wizardName.text = player.wizardData.wizardName;
         playerTextId.text = "J" + player.playerId.ToString();
+        playerTextId.color = player.playerColor;
     }
 }
