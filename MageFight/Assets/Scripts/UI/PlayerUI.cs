@@ -20,6 +20,7 @@ public class PlayerUI : MonoBehaviour {
     public Animator anim;
     public int playerId = 0;
     public int cookies = 0;
+    [SerializeField] private GameObject spellIcons;
 
     // Use this for initialization
     void Start () {
@@ -32,6 +33,11 @@ public class PlayerUI : MonoBehaviour {
         background.color = wizard.playerColor;
         playerHealth = wizard.maxHealth;
         playerStamina = movement.flyMaxStamina;
+        var spellIconsList = spellIcons.GetComponentsInChildren<SpellIcon>();
+        foreach (SpellIcon spellIcon in spellIconsList)
+        {
+            spellIcon.SetInputType(player.inputType);
+        }
 	}
 
     private void UpdateText()

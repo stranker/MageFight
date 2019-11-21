@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class WizardBehavior : MonoBehaviour {
 
-    public int playerName = -1;
     public int health;
     public int maxHealth;
     public bool isAlive = true;
     public ParticleSystem deathParticles;
-    private int playerID;
+    public int playerID;
     public SpellsManager spellsManager;
     public AnimationBehavior pAnim;
     public Color playerColor;
@@ -55,20 +54,10 @@ public class WizardBehavior : MonoBehaviour {
     public void Initialize(Player player)
     {
         playerRef = player;
-        playerName = player.playerId;
-        charData = player.charData;
+        playerID = player.playerId;
+        charData = player.wizardData;
         name = charData.wizardName;
-        switch (playerName)
-        {
-            case 1:
-                playerColor = Color.red;
-                break;
-            case 2:
-                playerColor = Color.blue;
-                break;
-            default:
-                break;
-        }
+        playerColor = playerID == 1 ? Color.red : Color.black;
     }
 
     public void Reset(Vector3 position){
@@ -93,10 +82,6 @@ public class WizardBehavior : MonoBehaviour {
 
     public bool FullSpellInventory(){
         return spellsManager.FullSpellInventory();
-    }
-
-    public int GetPlayerName(){
-        return playerName;
     }
 	
 	public void Win(){

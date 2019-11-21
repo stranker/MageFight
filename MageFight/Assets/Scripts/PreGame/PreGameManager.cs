@@ -26,7 +26,7 @@ public class PreGameManager : MonoBehaviour
     private void CreateWizard(Player player)
     {
         GameObject wizard = new GameObject();
-        wizard = Instantiate(player.charData.wizardPrefab, positions[posIdx].position, Quaternion.identity, transform);
+        wizard = Instantiate(player.wizardData.wizardPrefab, positions[posIdx].position, Quaternion.identity, transform);
         wizard.GetComponent<WizardBehavior>().Initialize(player);
         wizard.GetComponent<InputManager>().SetInput(player.inputType, player.playerId, player.joistickId);
         player.AddWizard(wizard);

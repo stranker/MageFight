@@ -9,7 +9,7 @@ public class Player
 {
     public string playerName;
     public int playerId;
-    public WizardDataScriptable charData;
+    public WizardDataScriptable wizardData;
     public InputType inputType;
     public int joistickId;
     public int winRounds = 0;
@@ -17,10 +17,10 @@ public class Player
     public List<Spell> spellList = new List<Spell>();
     public GameObject wizardRef;
 
-    public Player(int playerId, WizardDataScriptable charData, InputType inputType, int joistickId, Color playerColor)
+    public Player(int playerId, WizardDataScriptable wizardData, InputType inputType, int joistickId, Color playerColor)
     {
         this.playerId = playerId;
-        this.charData = charData;
+        this.wizardData = wizardData;
         this.inputType = inputType;
         this.joistickId = joistickId;
         this.playerColor = playerColor;

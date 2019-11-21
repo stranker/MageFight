@@ -8,5 +8,5 @@ public class WizardDataScriptable : ScriptableObject
     public string wizardName;
     public GameObject wizardPrefab;
     public Sprite artwork;
-
+    public Sprite presentationArtwork;
 }
