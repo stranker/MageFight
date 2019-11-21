@@ -1925,11 +1925,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 834985740}
     m_Modifications:
-    - target: {fileID: 9027092307417642809, guid: 86192743ff76d76458fdc98bb2f305ef,
-        type: 3}
-      propertyPath: m_Name
-      value: WizardPresentationPanel (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 9027092307417642808, guid: 86192743ff76d76458fdc98bb2f305ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2004,6 +1999,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 683
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027092307417642809, guid: 86192743ff76d76458fdc98bb2f305ef,
+        type: 3}
+      propertyPath: m_Name
+      value: WizardPresentationPanel (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6171425913309783022, guid: 86192743ff76d76458fdc98bb2f305ef,
         type: 3}
@@ -2463,11 +2463,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1620487371}
     m_Modifications:
-    - target: {fileID: 7767087443628177225, guid: 33dbe64fcc1822543ab9f0384e113a6c,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerPanel2
-      objectReference: {fileID: 0}
     - target: {fileID: 7767087443628177224, guid: 33dbe64fcc1822543ab9f0384e113a6c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2572,6 +2567,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767087443628177225, guid: 33dbe64fcc1822543ab9f0384e113a6c,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerPanel2
       objectReference: {fileID: 0}
     - target: {fileID: 7767087443628177227, guid: 33dbe64fcc1822543ab9f0384e113a6c,
         type: 3}
@@ -5537,11 +5537,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1620487371}
     m_Modifications:
-    - target: {fileID: 7767087443628177225, guid: 33dbe64fcc1822543ab9f0384e113a6c,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerPanel1
-      objectReference: {fileID: 0}
     - target: {fileID: 7767087443628177224, guid: 33dbe64fcc1822543ab9f0384e113a6c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5646,6 +5641,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767087443628177225, guid: 33dbe64fcc1822543ab9f0384e113a6c,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerPanel1
       objectReference: {fileID: 0}
     - target: {fileID: 7767087442655014080, guid: 33dbe64fcc1822543ab9f0384e113a6c,
         type: 3}
@@ -6131,11 +6131,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 834985740}
     m_Modifications:
-    - target: {fileID: 9027092307417642809, guid: 86192743ff76d76458fdc98bb2f305ef,
-        type: 3}
-      propertyPath: m_Name
-      value: WizardPresentationPanel
-      objectReference: {fileID: 0}
     - target: {fileID: 9027092307417642808, guid: 86192743ff76d76458fdc98bb2f305ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6205,6 +6200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 683
+      objectReference: {fileID: 0}
+    - target: {fileID: 9027092307417642809, guid: 86192743ff76d76458fdc98bb2f305ef,
+        type: 3}
+      propertyPath: m_Name
+      value: WizardPresentationPanel
       objectReference: {fileID: 0}
     - target: {fileID: 6171425913309783022, guid: 86192743ff76d76458fdc98bb2f305ef,
         type: 3}
