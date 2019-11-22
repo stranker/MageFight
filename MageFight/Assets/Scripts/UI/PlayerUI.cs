@@ -73,6 +73,7 @@ public class PlayerUI : MonoBehaviour {
     void Update () {
         UpdateText();
         UpdateCookies();
+        anim.SetFloat("Stamina",movement.flyStamina);
 	}
 
     public void ResetUICookies()

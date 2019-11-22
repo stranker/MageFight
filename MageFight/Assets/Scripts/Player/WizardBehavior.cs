@@ -57,7 +57,7 @@ public class WizardBehavior : MonoBehaviour {
         playerID = player.playerId;
         charData = player.wizardData;
         name = charData.wizardName;
-        playerColor = playerID == 1 ? Color.red : Color.black;
+        playerColor = player.playerColor;
     }
 
     public void Reset(Vector3 position){
