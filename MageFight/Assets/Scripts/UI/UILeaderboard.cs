@@ -16,6 +16,11 @@ public class UILeaderboard : MonoBehaviour {
     public List<LeaderboardCookie> cookieListP1 = new List<LeaderboardCookie>();
     public List<LeaderboardCookie> cookieListP2 = new List<LeaderboardCookie>();
     private bool scoresSeted = false;
+    public Animator anim;
+    public float leaderboardTime = 3;
+    private float timer = 0;
+    public bool onScreen = false;
+
 
     private void Start()
     {
@@ -29,7 +34,27 @@ public class UILeaderboard : MonoBehaviour {
         player2.sprite = GameManager.Instance.GetPlayerById(2).wizardData.artwork;
         player1Text.color = GameManager.Instance.GetPlayerById(1).playerColor;
         player2Text.color = GameManager.Instance.GetPlayerById(2).playerColor;
-        gameObject.SetActive(false);
+    }
+
+    public void Show()
+    {
+        gameObject.SetActive(true);
+        anim.SetTrigger("Appear");
+        onScreen = true;
+    }
+
+    private void Update()
+    {
+        if (onScreen)
+        {
+            timer += Time.deltaTime;
+            if (timer >= leaderboardTime)
+            {
+                timer = 0;
+                gameObject.SetActive(false);
+                GameManager.Instance.CheckEndRound();
+            }
+        }
     }
 
     private void CreatePlayerCookies(Transform cookiePanel, List<LeaderboardCookie> cookieList)
@@ -64,6 +89,7 @@ public class UILeaderboard : MonoBehaviour {
     private void OnDisable()
     {
         scoresSeted = false;
+        onScreen = false;
     }
 
 }

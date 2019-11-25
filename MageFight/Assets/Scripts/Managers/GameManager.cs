@@ -76,7 +76,6 @@ public class GameManager : MonoBehaviour {
 
     private void Start()
     {
-        UIManager.Get().OnLeaderboardShown += OnLeaderboardShown;
         GameplayManager.Get().SendEvent(GameplayManager.Events.StartGame);
         timeScale = Time.timeScale;
     }
@@ -150,10 +149,8 @@ public class GameManager : MonoBehaviour {
         UIManager.Get().ShowLeaderboard();
     }
 
-    private void OnLeaderboardShown(UIManager manager)
+    public void CheckEndRound()
     {
-        //runs at end of round, to update round wins and check if there's a winner
-        //Stop gameplay
         camera.Reset();
         InitializeRound();
         CheckIfAPlayerIsWinner();
@@ -179,7 +176,6 @@ public class GameManager : MonoBehaviour {
 
     private void OnDestroy()
     {
-        UIManager.Get().OnLeaderboardShown -= OnLeaderboardShown;
     }
 
     public Player GetPlayerById(int playerId)
