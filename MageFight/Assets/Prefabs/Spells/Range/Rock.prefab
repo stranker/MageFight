@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 50453737925835492}
   - component: {fileID: 61840047202552924}
   - component: {fileID: 114730571680022348}
+  - component: {fileID: 1767808704}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Spell
@@ -132,7 +133,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61840047202552924
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,3 +176,19 @@ MonoBehaviour:
   type: 6
   spriteEffect: {fileID: 1085410109743728, guid: e6db85a1656dfa74d909d7a5027fef4d,
     type: 3}
+--- !u!58 &1767808704
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975425221469212}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.38

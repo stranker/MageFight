@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 50636181815146314}
   - component: {fileID: 61096969161323936}
   - component: {fileID: 114591939719611182}
+  - component: {fileID: 645364447464564643}
   m_Layer: 0
   m_Name: CompellCloser
   m_TagString: Spell
@@ -132,7 +133,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61096969161323936
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,3 +176,19 @@ MonoBehaviour:
   type: 4
   spriteEffect: {fileID: 1964632029735486, guid: 088ccafe910b75640abd398837da8f8d,
     type: 3}
+--- !u!58 &645364447464564643
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884540721342506}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.15

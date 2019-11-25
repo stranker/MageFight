@@ -7,23 +7,18 @@ public class BeginMatch : MonoBehaviour
 {
 
     public Animator anim;
-    public Text countdown;
+    [SerializeField] private Text roundText;
 
     public void BeginCountdown()
     {
         anim.SetTrigger("BeginRound");
+        roundText.text = "ROUND " + (GameManager.Instance.GetCurrentRound() + 1).ToString();
     }
 
     public void EndCountDown()
     {
         GameplayManager.Get().SendEvent(GameplayManager.Events.CountdownEnd);
         gameObject.SetActive(false);
-        countdown.text = "3";
-    }
-
-    public void ChangeTextTo(string text)
-    {
-        countdown.text = text;
     }
 
 }

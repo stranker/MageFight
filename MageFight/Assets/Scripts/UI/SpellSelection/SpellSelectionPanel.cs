@@ -91,7 +91,7 @@ public class SpellSelectionPanel : MonoBehaviour
     {
         if (currentPlayerTurn != null && !endSpellSelection)
         {
-            wizardName.text = currentPlayerTurn.charData.wizardName;
+            wizardName.text = currentPlayerTurn.wizardData.wizardName;
             wizardName.color = currentPlayerTurn.playerColor;
             playerName.text = "Player " + currentPlayerTurn.playerId.ToString();
             playerName.color = currentPlayerTurn.playerColor;

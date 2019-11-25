@@ -48,6 +48,7 @@ public abstract class Spell : MonoBehaviour {
             {
                 invoked = false;
                 timer = cooldown;
+                Kill();
             }
         }
     }
@@ -55,6 +56,7 @@ public abstract class Spell : MonoBehaviour {
     public void Kill()
     {
         transform.position = new Vector2(-999, -999);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     protected void CheckHasEffect(WizardBehavior player)

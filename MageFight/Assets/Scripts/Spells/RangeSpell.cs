@@ -39,7 +39,17 @@ public class RangeSpell : Spell {
             Kill();
             SpellShake();
         }
-        if (collision.tag == "Ground")
+        if (collision.tag == "Spell")
+        {
+            MakeExplosion();
+            Kill();
+            collision.GetComponent<Spell>().Kill();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Ground")
         {
             MakeExplosion();
             Kill();

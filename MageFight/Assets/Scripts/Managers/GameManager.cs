@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
 
 	private int roundCounter;
 	public List<WizardBehavior> activeWizardList = new List<WizardBehavior>();
-	[SerializeField] public int roundsToWin; //How much of a round-win  a player needs to be considered winner.
+	[SerializeField] public int roundsToWin;
 	[SerializeField] private List<Transform> startingPositions = new List<Transform>();
 
     private int posIdx = 0;
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour {
     private void CreateWizard(Player player)
     {
         GameObject wizard = new GameObject();
-        wizard = Instantiate(player.charData.wizardPrefab, startingPositions[posIdx].position, Quaternion.identity, playersParent.transform);
+        wizard = Instantiate(player.wizardData.wizardPrefab, startingPositions[posIdx].position, Quaternion.identity, playersParent.transform);
         wizard.GetComponent<WizardBehavior>().Initialize(player);
         wizard.GetComponent<WizardBehavior>().Pause();
         wizard.GetComponent<InputManager>().SetInput(player.inputType, player.playerId, player.joistickId);

@@ -9,7 +9,7 @@ public class SpellsManager : MonoBehaviour {
     public List<Spell> spells = new List<Spell>();
     public const int amountOfSpells = 3;
     public int spellIndexToReplace = 0;
-    private List<PowerIcon> icons = new List<PowerIcon>();
+    private List<SpellIcon> icons = new List<SpellIcon>();
     public ParticleSystem spellParticles;
     private ParticleSystem.MainModule spellParticlesMain;
 
@@ -17,10 +17,10 @@ public class SpellsManager : MonoBehaviour {
         var playersUIs = GameObject.FindGameObjectsWithTag("PlayerUI");
         foreach (var ui in playersUIs)
         {
-            if (ui.GetComponent<PlayerUI>().playerId == GetComponent<WizardBehavior>().playerName)
+            if (ui.GetComponent<PlayerUI>().playerId == GetComponent<WizardBehavior>().playerID)
             {
-                PowerIcon[] pI = ui.GetComponentsInChildren<PowerIcon>();
-                foreach (PowerIcon icon in pI)
+                SpellIcon[] pI = ui.GetComponentsInChildren<SpellIcon>();
+                foreach (SpellIcon icon in pI)
                     icons.Add(icon);
                 break;
             }
@@ -69,7 +69,7 @@ public class SpellsManager : MonoBehaviour {
             Spell sp = Instantiate(spell, transform.parent);
             sp.Kill();
             spells.Add(sp);
-            foreach(PowerIcon icon in icons){
+            foreach(SpellIcon icon in icons){
                 if(icon.GetSkillOrder() == spells.Count){
                     icon.SetSpell(spell);
                 }
@@ -83,7 +83,7 @@ public class SpellsManager : MonoBehaviour {
             sp.Kill();
             spells[spellIndexToReplace] = sp;
 
-            foreach(PowerIcon icon in icons){
+            foreach(SpellIcon icon in icons){
                 if(icon.GetSkillOrder() == spellIndexToReplace + 1 ){
                     icon.SetSpell(spell);
                 }
@@ -105,7 +105,7 @@ public class SpellsManager : MonoBehaviour {
     public void Reset(){
         spells.Clear();
         spellIndexToReplace = 0;
-        foreach(PowerIcon icon in icons){
+        foreach(SpellIcon icon in icons){
             icon.Reset();
         }
     }

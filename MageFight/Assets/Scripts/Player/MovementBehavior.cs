@@ -42,6 +42,13 @@ public class MovementBehavior : MonoBehaviour {
     private float playerRestoreOnHitTimer = 0;
     public float playerRestoreOnHitTime;
 
+    private bool spellInvoked = false;
+    private float timerSpellInvoked;
+    private float timeSpellInvoked = 2f;
+
+    private float timerCanMove;
+    private float timeCanMoveException = 0.8f;
+
     // Use this for initialization
     void Start () {
         initialGravityScale = rigidBody.gravityScale;
@@ -53,11 +60,38 @@ public class MovementBehavior : MonoBehaviour {
         if (wizardBehavior.isAlive)
         {
             GetInput();
-            GeneralMovement();
+            if (canMove)
+            {
+                GeneralMovement();
+            }
             CheckRestoreOnPlayerHit();
             CheckOutbounds();
+            TimersCheck();
         }
 	}
+
+    private void TimersCheck()
+    {
+        if (spellInvoked)
+        {
+            timerSpellInvoked += Time.deltaTime;
+            if (timerSpellInvoked >= timeSpellInvoked)
+            {
+                timerSpellInvoked = 0;
+                spellInvoked = false;
+                SetCanMove(true);
+            }
+        }
+        if (!canMove)
+        {
+            timerCanMove += Time.deltaTime;
+            if (timerCanMove > timeCanMoveException)
+            {
+                timerCanMove = 0;
+                SetCanMove(true);
+            }
+        }
+    }
 
     private void CheckOutbounds()
     {
@@ -67,21 +101,10 @@ public class MovementBehavior : MonoBehaviour {
         }
     }
 
-    private void CheckStun()
-    {
-        throw new NotImplementedException();
-    }
 
     public void SetMotion(int i)
     {
-        if (i == 0) // No puedo moverme
-        {
-            SetCanMove(false);
-        }
-        else if(i == 1)
-        {
-            SetCanMove(true);
-        }
+        SetCanMove(i == 1);
     }
 
     private void CheckRestoreOnPlayerHit()
@@ -93,7 +116,6 @@ public class MovementBehavior : MonoBehaviour {
             {
                 playerRestoreOnHitTimer = 0;
                 onPlayerRestoreHit = false;
-                canMove = !onPlayerRestoreHit;
             }
         }
     }
@@ -112,6 +134,12 @@ public class MovementBehavior : MonoBehaviour {
             rigidBody.velocity = canMove ? velocity : Vector2.zero;
         FacingDirectionCheck();
         rigidBody.gravityScale = flying ? 0 : initialGravityScale;
+    }
+
+    public void SpellInvoked(int val)
+    {
+        spellInvoked = val == 0;
+        SetCanMove(false);
     }
 
     private void GetInput()
@@ -203,7 +231,6 @@ public class MovementBehavior : MonoBehaviour {
     {
         if (wizardBehavior.isAlive)
         {
-            canMove = false;
             rigidBody.velocity = dir * new Vector2(knockForce.x, knockForce.y);
             onPlayerRestoreHit = !canMove;
         }
@@ -227,15 +254,6 @@ public class MovementBehavior : MonoBehaviour {
     private float GetYAxis()
     {
         return Input.GetAxis(input.GetYAxis());
-    }
-
-    public void Knockback(Vector2 pos)
-    {
-        //knockback = true;
-        Vector2 knockDirection = ((Vector2)transform.position - pos).normalized;
-        knockDirection.x *= 5;
-        knockDirection.y = 10;
-        rigidBody.velocity = knockDirection;
     }
 
     public void Pull(Vector2 pos)

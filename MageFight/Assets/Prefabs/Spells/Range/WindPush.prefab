@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 114951534744336276}
   - component: {fileID: 50150582354683568}
   - component: {fileID: 61134274761587284}
+  - component: {fileID: 1219477376}
   m_Layer: 0
   m_Name: WindPush
   m_TagString: Spell
@@ -131,7 +132,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61134274761587284
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -156,5 +157,21 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.270061, y: 1.256568}
+  m_Size: {x: 2.270061, y: 2.06}
   m_EdgeRadius: 0
+--- !u!58 &1219477376
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445943667450572}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.75
