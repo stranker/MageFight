@@ -52,7 +52,6 @@ public class PlayerOffScreenIndicator : MonoBehaviour {
         float arrowAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         arrow.transform.rotation = Quaternion.Euler(0,0,arrowAngle);
         float distanceToWizard = Vector2.Distance(target.position, transform.position);
-        print(distanceToWizard);
         anim.SetFloat("EdgeDistance", distanceToWizard);
     }
 
