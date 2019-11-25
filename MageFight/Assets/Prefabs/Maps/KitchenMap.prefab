@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 7370036039640583542}
   - component: {fileID: 7449486275116716204}
   - component: {fileID: 7362342774579043254}
+  - component: {fileID: 5139745825954740762}
   m_Layer: 8
   m_Name: Papafrita (4)
   m_TagString: Ground
@@ -184,7 +185,7 @@ PolygonCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 7918e09e491340c429547714a0464a19, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -219,6 +220,25 @@ PolygonCollider2D:
       - {x: 0.63, y: -0.22}
       - {x: 0.64, y: -0.19999999}
       - {x: 0.64, y: -0.02}
+--- !u!251 &5139745825954740762
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417472492225784764}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: -192.6
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 158
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &7417545269096836130
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +459,7 @@ GameObject:
   - component: {fileID: 7369850774054874332}
   - component: {fileID: 7449901273415941340}
   - component: {fileID: 7359900624862693560}
+  - component: {fileID: 4379700733365005300}
   m_Layer: 8
   m_Name: Papafrita (6)
   m_TagString: Ground
@@ -580,7 +601,7 @@ PolygonCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 7918e09e491340c429547714a0464a19, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -601,6 +622,25 @@ PolygonCollider2D:
       - {x: 0.39, y: -0.12}
       - {x: 0.45, y: -0.089999996}
       - {x: 0.45, y: 0.06}
+--- !u!251 &4379700733365005300
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417635125004630612}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: -178.6
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 153.4
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &7417783871642449778
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,6 +770,7 @@ GameObject:
   - component: {fileID: 7369734115457796268}
   - component: {fileID: 7449264165302683256}
   - component: {fileID: 7359374159777944040}
+  - component: {fileID: 4836954211363592874}
   m_Layer: 8
   m_Name: Papafrita (5)
   m_TagString: Ground
@@ -871,7 +912,7 @@ PolygonCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 7918e09e491340c429547714a0464a19, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -898,6 +939,25 @@ PolygonCollider2D:
       - {x: -0.675, y: -0.14999999}
       - {x: -0.655, y: -0.16}
       - {x: 0.005, y: -0.16}
+--- !u!251 &4836954211363592874
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418065620148448666}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: -178.9
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 155.1
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &7418117043415666144
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,6 +1144,7 @@ GameObject:
   - component: {fileID: 7369805703109022520}
   - component: {fileID: 7449912071824294476}
   - component: {fileID: 6855358996464831218}
+  - component: {fileID: 5967491762423490889}
   m_Layer: 8
   m_Name: Papafrita (2)
   m_TagString: Ground
@@ -1225,7 +1286,7 @@ PolygonCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 7918e09e491340c429547714a0464a19, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -1254,6 +1315,25 @@ PolygonCollider2D:
       - {x: 0.45064878, y: -0.08036033}
       - {x: 0.5924546, y: -0.07024227}
       - {x: 0.7381649, y: -0.05431816}
+--- !u!251 &5967491762423490889
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418261471590852700}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: -172.63
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 152.9
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &7418269311998579788
 GameObject:
   m_ObjectHideFlags: 0
@@ -6134,6 +6214,7 @@ GameObject:
   - component: {fileID: 7369706294563272698}
   - component: {fileID: 7449760351715056488}
   - component: {fileID: 7359276480024687456}
+  - component: {fileID: 640216224269169206}
   m_Layer: 8
   m_Name: Papafrita (3)
   m_TagString: Ground
@@ -6149,8 +6230,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7419660811647126598}
   m_LocalRotation: {x: -0, y: -0, z: 0.9999838, w: 0.0056988667}
-  m_LocalPosition: {x: 10.89, y: 4.41, z: 0}
-  m_LocalScale: {x: 2.6592114, y: 3.1091208, z: 2.776}
+  m_LocalPosition: {x: 11.507, y: 4.359, z: 0}
+  m_LocalScale: {x: 3.7840579, y: 3.3796144, z: 2.776}
   m_Children: []
   m_Father: {fileID: 7420416231202996432}
   m_RootOrder: 1
@@ -6275,7 +6356,7 @@ PolygonCollider2D:
   m_Density: 1
   m_Material: {fileID: 6200000, guid: 7918e09e491340c429547714a0464a19, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -6303,3 +6384,22 @@ PolygonCollider2D:
       - {x: 0.5121701, y: -0.1175921}
       - {x: 0.4979319, y: -0.04647064}
       - {x: 0.4561469, y: 0.07994163}
+--- !u!251 &640216224269169206
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7419660811647126598}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: -180.8
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 162.9
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
