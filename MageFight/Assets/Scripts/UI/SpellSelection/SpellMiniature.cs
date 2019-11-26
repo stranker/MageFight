@@ -15,15 +15,22 @@ public class SpellMiniature : MonoBehaviour
         anim.SetTrigger("Appear");
     }
 
-    public void SelectForRecycle()
+    public void CheckRecycle()
     {
-        onRecycle = !onRecycle;
         anim.SetBool("Recycle", onRecycle);
+        onRecycle = !onRecycle;
     }
 
     public void SetSpell(Spell spell)
     {
         gameObject.SetActive(true);
         spellArtwork.sprite = spell.spellData.spellArtwork;
+        onRecycle = true;
+    }
+
+    public void Reset()
+    {
+        onRecycle = false;
+        spellArtwork.sprite = null;
     }
 }

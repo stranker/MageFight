@@ -32,7 +32,7 @@ public class SpellSelectionPanel : MonoBehaviour
 
     private bool spellConfirmed = false;
     private float timerBetweenSelections;
-    [SerializeField] private float timeBetweenSelections = 1f;
+    [SerializeField] private float timeBetweenSelections = 1.5f;
 
     public WizardDataScriptable wizardDataTest;
 
@@ -49,6 +49,8 @@ public class SpellSelectionPanel : MonoBehaviour
     public SpellMiniature[] currentSpells;
 
     [SerializeField] private Animator anim;
+
+    public int totalRounds = 0;
 
     private void Start()
     {
@@ -106,6 +108,7 @@ public class SpellSelectionPanel : MonoBehaviour
         foreach (SpellMiniature sm in currentSpells)
         {
             sm.gameObject.SetActive(false);
+            sm.Reset();
         }
     }
 
@@ -118,14 +121,14 @@ public class SpellSelectionPanel : MonoBehaviour
             currentSpells[count].SetSpell(spell);
             count++;
         }
-        int totalRounds = GameManager.Instance.GetCurrentRound();
+        totalRounds = GameManager.Instance.GetCurrentRound() - 1;
         if (totalRounds < 3)
         {
             currentSpells[totalRounds % 3].Appear();
         }
         else
         {
-            currentSpells[totalRounds % 3].SelectForRecycle();
+            currentSpells[totalRounds % 3].CheckRecycle();
         }
     }
 

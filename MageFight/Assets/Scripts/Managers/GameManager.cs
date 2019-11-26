@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	private int roundCounter;
+	[SerializeField] private int roundCounter;
 	public List<WizardBehavior> activeWizardList = new List<WizardBehavior>();
 	[SerializeField] public int roundsToWin;
 	[SerializeField] private List<Transform> startingPositions = new List<Transform>();
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
     void Awake () {
         AddPlayers();
         CreateWizards();
-		roundCounter = 0;
+        InitializeRound();
 	}
 
     public int GetCurrentRound()
@@ -87,6 +87,16 @@ public class GameManager : MonoBehaviour {
         {
             GameplayManager.Get().SendEvent(GameplayManager.Events.PauseGameplay);
         }
+
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            activeWizardList[0].TakeDamage(900, Vector2.zero);
+        }
+        if (Input.GetKeyDown(KeyCode.F6))
+        {
+            activeWizardList[1].TakeDamage(900, Vector2.zero);
+        }
+
         if (playerDead)
         {
             playerDeathTimer += Time.deltaTime;
@@ -109,7 +119,7 @@ public class GameManager : MonoBehaviour {
             wizard.Reset(startingPositions[count].position);
             count++;
         }
-		Debug.Log("Begin round: " + (roundCounter +1));
+		Debug.Log("Begin round: " + (roundCounter + 1));
 	}
 
     public void StartRound(){

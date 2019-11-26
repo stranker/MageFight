@@ -16,6 +16,7 @@ public class Player
     public Color playerColor;
     public List<Spell> spellList = new List<Spell>();
     public GameObject wizardRef;
+    private int spellReplaceIdx = 0;
 
     public Player(int playerId, WizardDataScriptable wizardData, InputType inputType, int joistickId, Color playerColor)
     {
@@ -34,8 +35,9 @@ public class Player
         }
         else
         {
-            spellList.RemoveAt(GameManager.Instance.GetCurrentRound() % 3);
-            spellList.Insert(GameManager.Instance.GetCurrentRound() % 3, spell);
+            spellList.RemoveAt(spellReplaceIdx);
+            spellList.Insert(spellReplaceIdx, spell);
+            spellReplaceIdx++;
         }
     }
 
@@ -43,6 +45,7 @@ public class Player
     {
         winRounds = 0;
         spellList.Clear();
+        spellReplaceIdx = 0;
         if (wizardRef)
             wizardRef.GetComponent<SpellsManager>().Reset();
     }

@@ -8,7 +8,6 @@ public class SpellsManager : MonoBehaviour {
     [Header("Player spells")]
     public List<Spell> spells = new List<Spell>();
     public const int amountOfSpells = 3;
-    public int spellIndexToReplace = 0;
     private List<SpellIcon> icons = new List<SpellIcon>();
     public ParticleSystem spellParticles;
     private ParticleSystem.MainModule spellParticlesMain;
@@ -74,23 +73,7 @@ public class SpellsManager : MonoBehaviour {
                     icon.SetSpell(spell);
                 }
             }
-        } else {
-            if(spellIndexToReplace >= amountOfSpells){ spellIndexToReplace = 0;}
-
-            spells[spellIndexToReplace].Kill();
-
-            Spell sp = Instantiate(spell, transform.parent);
-            sp.Kill();
-            spells[spellIndexToReplace] = sp;
-
-            foreach(SpellIcon icon in icons){
-                if(icon.GetSkillOrder() == spellIndexToReplace + 1 ){
-                    icon.SetSpell(spell);
-                }
-            }
-            spellIndexToReplace++;
         }
-        
     }
 
     public bool FullSpellInventory(){
@@ -104,7 +87,6 @@ public class SpellsManager : MonoBehaviour {
 
     public void Reset(){
         spells.Clear();
-        spellIndexToReplace = 0;
         foreach(SpellIcon icon in icons){
             icon.Reset();
         }

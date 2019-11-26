@@ -796,7 +796,7 @@ MonoBehaviour:
   turnCounter: 0
   endSpellSelection: 0
   timeEndSpellSelection: 1.5
-  timeBetweenSelections: 1
+  timeBetweenSelections: 1.5
   wizardDataTest: {fileID: 11400000, guid: 496cecf06de077a45882297bb77d80ff, type: 2}
   debugMode: 1
   inputConfirmationImages:

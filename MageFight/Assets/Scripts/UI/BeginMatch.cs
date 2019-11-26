@@ -12,7 +12,7 @@ public class BeginMatch : MonoBehaviour
     public void BeginCountdown()
     {
         anim.SetTrigger("BeginRound");
-        roundText.text = "ROUND " + (GameManager.Instance.GetCurrentRound() + 1).ToString();
+        roundText.text = "ROUND " + (GameManager.Instance.GetCurrentRound()).ToString();
     }
 
     public void EndCountDown()
