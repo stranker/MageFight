@@ -5140,7 +5140,7 @@ MonoBehaviour:
   - {fileID: 790787565}
   - {fileID: 1089353096}
   posIdx: 0
-  debugMode: 1
+  debugMode: 0
   wizardDebugData1: {fileID: 11400000, guid: 40aeea4a1a18a07438184329c468846a, type: 2}
   wizardDebugData2: {fileID: 11400000, guid: 5d622dd8ddd6fa94997fc2a6e48d40fb, type: 2}
 --- !u!1 &378824951

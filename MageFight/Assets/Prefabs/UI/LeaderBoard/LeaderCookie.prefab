@@ -90,7 +90,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   empty: {fileID: 21300000, guid: 38b109177ae65de4fb02c97106320cbe, type: 3}
-  cookie: {fileID: 21300000, guid: a6ad0a01bbf295940adf5b72a07594d0, type: 3}
   image: {fileID: 2441520006059070458}
   anim: {fileID: 248318442812398002}
 --- !u!95 &248318442812398002

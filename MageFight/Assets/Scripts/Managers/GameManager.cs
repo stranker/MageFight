@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour {
     {
         GameplayManager.Get().SendEvent(GameplayManager.Events.StartGame);
         timeScale = Time.timeScale;
+        UIManager.Get().Initialize();
     }
 
     private void Update()

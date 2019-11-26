@@ -28,6 +28,11 @@ public class UIManager : MonoBehaviour {
     public GameObject firstSelectedButtonPauseMenu;
     public BeginMatch beginMatchPanel;
 
+    public void Initialize()
+    {
+        leaderboard.Initialize();
+    }
+
     public void StartCountdown()
     {
         beginMatchPanel.gameObject.SetActive(true);
@@ -88,4 +93,6 @@ public class UIManager : MonoBehaviour {
             pUI.ResetUICookies();
         }
     }
+
+
 }

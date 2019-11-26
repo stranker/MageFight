@@ -115,11 +115,18 @@ public class SpellSelectionPanel : MonoBehaviour
         var count = 0;
         foreach (Spell spell in currentPlayerTurn.spellList)
         {
-            currentSpells[count].gameObject.SetActive(true);
-            currentSpells[count].SetSpellArtwork(spell.spellData.spellArtwork);
+            currentSpells[count].SetSpell(spell);
             count++;
         }
-        currentSpells[GameManager.Instance.GetCurrentRound()%3].Appear();
+        int totalRounds = GameManager.Instance.GetCurrentRound();
+        if (totalRounds < 3)
+        {
+            currentSpells[totalRounds % 3].Appear();
+        }
+        else
+        {
+            currentSpells[totalRounds % 3].SelectForRecycle();
+        }
     }
 
     private void CreateSpellsPanel()
@@ -172,8 +179,6 @@ public class SpellSelectionPanel : MonoBehaviour
             }
         }
     }
-
-
 
     private void EndSpellSelection()
     {
@@ -252,8 +257,6 @@ public class SpellSelectionPanel : MonoBehaviour
         CreateCurrentSpellsMiniatures();
         spellConfirmed = true;
     }
-
-
 
     private void NextTurn()
     {

@@ -34,8 +34,8 @@ public class Player
         }
         else
         {
-            spellList.RemoveAt(0);
-            spellList.Insert(0, spell);
+            spellList.RemoveAt(GameManager.Instance.GetCurrentRound() % 3);
+            spellList.Insert(GameManager.Instance.GetCurrentRound() % 3, spell);
         }
     }
 
@@ -76,7 +76,7 @@ public class WizardSelectionDisplay : MonoBehaviour
     public bool playerConfirmed = false;
 
     private float canConfirmTimer;
-    private float canConfirmTime = 1.1f;
+    public float canConfirmTime = 0.7f;
     private bool canConfirm = false;
 
     Player player = null;

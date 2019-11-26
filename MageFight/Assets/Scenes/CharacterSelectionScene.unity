@@ -728,6 +728,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976535751}
     m_Modifications:
+    - target: {fileID: 3495967539398605301, guid: b4dcca759d1aa1248a1f16a745d4f440,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerPanel2
+      objectReference: {fileID: 0}
     - target: {fileID: 3495967539398605305, guid: b4dcca759d1aa1248a1f16a745d4f440,
         type: 3}
       propertyPath: playerId
@@ -747,6 +752,11 @@ PrefabInstance:
         type: 3}
       propertyPath: playerColor.b
       value: 0.8980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495967539398605305, guid: b4dcca759d1aa1248a1f16a745d4f440,
+        type: 3}
+      propertyPath: canConfirmTime
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3495967539398605306, guid: b4dcca759d1aa1248a1f16a745d4f440,
         type: 3}
@@ -852,11 +862,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3495967539398605301, guid: b4dcca759d1aa1248a1f16a745d4f440,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerPanel2
       objectReference: {fileID: 0}
     - target: {fileID: 3495967539398605307, guid: b4dcca759d1aa1248a1f16a745d4f440,
         type: 3}
@@ -1529,6 +1534,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1976535751}
     m_Modifications:
+    - target: {fileID: 3495967539398605301, guid: b4dcca759d1aa1248a1f16a745d4f440,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3495967539398605305, guid: b4dcca759d1aa1248a1f16a745d4f440,
+        type: 3}
+      propertyPath: canConfirmTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3495967539398605306, guid: b4dcca759d1aa1248a1f16a745d4f440,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1633,11 +1648,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3495967539398605301, guid: b4dcca759d1aa1248a1f16a745d4f440,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerPanel
       objectReference: {fileID: 0}
     - target: {fileID: 3495967539843809489, guid: b4dcca759d1aa1248a1f16a745d4f440,
         type: 3}
