@@ -21,8 +21,6 @@ public class CameraManager : MonoBehaviour
         }
     }
     public Camera mainCamera;
-    //public Camera leftCamera;
-    //public Camera rightCamera;
     public List<GameObject> playerList = new List<GameObject>();
     private float timer = 0;
     public float presTime = 5f;
@@ -38,16 +36,11 @@ public class CameraManager : MonoBehaviour
 
     public void ActivateCamerasPlayerPresentation()
     {
-        mainCamera.gameObject.SetActive(false);
-        //leftCamera.gameObject.SetActive(true);
-        //rightCamera.gameObject.SetActive(true);
         onPlayerPresentation = true;
     }
     public void ActivateCamerasGameplay()
     {
         mainCamera.gameObject.SetActive(true);
-        //leftCamera.gameObject.SetActive(false);
-        //rightCamera.gameObject.SetActive(false);
     }
     public void ActivateDeathcam()
     {
@@ -63,8 +56,6 @@ public class CameraManager : MonoBehaviour
             lCamPos.z = -1;
             Vector3 rCamPos = playerList[1].transform.position;
             rCamPos.z = -1;
-            //leftCamera.gameObject.transform.position = lCamPos;
-            //rightCamera.gameObject.transform.position = rCamPos;
             if(timer >= presTime)
             {
                 timer = 0;

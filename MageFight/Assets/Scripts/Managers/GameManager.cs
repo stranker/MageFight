@@ -143,7 +143,6 @@ public class GameManager : MonoBehaviour {
                 camera.SetTarget(wizard.transform);
                 wizard.playerRef.winRounds += 1;
                 GameplayManager.Get().SendEvent(GameplayManager.Events.PlayerDead);
-                wizard.Pause();
             }
         }
     }
@@ -158,6 +157,10 @@ public class GameManager : MonoBehaviour {
 
 	public void EndRound(){
         UIManager.Get().ShowLeaderboard();
+        foreach (WizardBehavior wizard in activeWizardList)
+        {
+            wizard.Pause();
+        }
     }
 
     public void CheckEndRound()

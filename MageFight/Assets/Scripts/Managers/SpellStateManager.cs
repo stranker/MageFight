@@ -143,7 +143,6 @@ public class SpellStateManager : MonoBehaviour
         isShrinked = true;
         movement.SetCanFly(false);
         attack.SetCanAttack(false);
-        print("HACER EL SHRINK");
     }
 
     public void Hammerfall()

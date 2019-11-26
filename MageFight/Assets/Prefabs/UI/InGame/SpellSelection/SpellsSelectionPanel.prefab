@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 2.7999, y: -10.095}
-  m_SizeDelta: {x: 250.29, y: 27.63}
+  m_AnchoredPosition: {x: -0.000017166, y: -17}
+  m_SizeDelta: {x: 269.6, y: 47.813}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &110310494070344329
 CanvasRenderer:
@@ -146,7 +146,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 75
+    m_MaxSize: 88
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -297,10 +297,10 @@ RectTransform:
   m_Father: {fileID: 8810455507997067116}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000020266, y: 354.64}
-  m_SizeDelta: {x: 1303.2, y: 437.82}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000020266, y: -19.899994}
+  m_SizeDelta: {x: 1303.2, y: 418.90002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1090893712077137696
 CanvasRenderer:
@@ -401,8 +401,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.7999878, y: -11.954998}
-  m_SizeDelta: {x: -907.5, y: -23.91}
+  m_AnchoredPosition: {x: 2.7999878, y: -18.624994}
+  m_SizeDelta: {x: -907.5, y: -37.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1242902599837997738
 CanvasRenderer:
@@ -808,6 +808,7 @@ MonoBehaviour:
   - {fileID: 3923259315081927311}
   - {fileID: 5051962195344468362}
   anim: {fileID: 1404242213123093108}
+  totalRounds: 0
 --- !u!95 &1404242213123093108
 Animator:
   serializedVersion: 3
@@ -1035,10 +1036,10 @@ RectTransform:
   m_Father: {fileID: 8810455507997067116}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 682.99994, y: -687.5}
-  m_SizeDelta: {x: 1303.2, y: 108.76}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -0.000061035156, y: 90.390015}
+  m_SizeDelta: {x: 1303.2, y: 128.53003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3432727783404860035
 CanvasRenderer:
@@ -1084,16 +1085,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3580161306889153409}
     m_Modifications:
-    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
-        type: 3}
-      propertyPath: m_Name
-      value: SpellMiniature2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8134361894522185180, guid: cac3ab94deb9aa3449cf08900d393f8c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1199,6 +1190,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
+        type: 3}
+      propertyPath: m_Name
+      value: SpellMiniature2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cac3ab94deb9aa3449cf08900d393f8c, type: 3}
 --- !u!224 &8305741671258176497 stripped
@@ -1226,16 +1227,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3580161306889153409}
     m_Modifications:
-    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
-        type: 3}
-      propertyPath: m_Name
-      value: SpellMiniature3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8134361894522185180, guid: cac3ab94deb9aa3449cf08900d393f8c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1341,6 +1332,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
+        type: 3}
+      propertyPath: m_Name
+      value: SpellMiniature3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cac3ab94deb9aa3449cf08900d393f8c, type: 3}
 --- !u!224 &229111136791185652 stripped
@@ -1368,16 +1369,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3580161306889153409}
     m_Modifications:
-    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
-        type: 3}
-      propertyPath: m_Name
-      value: SpellMiniature
-      objectReference: {fileID: 0}
-    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8134361894522185180, guid: cac3ab94deb9aa3449cf08900d393f8c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1482,6 +1473,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
+        type: 3}
+      propertyPath: m_Name
+      value: SpellMiniature
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cac3ab94deb9aa3449cf08900d393f8c, type: 3}

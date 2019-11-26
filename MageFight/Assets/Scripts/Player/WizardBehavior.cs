@@ -65,6 +65,7 @@ public class WizardBehavior : MonoBehaviour {
         isAlive = true;
         visual.SetPlayerDead(false);
         transform.position = position;
+        movement.CheckFacingToCenter();
     }
 
     public void Pause(){

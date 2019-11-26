@@ -36,9 +36,9 @@ public class CameraController : MonoBehaviour
     public float maxYPositionPositive = 3;
     public float maxYPositionNegative = 3;
 
-    public AnimationCurve deathCurve;
-    private float deathTimer;
-    public float freezeDeathTime = 4f;
+    public AnimationCurve slowmoCurve;
+    private float slowmoTimer;
+    public float slowmoTotalTime = 4f;
 
     public bool shaking = false;
     public float shakeOffset = 0.1f;
@@ -61,16 +61,19 @@ public class CameraController : MonoBehaviour
 
     public void CheckCameraState()
     {
-        switch (cameraState)
+        if (playerList.Count > 0)
         {
-            case CameraStates.Normal:
-                NormalMovement();
-                break;
-            case CameraStates.Slowmo:
-                SlowmotionMovement();
-                break;
-            default:
-                break;
+            switch (cameraState)
+            {
+                case CameraStates.Normal:
+                    NormalMovement();
+                    break;
+                case CameraStates.Slowmo:
+                    SlowmotionMovement();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -89,12 +92,12 @@ public class CameraController : MonoBehaviour
 
     private void SlowmotionMovement()
     {
-        deathTimer += Time.unscaledDeltaTime;
-        Time.timeScale = deathCurve.Evaluate(deathTimer);
-        if (deathTimer >= freezeDeathTime)
+        slowmoTimer += Time.unscaledDeltaTime * 0.5f;
+        Time.timeScale = slowmoCurve.Evaluate(slowmoTimer);
+        if (slowmoTimer >= slowmoTotalTime)
         {
             Time.timeScale = 1;
-            deathTimer = 0;
+            slowmoTimer = 0;
             cameraState = CameraStates.Normal;
         }
         translationCurveTimer += Time.unscaledDeltaTime;
@@ -143,7 +146,7 @@ public class CameraController : MonoBehaviour
         camera.orthographicSize = startSize;
         translationCurveTimer = 0;
         Time.timeScale = 1;
-        deathTimer = 0;
+        slowmoTimer = 0;
     }
 
     public void CameraShake(float amount, float time)
@@ -151,7 +154,6 @@ public class CameraController : MonoBehaviour
         shakeTime = time;
         shakeOffset = amount;
         shaking = true;
-        print("shaking");
     }
 
     public void SpellShake(float amount)
@@ -162,11 +164,6 @@ public class CameraController : MonoBehaviour
             shakeOffset = amount;
             shaking = true;
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        //Gizmos.DrawCube(transform.position, new Vector3(maxXPos, maxYPos, 0));
     }
 
 }

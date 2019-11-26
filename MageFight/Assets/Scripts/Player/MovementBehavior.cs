@@ -17,7 +17,6 @@ public class MovementBehavior : MonoBehaviour {
     public RaycastHit2D LeftFootRaycast;
     public RaycastHit2D RightFootRaycast;
     public int currentDirection = 1;
-    public int initialDirection = 1;
     public bool canJump = true;
     public bool canFly = true;
     public bool flying;
@@ -49,14 +48,17 @@ public class MovementBehavior : MonoBehaviour {
     private float timerCanMove;
     private float timeCanMoveException = 0.8f;
 
+    public bool doubleJump = true;
+
     // Use this for initialization
     void Start () {
         initialGravityScale = rigidBody.gravityScale;
         wizardBehavior = GetComponent<WizardBehavior>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+
+    // Update is called once per frame
+    void Update () {
         if (wizardBehavior.isAlive)
         {
             GetInput();
@@ -126,6 +128,7 @@ public class MovementBehavior : MonoBehaviour {
         LeftFootRaycast = Physics2D.Raycast(leftFoot.transform.position, Vector2.down, 1.1f, floorLayer);
         onFloor = RightFootRaycast || LeftFootRaycast;
         canJump = onFloor;
+        doubleJump = !doubleJump ? canJump : true;
         FlyAccelerationCheck();
         FlyStaminaCheck();
         GetAimDirection();
@@ -195,6 +198,12 @@ public class MovementBehavior : MonoBehaviour {
             canJump = false;
             velocity.y = jumpSpeed;
             jumpParticles.Play();
+        }
+        if (GetJumpInput() && !onFloor && doubleJump)
+        {
+            velocity.y = jumpSpeed;
+            jumpParticles.Play();
+            doubleJump = false;
         }
     }
 
@@ -291,8 +300,14 @@ public class MovementBehavior : MonoBehaviour {
         rigidBody.gravityScale = v ? 6 : 0;
         flyStamina = flyMaxStamina;
         flying = false;
-        currentDirection = initialDirection;
         enabled = v;
+    }
+
+
+    public void CheckFacingToCenter()
+    {
+        currentDirection = transform.position.x > 0 ? - 1 : 1;
+        visual.localScale = new Vector2(currentDirection, 1);
     }
 
 }
