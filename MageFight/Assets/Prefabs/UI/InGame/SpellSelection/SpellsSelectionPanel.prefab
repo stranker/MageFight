@@ -790,15 +790,15 @@ MonoBehaviour:
     type: 3}
   wizardName: {fileID: 8810455507268374012}
   playerName: {fileID: 69643549230617501}
-  forceSpellDebug: 0
-  spellDebug: {fileID: 114786596358402696, guid: b164b286bf25c304bb28c1b2dbf4d06f,
+  forceSpellDebug: 1
+  spellDebug: {fileID: 114194034602317248, guid: 2d6a795219e15fb40b08e595adb8715d,
     type: 3}
   turnCounter: 0
   endSpellSelection: 0
   timeEndSpellSelection: 1.5
   timeBetweenSelections: 1.5
   wizardDataTest: {fileID: 11400000, guid: 496cecf06de077a45882297bb77d80ff, type: 2}
-  debugMode: 1
+  debugMode: 0
   inputConfirmationImages:
   - {fileID: 21300000, guid: 11970b3d2ba7c3643abc6ad797559212, type: 3}
   - {fileID: 21300004, guid: b3196e8d52510814f9cd6952699eecc7, type: 3}

@@ -247,19 +247,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1899458322644782, guid: 2d6a795219e15fb40b08e595adb8715d, type: 3}
       propertyPath: m_Name
-      value: Power Pummel
+      value: Magic Punch
       objectReference: {fileID: 0}
     - target: {fileID: 4964446456129188, guid: 2d6a795219e15fb40b08e595adb8715d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -999.4381
+      value: 5.69
       objectReference: {fileID: 0}
     - target: {fileID: 4964446456129188, guid: 2d6a795219e15fb40b08e595adb8715d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1000.99786
+      value: 10.52
       objectReference: {fileID: 0}
     - target: {fileID: 4964446456129188, guid: 2d6a795219e15fb40b08e595adb8715d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.1283245
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4964446456129188, guid: 2d6a795219e15fb40b08e595adb8715d, type: 3}
       propertyPath: m_LocalRotation.x
@@ -292,6 +292,14 @@ PrefabInstance:
     - target: {fileID: 4964446456129188, guid: 2d6a795219e15fb40b08e595adb8715d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620266821576702, guid: 2d6a795219e15fb40b08e595adb8715d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620266821576702, guid: 2d6a795219e15fb40b08e595adb8715d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d6a795219e15fb40b08e595adb8715d, type: 3}
@@ -599,14 +607,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1445943667450572, guid: a41a750c7c56cc34aa4170ddf4884173, type: 3}
-      propertyPath: m_Name
-      value: WindPush
-      objectReference: {fileID: 0}
     - target: {fileID: 114951534744336276, guid: a41a750c7c56cc34aa4170ddf4884173,
         type: 3}
       propertyPath: mageOwner
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445943667450572, guid: a41a750c7c56cc34aa4170ddf4884173, type: 3}
+      propertyPath: m_Name
+      value: WindPush
       objectReference: {fileID: 0}
     - target: {fileID: 4975187229472398, guid: a41a750c7c56cc34aa4170ddf4884173, type: 3}
       propertyPath: m_LocalPosition.x
@@ -661,14 +669,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1884540721342506, guid: b2e51f936ff84c5478b7591a7dbadd57, type: 3}
-      propertyPath: m_Name
-      value: CompellCloser
-      objectReference: {fileID: 0}
     - target: {fileID: 114261353051233270, guid: b2e51f936ff84c5478b7591a7dbadd57,
         type: 3}
       propertyPath: mageOwner
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884540721342506, guid: b2e51f936ff84c5478b7591a7dbadd57, type: 3}
+      propertyPath: m_Name
+      value: CompellCloser
       objectReference: {fileID: 0}
     - target: {fileID: 4385804235102040, guid: b2e51f936ff84c5478b7591a7dbadd57, type: 3}
       propertyPath: m_LocalPosition.x
@@ -792,14 +800,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1548829230379324, guid: 4d844d2b7c016f54d9d412cfb21218c1, type: 3}
-      propertyPath: m_Name
-      value: IceStake
-      objectReference: {fileID: 0}
     - target: {fileID: 114353543599955174, guid: 4d844d2b7c016f54d9d412cfb21218c1,
         type: 3}
       propertyPath: mageOwner
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548829230379324, guid: 4d844d2b7c016f54d9d412cfb21218c1, type: 3}
+      propertyPath: m_Name
+      value: IceStake
       objectReference: {fileID: 0}
     - target: {fileID: 4923932997720792, guid: 4d844d2b7c016f54d9d412cfb21218c1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -866,14 +874,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1932423585590180, guid: 6a8fee6128ab04e4d9f5bd6a0913c971, type: 3}
-      propertyPath: m_Name
-      value: BubbleBurst
-      objectReference: {fileID: 0}
     - target: {fileID: 114498289543415858, guid: 6a8fee6128ab04e4d9f5bd6a0913c971,
         type: 3}
       propertyPath: mageOwner
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1932423585590180, guid: 6a8fee6128ab04e4d9f5bd6a0913c971, type: 3}
+      propertyPath: m_Name
+      value: BubbleBurst
       objectReference: {fileID: 0}
     - target: {fileID: 4845843606441522, guid: 6a8fee6128ab04e4d9f5bd6a0913c971, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1259,14 +1267,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1649269100644732, guid: ed820bc51e0309a4588629a399e4fb78, type: 3}
-      propertyPath: m_Name
-      value: MagicMissile
-      objectReference: {fileID: 0}
     - target: {fileID: 114472322982678124, guid: ed820bc51e0309a4588629a399e4fb78,
         type: 3}
       propertyPath: mageOwner
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649269100644732, guid: ed820bc51e0309a4588629a399e4fb78, type: 3}
+      propertyPath: m_Name
+      value: MagicMissile
       objectReference: {fileID: 0}
     - target: {fileID: 4672701154822494, guid: ed820bc51e0309a4588629a399e4fb78, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1321,14 +1329,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1975425221469212, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc, type: 3}
-      propertyPath: m_Name
-      value: Rock
-      objectReference: {fileID: 0}
     - target: {fileID: 114394342564051314, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc,
         type: 3}
       propertyPath: mageOwner
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975425221469212, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc, type: 3}
+      propertyPath: m_Name
+      value: Rock
       objectReference: {fileID: 0}
     - target: {fileID: 4897534483022690, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc, type: 3}
       propertyPath: m_LocalPosition.x
