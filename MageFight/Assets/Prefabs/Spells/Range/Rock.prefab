@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4897534483022690}
   - component: {fileID: 212677125395905808}
-  - component: {fileID: 61840047202552924}
   - component: {fileID: 1767808704}
   - component: {fileID: 50453737925835492}
+  - component: {fileID: 7730261494986136823}
   - component: {fileID: 114394342564051314}
   - component: {fileID: 114730571680022348}
+  - component: {fileID: 4281366140063055188}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Spell
@@ -29,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975425221469212}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.5, w: 0.8660254}
   m_LocalPosition: {x: -999, y: -999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 60}
 --- !u!212 &212677125395905808
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 30
-  m_Sprite: {fileID: 21300000, guid: 78be2a6cf2606fe4b87c623558ced40a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ed96c0f3df1cef4f83481f4a98b1123, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,32 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &61840047202552924
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975425221469212}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.023214817, y: 0.013929129}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.91, y: 1.03}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.0164499, y: 1.1278825}
-  m_EdgeRadius: 0
 --- !u!58 &1767808704
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -147,6 +122,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &7730261494986136823
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975425221469212}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.7
 --- !u!114 &114394342564051314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +155,7 @@ MonoBehaviour:
   damage: 25
   cooldown: 4
   castType: 1
-  mageOwner: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b, type: 3}
+  mageOwner: {fileID: 0}
   typeOfSpeel: 1
   knockbackForce: {x: 10, y: 0}
   invoked: 0
@@ -176,6 +167,7 @@ MonoBehaviour:
   shakeFactor: 0
   speed: 10
   acceleration: 15
+  anim: {fileID: 4281366140063055188}
 --- !u!114 &114730571680022348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,3 +184,22 @@ MonoBehaviour:
   type: 6
   spriteEffect: {fileID: 1085410109743728, guid: e6db85a1656dfa74d909d7a5027fef4d,
     type: 3}
+--- !u!95 &4281366140063055188
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975425221469212}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 40b8a7ad599de544283c2ac541966b5f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

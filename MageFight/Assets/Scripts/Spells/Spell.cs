@@ -55,7 +55,7 @@ public abstract class Spell : MonoBehaviour {
 
     public void Kill()
     {
-        transform.position = new Vector2(-999, -999);
+        transform.position = new Vector2(Random.Range(-2000,-999), Random.Range(-2000, -999));
         transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 

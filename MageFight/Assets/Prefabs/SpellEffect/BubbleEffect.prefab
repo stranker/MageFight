@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4301672704804324}
   - component: {fileID: 212896427234075462}
   - component: {fileID: 114656318460479516}
+  - component: {fileID: 4371171040789729707}
   m_Layer: 0
   m_Name: BubbleEffect
   m_TagString: Untagged
@@ -69,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 30
-  m_Sprite: {fileID: 21300000, guid: ee37826b0fe48c84686573395e2404c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d95b74706448604f975c722b4de596b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -92,5 +93,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0115cb6e39b719341ac0e5182e277160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectName: 
   destroyTime: 0
   isActivated: 0
+  anim: {fileID: 4371171040789729707}
+--- !u!95 &4371171040789729707
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697563923984874}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 241cfefa1cc337d4690c9db4173f6262, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

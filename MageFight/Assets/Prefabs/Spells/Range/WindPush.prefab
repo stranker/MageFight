@@ -100,7 +100,7 @@ MonoBehaviour:
   damage: 20
   cooldown: 5
   castType: 1
-  mageOwner: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b, type: 3}
+  mageOwner: {fileID: 0}
   typeOfSpeel: 1
   knockbackForce: {x: 15, y: 0}
   invoked: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   shakeFactor: 0
   speed: 20
   acceleration: 5
+  anim: {fileID: 0}
 --- !u!50 &50150582354683568
 Rigidbody2D:
   serializedVersion: 4

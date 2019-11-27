@@ -101,7 +101,7 @@ MonoBehaviour:
   damage: 15
   cooldown: 3
   castType: 1
-  mageOwner: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b, type: 3}
+  mageOwner: {fileID: 0}
   typeOfSpeel: 1
   knockbackForce: {x: 1, y: 0}
   invoked: 0
@@ -113,6 +113,7 @@ MonoBehaviour:
   shakeFactor: 0
   speed: 25
   acceleration: 5
+  anim: {fileID: 0}
 --- !u!50 &50575867523242656
 Rigidbody2D:
   serializedVersion: 4
@@ -151,7 +152,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.34, y: 0.28}
+    oldSize: {x: 2.5, y: 0.80833334}
     newSize: {x: 2.34, y: 0.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -193,7 +194,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.34, y: 0.28}
+    oldSize: {x: 2.5, y: 0.80833334}
     newSize: {x: 2.34, y: 0.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4845843606441522}
-  - component: {fileID: 95728290280903226}
   - component: {fileID: 50716215767476828}
   - component: {fileID: 212138262283265668}
   - component: {fileID: 114989799662309170}
@@ -37,25 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95728290280903226
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932423585590180}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4bfa8ed909674264e9a745b10783b3ab, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &50716215767476828
 Rigidbody2D:
   serializedVersion: 4
@@ -114,7 +94,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 30
-  m_Sprite: {fileID: 21300000, guid: ee37826b0fe48c84686573395e2404c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d95b74706448604f975c722b4de596b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -158,7 +138,7 @@ MonoBehaviour:
   damage: 25
   cooldown: 3.5
   castType: 0
-  mageOwner: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b, type: 3}
+  mageOwner: {fileID: 0}
   typeOfSpeel: 1
   knockbackForce: {x: 0, y: 0}
   invoked: 0
@@ -185,7 +165,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.73
+  m_Radius: 1
 --- !u!58 &8455794595128046896
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -201,4 +181,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.52
+  m_Radius: 0.7

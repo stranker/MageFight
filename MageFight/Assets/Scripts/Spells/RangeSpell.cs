@@ -10,6 +10,7 @@ public class RangeSpell : Spell {
     private float accelerationIncrement = 0;
     private Vector2 velocity;
     protected Rigidbody2D rd;
+    [SerializeField] private Animator anim;
 
     private void Start()
     {
@@ -83,6 +84,10 @@ public class RangeSpell : Spell {
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         timer = cooldown;
         canDamage = true;
+        if (anim != null)
+        {
+            anim.SetTrigger(spellData.spellName);
+        }
     }
 
     private void CheckZeroDir()
