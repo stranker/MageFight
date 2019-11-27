@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 3495967538235864630}
   - component: {fileID: 3495967538235864625}
   - component: {fileID: 2095753172914880385}
+  - component: {fileID: 3820340860812547513}
   m_Layer: 5
   m_Name: PressButtonText
   m_TagString: Untagged
@@ -318,7 +319,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 8bea5c91c7fda5a4c9abecb6d69f05fa, type: 3}
     m_FontSize: 28
-    m_FontStyle: 3
+    m_FontStyle: 2
     m_BestFit: 1
     m_MinSize: 5
     m_MaxSize: 71
@@ -345,6 +346,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 3, y: 3}
+  m_UseGraphicAlpha: 1
+--- !u!114 &3820340860812547513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3495967538235864627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 3.67, y: -2.98}
   m_UseGraphicAlpha: 1
 --- !u!1 &3495967538239667760
 GameObject:
@@ -1077,6 +1093,7 @@ MonoBehaviour:
   initPanel: {fileID: 3495967539154721265}
   playerPanel: {fileID: 3495967538717622533}
   playerConfirmed: 0
+  canConfirmTime: 0.7
   wizardIdx: 0
   currentWizard: {fileID: 0}
   keyboardImage: {fileID: 3495967539843809494}

@@ -168,7 +168,7 @@ MonoBehaviour:
     type: 3}
   spellColor: {r: 0.4764151, g: 0.9530193, b: 1, a: 0}
   shakeFactor: 0
-  speed: 5
+  speed: 10
   acceleration: 2
 --- !u!58 &3787329775406841573
 CircleCollider2D:

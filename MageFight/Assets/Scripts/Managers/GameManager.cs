@@ -153,6 +153,11 @@ public class GameManager : MonoBehaviour {
         {
             player.Reset();
         }
+        var spellsInGame = GameObject.FindGameObjectsWithTag("Spell");
+        foreach (GameObject spell in spellsInGame)
+        {
+            Destroy(spell.gameObject);
+        }
     }
 
 	public void EndRound(){
