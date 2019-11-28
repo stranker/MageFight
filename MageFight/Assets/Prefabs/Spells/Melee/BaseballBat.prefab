@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 95009770965645622}
   - component: {fileID: 61678208678312574}
   m_Layer: 0
-  m_Name: Wizard Whip
+  m_Name: BaseballBat
   m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,12 +48,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spellData: {fileID: 11400000, guid: 035946eb541db114284cf839ef6b8805, type: 2}
   castVelocity: 0
-  damage: 15
+  damage: 20
   cooldown: 3
   castType: 0
   mageOwner: {fileID: 0}
   typeOfSpeel: 0
-  knockbackForce: {x: 7, y: 2}
+  knockbackForce: {x: 10, y: 5}
   invoked: 0
   canDamage: 1
   timer: 0
@@ -95,7 +95,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.9797668, y: -0.3586731}
+  m_Offset: {x: 2.11, y: 0.24}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -106,7 +106,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.4962769, y: 1.270813}
+  m_Size: {x: 4.48, y: 1.57}
   m_EdgeRadius: 0
 --- !u!1 &1215832200652722
 GameObject:
@@ -133,7 +133,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215832200652722}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
@@ -177,7 +177,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 30
-  m_Sprite: {fileID: 21300000, guid: a1c011ed55ed32b4585b2a89b2bb76c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83cae3e71515ffa469e9cc349c06625a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
