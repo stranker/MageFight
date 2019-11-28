@@ -100,6 +100,11 @@ public class GameManager : MonoBehaviour {
         {
             activeWizardList[1].TakeDamage(900, Vector2.zero);
         }
+        if (Input.GetKeyDown(KeyCode.F9))
+        {
+            activeWizardList[0].playerRef.winRounds = 3;
+            CheckIfAPlayerIsWinner();
+        }
 
         if (playerDead)
         {

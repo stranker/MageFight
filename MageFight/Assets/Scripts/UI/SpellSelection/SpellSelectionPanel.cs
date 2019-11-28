@@ -52,6 +52,8 @@ public class SpellSelectionPanel : MonoBehaviour
 
     public int totalRounds = 0;
 
+    private bool canConfirm = false;
+
     private void Start()
     {
         if (debugMode)
@@ -228,7 +230,7 @@ public class SpellSelectionPanel : MonoBehaviour
             spellCounter--;
             SelectPanelAt(spellCounter);
         }
-        if (Input.GetKey("joystick " + currentPlayerTurn.joistickId.ToString() + " button 0") && !spellConfirmed)
+        if (Input.GetKey("joystick " + currentPlayerTurn.joistickId.ToString() + " button 0") && !spellConfirmed && canConfirm)
         {
             OnSpellConfirm();
         }
@@ -246,7 +248,7 @@ public class SpellSelectionPanel : MonoBehaviour
             spellCounter--;
             SelectPanelAt(spellCounter);
         }
-        if (Input.GetKey(KeyCode.Return) && !spellConfirmed)
+        if (Input.GetKey(KeyCode.Return) && !spellConfirmed && canConfirm)
         {
             OnSpellConfirm();
         }
@@ -259,6 +261,7 @@ public class SpellSelectionPanel : MonoBehaviour
         spellsInfoPanelList.Remove(currentSpellInfoPanel);
         CreateCurrentSpellsMiniatures();
         spellConfirmed = true;
+        canConfirm = false;
     }
 
     private void NextTurn()
@@ -311,5 +314,10 @@ public class SpellSelectionPanel : MonoBehaviour
         }
         spellInSelection.Add(spell);
         return spell;
+    }
+
+    public void CanPick()
+    {
+        canConfirm = true;
     }
 }

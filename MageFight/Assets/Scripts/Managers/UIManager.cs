@@ -19,18 +19,22 @@ public class UIManager : MonoBehaviour {
 
     public GameObject playerUI;
     public UILeaderboard leaderboard;
-    public GameObject PostGameUI;
-    public Text playerLabel;
     public GameObject PlayerPresentationCanvas;
     public GameObject spellSelectionPanel;
-    public GameObject rematchButton;
     public GameObject pauseMenuUI;
     public GameObject firstSelectedButtonPauseMenu;
     public BeginMatch beginMatchPanel;
+    public PostGame postGame;
+    public GameObject rematchButton;
 
     public void Initialize()
     {
         leaderboard.Initialize();
+
+    }
+
+    public void Rematch()
+    {
     }
 
     public void StartCountdown()
@@ -45,19 +49,11 @@ public class UIManager : MonoBehaviour {
         leaderboard.Show();
     }
 
-    public void ShowPostGame(int winnerName)
+    public void ShowPostGame(int winnerIdx)
     {
+        postGame.SetWinner(winnerIdx);
         EventSystem evt = EventSystem.current;
         evt.SetSelectedGameObject(rematchButton);
-        PostGameUI.SetActive(true);
-        playerLabel.text = "PLAYER " + winnerName.ToString();
-    }
-
-    public void RematchPressed()
-    {
-        leaderboard.ResetScores();
-        PostGameUI.SetActive(false);
-        GameplayManager.Get().SendEvent(GameplayManager.Events.RematchSelected);
     }
 
     public void SetPlayerPresentationUI(bool value)
@@ -94,5 +90,10 @@ public class UIManager : MonoBehaviour {
         }
     }
 
-
+    public void RematchPressed()
+    {
+        leaderboard.ResetScores();
+        postGame.Hide();
+        GameplayManager.Get().SendEvent(GameplayManager.Events.RematchSelected);
+    }
 }

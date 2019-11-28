@@ -118,18 +118,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2201368731396528525}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &182371438 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2031460550257395997, guid: 64901d695c55b5645a52ba31aa69efb0,
-    type: 3}
-  m_PrefabInstance: {fileID: 2031460550161010035}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &195056253 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7767087443628177224, guid: 33dbe64fcc1822543ab9f0384e113a6c,
@@ -165,12 +153,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe591da1a6c55a1488fed89b97054471, type: 3}
---- !u!1 &344254249 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2031460549951613530, guid: 64901d695c55b5645a52ba31aa69efb0,
-    type: 3}
-  m_PrefabInstance: {fileID: 2031460550161010035}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &344254250 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2031460549951613529, guid: 64901d695c55b5645a52ba31aa69efb0,
@@ -368,13 +350,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundCounter: 0
   activeWizardList: []
+  deadWizards: []
   roundsToWin: 3
   startingPositions:
   - {fileID: 4475092082759341}
   - {fileID: 4429958295938427}
   camera: {fileID: 472306429}
   playerDeathTime: 1
-  playerDead: 0
   currentMap: {fileID: 0}
   playersParent: {fileID: 1511467366}
 --- !u!4 &524297103
@@ -756,11 +738,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4302414161989742, guid: 59b74b9fd0cf01b40b3d8f632e641d8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 360
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 4302414161989742, guid: 59b74b9fd0cf01b40b3d8f632e641d8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 257
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4302414161989742, guid: 59b74b9fd0cf01b40b3d8f632e641d8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -918,14 +900,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUI: {fileID: 1620487370}
   leaderboard: {fileID: 689178892}
-  PostGameUI: {fileID: 344254249}
-  playerLabel: {fileID: 182371438}
   PlayerPresentationCanvas: {fileID: 834985739}
   spellSelectionPanel: {fileID: 1301308509}
-  rematchButton: {fileID: 679610047}
   pauseMenuUI: {fileID: 1084073740}
   firstSelectedButtonPauseMenu: {fileID: 110628389}
   beginMatchPanel: {fileID: 671344026}
+  postGame: {fileID: 2031460550161010036}
+  rematchButton: {fileID: 679610047}
 --- !u!1 &1237356242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,11 +1039,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4302414161989742, guid: 59b74b9fd0cf01b40b3d8f632e641d8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 360
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 4302414161989742, guid: 59b74b9fd0cf01b40b3d8f632e641d8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 254.81
+      value: 37.809998
       objectReference: {fileID: 0}
     - target: {fileID: 4302414161989742, guid: 59b74b9fd0cf01b40b3d8f632e641d8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1945,6 +1926,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Post game
       objectReference: {fileID: 0}
+    - target: {fileID: 2031460549951613530, guid: 64901d695c55b5645a52ba31aa69efb0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2031460549951613529, guid: 64901d695c55b5645a52ba31aa69efb0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2055,8 +2041,25 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1142840499}
+    - target: {fileID: 2031460549750098866, guid: 64901d695c55b5645a52ba31aa69efb0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RematchPressed
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64901d695c55b5645a52ba31aa69efb0, type: 3}
+--- !u!114 &2031460550161010036 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2766711127788281065, guid: 64901d695c55b5645a52ba31aa69efb0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2031460550161010035}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61aa665d2d2dfac4481711bdad50bf33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2156710322853841359
 PrefabInstance:
   m_ObjectHideFlags: 0

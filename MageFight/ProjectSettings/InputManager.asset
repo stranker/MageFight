@@ -179,7 +179,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 0
-    axis: 5
+    axis: 6
     joyNum: 1
   - serializedVersion: 3
     m_Name: J2_Fly
@@ -195,7 +195,7 @@ InputManager:
     snap: 0
     invert: 0
     type: 0
-    axis: 5
+    axis: 6
     joyNum: 2
   - serializedVersion: 3
     m_Name: KBRD_FirstSkill

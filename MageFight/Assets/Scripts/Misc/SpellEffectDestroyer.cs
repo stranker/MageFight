@@ -18,7 +18,10 @@ public class SpellEffectDestroyer : MonoBehaviour {
             timer = destroyTime;
             isActivated = true;
         }
-        anim.SetTrigger(effectName);
+        if (anim != null)
+        {
+            anim.SetTrigger(effectName);
+        }
     }
 
     // Update is called once per frame
