@@ -15,6 +15,7 @@ public class AttackBehavior : MonoBehaviour {
     public bool invoking;
     public float timeAfterAttack;
     private float timerAfterAttack;
+    private Vector3 lastHandPos;
     public Transform handPos;
     public GameObject arrowSprite;
     public ParticleSystem invokeParticles;
@@ -41,8 +42,6 @@ public class AttackBehavior : MonoBehaviour {
         arrowSprite.transform.rotation = Quaternion.Euler(0, 0, arrowAngle);
     }
 
-
-
     private void CanAttackCheck()
     {
         if (!canAttack)
@@ -58,30 +57,14 @@ public class AttackBehavior : MonoBehaviour {
 
     private void GetInput()
     {
-
         GetSpellsInputs(input.firstSkillButton, 0);
         GetSpellsInputs(input.secondSkillButton, 1);
         GetSpellsInputs(input.thirdSkillButton, 2);
     }
 
-    private void ThrowSpell(int _spellIndex)
-    {
-        if (canAttack)
-        {
-            isHolding = false;
-            spellIndex = _spellIndex;
-            spellDir = playerMovement.aimDirection;
-            anim.PlaySpellAnim(spellManager.GetSpellByIdx(spellIndex));
-            invokeParticles.Stop();
-            canAttack = !canAttack;
-            invoking = false;
-            aiming = false;
-        }
-    }
-
     public void SpawnSpell()
     {
-        spellManager.ThrowSpell(spellIndex, handPos.position, spellDir, gameObject);
+        spellManager.ThrowSpell(spellIndex, lastHandPos, spellDir, gameObject);
         spellDir = Vector2.zero;
     }
 
@@ -91,14 +74,29 @@ public class AttackBehavior : MonoBehaviour {
         {
             invokeParticles.Play();
             isHolding = true;
+            invoking = true;
+        }
+    }
 
-            //invokeParticlesMain.startColor = spellManager.GetSpellColor(spellIndex);
+    private void ThrowSpell(int _spellIndex)
+    {
+        if (canAttack)
+        {
+            isHolding = false;
+            spellIndex = _spellIndex;
+            spellDir = playerMovement.aimDirection;
+            lastHandPos = handPos.position;
+            anim.PlaySpellAnim(spellManager.GetSpellByIdx(spellIndex));
+            invokeParticles.Stop();
+            canAttack = !canAttack;
+            invoking = false;
+            aiming = false;
         }
     }
 
     private void UpdateSpellDir()
     {
-        if (isHolding)
+        if (isHolding && invoking)
         {
             aiming = playerMovement.aimDirection != Vector2.zero;
             if (aiming)
@@ -107,7 +105,7 @@ public class AttackBehavior : MonoBehaviour {
         }
     }
 
-    private void GetSpellsInputs(String input,int spellIndex)
+    private void GetSpellsInputs(string input,int spellIndex)
     {
         if (Input.GetButtonDown(input) && spellManager.CanInvokeSpell(spellIndex))
         {
@@ -122,7 +120,6 @@ public class AttackBehavior : MonoBehaviour {
                 {
                     arrowSprite.gameObject.SetActive(true);
                     InvokeSpell(spellIndex);
-                    invoking = true;
                 }
                 spellDir = new Vector2(playerMovement.currentDirection, 0);
             }
@@ -131,7 +128,6 @@ public class AttackBehavior : MonoBehaviour {
         {
             arrowSprite.gameObject.SetActive(false);
             ThrowSpell(spellIndex);
-            invoking = false;
         }
     }
 

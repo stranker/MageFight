@@ -330,7 +330,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7865775987986797871}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.13, y: -0.23, z: 0}
+  m_LocalPosition: {x: 0.77, y: 0.28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7865775989596933430}
@@ -10370,6 +10370,7 @@ MonoBehaviour:
   jumpParticles: {fileID: 7865775988611860296}
   flyParticles: {fileID: 7865775988981678072}
   playerRestoreOnHitTime: 0.5
+  doubleJump: 1
 --- !u!114 &7865775988933451483
 MonoBehaviour:
   m_ObjectHideFlags: 0
