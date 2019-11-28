@@ -54,16 +54,15 @@ MonoBehaviour:
   castType: 0
   mageOwner: {fileID: 0}
   typeOfSpeel: 0
-  knockbackForce: {x: 0, y: 60}
+  knockbackForce: {x: 0, y: 40}
   invoked: 0
   canDamage: 1
   timer: 0
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
     type: 3}
   spellColor: {r: 0.3647059, g: 0.15294118, b: 0.37647063, a: 1}
-  shakeFactor: 0
+  shakeFactor: 0.1
   knockDir: {x: 0, y: -1}
-  type: 1
 --- !u!95 &95514801936302704
 Animator:
   serializedVersion: 3
@@ -233,7 +232,6 @@ MonoBehaviour:
   spellColor: {r: 0, g: 0, b: 0, a: 0}
   shakeFactor: 0
   knockDir: {x: 0, y: 0}
-  type: 1
 --- !u!50 &50570283177142382
 Rigidbody2D:
   serializedVersion: 4

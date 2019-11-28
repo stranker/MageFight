@@ -45,7 +45,7 @@ public class WizardBehavior : MonoBehaviour {
                 deathParticles.Play();
                 visual.SetPlayerDead(true);
                 pAnim.ResetAnimations();
-                GameManager.Instance.PlayerDeath();
+                GameManager.Instance.PlayerDeath(this);
             }
         }
         health = Mathf.Clamp(health, 0, maxHealth);

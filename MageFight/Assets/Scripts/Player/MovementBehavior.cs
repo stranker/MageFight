@@ -62,7 +62,7 @@ public class MovementBehavior : MonoBehaviour {
         if (wizardBehavior.isAlive)
         {
             GetInput();
-            if (canMove)
+            if (canMove && !onPlayerRestoreHit)
             {
                 GeneralMovement();
             }
@@ -240,8 +240,8 @@ public class MovementBehavior : MonoBehaviour {
     {
         if (wizardBehavior.isAlive)
         {
+            onPlayerRestoreHit = true;
             rigidBody.velocity = dir * new Vector2(knockForce.x, knockForce.y);
-            onPlayerRestoreHit = !canMove;
         }
     }
 
@@ -267,7 +267,6 @@ public class MovementBehavior : MonoBehaviour {
 
     public void Pull(Vector2 pos)
     {
-        Debug.Log("Pulled");
         if (transform.position.x > pos.x)
         {
             pos.x += 0.5f;
@@ -286,6 +285,7 @@ public class MovementBehavior : MonoBehaviour {
     {
         pos = pos - (Vector2)transform.position;
         rigidBody.velocity = pos;
+        canFly = false;
     }
 
     public void Throw(float force)

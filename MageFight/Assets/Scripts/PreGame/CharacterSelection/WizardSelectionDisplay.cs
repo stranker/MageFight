@@ -54,6 +54,12 @@ public class Player
     {
         wizardRef = wizard;
     }
+
+    public void AddWin()
+    {
+        winRounds += 1;
+        winRounds = Mathf.Clamp(winRounds, 0, GameManager.Instance.GetCurrentRound());
+    }
 }
 
 

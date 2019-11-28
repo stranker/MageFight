@@ -140,9 +140,8 @@ MonoBehaviour:
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
     type: 3}
   spellColor: {r: 0.4784314, g: 0.2901961, b: 0.9294118, a: 1}
-  shakeFactor: 0
+  shakeFactor: 0.1
   knockDir: {x: 0.5, y: 0.5}
-  type: 0
 --- !u!95 &95256929772502640
 Animator:
   serializedVersion: 3

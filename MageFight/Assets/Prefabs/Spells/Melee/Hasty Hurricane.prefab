@@ -61,9 +61,8 @@ MonoBehaviour:
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
     type: 3}
   spellColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 1}
-  shakeFactor: 0
+  shakeFactor: 0.05
   knockDir: {x: 0.5, y: 1}
-  type: 0
 --- !u!114 &114047580653008744
 MonoBehaviour:
   m_ObjectHideFlags: 0

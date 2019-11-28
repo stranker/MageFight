@@ -40,10 +40,11 @@ public class SpellStateManager : MonoBehaviour
                 movement.Drag(leadingObjectOnDrag.position);
                 dragTimer -= Time.deltaTime;
                 if(dragTimer<= 0){
-                    player.TakeDamage(1,Vector2.zero);
+                    player.TakeDamage(5,Vector2.zero);
                     isDragged = false;
                     attack.SetCanAttack(true);
                     movement.SetCanMove(true);
+                    movement.SetCanFly(true);
                 }
             } else {
                 dragTimer = 0.0f;
@@ -51,6 +52,7 @@ public class SpellStateManager : MonoBehaviour
                 player.TakeDamage(1, Vector2.zero);
                 attack.SetCanAttack(true);
                 movement.SetCanMove(true);
+                movement.SetCanFly(true);
             }
         }
     }

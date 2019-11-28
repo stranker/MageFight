@@ -164,7 +164,7 @@ MonoBehaviour:
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
     type: 3}
   spellColor: {r: 0.61960787, g: 0.4666667, b: 0.2392157, a: 1}
-  shakeFactor: 0
+  shakeFactor: 0.1
   speed: 10
   acceleration: 15
   anim: {fileID: 4281366140063055188}

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 61757475579625096}
   - component: {fileID: 50472820032488164}
   - component: {fileID: 2110460406}
+  - component: {fileID: 1911029324838766979}
   m_Layer: 0
   m_Name: MagicMissile
   m_TagString: Spell
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 30
-  m_Sprite: {fileID: 21300000, guid: dd62dde9c8d87fd459d48eb1f815a4bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 824ad92a9110b6843ab3c0a9c6545ae7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -109,10 +110,10 @@ MonoBehaviour:
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
     type: 3}
   spellColor: {r: 0.5294118, g: 0.45098042, b: 1, a: 1}
-  shakeFactor: 0
+  shakeFactor: 0.03
   speed: 20
   acceleration: 10
-  anim: {fileID: 0}
+  anim: {fileID: 1911029324838766979}
 --- !u!61 &61757475579625096
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,18 +127,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00390625, y: 0.011657715}
+  m_Offset: {x: 0.054595947, y: -0.012969971}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.27, y: 0.89}
+    oldSize: {x: 2.5, y: 0.73333335}
     newSize: {x: 2.71, y: 1.63}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9355469, y: 0.48217773}
+  m_Size: {x: 2.2838745, y: 0.60528564}
   m_EdgeRadius: 0
 --- !u!50 &50472820032488164
 Rigidbody2D:
@@ -173,6 +174,25 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15, y: 0}
+  m_Offset: {x: 0.30085206, y: 0}
   serializedVersion: 2
-  m_Radius: 0.17
+  m_Radius: 0.32085204
+--- !u!95 &1911029324838766979
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649269100644732}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 40b8a7ad599de544283c2ac541966b5f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

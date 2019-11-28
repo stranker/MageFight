@@ -7,15 +7,6 @@ public class MeleeSpell : Spell {
 
     public Vector2 knockDir;
 
-    public enum MeleeType 
-	{
-		Punch,
-		Whip
-	}
-	public MeleeType type;
-
-    public MeleeType GetMeleeType() { return type; }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player" && collision.gameObject != mageOwner && canDamage)

@@ -101,9 +101,9 @@ public class CameraController : MonoBehaviour
             cameraState = CameraStates.Normal;
         }
         translationCurveTimer += Time.unscaledDeltaTime;
-        endPos = new Vector3(target.position.x, target.position.y, transform.position.z);
+        endPos = target != null ? new Vector3(target.position.x, target.position.y, transform.position.z) : new Vector3(0,0,-10);
         transform.position = Vector3.Lerp(transform.position, endPos, translationCurve.Evaluate(translationCurveTimer / travelTransitionTime));
-        camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, endSize, translationCurve.Evaluate(translationCurveTimer / cameraSizeTransitionTime));
+        camera.orthographicSize = target != null ? Mathf.Lerp(camera.orthographicSize, endSize, translationCurve.Evaluate(translationCurveTimer / cameraSizeTransitionTime)) : camera.orthographicSize;
     }
 
     private void Update()

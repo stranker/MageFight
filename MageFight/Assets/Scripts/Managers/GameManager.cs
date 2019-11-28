@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour {
 
 	[SerializeField] private int roundCounter;
 	public List<WizardBehavior> activeWizardList = new List<WizardBehavior>();
-	[SerializeField] public int roundsToWin;
+	public List<WizardBehavior> deadWizards = new List<WizardBehavior>();
+    [SerializeField] public int roundsToWin;
 	[SerializeField] private List<Transform> startingPositions = new List<Transform>();
 
     private int posIdx = 0;
@@ -28,11 +29,13 @@ public class GameManager : MonoBehaviour {
     public new CameraController camera;
     private float playerDeathTimer;
     public float playerDeathTime;
-    public bool playerDead = false;
+    private bool playerDead = false;
+    private bool checkingPlayerDead = false;
     public LevelBehavior currentMap;
     public GameObject playersParent;
     public Dictionary<int, Player> playerDict = new Dictionary<int, Player>();
     public List<Player> playerList = new List<Player>();
+    private WizardBehavior lastWinner = null;
 
     void Awake () {
         AddPlayers();
@@ -53,6 +56,7 @@ public class GameManager : MonoBehaviour {
             playerList.Add(player);
         }
     }
+
 
     private void CreateWizards()
     {
@@ -111,7 +115,10 @@ public class GameManager : MonoBehaviour {
 
 
     public void InitializeRound(){
+        deadWizards.Clear();
+        lastWinner = null;
         roundCounter++;
+        checkingPlayerDead = false;
         int count = 0;
         foreach (WizardBehavior wizard in activeWizardList)
         {
@@ -119,7 +126,6 @@ public class GameManager : MonoBehaviour {
             wizard.Reset(startingPositions[count].position);
             count++;
         }
-		Debug.Log("Begin round: " + (roundCounter + 1));
 	}
 
     public void StartRound(){
@@ -129,26 +135,43 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-	public void PlayerDeath(){ //checks if round should end
+
+    public void PlayerDeath(WizardBehavior wizard)
+    {
         playerDead = true;
-	}
+        deadWizards.Insert(deadWizards.Count,wizard);
+    }
 
     public void CheckPlayersInRound()
     {
-        Time.timeScale = 0f;
-        foreach (WizardBehavior wizard in activeWizardList)
+        if (!checkingPlayerDead)
         {
-            if (wizard.isAlive)
+            checkingPlayerDead = true;
+            WizardBehavior winner = null;
+            if (lastWinner == null)
             {
-                camera.SetTarget(wizard.transform);
-                wizard.playerRef.winRounds += 1;
-                GameplayManager.Get().SendEvent(GameplayManager.Events.PlayerDead);
+                foreach (WizardBehavior wizard in activeWizardList)
+                {
+                    if (wizard.isAlive)
+                    {
+                        winner = wizard;
+                        camera.SetTarget(winner.transform);
+                    }
+                }
+                if (winner == null)
+                {
+                    winner = deadWizards[1];
+                }
             }
+            lastWinner = winner;
+            GameplayManager.Get().SendEvent(GameplayManager.Events.PlayerDead);
         }
+
     }
 
 	public void EndGame(){
 		roundCounter = 0; //Reset round counter
+        deadWizards.Clear();
         foreach (Player player in playerList)
         {
             player.Reset();
@@ -161,6 +184,7 @@ public class GameManager : MonoBehaviour {
     }
 
 	public void EndRound(){
+        lastWinner.playerRef.AddWin();
         UIManager.Get().ShowLeaderboard();
         foreach (WizardBehavior wizard in activeWizardList)
         {

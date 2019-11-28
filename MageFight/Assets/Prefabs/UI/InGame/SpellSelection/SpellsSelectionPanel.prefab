@@ -777,12 +777,11 @@ MonoBehaviour:
   - {fileID: 114194034602317248, guid: 416e2dcfddece1b4b955d69c4a7f262d, type: 3}
   - {fileID: 114786596358402696, guid: b164b286bf25c304bb28c1b2dbf4d06f, type: 3}
   - {fileID: 114498289543415858, guid: 6a8fee6128ab04e4d9f5bd6a0913c971, type: 3}
-  - {fileID: 114261353051233270, guid: b2e51f936ff84c5478b7591a7dbadd57, type: 3}
+  - {fileID: 114080733479666062, guid: d4eb113f809050047a789aefe4821342, type: 3}
   - {fileID: 114353543599955174, guid: 4d844d2b7c016f54d9d412cfb21218c1, type: 3}
   - {fileID: 114472322982678124, guid: ed820bc51e0309a4588629a399e4fb78, type: 3}
   - {fileID: 114394342564051314, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc, type: 3}
   - {fileID: 114951534744336276, guid: a41a750c7c56cc34aa4170ddf4884173, type: 3}
-  - {fileID: 114080733479666062, guid: d4eb113f809050047a789aefe4821342, type: 3}
   spellsPerRound: 3
   spellCounter: 0
   spellsPanel: {fileID: 7282207720864658645}
@@ -1085,6 +1084,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3580161306889153409}
     m_Modifications:
+    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
+        type: 3}
+      propertyPath: m_Name
+      value: SpellMiniature2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8134361894522185180, guid: cac3ab94deb9aa3449cf08900d393f8c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1190,16 +1199,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
-        type: 3}
-      propertyPath: m_Name
-      value: SpellMiniature2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cac3ab94deb9aa3449cf08900d393f8c, type: 3}
 --- !u!224 &8305741671258176497 stripped
@@ -1227,6 +1226,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3580161306889153409}
     m_Modifications:
+    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
+        type: 3}
+      propertyPath: m_Name
+      value: SpellMiniature3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8134361894522185180, guid: cac3ab94deb9aa3449cf08900d393f8c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1332,16 +1341,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
-        type: 3}
-      propertyPath: m_Name
-      value: SpellMiniature3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cac3ab94deb9aa3449cf08900d393f8c, type: 3}
 --- !u!224 &229111136791185652 stripped
@@ -1369,6 +1368,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3580161306889153409}
     m_Modifications:
+    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
+        type: 3}
+      propertyPath: m_Name
+      value: SpellMiniature
+      objectReference: {fileID: 0}
+    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8134361894522185180, guid: cac3ab94deb9aa3449cf08900d393f8c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1473,16 +1482,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
-        type: 3}
-      propertyPath: m_Name
-      value: SpellMiniature
-      objectReference: {fileID: 0}
-    - target: {fileID: 4555937439005045745, guid: cac3ab94deb9aa3449cf08900d393f8c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cac3ab94deb9aa3449cf08900d393f8c, type: 3}
