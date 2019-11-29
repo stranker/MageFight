@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class SpellEffectDestroyer : MonoBehaviour {
 
+    [SerializeField] private String effectName;
     private float timer;
     public float destroyTime;
     public bool isActivated = false;
+    [SerializeField] private Animator anim;
 
     private void Start()
     {
@@ -15,6 +17,10 @@ public class SpellEffectDestroyer : MonoBehaviour {
         {
             timer = destroyTime;
             isActivated = true;
+        }
+        if (anim != null)
+        {
+            anim.SetTrigger(effectName);
         }
     }
 
@@ -28,10 +34,19 @@ public class SpellEffectDestroyer : MonoBehaviour {
                 isActivated = !isActivated;
                 Destroy(gameObject);
             }
+            var parent = transform.parent.GetComponent<WizardBehavior>();
+            if (parent)
+            {
+                if (!parent.isAlive)
+                {
+                    Destroy(this.gameObject);
+
+                }
+            }
         }
 	}
 
-    internal void SetTimer(float time)
+    public void SetTimer(float time)
     {
         timer = time;
         isActivated = !isActivated;

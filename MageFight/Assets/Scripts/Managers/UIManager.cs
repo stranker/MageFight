@@ -16,116 +16,44 @@ public class UIManager : MonoBehaviour {
         else
             Destroy(gameObject);
     }
-    public delegate void UIManagerActions(UIManager manager);
-    public UIManagerActions OnLeaderboardShown;
+
     public GameObject playerUI;
     public UILeaderboard leaderboard;
-    public GameObject PostGameUI;
-    public Text playerLabel;
-    private float timer = 0;
-    public float leaderboardTime = 3f;
-    private bool showLeaderboard = false;
-    private bool leaderboardActive = false;
-    public GameObject countdownPanel;
-    private bool onCountdown = false;
-    public Text countdownText;
-    public Text getReadyText;
     public GameObject PlayerPresentationCanvas;
     public GameObject spellSelectionPanel;
-    public GameObject rematchButton;
     public GameObject pauseMenuUI;
     public GameObject firstSelectedButtonPauseMenu;
+    public BeginMatch beginMatchPanel;
+    public PostGame postGame;
+    public GameObject rematchButton;
 
-    private void Start()
+    public void Initialize()
     {
-        leaderboard.gameObject.SetActive(true);
+        leaderboard.Initialize();
+
     }
 
-    // Update is called once per frame
-    void Update () {
-        if (showLeaderboard)
-        {
-            if (!leaderboardActive)
-            {
-                if (timer < leaderboardTime)
-                {
-                    timer += Time.deltaTime;
-                }
-                else
-                {
-                    leaderboard.gameObject.SetActive(true);
-                    leaderboard.SetScores();
-                    leaderboardActive = true;
-                    timer = 0;
-                }
-            }
-            else
-            {
-                if (timer < leaderboardTime)
-                {
-                    timer += Time.deltaTime;
-                }
-                else
-                {
-                    leaderboard.gameObject.SetActive(false);
-                    timer = 0;
-                    showLeaderboard = false;
-                    OnLeaderboardShown(this);
-                    leaderboardActive = false;
-                }
-            }
-        }
-
-        if (onCountdown)
-        {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
-            {
-                timer = 0;
-                onCountdown = false;
-                countdownPanel.SetActive(false);
-                GameplayManager.Get().SendEvent(GameplayManager.Events.CountdownEnd);
-            }
-            if (timer <= 1.1f)
-            {
-                getReadyText.enabled = false;
-                countdownText.text = "FIGHT!";
-            }
-            else
-            {
-                countdownText.text = Mathf.Floor(timer).ToString("0");
-            }
-        }
+    public void Rematch()
+    {
     }
 
-    internal void StartCountdown()
+    public void StartCountdown()
     {
-        countdownPanel.SetActive(true);
-        getReadyText.enabled = true;
-        timer = 3.9f;        
-        onCountdown = true;
+        beginMatchPanel.gameObject.SetActive(true);
+        beginMatchPanel.BeginCountdown();
         GameManager.Instance.currentMap.GenerateLevel();
     }
 
     public void ShowLeaderboard()
     {
-        showLeaderboard = true;
-        leaderboardActive = false;
+        leaderboard.Show();
     }
 
-    public void ShowPostGame(int winnerName)
+    public void ShowPostGame(int winnerIdx)
     {
+        postGame.SetWinner(winnerIdx);
         EventSystem evt = EventSystem.current;
         evt.SetSelectedGameObject(rematchButton);
-        PostGameUI.SetActive(true);
-        playerLabel.text = "PLAYER " + winnerName.ToString();
-    }
-
-    public void RematchPressed()
-    {
-        leaderboard.ResetScores();
-        PostGameUI.SetActive(false);
-        GameplayManager.Get().SendEvent(GameplayManager.Events.RematchSelected);
     }
 
     public void SetPlayerPresentationUI(bool value)
@@ -151,5 +79,21 @@ public class UIManager : MonoBehaviour {
         }
         else
             pauseMenuUI.SetActive(false);
+    }
+
+    public void ResetUI()
+    {
+        var playersUI = playerUI.GetComponentsInChildren<PlayerUI>();
+        foreach (PlayerUI pUI in playersUI)
+        {
+            pUI.ResetUICookies();
+        }
+    }
+
+    public void RematchPressed()
+    {
+        leaderboard.ResetScores();
+        postGame.Hide();
+        GameplayManager.Get().SendEvent(GameplayManager.Events.RematchSelected);
     }
 }

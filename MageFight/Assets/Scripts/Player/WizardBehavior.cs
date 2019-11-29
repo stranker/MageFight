@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class WizardBehavior : MonoBehaviour {
 
-    public int playerName = -1;
     public int health;
     public int maxHealth;
     public bool isAlive = true;
     public ParticleSystem deathParticles;
-    private int playerID;
+    public int playerID;
     public SpellsManager spellsManager;
     public AnimationBehavior pAnim;
     public Color playerColor;
@@ -18,6 +17,7 @@ public class WizardBehavior : MonoBehaviour {
     public AttackBehavior attack;
     public MovementBehavior movement;
     public WizardDataScriptable charData;
+    public VisualBehavior visual;
     public Player playerRef;
 
 
@@ -34,83 +34,38 @@ public class WizardBehavior : MonoBehaviour {
         if (isAlive)
         {
             health -= val;
-            StopCoroutine("FlickerEffect");
-            StartCoroutine("FlickerEffect");
             spellsManager.CancelMeleeSpells();
             pAnim.ReceiveHit();
+            visual.ReceiveHit();
             if (health <= 0)
             {
                 isAlive = !isAlive;
                 movement.SetActive(false);
                 attack.SetActive(false);
-                SetSpritesVisibles(false);
                 deathParticles.Play();
+                visual.SetPlayerDead(true);
                 pAnim.ResetAnimations();
-                GameManager.Instance.PlayerDeath();
+                GameManager.Instance.PlayerDeath(this);
             }
         }
         health = Mathf.Clamp(health, 0, maxHealth);
     }
 
-    IEnumerator FlickerEffect()
-    {
-        for(int i = 0; i < 5; i++)
-        {
-            if(i % 2 == 0)
-            {
-                SetFlashAmountSprites(0.7f);
-            }
-            else
-            {
-                SetFlashAmountSprites(0);
-            }
-            yield return new WaitForSeconds(0.07f);
-        }
-        SetFlashAmountSprites(0);
-    }
-
-    private void SetSpritesVisibles(bool v)
-    {
-        var sprites = GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer sprite in sprites)
-        {
-            sprite.enabled = v;
-        }
-    }
-
-    private void SetFlashAmountSprites(float amount)
-    {
-        var sprites = GetComponentsInChildren<SpriteRenderer>();
-        foreach (SpriteRenderer sprite in sprites)
-        {
-            sprite.material.SetFloat("_FlashAmount",amount);
-        }
-    }
-
     public void Initialize(Player player)
     {
         playerRef = player;
-        playerName = player.playerId;
-        charData = player.charData;
+        playerID = player.playerId;
+        charData = player.wizardData;
         name = charData.wizardName;
-        switch (playerName)
-        {
-            case 1:
-                playerColor = Color.red;
-                break;
-            case 2:
-                playerColor = Color.blue;
-                break;
-            default:
-                break;
-        }
+        playerColor = player.playerColor;
     }
 
     public void Reset(Vector3 position){
         health = maxHealth;
         isAlive = true;
-        SetSpritesVisibles(true);
+        visual.SetPlayerDead(false);
         transform.position = position;
+        movement.CheckFacingToCenter();
     }
 
     public void Pause(){
@@ -128,10 +83,6 @@ public class WizardBehavior : MonoBehaviour {
 
     public bool FullSpellInventory(){
         return spellsManager.FullSpellInventory();
-    }
-
-    public int GetPlayerName(){
-        return playerName;
     }
 	
 	public void Win(){

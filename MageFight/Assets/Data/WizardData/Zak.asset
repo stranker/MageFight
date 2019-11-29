@@ -16,3 +16,5 @@ MonoBehaviour:
   wizardPrefab: {fileID: 4877554393673381724, guid: cf0a1077df27adc4c95e396e0ec2418b,
     type: 3}
   artwork: {fileID: 21300000, guid: 05ea39bba2e61f34e9eaf19a2f97efc7, type: 3}
+  presentationArtwork: {fileID: 21300000, guid: 2580f7121e6484a4d9bbf5e493807b01,
+    type: 3}

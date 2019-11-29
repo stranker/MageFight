@@ -20,6 +20,7 @@ public class PlayerUI : MonoBehaviour {
     public Animator anim;
     public int playerId = 0;
     public int cookies = 0;
+    [SerializeField] private GameObject spellIcons;
 
     // Use this for initialization
     void Start () {
@@ -32,6 +33,11 @@ public class PlayerUI : MonoBehaviour {
         background.color = wizard.playerColor;
         playerHealth = wizard.maxHealth;
         playerStamina = movement.flyMaxStamina;
+        var spellIconsList = spellIcons.GetComponentsInChildren<SpellIcon>();
+        foreach (SpellIcon spellIcon in spellIconsList)
+        {
+            spellIcon.SetInputType(player.inputType);
+        }
 	}
 
     private void UpdateText()
@@ -67,17 +73,27 @@ public class PlayerUI : MonoBehaviour {
     void Update () {
         UpdateText();
         UpdateCookies();
+        anim.SetFloat("Stamina",movement.flyStamina);
 	}
+
+    public void ResetUICookies()
+    {
+        var cookiesInPanel = cookiePanel.GetComponentsInChildren<Image>();
+        for (int i = 0; i < GameManager.Instance.roundsToWin; i++)
+        {
+            cookiesInPanel[i].color = new Color(0,0,0,0);
+        }
+    }
 
     private void UpdateCookies()
     {
         if (cookies != player.winRounds)
         {
             cookies = player.winRounds;
-            var cookiesInPanel = cookiePanel.GetComponentsInChildren<Transform>();
+            var cookiesInPanel = cookiePanel.GetComponentsInChildren<Image>();
             for (int i = 0; i < cookies; i++)
             {
-                cookiesInPanel[i+1].gameObject.SetActive(true);
+                cookiesInPanel[i].color = Color.white;
             }
         }
     }

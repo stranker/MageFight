@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BubbleBurst
   m_EditorClassIdentifier: 
   spellName: Bubble Burst
-  spellArtwork: {fileID: 21300000, guid: ee37826b0fe48c84686573395e2404c2, type: 3}
+  spellArtwork: {fileID: 21300000, guid: 6d95b74706448604f975c722b4de596b, type: 3}
   spellDifficulty: 5
   spellEffect: 

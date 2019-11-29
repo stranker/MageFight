@@ -40,17 +40,19 @@ public class SpellStateManager : MonoBehaviour
                 movement.Drag(leadingObjectOnDrag.position);
                 dragTimer -= Time.deltaTime;
                 if(dragTimer<= 0){
-                    player.TakeDamage(1,Vector2.zero);
+                    player.TakeDamage(5,Vector2.zero);
                     isDragged = false;
                     attack.SetCanAttack(true);
                     movement.SetCanMove(true);
+                    movement.SetCanFly(true);
                 }
             } else {
                 dragTimer = 0.0f;
                 isDragged = false;
-                player.TakeDamage(10,Vector2.zero);
+                player.TakeDamage(1, Vector2.zero);
                 attack.SetCanAttack(true);
                 movement.SetCanMove(true);
+                movement.SetCanFly(true);
             }
         }
     }
@@ -77,7 +79,7 @@ public class SpellStateManager : MonoBehaviour
             burnAttackTimer += Time.deltaTime;
             if (burnAttackTimer >= burnAttackTime)
             {
-                player.TakeDamage(1, new Vector2(UnityEngine.Random.Range(-1, 1), UnityEngine.Random.Range(-1, 1)));
+                player.TakeDamage(5, new Vector2(UnityEngine.Random.Range(-1, 1), UnityEngine.Random.Range(-1, 1)));
                 burnAttackTimer = 0;
             }
             burnTimer -= Time.deltaTime;
@@ -143,7 +145,6 @@ public class SpellStateManager : MonoBehaviour
         isShrinked = true;
         movement.SetCanFly(false);
         attack.SetCanAttack(false);
-        print("HACER EL SHRINK");
     }
 
     public void Hammerfall()

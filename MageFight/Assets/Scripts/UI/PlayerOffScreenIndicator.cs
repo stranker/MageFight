@@ -15,6 +15,7 @@ public class PlayerOffScreenIndicator : MonoBehaviour {
     public SpriteRenderer arrowSprite;
     public Vector2 offsetIndicator;
     public int playerId;
+    [SerializeField] private Animator anim;
 
     private void Start()
     {
@@ -50,6 +51,8 @@ public class PlayerOffScreenIndicator : MonoBehaviour {
         transform.position += dir * moveSpeed;
         float arrowAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         arrow.transform.rotation = Quaternion.Euler(0,0,arrowAngle);
+        float distanceToWizard = Vector2.Distance(target.position, transform.position);
+        anim.SetFloat("EdgeDistance", distanceToWizard);
     }
 
     private void ClampToScreen()

@@ -17,7 +17,6 @@ public class MovementBehavior : MonoBehaviour {
     public RaycastHit2D LeftFootRaycast;
     public RaycastHit2D RightFootRaycast;
     public int currentDirection = 1;
-    public int initialDirection = 1;
     public bool canJump = true;
     public bool canFly = true;
     public bool flying;
@@ -42,46 +41,72 @@ public class MovementBehavior : MonoBehaviour {
     private float playerRestoreOnHitTimer = 0;
     public float playerRestoreOnHitTime;
 
+    private bool spellInvoked = false;
+    private float timerSpellInvoked;
+    private float timeSpellInvoked = 2f;
+
+    private float timerCanMove;
+    private float timeCanMoveException = 0.8f;
+
+    public bool doubleJump = true;
+
     // Use this for initialization
     void Start () {
         initialGravityScale = rigidBody.gravityScale;
         wizardBehavior = GetComponent<WizardBehavior>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+
+    // Update is called once per frame
+    void Update () {
         if (wizardBehavior.isAlive)
         {
             GetInput();
-            GeneralMovement();
+            if (canMove && !onPlayerRestoreHit)
+            {
+                GeneralMovement();
+            }
             CheckRestoreOnPlayerHit();
             CheckOutbounds();
+            TimersCheck();
         }
 	}
 
+    private void TimersCheck()
+    {
+        if (spellInvoked)
+        {
+            timerSpellInvoked += Time.deltaTime;
+            if (timerSpellInvoked >= timeSpellInvoked)
+            {
+                timerSpellInvoked = 0;
+                spellInvoked = false;
+                SetCanMove(true);
+            }
+        }
+        if (!canMove)
+        {
+            timerCanMove += Time.deltaTime;
+            if (timerCanMove > timeCanMoveException)
+            {
+                timerCanMove = 0;
+                SetCanMove(true);
+            }
+        }
+    }
+
     private void CheckOutbounds()
     {
-        if (transform.position.y < -5)
+        if (transform.position.y < -50)
         {
             wizardBehavior.TakeDamage(500, Vector2.zero);
         }
     }
 
-    private void CheckStun()
-    {
-        throw new NotImplementedException();
-    }
 
     public void SetMotion(int i)
     {
-        if (i == 0) // No puedo moverme
-        {
-            SetCanMove(false);
-        }
-        else if(i == 1)
-        {
-            SetCanMove(true);
-        }
+        SetCanMove(i == 1);
     }
 
     private void CheckRestoreOnPlayerHit()
@@ -93,7 +118,6 @@ public class MovementBehavior : MonoBehaviour {
             {
                 playerRestoreOnHitTimer = 0;
                 onPlayerRestoreHit = false;
-                canMove = !onPlayerRestoreHit;
             }
         }
     }
@@ -104,6 +128,7 @@ public class MovementBehavior : MonoBehaviour {
         LeftFootRaycast = Physics2D.Raycast(leftFoot.transform.position, Vector2.down, 1.1f, floorLayer);
         onFloor = RightFootRaycast || LeftFootRaycast;
         canJump = onFloor;
+        doubleJump = !doubleJump ? canJump : true;
         FlyAccelerationCheck();
         FlyStaminaCheck();
         GetAimDirection();
@@ -112,6 +137,12 @@ public class MovementBehavior : MonoBehaviour {
             rigidBody.velocity = canMove ? velocity : Vector2.zero;
         FacingDirectionCheck();
         rigidBody.gravityScale = flying ? 0 : initialGravityScale;
+    }
+
+    public void SpellInvoked(int val)
+    {
+        spellInvoked = val == 0;
+        SetCanMove(false);
     }
 
     private void GetInput()
@@ -168,6 +199,12 @@ public class MovementBehavior : MonoBehaviour {
             velocity.y = jumpSpeed;
             jumpParticles.Play();
         }
+        if (GetJumpInput() && !onFloor && doubleJump)
+        {
+            velocity.y = jumpSpeed;
+            jumpParticles.Play();
+            doubleJump = false;
+        }
     }
 
     private void FacingDirectionCheck()
@@ -203,9 +240,8 @@ public class MovementBehavior : MonoBehaviour {
     {
         if (wizardBehavior.isAlive)
         {
-            canMove = false;
+            onPlayerRestoreHit = true;
             rigidBody.velocity = dir * new Vector2(knockForce.x, knockForce.y);
-            onPlayerRestoreHit = !canMove;
         }
     }
 
@@ -229,18 +265,8 @@ public class MovementBehavior : MonoBehaviour {
         return Input.GetAxis(input.GetYAxis());
     }
 
-    public void Knockback(Vector2 pos)
-    {
-        //knockback = true;
-        Vector2 knockDirection = ((Vector2)transform.position - pos).normalized;
-        knockDirection.x *= 5;
-        knockDirection.y = 10;
-        rigidBody.velocity = knockDirection;
-    }
-
     public void Pull(Vector2 pos)
     {
-        Debug.Log("Pulled");
         if (transform.position.x > pos.x)
         {
             pos.x += 0.5f;
@@ -259,6 +285,7 @@ public class MovementBehavior : MonoBehaviour {
     {
         pos = pos - (Vector2)transform.position;
         rigidBody.velocity = pos;
+        canFly = false;
     }
 
     public void Throw(float force)
@@ -273,8 +300,14 @@ public class MovementBehavior : MonoBehaviour {
         rigidBody.gravityScale = v ? 6 : 0;
         flyStamina = flyMaxStamina;
         flying = false;
-        currentDirection = initialDirection;
         enabled = v;
+    }
+
+
+    public void CheckFacingToCenter()
+    {
+        currentDirection = transform.position.x > 0 ? - 1 : 1;
+        visual.localScale = new Vector2(currentDirection, 1);
     }
 
 }

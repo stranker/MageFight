@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: FlamingFist
   m_EditorClassIdentifier: Assembly-CSharp::SpellData
   spellName: Flaming Fist
-  spellArtwork: {fileID: 21300000, guid: 862a56d1d1a050a4b9c9451e4508e9c8, type: 3}
+  spellArtwork: {fileID: 21300000, guid: 06be3957b47b5ba499d64c0a1f4703d6, type: 3}
   spellDifficulty: 2
   spellEffect: 

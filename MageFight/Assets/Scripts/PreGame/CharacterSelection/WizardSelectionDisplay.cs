@@ -9,18 +9,19 @@ public class Player
 {
     public string playerName;
     public int playerId;
-    public WizardDataScriptable charData;
+    public WizardDataScriptable wizardData;
     public InputType inputType;
     public int joistickId;
     public int winRounds = 0;
     public Color playerColor;
     public List<Spell> spellList = new List<Spell>();
     public GameObject wizardRef;
+    private int spellReplaceIdx = 0;
 
-    public Player(int playerId, WizardDataScriptable charData, InputType inputType, int joistickId, Color playerColor)
+    public Player(int playerId, WizardDataScriptable wizardData, InputType inputType, int joistickId, Color playerColor)
     {
         this.playerId = playerId;
-        this.charData = charData;
+        this.wizardData = wizardData;
         this.inputType = inputType;
         this.joistickId = joistickId;
         this.playerColor = playerColor;
@@ -28,13 +29,23 @@ public class Player
 
     public void AddSpell(Spell spell)
     {
-        spellList.Add(spell);
+        if (spellList.Count < 3)
+        {
+            spellList.Add(spell);
+        }
+        else
+        {
+            spellList.RemoveAt(spellReplaceIdx);
+            spellList.Insert(spellReplaceIdx, spell);
+            spellReplaceIdx++;
+        }
     }
 
     public void Reset()
     {
         winRounds = 0;
         spellList.Clear();
+        spellReplaceIdx = 0;
         if (wizardRef)
             wizardRef.GetComponent<SpellsManager>().Reset();
     }
@@ -42,6 +53,12 @@ public class Player
     public void AddWizard(GameObject wizard)
     {
         wizardRef = wizard;
+    }
+
+    public void AddWin()
+    {
+        winRounds += 1;
+        winRounds = Mathf.Clamp(winRounds, 0, GameManager.Instance.GetCurrentRound());
     }
 }
 
@@ -68,7 +85,7 @@ public class WizardSelectionDisplay : MonoBehaviour
     public bool playerConfirmed = false;
 
     private float canConfirmTimer;
-    private float canConfirmTime = 1.1f;
+    public float canConfirmTime = 0.7f;
     private bool canConfirm = false;
 
     Player player = null;
@@ -79,6 +96,8 @@ public class WizardSelectionDisplay : MonoBehaviour
     public Image keyboardImage;
 
     public Color playerColor;
+
+    public Animator anim;
 
 
     private void Update()
@@ -112,8 +131,7 @@ public class WizardSelectionDisplay : MonoBehaviour
         isActive = true;
         playerId = currentPlayerId;
         this.inputType = inputType;
-        initPanel.SetActive(false);
-        playerPanel.SetActive(true);
+        anim.SetTrigger("PlayerEnter");
         canConfirmTimer = canConfirmTime;
         joystickId = inputId;
         if (joystickId != 0)
@@ -168,7 +186,7 @@ public class WizardSelectionDisplay : MonoBehaviour
                 wizardIdx--;
                 SelectWizardAt(wizardIdx);
             }
-            if (Input.GetKey("joystick " + joystickId.ToString() + " button 0") && canConfirm && !currentWizard.IsConfirmed())
+            if (Input.GetKey("joystick " + joystickId.ToString() + " button 0") && canConfirm)
             {
                 OnPlayerConfirm();
             }
@@ -180,17 +198,17 @@ public class WizardSelectionDisplay : MonoBehaviour
     {
         if (!playerConfirmed)
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 wizardIdx++;
                 SelectWizardAt(wizardIdx);
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 wizardIdx--;
                 SelectWizardAt(wizardIdx);
             }
-            if (Input.GetKey(KeyCode.Return) && canConfirm && !currentWizard.IsConfirmed())
+            if (Input.GetKey(KeyCode.Return) && canConfirm)
             {
                 OnPlayerConfirm();
             }
@@ -199,10 +217,14 @@ public class WizardSelectionDisplay : MonoBehaviour
 
     private void OnPlayerConfirm()
     {
+        if (!currentWizard.IsConfirmed())
+        {
+            playerConfirmed = true;
+            player = new Player(playerId, currentWizard.wizardData, inputType, joystickId, playerId == 1 ? Color.red : Color.blue);
+            WizardSelectionManager.Instance.AddPlayer(player);
+            anim.SetTrigger("Ready");
+
+        }
         currentWizard.Confirm();
-        playerConfirmed = true;
-        player = new Player(playerId, currentWizard.wizardData, inputType, joystickId, playerId == 1? Color.red : Color.blue);
-        WizardSelectionManager.Instance.AddPlayer(player);
-        playerText.text = "READY!";
     }
 }

@@ -18,11 +18,18 @@ public class WizardSelectionButton : MonoBehaviour
     private bool isSelected = false;
     public bool isConfirmed = false;
 
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
         wizardImage.sprite = wizardData.artwork;
         wizardName.text = wizardData.wizardName;
+    }
+
+    private void Update()
+    {
+        anim.SetBool("Selected", isSelected);
     }
 
     public void Select(Color playerColor)
@@ -74,6 +81,11 @@ public class WizardSelectionButton : MonoBehaviour
         if (!isConfirmed)
         {
             isConfirmed = true;
+            anim.SetTrigger("Confirmed");
+        }
+        else
+        {
+            anim.SetTrigger("Cancel");
         }
     }
 }

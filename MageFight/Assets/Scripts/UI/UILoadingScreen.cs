@@ -7,25 +7,20 @@ using UnityEngine.UI;
 public class UILoadingScreen : MonoBehaviour
 {
     public Text loadingText;
-    public Text pressText;
-    public bool onGame = false;
+    int loadingVal = 0;
 
     public void SetVisible(bool show)
     {
         gameObject.SetActive(show);
+        loadingVal = Random.Range(61, 78);
+        loadingText.text = "Loading " + loadingVal;
     }
 
     public void Update()
     {
-        int loadingVal = (int)(LoaderManager.Get().loadingProgress * 100);
+        loadingVal += (int)(LoaderManager.Get().loadingProgress * 100);
+        loadingVal = Mathf.Clamp(loadingVal, 0, 100);
         loadingText.text = "Loading " + loadingVal;
-    }
-
-    public void SetOnGame()
-    {
-        onGame = true;
-        loadingText.gameObject.SetActive(false);
-        pressText.gameObject.SetActive(true);
     }
 
     public void OnAnimationFinished()

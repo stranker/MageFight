@@ -10,6 +10,7 @@ public class RangeSpell : Spell {
     private float accelerationIncrement = 0;
     private Vector2 velocity;
     protected Rigidbody2D rd;
+    [SerializeField] private Animator anim;
 
     private void Start()
     {
@@ -39,7 +40,17 @@ public class RangeSpell : Spell {
             Kill();
             SpellShake();
         }
-        if (collision.tag == "Ground")
+        if (collision.tag == "Spell")
+        {
+            MakeExplosion();
+            Kill();
+            collision.GetComponent<Spell>().Kill();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Ground")
         {
             MakeExplosion();
             Kill();
@@ -73,6 +84,10 @@ public class RangeSpell : Spell {
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         timer = cooldown;
         canDamage = true;
+        if (anim != null)
+        {
+            anim.SetTrigger(spellData.spellName);
+        }
     }
 
     private void CheckZeroDir()

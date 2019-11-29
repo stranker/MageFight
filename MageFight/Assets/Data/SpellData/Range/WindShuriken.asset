@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: WindShuriken
   m_EditorClassIdentifier: 
   spellName: Wind Shuriken
-  spellArtwork: {fileID: 21300000, guid: 7162258598dced4489a7eb709bfed3c2, type: 3}
+  spellArtwork: {fileID: 21300000, guid: 2c0593c914a3a9c44a209600867648af, type: 3}
   spellDifficulty: 2
   spellEffect: 

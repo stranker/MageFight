@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 50575867523242656}
   - component: {fileID: 61577661944608120}
   - component: {fileID: 114805377441861784}
+  - component: {fileID: 9008917703607103141}
   m_Layer: 0
   m_Name: IceStake
   m_TagString: Spell
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: 9097503063b0b974c89890eb04aa82da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,7 +101,7 @@ MonoBehaviour:
   damage: 15
   cooldown: 3
   castType: 1
-  mageOwner: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b, type: 3}
+  mageOwner: {fileID: 0}
   typeOfSpeel: 1
   knockbackForce: {x: 1, y: 0}
   invoked: 0
@@ -109,9 +110,10 @@ MonoBehaviour:
   particlesExplosion: {fileID: 1843636876906078, guid: ef7138bd7ad8d2a4b9a0de0a207b477b,
     type: 3}
   spellColor: {r: 0.38823533, g: 0.7607844, b: 0.909804, a: 1}
-  shakeFactor: 0
+  shakeFactor: 0.02
   speed: 25
   acceleration: 5
+  anim: {fileID: 0}
 --- !u!50 &50575867523242656
 Rigidbody2D:
   serializedVersion: 4
@@ -132,7 +134,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61577661944608120
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -150,7 +152,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.34, y: 0.28}
+    oldSize: {x: 2.5, y: 0.80833334}
     newSize: {x: 2.34, y: 0.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -175,3 +177,29 @@ MonoBehaviour:
   type: 1
   spriteEffect: {fileID: 1620679785542546, guid: 2a99dce6ee1eedd428c3c5b3d1b70894,
     type: 3}
+--- !u!61 &9008917703607103141
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548829230379324}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.08166504, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.5, y: 0.80833334}
+    newSize: {x: 2.34, y: 0.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.9510498, y: 0.17895508}
+  m_EdgeRadius: 0
