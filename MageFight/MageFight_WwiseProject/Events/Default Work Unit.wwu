@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{411778B3-EB27-4B87-BA57-FDF2A7F7F1FC}" SchemaVersion="94">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{411778B3-EB27-4B87-BA57-FDF2A7F7F1FC}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{411778B3-EB27-4B87-BA57-FDF2A7F7F1FC}" PersistMode="Standalone">
+			<ChildrenList>
+				<WorkUnit Name="Movimientos_personajes" ID="{5FBC77B3-0B76-48FD-9B41-19C886F2BC71}" PersistMode="Reference"/>
+				<WorkUnit Name="Menu_UI" ID="{E33CC997-9DC9-430F-B01C-91028F4D172E}" PersistMode="Reference"/>
+				<WorkUnit Name="Poderes" ID="{8EC42A19-25DF-45B3-B292-AF008622C5B8}" PersistMode="Reference"/>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{5FBC77B3-0B76-48FD-9B41-19C886F2BC71}" SchemaVersion="94" RootDocumentID="{411778B3-EB27-4B87-BA57-FDF2A7F7F1FC}">
+	<Events>
+		<WorkUnit Name="Movimientos_personajes" ID="{5FBC77B3-0B76-48FD-9B41-19C886F2BC71}" OwnerID="{411778B3-EB27-4B87-BA57-FDF2A7F7F1FC}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="Atravieza_portal" ID="{441A4822-2C37-486B-801E-8547CDFA5483}"/>
+				<Event Name="Camina_meg" ID="{03171641-D43A-4D52-9C3C-D2DE75C8E76E}"/>
+				<Event Name="Cae_a_tierra" ID="{24859FD2-CB5C-46EB-971F-0A0E15C39F6D}"/>
+				<Event Name="Camina_zack" ID="{7ABE37E6-D61A-47E9-ABF0-9A133AFED73F}"/>
+				<Event Name="Salta" ID="{2EEB1EB8-A719-4423-95C5-F0D845CBBC3C}"/>
+				<Event Name="Vuela" ID="{309FD01B-2189-4F48-8A30-0A2DE7F17FA1}"/>
+				<Event Name="Carga_poder" ID="{9DF24039-9DD2-4A09-835D-18A974BDC87A}"/>
+				<Event Name="Choca_plataforma" ID="{5EB570CF-3747-4CCC-8A7A-D984ED4CFF27}"/>
+				<Event Name="Explota" ID="{8D909F98-3F11-430E-B19A-712ED14941AE}"/>
+				<Event Name="Alarma_vuela_alto" ID="{3259E702-ACF9-4A17-8C32-E5DDB63C7AA3}"/>
+				<Event Name="Victoria" ID="{4FB50FF5-4787-4C7D-923F-19EFB517D6E2}"/>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
