@@ -30,7 +30,6 @@ public class UIManager : MonoBehaviour {
     public void Initialize()
     {
         leaderboard.Initialize();
-
     }
 
     public void Rematch()

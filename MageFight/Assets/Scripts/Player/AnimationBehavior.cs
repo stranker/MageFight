@@ -49,6 +49,15 @@ public class AnimationBehavior : MonoBehaviour {
         movement.SetMotion(i);
     }
 
+    public void PlayStepSound(AudioEvents.EventsKeys key)
+    {
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[key.ToString()], this.gameObject);
+    }
+
+    public void PlayFlySound()
+    {
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Player_Flying.ToString()], this.gameObject);
+    }
     public void PlaySpellAnim(Spell spell)
     {
         switch (spell.typeOfSpeel)

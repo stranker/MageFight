@@ -72,4 +72,8 @@ public class PlayerOffScreenIndicator : MonoBehaviour {
         gameObject.SetActive(val);
     }
 
+    public void PlayCloseToEdgeSound()
+    {
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Player_Out_Of_Bounds_Alarm.ToString()], this.gameObject);
+    }
 }

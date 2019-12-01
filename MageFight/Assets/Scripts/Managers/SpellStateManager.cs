@@ -108,6 +108,7 @@ public class SpellStateManager : MonoBehaviour
 
     public void Freeze(float freezeTime)
     {
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Player_Freezed.ToString()], this.gameObject);
         isFreezed = true;
         freezeTimer = freezeTime;
         movement.stuned = true;
@@ -116,6 +117,7 @@ public class SpellStateManager : MonoBehaviour
 
     public void Burn(float burnTime)
     {
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Player_On_Fire.ToString()], this.gameObject);
         isBurned = true;
         burnTimer = burnTime;
     }
@@ -125,6 +127,7 @@ public class SpellStateManager : MonoBehaviour
     }
 
     public void Throw(float force){
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Player_KnockBack.ToString()], this.gameObject);
         movement.Throw(force);
     }
 
@@ -142,6 +145,7 @@ public class SpellStateManager : MonoBehaviour
 
     public void Shrink()
     {
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Player_Stun.ToString()], this.gameObject);
         isShrinked = true;
         movement.SetCanFly(false);
         attack.SetCanAttack(false);

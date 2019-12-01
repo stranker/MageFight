@@ -16,8 +16,9 @@ public class AudioEvents : MonoBehaviour
         BaseballBat, BaseballBat_Hit, BubbleBurst, BubbleBurst_Hit, FlamingFist, FlamingFist_Hit,
         HastyHurricane, HastyHurricane_Hit, Hamerfall, Hamerfall_Hit, MagicMissile, MagicMissile_Hit, IceStake, IceStake_Hit,
         MagicPunch, MagicPunch_Hit, Rock, Rock_Hit, SummonerSlap, SummonerSlap_Hit,
-        WindShuriken, WindShuriken_Hit, WindShuriken_GoingBack, WindPush, WindPush_Hit
+        WindShuriken, WindShuriken_Hit, WindShuriken_Going_Back, WindPush, WindPush_Hit,
 
+        Player_Stun, Player_On_Fire, Player_KnockBack, Player_Freezed
     }
 
     static public Dictionary<string, string> eventsIDs = new Dictionary<string, string>();
@@ -27,7 +28,7 @@ public class AudioEvents : MonoBehaviour
         //Esto deberia ser UI pero los de audio son unos pelotudos
         eventsIDs.Add("MainMenu_Start", "Inicia_menu");
         eventsIDs.Add("Gameplay_Start", "Inicia_gameplay");
-        eventsIDs.Add("Versus_animation_start", "Versus");
+        eventsIDs.Add("Versus_Animation_Start", "Versus");
         eventsIDs.Add("VersusUI_Show", "Pantalla_versus");
         eventsIDs.Add("PauseMenu_Show", "Pause");
         eventsIDs.Add("Resume_Pressed", "Resume");
@@ -84,9 +85,15 @@ public class AudioEvents : MonoBehaviour
 
         eventsIDs.Add("WindShuriken", "Surikan");
         eventsIDs.Add("WindShuriken_Hit", "Surikan_acierta");
-        eventsIDs.Add("WindShuriken_GoingBack", "Surikan_vuelve");
+        eventsIDs.Add("WindShuriken_Going_Back", "Surikan_vuelve");
 
         eventsIDs.Add("WindPush", "Viento");
         eventsIDs.Add("WindPush_Hit", "Viento_acierta");
+
+        //Efectos en  el contricante
+        eventsIDs.Add("Player_Stun", "Pajaritos");
+        eventsIDs.Add("Player_On_Fire", "Prende_fuego");
+        eventsIDs.Add("Player_KnockBack", "Arrastra");
+        eventsIDs.Add("Player_Freezed", "Congela");
     }
 }

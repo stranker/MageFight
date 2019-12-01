@@ -218,20 +218,31 @@ public class SpellSelectionPanel : MonoBehaviour
         }
     }
 
+    private void PlayUIMoveSound()
+    {
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.UI_Move.ToString()], this.gameObject);
+    }
+    private void PlayUISelectSound()
+    {
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.UI_Select.ToString()], this.gameObject);
+    }
     private void CheckJoystickInput()
     {
         if (Input.GetAxis("J" + currentPlayerTurn.joistickId.ToString() + "_Axis_X") > 0.5f && canSelect)
         {
+            PlayUIMoveSound();
             spellCounter++;
             SelectPanelAt(spellCounter);
         }
         else if (Input.GetAxis("J" + currentPlayerTurn.joistickId.ToString() + "_Axis_X") < -0.5f && canSelect)
         {
+            PlayUIMoveSound();
             spellCounter--;
             SelectPanelAt(spellCounter);
         }
         if (Input.GetKey("joystick " + currentPlayerTurn.joistickId.ToString() + " button 0") && !spellConfirmed && canConfirm)
         {
+            PlayUISelectSound();
             OnSpellConfirm();
         }
     }
@@ -240,16 +251,19 @@ public class SpellSelectionPanel : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && canSelect)
         {
+            PlayUIMoveSound();
             spellCounter++;
             SelectPanelAt(spellCounter);
         }
         else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && canSelect)
         {
+            PlayUIMoveSound();
             spellCounter--;
             SelectPanelAt(spellCounter);
         }
         if (Input.GetKey(KeyCode.Return) && !spellConfirmed && canConfirm)
         {
+            PlayUISelectSound();
             OnSpellConfirm();
         }
     }

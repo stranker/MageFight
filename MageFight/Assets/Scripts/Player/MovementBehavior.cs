@@ -126,6 +126,8 @@ public class MovementBehavior : MonoBehaviour {
     {
         RightFootRaycast = Physics2D.Raycast(rightFoot.transform.position, Vector2.down, 1.1f, floorLayer);
         LeftFootRaycast = Physics2D.Raycast(leftFoot.transform.position, Vector2.down, 1.1f, floorLayer);
+        if(!onFloor && (RightFootRaycast || LeftFootRaycast))
+            AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Player_On_Ground.ToString()], this.gameObject);
         onFloor = RightFootRaycast || LeftFootRaycast;
         canJump = onFloor;
         doubleJump = !doubleJump ? canJump : true;
