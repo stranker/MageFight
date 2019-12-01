@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using AK.Wwise;
 
 public class UIMainMenu : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class UIMainMenu : MonoBehaviour
     private void Start()
     {
         currentPanel = mainMenuCanvas;
+        print(AudioEvents.EventsKeys.MainMenu_Start.ToString());
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.MainMenu_Start.ToString()],this.gameObject);
     }
 
     private void OnGUI()
@@ -54,6 +57,7 @@ public class UIMainMenu : MonoBehaviour
 
     public void PlayButtonPressed()
     {
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Gameplay_Start.ToString()], this.gameObject);
         LoaderManager.Get().LoadScene("CharacterSelectionScene");
     }
 

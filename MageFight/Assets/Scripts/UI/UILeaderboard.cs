@@ -35,6 +35,7 @@ public class UILeaderboard : MonoBehaviour {
 
     public void Show()
     {
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Cookies_Screen_Show.ToString()], this.gameObject);
         gameObject.SetActive(true);
         anim.SetTrigger("Appear");
         onScreen = true;

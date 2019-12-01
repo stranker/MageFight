@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 61577661944608120}
   - component: {fileID: 114805377441861784}
   - component: {fileID: 9008917703607103141}
+  - component: {fileID: 4181700367127998037}
   m_Layer: 0
   m_Name: IceStake
   m_TagString: Spell
@@ -203,3 +204,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9510498, y: 0.17895508}
   m_EdgeRadius: 0
+--- !u!114 &4181700367127998037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548829230379324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27efbca50d574540acc4da9cecf5d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 

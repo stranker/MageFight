@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 114076677898681520}
   - component: {fileID: 95356872129128686}
   - component: {fileID: 61774838412433646}
+  - component: {fileID: 1665700933493871454}
   m_Layer: 0
   m_Name: Flaming Fist
   m_TagString: Spell
@@ -204,6 +205,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.51, y: 1.72}
   m_EdgeRadius: 0
+--- !u!114 &1665700933493871454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981917643620784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27efbca50d574540acc4da9cecf5d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1 &1249839395910757422
 GameObject:
   m_ObjectHideFlags: 0

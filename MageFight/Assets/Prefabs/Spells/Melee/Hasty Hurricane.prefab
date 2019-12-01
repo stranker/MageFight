@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 114047580653008744}
   - component: {fileID: 95785148767417806}
   - component: {fileID: 61795278529741690}
+  - component: {fileID: 3527163892083195551}
   m_Layer: 0
   m_Name: Hasty Hurricane
   m_TagString: Spell
@@ -124,6 +125,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.41, y: 2.26}
   m_EdgeRadius: 0
+--- !u!114 &3527163892083195551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1919576913918108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27efbca50d574540acc4da9cecf5d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1 &1968886323379524
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: WindPush
   m_EditorClassIdentifier: 
   spellName: Wind Push
+  spellKeyInvoke: 46
+  spellKeyHit: 47
   spellArtwork: {fileID: 21300000, guid: d7be0d2fc1806204094cc2432d0ab605, type: 3}
   spellDifficulty: 1
   spellEffect: 

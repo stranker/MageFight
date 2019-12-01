@@ -630,6 +630,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b164b286bf25c304bb28c1b2dbf4d06f, type: 3}
+--- !u!1 &1217804849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1217804851}
+  - component: {fileID: 1217804850}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1217804850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217804849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f819a469c67b144bb2a08a40e6c0bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationSettings: {fileID: 11400000, guid: 38fddd7adc341ad4fa63649cfaa5a0b8,
+    type: 2}
+  basePath: 
+  language: 
+  defaultPoolSize: 0
+  lowerPoolSize: 0
+  streamingPoolSize: 0
+  memoryCutoffThreshold: 0
+  monitorPoolSize: 0
+  monitorQueuePoolSize: 0
+  callbackManagerBufferSize: 0
+  spatialAudioPoolSize: 0
+  maxSoundPropagationDepth: 0
+  diffractionFlags: 11
+  engineLogging: 0
+--- !u!4 &1217804851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217804849}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1219477374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -640,11 +698,6 @@ PrefabInstance:
     - target: {fileID: 1445943667450572, guid: a41a750c7c56cc34aa4170ddf4884173, type: 3}
       propertyPath: m_Name
       value: WindPush
-      objectReference: {fileID: 0}
-    - target: {fileID: 114951534744336276, guid: a41a750c7c56cc34aa4170ddf4884173,
-        type: 3}
-      propertyPath: mageOwner
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4975187229472398, guid: a41a750c7c56cc34aa4170ddf4884173, type: 3}
       propertyPath: m_LocalPosition.x
@@ -689,6 +742,11 @@ PrefabInstance:
     - target: {fileID: 4975187229472398, guid: a41a750c7c56cc34aa4170ddf4884173, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114951534744336276, guid: a41a750c7c56cc34aa4170ddf4884173,
+        type: 3}
+      propertyPath: mageOwner
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 50150582354683568, guid: a41a750c7c56cc34aa4170ddf4884173,
         type: 3}
@@ -787,11 +845,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceStake
       objectReference: {fileID: 0}
-    - target: {fileID: 114353543599955174, guid: 4d844d2b7c016f54d9d412cfb21218c1,
-        type: 3}
-      propertyPath: mageOwner
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4923932997720792, guid: 4d844d2b7c016f54d9d412cfb21218c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1001.94
@@ -836,6 +889,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114353543599955174, guid: 4d844d2b7c016f54d9d412cfb21218c1,
+        type: 3}
+      propertyPath: mageOwner
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d844d2b7c016f54d9d412cfb21218c1, type: 3}
 --- !u!114 &1894153845 stripped
@@ -860,11 +918,6 @@ PrefabInstance:
     - target: {fileID: 1932423585590180, guid: 6a8fee6128ab04e4d9f5bd6a0913c971, type: 3}
       propertyPath: m_Name
       value: BubbleBurst
-      objectReference: {fileID: 0}
-    - target: {fileID: 114498289543415858, guid: 6a8fee6128ab04e4d9f5bd6a0913c971,
-        type: 3}
-      propertyPath: mageOwner
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4845843606441522, guid: 6a8fee6128ab04e4d9f5bd6a0913c971, type: 3}
       propertyPath: m_LocalPosition.x
@@ -910,6 +963,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114498289543415858, guid: 6a8fee6128ab04e4d9f5bd6a0913c971,
+        type: 3}
+      propertyPath: mageOwner
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a8fee6128ab04e4d9f5bd6a0913c971, type: 3}
 --- !u!1 &1933192050
@@ -922,6 +980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1933192053}
   - component: {fileID: 1933192052}
+  - component: {fileID: 1933192054}
   - component: {fileID: 1933192051}
   m_Layer: 0
   m_Name: Main Camera
@@ -930,14 +989,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1933192051
-AudioListener:
+--- !u!114 &1933192051
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933192050}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 341ba5a701e41364fa5efd8bddf6d698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  listenerId: 0
 --- !u!20 &1933192052
 Camera:
   m_ObjectHideFlags: 0
@@ -994,6 +1059,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1933192054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933192050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448f926279807b54380750c77e2d3fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1001 &2007748181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1254,11 +1341,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagicMissile
       objectReference: {fileID: 0}
-    - target: {fileID: 114472322982678124, guid: ed820bc51e0309a4588629a399e4fb78,
-        type: 3}
-      propertyPath: mageOwner
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4672701154822494, guid: ed820bc51e0309a4588629a399e4fb78, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1002.87
@@ -1303,6 +1385,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114472322982678124, guid: ed820bc51e0309a4588629a399e4fb78,
+        type: 3}
+      propertyPath: mageOwner
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed820bc51e0309a4588629a399e4fb78, type: 3}
 --- !u!1001 &2122128382
@@ -1315,11 +1402,6 @@ PrefabInstance:
     - target: {fileID: 1975425221469212, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc, type: 3}
       propertyPath: m_Name
       value: Rock
-      objectReference: {fileID: 0}
-    - target: {fileID: 114394342564051314, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc,
-        type: 3}
-      propertyPath: mageOwner
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4897534483022690, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1364,6 +1446,11 @@ PrefabInstance:
     - target: {fileID: 4897534483022690, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114394342564051314, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc,
+        type: 3}
+      propertyPath: mageOwner
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d5b4bfcc56648c48b78ba1ebb2fd7fc, type: 3}

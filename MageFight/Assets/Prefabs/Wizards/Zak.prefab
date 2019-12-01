@@ -10415,6 +10415,7 @@ GameObject:
   - component: {fileID: 4877554393673381702}
   - component: {fileID: 4877554393673381700}
   - component: {fileID: 4877554393673381703}
+  - component: {fileID: 7870934884570202540}
   m_Layer: 9
   m_Name: Zak
   m_TagString: Player
@@ -10673,6 +10674,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7870934884570202540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877554393673381724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27efbca50d574540acc4da9cecf5d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1 &4877554393708524470
 GameObject:
   m_ObjectHideFlags: 0

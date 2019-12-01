@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: SummonerSlap
   m_EditorClassIdentifier: 
   spellName: Summoner Slap
+  spellKeyInvoke: 41
+  spellKeyHit: 42
   spellArtwork: {fileID: 21300000, guid: ebae505811d15ba4781202fee8845b2b, type: 3}
   spellDifficulty: 5
   spellEffect: 

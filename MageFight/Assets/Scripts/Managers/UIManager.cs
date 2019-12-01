@@ -61,6 +61,7 @@ public class UIManager : MonoBehaviour {
         if(value)
         {
             PlayerPresentationCanvas.SetActive(true);
+            AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Versus_Animation_Start.ToString()], this.gameObject);
             PlayerPresentationCanvas.GetComponent<Animator>().SetTrigger("Start");
         }
         else

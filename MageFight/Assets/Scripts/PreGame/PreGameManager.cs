@@ -22,6 +22,7 @@ public class PreGameManager : MonoBehaviour
         {
             CreateDebugPlayers();
         }
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Fly_Tutorial_Start.ToString()], this.gameObject);
         CreateWizards();
     }
 

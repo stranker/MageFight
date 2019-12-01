@@ -38,7 +38,32 @@ public class WizardBehavior : MonoBehaviour {
             pAnim.ReceiveHit();
             visual.ReceiveHit();
             if (health <= 0)
+            {                
+                AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Player_Death.ToString()], this.gameObject);
+                isAlive = !isAlive;
+                movement.SetActive(false);
+                attack.SetActive(false);
+                deathParticles.Play();
+                visual.SetPlayerDead(true);
+                pAnim.ResetAnimations();
+                GameManager.Instance.PlayerDeath(this);
+            }
+        }
+        health = Mathf.Clamp(health, 0, maxHealth);
+    }
+
+    public void TakeDamage(int val, Vector2 position, bool OutOfBounds)
+    {
+        if(isAlive)
+        {
+            health -= val;
+            spellsManager.CancelMeleeSpells();
+            pAnim.ReceiveHit();
+            visual.ReceiveHit();
+            if(health <= 0)
             {
+                string soundID = !OutOfBounds ? AudioEvents.EventsKeys.Player_Death.ToString() : AudioEvents.EventsKeys.Player_Out_Of_Bounds_Death.ToString();
+                AkSoundEngine.PostEvent(AudioEvents.eventsIDs[soundID], this.gameObject);
                 isAlive = !isAlive;
                 movement.SetActive(false);
                 attack.SetActive(false);

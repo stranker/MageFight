@@ -195,6 +195,7 @@ public class MovementBehavior : MonoBehaviour {
     {
         if (GetJumpInput() && onFloor && canJump)
         {
+            AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Player_Jump.ToString()], this.gameObject);
             canJump = false;
             velocity.y = jumpSpeed;
             jumpParticles.Play();

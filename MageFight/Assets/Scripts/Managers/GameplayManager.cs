@@ -136,7 +136,7 @@ public class GameplayManager : MonoBehaviour {
         GameManager.Instance.EndRound();
     }
     public void PostGame()
-    {
+    {        
     }
     private void Rematch()
     {
@@ -152,6 +152,7 @@ public class GameplayManager : MonoBehaviour {
     }
     private void Pause()
     {
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.PauseMenu_Show.ToString()], this.gameObject);
         UIManager.Get().SetPauseMenuUI(true);
         GameManager.Instance.SetPause(true);
     }

@@ -118,6 +118,7 @@ public class AttackBehavior : MonoBehaviour {
                 }
                 else if (spellManager.GetSpellCastType(spellIndex) == Spell.CastType.Hold)
                 {
+                    AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Player_Invoking.ToString()], this.gameObject);
                     arrowSprite.gameObject.SetActive(true);
                     InvokeSpell(spellIndex);
                 }

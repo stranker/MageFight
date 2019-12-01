@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: HastyHurricane
   m_EditorClassIdentifier: 
   spellName: Hasty Hurricane
+  spellKeyInvoke: 29
+  spellKeyHit: 30
   spellArtwork: {fileID: 21300000, guid: 7b8ab6fd1aa724e47b63dc85b057548d, type: 3}
   spellDifficulty: 2
   spellEffect: 

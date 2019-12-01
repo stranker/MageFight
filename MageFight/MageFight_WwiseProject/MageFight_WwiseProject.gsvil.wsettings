@@ -3,6 +3,14 @@
 	<UserProjectSettingsInfo>
 		<UserProjectSettings Name="" ID="{A4FB967D-0CC1-41E9-AED8-67F477EDD08D}">
 			<PropertyList>
+				<Property Name="Event Action List\{20AD3605-EC44-461B-8F29-C01A699BECC1}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{3F696CBE-AB2A-4E42-9009-447010256031}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{52A46EBF-E82B-429D-9A24-85494AF9FB71}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{7DF118DC-BFDB-4C20-A521-8B37447ECB00}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{8BA0873B-6814-4190-882D-73ACFE600B78}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{B12383FD-5342-4297-965F-C211D81F446B}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{D2D6009D-57BE-45FE-904E-8FA3113790DA}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{DC8E19CF-CCDC-42FD-A359-D8E0B114D223}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>
@@ -20,7 +28,7 @@
 				<Property Name="General\LatestLanguage" Type="int32" Value="684519430"/>
 				<Property Name="General\LatestPlatform" Type="string" Value="Mac"/>
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}"/>
-				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups" Type="string" Value="+PH/BZdGskyB3Haw1btIiAH/////////e9amIM5JBUOWbRdbzEKNsQH/////////"/>
+				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups" Type="string" Value="1RfapF2/TUWNXLMaXoYlzgH/////////Gky6qRn3pkiqO/Pb3xErVwH/////////"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
 				<Property Name="MeterView\MeterMode1" Type="int32" Value="1"/>
 				<Property Name="MeterView\MeterMode1Viewpoint0" Type="int32" Value="1"/>
@@ -52,7 +60,7 @@
 				<Property Name="ProjectExplorer\x64_Expanded_20_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_21_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_2_1" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\x64_Expanded_3_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\x64_Expanded_3_1" Type="string" Value="l8k848mdD0OwHJECj00XLhkqxI7fJbNFspKvAIYixbizd7xfdgv9SJtBGciG8rxxs3gXQSfrh0u6V/3yp/fx/A=="/>
 				<Property Name="ProjectExplorer\x64_Expanded_4_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_5_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_6_1" Type="string" Value=""/>

@@ -19,6 +19,7 @@ public class PreGamePortal : MonoBehaviour
     {
         if (collision.tag == "Player" && !players.Contains(collision.gameObject.GetComponent<WizardBehavior>()))
         {
+            AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Player_Collision_Portal.ToString()], this.gameObject);
             players.Add(collision.gameObject.GetComponent<WizardBehavior>());
             collision.gameObject.SetActive(false);
             CheckPlayers();

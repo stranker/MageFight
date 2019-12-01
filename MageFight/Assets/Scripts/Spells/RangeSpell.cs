@@ -30,6 +30,7 @@ public class RangeSpell : Spell {
     {
         if (collision.tag == "Player" && collision.gameObject != mageOwner && canDamage)
         {
+            AkSoundEngine.PostEvent(AudioEvents.eventsIDs[spellData.spellKeyHit.ToString()], this.gameObject);
             WizardBehavior player = collision.GetComponent<WizardBehavior>();
             MovementBehavior pMovement = player.GetComponent<MovementBehavior>();
             player.TakeDamage(damage,transform.position);
@@ -74,6 +75,7 @@ public class RangeSpell : Spell {
 
     public override void InvokeSpell(Vector3 startPos, Vector3 direction, GameObject owner)
     {
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[spellData.spellKeyInvoke.ToString()], this.gameObject);
         invoked = true;
         mageOwner = owner;
         transform.position = startPos;
@@ -82,7 +84,7 @@ public class RangeSpell : Spell {
         velocity = dir * speed;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        timer = cooldown;
+        timer = cooldown;        
         canDamage = true;
         if (anim != null)
         {

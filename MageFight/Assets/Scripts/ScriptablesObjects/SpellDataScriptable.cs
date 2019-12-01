@@ -6,6 +6,8 @@ using UnityEngine;
 public class SpellDataScriptable : ScriptableObject
 {
     public string spellName;
+    public AudioEvents.EventsKeys spellKeyInvoke;
+    public AudioEvents.EventsKeys spellKeyHit;
     public Sprite spellArtwork;
     public int spellDifficulty;
     public string spellEffect;

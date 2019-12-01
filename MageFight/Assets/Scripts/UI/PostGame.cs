@@ -11,10 +11,10 @@ public class PostGame : MonoBehaviour
 
     public void SetWinner(int winnerIdx)
     {
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Player_Victory.ToString()], this.gameObject);
         gameObject.SetActive(true);
         winnerLabel.text = "PLAYER " + winnerIdx.ToString();
         anim.SetTrigger("Enter");
-
     }
 
     public void Hide()
