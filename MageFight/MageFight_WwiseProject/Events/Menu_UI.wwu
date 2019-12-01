@@ -7,10 +7,11 @@
 				<Event Name="UI_move" ID="{DC8E19CF-CCDC-42FD-A359-D8E0B114D223}"/>
 				<Event Name="Resume" ID="{B12383FD-5342-4297-965F-C211D81F446B}"/>
 				<Event Name="UI_select" ID="{7DF118DC-BFDB-4C20-A521-8B37447ECB00}"/>
-				<Event Name="pausa" ID="{20AD3605-EC44-461B-8F29-C01A699BECC1}"/>
+				<Event Name="Pausa" ID="{20AD3605-EC44-461B-8F29-C01A699BECC1}"/>
 				<Event Name="Inicia_menu" ID="{52A46EBF-E82B-429D-9A24-85494AF9FB71}"/>
 				<Event Name="Inicia_gameplay" ID="{3F696CBE-AB2A-4E42-9009-447010256031}"/>
 				<Event Name="Cookies_screen" ID="{8BA0873B-6814-4190-882D-73ACFE600B78}"/>
+				<Event Name="Versus" ID="{28E8A072-C71D-4447-BCC0-752824D50431}"/>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

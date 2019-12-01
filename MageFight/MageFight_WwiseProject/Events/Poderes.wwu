@@ -7,8 +7,6 @@
 				<Event Name="Viento_acierta" ID="{14A7308D-DD30-4AE1-BB2D-7A2670759DA8}"/>
 				<Event Name="Polar" ID="{1A4F23D9-BCE4-4C99-9BCA-F345FD009011}"/>
 				<Event Name="Polar_acierta" ID="{89C06B03-1522-4AC2-AF09-7A7D198BFE81}"/>
-				<Event Name="Latigo" ID="{5695C1D8-1E32-433B-82CB-736C9E47F82E}"/>
-				<Event Name="Latigo_acierta" ID="{ABBA5427-506B-48D8-ACAE-ECCBC5EDBCA9}"/>
 				<Event Name="Roca" ID="{DB371FBC-0038-4EAA-A6FD-7C25A94E1290}"/>
 				<Event Name="Roca_acierta" ID="{DEA3E092-628A-4E56-8227-F5EE6C3FE08C}"/>
 				<Event Name="Hurricane" ID="{3579B0F7-1270-4CAE-BD3B-3375A97D608D}"/>
@@ -30,6 +28,14 @@
 				<Event Name="Bate" ID="{B2DFC5DF-1B06-4CFB-A132-6BEF7A4ACC1C}"/>
 				<Event Name="Bate_acierta" ID="{95C9E690-2EAD-48F5-8033-4B54F7F182E0}"/>
 				<Event Name="Surikan_vuelve" ID="{1812839D-5F71-407D-845C-B4EBB351CB45}"/>
+				<Folder Name="Efectos" ID="{1BF00BFE-40BF-4924-B553-D5D48154979E}" ShortID="67404209">
+					<ChildrenList>
+						<Event Name="Arrastra" ID="{DED2D693-B0BA-4553-A6DD-D97899269931}"/>
+						<Event Name="Pajaritos" ID="{4C87B966-4B81-4963-9D10-A34E9A0A421C}"/>
+						<Event Name="Prende_fuego" ID="{47EBA2FB-134B-4BF3-A0F2-053822CE7A82}"/>
+						<Event Name="Congela" ID="{FC26E34E-AE59-4C09-BE4C-A93E951ECE82}"/>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
