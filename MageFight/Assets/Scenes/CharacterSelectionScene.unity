@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 6662833}
   - component: {fileID: 6662832}
   m_Layer: 0
-  m_Name: WizardrSelectionManager
+  m_Name: WizardSelectionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

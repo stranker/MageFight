@@ -10371,6 +10371,8 @@ MonoBehaviour:
   flyParticles: {fileID: 7865775988981678072}
   playerRestoreOnHitTime: 0.5
   doubleJump: 1
+  airDashConsumption: 20
+  airDashVelocity: 150
 --- !u!114 &7865775988933451483
 MonoBehaviour:
   m_ObjectHideFlags: 0

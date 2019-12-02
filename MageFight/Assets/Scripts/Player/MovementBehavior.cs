@@ -50,6 +50,9 @@ public class MovementBehavior : MonoBehaviour {
 
     public bool doubleJump = true;
 
+    public float airDashConsumption = 20f;
+    public float airDashVelocity = 50f;
+
     // Use this for initialization
     void Start () {
         initialGravityScale = rigidBody.gravityScale;
@@ -133,10 +136,21 @@ public class MovementBehavior : MonoBehaviour {
         FlyStaminaCheck();
         GetAimDirection();
         JumpCheck();
+        AirDash();
         if (!onPlayerRestoreHit && !stuned)
             rigidBody.velocity = canMove ? velocity : Vector2.zero;
         FacingDirectionCheck();
         rigidBody.gravityScale = flying ? 0 : initialGravityScale;
+    }
+
+    private void AirDash()
+    {
+        if (flying && flyStamina >=  airDashConsumption && GetJumpInput())
+        {
+            flyStamina -= airDashConsumption;
+            velocity = aimDirection.normalized * airDashVelocity;
+            rigidBody.velocity = velocity;
+        }
     }
 
     public void SpellInvoked(int val)
