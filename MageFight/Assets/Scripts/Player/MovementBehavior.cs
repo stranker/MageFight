@@ -9,54 +9,60 @@ public class MovementBehavior : MonoBehaviour {
     public float jumpSpeed;
     public float flySpeed;
     public float flyAcceleration;
+    public float flyStamina;
+    public float flyMaxStamina;
+    public float flyConsumption;
     private float flyAccelerationIncrement = 1;
     public float initialGravityScale;
+    public float airDashConsumption = 20f;
+    public float airDashVelocity = 50f;
+    public float airDashBetweenTime;
+    public float playerRestoreOnHitTime;
+    public int currentDirection = 1;
+
     public bool canMove = true;
     public bool stuned = false;
     public bool onFloor;
-    public RaycastHit2D LeftFootRaycast;
-    public RaycastHit2D RightFootRaycast;
-    public int currentDirection = 1;
+    public bool doubleJump = true;
+    public bool isAirDashing = false;
     public bool canJump = true;
     public bool canFly = true;
     public bool flying;
     public bool knockback = false;
-    public float flyStamina;
-    public float flyMaxStamina;
-    public float flyConsumption;
+    public bool onPlayerRestoreHit = false;
+
     public Vector2 velocity;
     public Vector2 aimDirection;
+
     public InputManager input;
     public AttackBehavior attackBehavior;
     public WizardBehavior wizardBehavior;
     public Rigidbody2D rigidBody;
     public Transform rightFoot;
     public Transform leftFoot;
-    public LayerMask floorLayer;
-
     public Transform visual;
     public ParticleSystem jumpParticles;
     public ParticleSystem flyParticles;
-    private bool onPlayerRestoreHit = false;
-    private float playerRestoreOnHitTimer = 0;
-    public float playerRestoreOnHitTime;
+    public ParticleSystem airDashParticles;
 
-    private bool spellInvoked = false;
-    private float timerSpellInvoked;
-    private float timeSpellInvoked = 2f;
+    public LayerMask floorLayer;
 
+    private float playerRestoreOnHitTimer;
     private float timerCanMove;
+    private float airDashTimer;
     private float timeCanMoveException = 0.8f;
 
-    public bool doubleJump = true;
+    private RaycastHit2D LeftFootRaycast;
+    private RaycastHit2D RightFootRaycast;
 
-    public float airDashConsumption = 20f;
-    public float airDashVelocity = 50f;
+    private ParticleSystem.EmissionModule flyEmission;
+    
 
     // Use this for initialization
     void Start () {
         initialGravityScale = rigidBody.gravityScale;
         wizardBehavior = GetComponent<WizardBehavior>();
+        flyEmission = flyParticles.emission;
     }
 
 
@@ -77,16 +83,6 @@ public class MovementBehavior : MonoBehaviour {
 
     private void TimersCheck()
     {
-        if (spellInvoked)
-        {
-            timerSpellInvoked += Time.deltaTime;
-            if (timerSpellInvoked >= timeSpellInvoked)
-            {
-                timerSpellInvoked = 0;
-                spellInvoked = false;
-                SetCanMove(true);
-            }
-        }
         if (!canMove)
         {
             timerCanMove += Time.deltaTime;
@@ -94,6 +90,16 @@ public class MovementBehavior : MonoBehaviour {
             {
                 timerCanMove = 0;
                 SetCanMove(true);
+            }
+        }
+        if (isAirDashing)
+        {
+            airDashTimer += Time.deltaTime;
+            if (airDashTimer > airDashBetweenTime)
+            {
+                airDashParticles.Stop();
+                isAirDashing = false;
+                airDashTimer = 0;
             }
         }
     }
@@ -145,19 +151,16 @@ public class MovementBehavior : MonoBehaviour {
 
     private void AirDash()
     {
-        if (flying && flyStamina >=  airDashConsumption && GetJumpInput())
+        if (!isAirDashing && flying && flyStamina >=  airDashConsumption && GetJumpInput())
         {
+            isAirDashing = true;
             flyStamina -= airDashConsumption;
             velocity = aimDirection.normalized * airDashVelocity;
             rigidBody.velocity = velocity;
+            airDashParticles.Play();
         }
     }
 
-    public void SpellInvoked(int val)
-    {
-        spellInvoked = val == 0;
-        SetCanMove(false);
-    }
 
     private void GetInput()
     {
@@ -171,15 +174,14 @@ public class MovementBehavior : MonoBehaviour {
         if (flying)
         {
             flyStamina -= flyConsumption * Time.deltaTime;
-            flyParticles.Play();
         }
         else
         {
-            flyParticles.Stop();
             if (onFloor)
                 flyStamina += flyConsumption * Time.deltaTime * 2;
         }
         flyStamina = Mathf.Clamp(flyStamina, 0, flyMaxStamina);
+        flyEmission.enabled = flying;
     }
 
     private void FlyAccelerationCheck()
@@ -213,7 +215,7 @@ public class MovementBehavior : MonoBehaviour {
             velocity.y = jumpSpeed;
             jumpParticles.Play();
         }
-        if (GetJumpInput() && !onFloor && doubleJump)
+        if (GetJumpInput() && !onFloor && doubleJump && !flying)
         {
             velocity.y = jumpSpeed;
             jumpParticles.Play();

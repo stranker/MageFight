@@ -1444,6 +1444,11 @@ PrefabInstance:
       propertyPath: inputType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7865775988933451482, guid: 3727bfc88199d0f4ea60678a9a682ad1,
+        type: 3}
+      propertyPath: airDashTime
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7865775988933451484, guid: 3727bfc88199d0f4ea60678a9a682ad1,
         type: 3}
       propertyPath: spells.Array.size
