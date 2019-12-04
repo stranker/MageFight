@@ -26,6 +26,7 @@ public class MovementBehavior : MonoBehaviour {
     public bool doubleJump = true;
     public bool isAirDashing = false;
     public bool canJump = true;
+    public bool jumped = false;
     public bool canFly = true;
     public bool flying;
     public bool knockback = false;
@@ -42,6 +43,7 @@ public class MovementBehavior : MonoBehaviour {
     public Transform leftFoot;
     public Transform visual;
     public ParticleSystem jumpParticles;
+    public ParticleSystem fallOnFloorParticles;
     public ParticleSystem flyParticles;
     public ParticleSystem airDashParticles;
 
@@ -55,8 +57,20 @@ public class MovementBehavior : MonoBehaviour {
     private RaycastHit2D LeftFootRaycast;
     private RaycastHit2D RightFootRaycast;
 
+    private bool usedOnFloorParticles = false;
+
     private ParticleSystem.EmissionModule flyEmission;
-    
+
+    enum WizardStates
+    {
+        Idle,
+        Run,
+        Fly,
+        Fall,
+        InvokeSpell,
+        ThrowSpell,
+        Dead
+    }
 
     // Use this for initialization
     void Start () {
@@ -137,6 +151,7 @@ public class MovementBehavior : MonoBehaviour {
         LeftFootRaycast = Physics2D.Raycast(leftFoot.transform.position, Vector2.down, 1.1f, floorLayer);
         onFloor = RightFootRaycast || LeftFootRaycast;
         canJump = onFloor;
+        jumped = onFloor? false : true;
         doubleJump = !doubleJump ? canJump : true;
         FlyAccelerationCheck();
         FlyStaminaCheck();
@@ -209,17 +224,30 @@ public class MovementBehavior : MonoBehaviour {
 
     private void JumpCheck()
     {
-        if (GetJumpInput() && onFloor && canJump)
+        if (GetJumpInput() && onFloor && canJump && !jumped)
         {
             canJump = false;
             velocity.y = jumpSpeed;
             jumpParticles.Play();
         }
-        if (GetJumpInput() && !onFloor && doubleJump && !flying)
+        if (GetJumpInput() && !onFloor && doubleJump && !flying && jumped)
         {
             velocity.y = jumpSpeed;
             jumpParticles.Play();
             doubleJump = false;
+        }
+        if (onFloor)
+        {
+            if (!usedOnFloorParticles)
+            {
+                fallOnFloorParticles.Play();
+                usedOnFloorParticles = true;
+            }
+        }
+        else
+        {
+            fallOnFloorParticles.Stop();
+            usedOnFloorParticles = false;
         }
     }
 
