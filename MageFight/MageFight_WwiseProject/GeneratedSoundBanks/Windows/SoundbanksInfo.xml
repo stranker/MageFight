@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="134">
 	<RootPaths>
-		<ProjectRoot>G:\GAME AUDIO\Wizard\MageFight_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>G:\GAME AUDIO\Wizard\MageFight_WwiseProject\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>G:\GAME AUDIO\Wizard\MageFight_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>G:\GAME AUDIO\Wizard\MageFight_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -24,33 +24,33 @@
 				<Event Id="941636980" Name="Alarma_vuela_alto" ObjectPath="\Events\Default Work Unit\Movimientos_personajes\Alarma_vuela_alto" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2717870121" Name="Arrastra" ObjectPath="\Events\Default Work Unit\Poderes\Efectos\Arrastra" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="3329125997" Name="Atravieza_portal" ObjectPath="\Events\Default Work Unit\Movimientos_personajes\Atravieza_portal" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="1375321527" Name="Bate" ObjectPath="\Events\Default Work Unit\Poderes\Bate" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1375321527" Name="Bate" ObjectPath="\Events\Default Work Unit\Poderes\Bate" DurationType="OneShot" DurationMin="0.469333" DurationMax="0.469333"/>
 				<Event Id="2529019571" Name="Bate_acierta" ObjectPath="\Events\Default Work Unit\Poderes\Bate_acierta" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="3835649095" Name="Bubble" ObjectPath="\Events\Default Work Unit\Poderes\Bubble" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="3835649095" Name="Bubble" ObjectPath="\Events\Default Work Unit\Poderes\Bubble" DurationType="OneShot" DurationMin="0.182857" DurationMax="0.182857"/>
 				<Event Id="3184715043" Name="Bubble_acierta" ObjectPath="\Events\Default Work Unit\Poderes\Bubble_acierta" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="3031707658" Name="Cae_a_tierra" ObjectPath="\Events\Default Work Unit\Movimientos_personajes\Cae_a_tierra" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="1715142784" Name="Camina_meg" ObjectPath="\Events\Default Work Unit\Movimientos_personajes\Camina_meg" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="978313838" Name="Camina_zack" ObjectPath="\Events\Default Work Unit\Movimientos_personajes\Camina_zack" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="3203515812" Name="Carga_poder" ObjectPath="\Events\Default Work Unit\Movimientos_personajes\Carga_poder" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="741642741" Name="Choca_plataforma" ObjectPath="\Events\Default Work Unit\Movimientos_personajes\Choca_plataforma" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="4153951590" Name="Congela" ObjectPath="\Events\Default Work Unit\Poderes\Efectos\Congela" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="4153951590" Name="Congela" ObjectPath="\Events\Default Work Unit\Poderes\Efectos\Congela" DurationType="OneShot" DurationMin="1.597021" DurationMax="1.597021"/>
 				<Event Id="1328165053" Name="Cookies_screen" ObjectPath="\Events\Default Work Unit\Menu_UI\Cookies_screen" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="680189572" Name="Explota" ObjectPath="\Events\Default Work Unit\Movimientos_personajes\Explota" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="2678880713" Name="Fire" ObjectPath="\Events\Default Work Unit\Poderes\Fire" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="2678880713" Name="Fire" ObjectPath="\Events\Default Work Unit\Poderes\Fire" DurationType="OneShot" DurationMin="1.610522" DurationMax="1.610522"/>
 				<Event Id="625524577" Name="Fire_acierta" ObjectPath="\Events\Default Work Unit\Poderes\Fire_acierta" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="3292998934" Name="Hurricane" ObjectPath="\Events\Default Work Unit\Poderes\Hurricane" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="3292998934" Name="Hurricane" ObjectPath="\Events\Default Work Unit\Poderes\Hurricane" DurationType="OneShot" DurationMin="5.378005" DurationMax="5.378005"/>
 				<Event Id="110251686" Name="Hurricane_acierta" ObjectPath="\Events\Default Work Unit\Poderes\Hurricane_acierta" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="4285533329" Name="Inicia_gameplay" ObjectPath="\Events\Default Work Unit\Menu_UI\Inicia_gameplay" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="928907744" Name="Inicia_menu" ObjectPath="\Events\Default Work Unit\Menu_UI\Inicia_menu" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="1812086323" Name="Inicia_tutorial" ObjectPath="\Events\Default Work Unit\Menu_UI\Inicia_tutorial" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="336539553" Name="Martillo" ObjectPath="\Events\Default Work Unit\Poderes\Martillo" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="336539553" Name="Martillo" ObjectPath="\Events\Default Work Unit\Poderes\Martillo" DurationType="OneShot" DurationMin="0.394667" DurationMax="0.394667"/>
 				<Event Id="4166735513" Name="Martillo_acierta" ObjectPath="\Events\Default Work Unit\Poderes\Martillo_acierta" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="3470636133" Name="Misil" ObjectPath="\Events\Default Work Unit\Poderes\Misil" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="1668424165" Name="Misil_acierta" ObjectPath="\Events\Default Work Unit\Poderes\Misil_acierta" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="3253260218" Name="Pajaritos" ObjectPath="\Events\Default Work Unit\Poderes\Efectos\Pajaritos" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="3092587489" Name="Pausa" ObjectPath="\Events\Default Work Unit\Menu_UI\Pausa" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="2194252879" Name="Polar" ObjectPath="\Events\Default Work Unit\Poderes\Polar" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="896974411" Name="Polar_acierta" ObjectPath="\Events\Default Work Unit\Poderes\Polar_acierta" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="2194252879" Name="Polar" ObjectPath="\Events\Default Work Unit\Poderes\Polar" DurationType="OneShot" DurationMin="0.619297" DurationMax="0.619297"/>
+				<Event Id="896974411" Name="Polar_acierta" ObjectPath="\Events\Default Work Unit\Poderes\Polar_acierta" DurationType="OneShot" DurationMin="1.714286" DurationMax="1.714286"/>
 				<Event Id="2757236204" Name="Prende_fuego" ObjectPath="\Events\Default Work Unit\Poderes\Efectos\Prende_fuego" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="1510749589" Name="Pummel" ObjectPath="\Events\Default Work Unit\Poderes\Pummel" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="1898300597" Name="Pummel_acierta" ObjectPath="\Events\Default Work Unit\Poderes\Pummel_acierta" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
@@ -58,19 +58,73 @@
 				<Event Id="2144363824" Name="Roca" ObjectPath="\Events\Default Work Unit\Poderes\Roca" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="728203700" Name="Roca_acierta" ObjectPath="\Events\Default Work Unit\Poderes\Roca_acierta" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2948438982" Name="Salta" ObjectPath="\Events\Default Work Unit\Movimientos_personajes\Salta" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="821159915" Name="Slap" ObjectPath="\Events\Default Work Unit\Poderes\Slap" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="3658336479" Name="Slap_acierta" ObjectPath="\Events\Default Work Unit\Poderes\Slap_acierta" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="2019800228" Name="Surikan" ObjectPath="\Events\Default Work Unit\Poderes\Surikan" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="821159915" Name="Slap" ObjectPath="\Events\Default Work Unit\Poderes\Slap" DurationType="OneShot" DurationMin="0.153896" DurationMax="0.153896"/>
+				<Event Id="3658336479" Name="Slap_acierta" ObjectPath="\Events\Default Work Unit\Poderes\Slap_acierta" DurationType="OneShot" DurationMin="0.394150" DurationMax="0.394150"/>
+				<Event Id="2019800228" Name="Surikan" ObjectPath="\Events\Default Work Unit\Poderes\Surikan" DurationType="OneShot" DurationMin="0.508954" DurationMax="0.508954"/>
 				<Event Id="3952590464" Name="Surikan_acierta" ObjectPath="\Events\Default Work Unit\Poderes\Surikan_acierta" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="46675280" Name="Surikan_vuelve" ObjectPath="\Events\Default Work Unit\Poderes\Surikan_vuelve" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2644790697" Name="UI_move" ObjectPath="\Events\Default Work Unit\Menu_UI\UI_move" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2774129122" Name="UI_select" ObjectPath="\Events\Default Work Unit\Menu_UI\UI_select" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="1976107535" Name="Versus" ObjectPath="\Events\Default Work Unit\Menu_UI\Versus" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="963825122" Name="Victoria" ObjectPath="\Events\Default Work Unit\Movimientos_personajes\Victoria" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="775390300" Name="Viento" ObjectPath="\Events\Default Work Unit\Poderes\Viento" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="775390300" Name="Viento" ObjectPath="\Events\Default Work Unit\Poderes\Viento" DurationType="OneShot" DurationMin="0.404739" DurationMax="0.404739"/>
 				<Event Id="948540856" Name="Viento_acierta" ObjectPath="\Events\Default Work Unit\Poderes\Viento_acierta" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2686292466" Name="Vuela" ObjectPath="\Events\Default Work Unit\Movimientos_personajes\Vuela" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="16286388" Language="SFX">
+					<ShortName>Hurricane.wav</ShortName>
+					<Path>SFX\Hurricane_10C4C929.wem</Path>
+				</File>
+				<File Id="56847830" Language="SFX">
+					<ShortName>Bubble.wav</ShortName>
+					<Path>SFX\Bubble_10C4C929.wem</Path>
+				</File>
+				<File Id="122006279" Language="SFX">
+					<ShortName>Fire.wav</ShortName>
+					<Path>SFX\Fire_10C4C929.wem</Path>
+				</File>
+				<File Id="155408554" Language="SFX">
+					<ShortName>Polar_acierta.wav</ShortName>
+					<Path>SFX\Polar_acierta_10C4C929.wem</Path>
+				</File>
+				<File Id="201651943" Language="SFX">
+					<ShortName>Congela.wav</ShortName>
+					<Path>SFX\Congela_10C4C929.wem</Path>
+				</File>
+				<File Id="292852864" Language="SFX">
+					<ShortName>Surikan2.wav</ShortName>
+					<Path>SFX\Surikan2_10C4C929.wem</Path>
+				</File>
+				<File Id="322163417" Language="SFX">
+					<ShortName>Polar2.wav</ShortName>
+					<Path>SFX\Polar2_10C4C929.wem</Path>
+				</File>
+				<File Id="366120611" Language="SFX">
+					<ShortName>Slap_acierta.wav</ShortName>
+					<Path>SFX\Slap_acierta_10C4C929.wem</Path>
+				</File>
+				<File Id="482083671" Language="SFX">
+					<ShortName>Bate.wav</ShortName>
+					<Path>SFX\Bate_10C4C929.wem</Path>
+				</File>
+				<File Id="511866537" Language="SFX">
+					<ShortName>Surikan.wav</ShortName>
+					<Path>SFX\Surikan_23668549.wem</Path>
+				</File>
+				<File Id="946455085" Language="SFX">
+					<ShortName>Viento.wav</ShortName>
+					<Path>SFX\Viento_10C4C929.wem</Path>
+				</File>
+				<File Id="988532763" Language="SFX">
+					<ShortName>Slap.wav</ShortName>
+					<Path>SFX\Slap_10C4C929.wem</Path>
+				</File>
+				<File Id="1031743763" Language="SFX">
+					<ShortName>Martillo.wav</ShortName>
+					<Path>SFX\Martillo_10C4C929.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

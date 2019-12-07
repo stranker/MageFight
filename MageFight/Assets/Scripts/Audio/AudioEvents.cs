@@ -6,7 +6,8 @@ public class AudioEvents : MonoBehaviour
 {
     public enum EventsKeys 
     {
-        MainMenu_Start, Gameplay_Start, Versus_Animation_Start, VersusUI_Show, PauseMenu_Show, Resume_Pressed, Rematch_Pressed, Cookies_Screen_Show, MainMenu_Pressed,
+        MainMenu_Start, Gameplay_Start, Versus_Animation_Start, VersusUI_Show, PauseMenu_Show, Resume_Pressed, Rematch_Pressed,
+        Cookies_Screen_Show, Spell_Selection_Screen_Show, MainMenu_Pressed,
 
         UI_Move, UI_Select,
 
@@ -34,6 +35,7 @@ public class AudioEvents : MonoBehaviour
         eventsIDs.Add("Resume_Pressed", "Resume");
         eventsIDs.Add("Rematch_Pressed", "Rematch");
         eventsIDs.Add("Cookies_Screen_Show", "Cookies_screen");
+        eventsIDs.Add("Spell_Selection_Screen_Show", "Pantalla_poderes");
         eventsIDs.Add("MainMenu_Pressed", "Main_menu");
         //UI
         eventsIDs.Add("UI_Move", "UI_move");

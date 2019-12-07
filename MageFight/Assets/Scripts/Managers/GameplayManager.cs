@@ -117,6 +117,7 @@ public class GameplayManager : MonoBehaviour {
     public void SpellSelection()
     {
         UIManager.Get().SetPlayerPresentationUI(false);
+        AkSoundEngine.PostEvent(AudioEvents.eventsIDs[AudioEvents.EventsKeys.Spell_Selection_Screen_Show.ToString()], this.gameObject);
         CameraManager.Get().ActivateCamerasGameplay();
     }
     public void Countdown()

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}" SchemaVersion="94">
+	<AudioObjects>
+		<WorkUnit Name="Poderes" ID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="Bate" ID="{88774D5B-8483-47AD-AC42-F027085E37E5}" ShortID="762132292">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>12</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2DB673F2-7BDB-4D1C-8A57-293E9FB9561B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9132755-8858-41D8-9EB6-BA952A681181}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Bate" ID="{F52F46FF-DD10-40F9-B0E1-D4BA6B652EA3}" ShortID="482083671">
+							<Language>SFX</Language>
+							<AudioFile>Bate.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Bate" ID="{F52F46FF-DD10-40F9-B0E1-D4BA6B652EA3}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Congela" ID="{737EDFBD-E5E7-4987-9173-3643967BEB75}" ShortID="749514114">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2DB673F2-7BDB-4D1C-8A57-293E9FB9561B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9132755-8858-41D8-9EB6-BA952A681181}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Congela" ID="{F5EF6016-600C-41A3-B1F4-6513D9D75293}" ShortID="201651943">
+							<Language>SFX</Language>
+							<AudioFile>Congela.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Congela" ID="{F5EF6016-600C-41A3-B1F4-6513D9D75293}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Fire" ID="{410B9621-7E4F-4B60-8A18-66EF48D5083E}" ShortID="978642221">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2DB673F2-7BDB-4D1C-8A57-293E9FB9561B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9132755-8858-41D8-9EB6-BA952A681181}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Fire" ID="{BA9783DD-9FD1-4DC8-ADEF-D15F2B88C6FA}" ShortID="122006279">
+							<Language>SFX</Language>
+							<AudioFile>Fire.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Fire" ID="{BA9783DD-9FD1-4DC8-ADEF-D15F2B88C6FA}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Hurricane" ID="{C3FC7B75-1A33-454D-A4B0-3400D4E7103D}" ShortID="855203415">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2DB673F2-7BDB-4D1C-8A57-293E9FB9561B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9132755-8858-41D8-9EB6-BA952A681181}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Hurricane" ID="{C61564DA-A8A5-467D-8C8C-D6F7DC4F55DF}" ShortID="16286388">
+							<Language>SFX</Language>
+							<AudioFile>Hurricane.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Hurricane" ID="{C61564DA-A8A5-467D-8C8C-D6F7DC4F55DF}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Martillo" ID="{4CEFD6B1-7C87-407D-972F-F50585D8EC01}" ShortID="787699385">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>12</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2DB673F2-7BDB-4D1C-8A57-293E9FB9561B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9132755-8858-41D8-9EB6-BA952A681181}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Martillo" ID="{A16AB3B9-EF45-444D-B982-EFF14D9CB111}" ShortID="1031743763">
+							<Language>SFX</Language>
+							<AudioFile>Martillo.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Martillo" ID="{A16AB3B9-EF45-444D-B982-EFF14D9CB111}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Polar_acierta" ID="{A8AE77AA-1B9C-4CD3-B535-64C442FACE69}" ShortID="138213269">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2DB673F2-7BDB-4D1C-8A57-293E9FB9561B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9132755-8858-41D8-9EB6-BA952A681181}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Polar_acierta" ID="{6FD58FBB-1C92-46C0-9129-DD26E1D5D11D}" ShortID="155408554">
+							<Language>SFX</Language>
+							<AudioFile>Polar_acierta.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Polar_acierta" ID="{6FD58FBB-1C92-46C0-9129-DD26E1D5D11D}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Polar2" ID="{C68BB824-E78F-4746-BD28-DEC8A2D1DE63}" ShortID="523832668">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2DB673F2-7BDB-4D1C-8A57-293E9FB9561B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9132755-8858-41D8-9EB6-BA952A681181}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Polar2" ID="{5B0888F7-A8E6-4317-AEAC-880C64638F59}" ShortID="322163417">
+							<Language>SFX</Language>
+							<AudioFile>Polar2.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Polar2" ID="{5B0888F7-A8E6-4317-AEAC-880C64638F59}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Slap" ID="{536379CE-47F1-4622-ABCF-A9FF36A84608}" ShortID="779701286">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2DB673F2-7BDB-4D1C-8A57-293E9FB9561B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9132755-8858-41D8-9EB6-BA952A681181}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Slap" ID="{397572E9-5414-43FC-9AE8-76FA3E6F408E}" ShortID="988532763">
+							<Language>SFX</Language>
+							<AudioFile>Slap.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Slap" ID="{397572E9-5414-43FC-9AE8-76FA3E6F408E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Slap_acierta" ID="{8C46CB16-EA9A-4E03-A60C-B6B16A92C24A}" ShortID="86399279">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2DB673F2-7BDB-4D1C-8A57-293E9FB9561B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9132755-8858-41D8-9EB6-BA952A681181}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Slap_acierta" ID="{35CBC0BA-BB57-43CB-8B8B-1C0820EDD84A}" ShortID="366120611">
+							<Language>SFX</Language>
+							<AudioFile>Slap_acierta.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Slap_acierta" ID="{35CBC0BA-BB57-43CB-8B8B-1C0820EDD84A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Surikan" ID="{924D85E3-3B00-485F-A37A-EF90CC405D2F}" ShortID="374973975">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2DB673F2-7BDB-4D1C-8A57-293E9FB9561B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9132755-8858-41D8-9EB6-BA952A681181}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Surikan" ID="{AA23EE65-1E4C-4C8E-A54C-67C1041EC47A}" ShortID="511866537">
+							<PropertyList>
+								<Property Name="FadeInDuration" Type="Real64" Value="1.45249515520989E-02"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="5.05468314013041E-02"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Surikan.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Surikan" ID="{AA23EE65-1E4C-4C8E-A54C-67C1041EC47A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Surikan2" ID="{5435A1B4-9D03-495F-87A7-529D8FBA8A47}" ShortID="357799101">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2DB673F2-7BDB-4D1C-8A57-293E9FB9561B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9132755-8858-41D8-9EB6-BA952A681181}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Surikan2" ID="{B1E468C1-CBA6-4CAD-B07D-EFAE17D9F7F2}" ShortID="292852864">
+							<Language>SFX</Language>
+							<AudioFile>Surikan2.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Surikan2" ID="{B1E468C1-CBA6-4CAD-B07D-EFAE17D9F7F2}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Viento" ID="{1DF42B6F-0179-4E14-999A-7D45727DF949}" ShortID="90200011">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2DB673F2-7BDB-4D1C-8A57-293E9FB9561B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9132755-8858-41D8-9EB6-BA952A681181}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Viento" ID="{3C6A97B9-FFA5-49DB-AB12-ED6112B6475B}" ShortID="946455085">
+							<Language>SFX</Language>
+							<AudioFile>Viento.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Viento" ID="{3C6A97B9-FFA5-49DB-AB12-ED6112B6475B}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Bubble" ID="{05C855E8-425A-4DD8-B336-B00B84955F47}" ShortID="38027615">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{2DB673F2-7BDB-4D1C-8A57-293E9FB9561B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{D9132755-8858-41D8-9EB6-BA952A681181}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Bubble" ID="{AE0BDB36-F436-4817-A893-36C586E64CF4}" ShortID="56847830">
+							<Language>SFX</Language>
+							<AudioFile>Bubble.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Bubble" ID="{AE0BDB36-F436-4817-A893-36C586E64CF4}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

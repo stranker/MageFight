@@ -50,17 +50,17 @@ Event	ID	Name			Wwise Object Path	Notes
 	4285533329	Inicia_gameplay			\Default Work Unit\Menu_UI\Inicia_gameplay	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	16286388	Hurricane	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Windows\SFX\Hurricane_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Hurricane		474404
-	56847830	Bubble	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Windows\SFX\Bubble_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Bubble		16192
-	122006279	Fire	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Windows\SFX\Fire_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Fire		142112
-	155408554	Polar_acierta	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Windows\SFX\Polar_acierta_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Polar_acierta		302528
-	201651943	Congela	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Windows\SFX\Congela_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Congela		306692
-	292852864	Surikan2	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Windows\SFX\Surikan2_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Surikan2		28686
-	322163417	Polar2	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Windows\SFX\Polar2_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Polar2		54686
-	366120611	Slap_acierta	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Windows\SFX\Slap_acierta_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Slap_acierta		69592
-	482083671	Bate	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Windows\SFX\Bate_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Bate		90176
-	511866537	Surikan	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Windows\SFX\Surikan_23668549.wem		\Actor-Mixer Hierarchy\Poderes\Surikan		89844
-	946455085	Viento	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Windows\SFX\Viento_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Viento		71460
-	988532763	Slap	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Windows\SFX\Slap_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Slap		29612
-	1031743763	Martillo	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Windows\SFX\Martillo_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Martillo		37952
+	16286388	Hurricane	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Mac\SFX\Hurricane_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Hurricane		474404
+	56847830	Bubble	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Mac\SFX\Bubble_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Bubble		16192
+	122006279	Fire	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Mac\SFX\Fire_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Fire		142112
+	155408554	Polar_acierta	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Mac\SFX\Polar_acierta_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Polar_acierta		302528
+	201651943	Congela	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Mac\SFX\Congela_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Congela		306692
+	292852864	Surikan2	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Mac\SFX\Surikan2_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Surikan2		28686
+	322163417	Polar2	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Mac\SFX\Polar2_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Polar2		54686
+	366120611	Slap_acierta	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Mac\SFX\Slap_acierta_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Slap_acierta		69592
+	482083671	Bate	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Mac\SFX\Bate_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Bate		90176
+	511866537	Surikan	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Mac\SFX\Surikan_23668549.wem		\Actor-Mixer Hierarchy\Poderes\Surikan		89844
+	946455085	Viento	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Mac\SFX\Viento_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Viento		71460
+	988532763	Slap	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Mac\SFX\Slap_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Slap		29612
+	1031743763	Martillo	C:\Users\FrancoM\Desktop\Wizzards\MageFight_WwiseProject\.cache\Mac\SFX\Martillo_10C4C929.wem		\Actor-Mixer Hierarchy\Poderes\Martillo		37952
 

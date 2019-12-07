@@ -3,29 +3,146 @@
 	<Events>
 		<WorkUnit Name="Poderes" ID="{8EC42A19-25DF-45B3-B292-AF008622C5B8}" OwnerID="{411778B3-EB27-4B87-BA57-FDF2A7F7F1FC}" PersistMode="Nested">
 			<ChildrenList>
-				<Event Name="Viento" ID="{7E8BB60F-1204-4EBE-AA7C-C58F2DB3A1EE}"/>
+				<Event Name="Viento" ID="{7E8BB60F-1204-4EBE-AA7C-C58F2DB3A1EE}">
+					<ChildrenList>
+						<Action Name="" ID="{C206B6CE-0385-4A0F-9E63-FFC12F5EBE75}" ShortID="641596772">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Viento" ID="{1DF42B6F-0179-4E14-999A-7D45727DF949}" WorkUnitID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="Viento_acierta" ID="{14A7308D-DD30-4AE1-BB2D-7A2670759DA8}"/>
-				<Event Name="Polar" ID="{1A4F23D9-BCE4-4C99-9BCA-F345FD009011}"/>
-				<Event Name="Polar_acierta" ID="{89C06B03-1522-4AC2-AF09-7A7D198BFE81}"/>
+				<Event Name="Polar" ID="{1A4F23D9-BCE4-4C99-9BCA-F345FD009011}">
+					<ChildrenList>
+						<Action Name="" ID="{DFCA84B3-602D-41CD-BFFA-7BCEEE9C6647}" ShortID="327992695">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Polar2" ID="{C68BB824-E78F-4746-BD28-DEC8A2D1DE63}" WorkUnitID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Polar_acierta" ID="{89C06B03-1522-4AC2-AF09-7A7D198BFE81}">
+					<ChildrenList>
+						<Action Name="" ID="{1DDF387B-1E38-4FA9-A09B-97B532BC62EC}" ShortID="807110163">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Polar_acierta" ID="{A8AE77AA-1B9C-4CD3-B535-64C442FACE69}" WorkUnitID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="Roca" ID="{DB371FBC-0038-4EAA-A6FD-7C25A94E1290}"/>
 				<Event Name="Roca_acierta" ID="{DEA3E092-628A-4E56-8227-F5EE6C3FE08C}"/>
-				<Event Name="Hurricane" ID="{3579B0F7-1270-4CAE-BD3B-3375A97D608D}"/>
+				<Event Name="Hurricane" ID="{3579B0F7-1270-4CAE-BD3B-3375A97D608D}">
+					<ChildrenList>
+						<Action Name="" ID="{32E8E399-6C4F-461D-8AF3-4BD8EC4B76E0}" ShortID="348553745">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Hurricane" ID="{C3FC7B75-1A33-454D-A4B0-3400D4E7103D}" WorkUnitID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="Hurricane_acierta" ID="{05D8DB23-AD27-41D7-B5CD-D6E5FA7A5C97}"/>
 				<Event Name="Misil" ID="{86A2B7B1-3F9A-4C1B-AA31-637A86EA3F1C}"/>
 				<Event Name="Misil_acierta" ID="{8FD4E5DD-90A4-4BB0-8D8E-5371C241CBD2}"/>
-				<Event Name="Fire" ID="{2E94148B-FA33-46BC-844E-8CFFF80949E3}"/>
+				<Event Name="Fire" ID="{2E94148B-FA33-46BC-844E-8CFFF80949E3}">
+					<ChildrenList>
+						<Action Name="" ID="{C72D815C-09E1-404A-93DF-E2D4D53B2099}" ShortID="624514901">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Fire" ID="{410B9621-7E4F-4B60-8A18-66EF48D5083E}" WorkUnitID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="Fire_acierta" ID="{EE7D82E4-AF9E-4126-B969-832E6DBC2A00}"/>
 				<Event Name="Pummel" ID="{1C1EAB96-5669-4DCD-ACEE-71F52C471EC0}"/>
 				<Event Name="Pummel_acierta" ID="{60CA1C1B-3555-4AC8-9D26-D4C46EB91F87}"/>
-				<Event Name="Martillo" ID="{7D0F32AF-C535-41BF-8E2E-A55F5C169A98}"/>
+				<Event Name="Martillo" ID="{7D0F32AF-C535-41BF-8E2E-A55F5C169A98}">
+					<ChildrenList>
+						<Action Name="" ID="{4EAF5FB6-9816-4D27-B130-AE19952FF38A}" ShortID="256116624">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Martillo" ID="{4CEFD6B1-7C87-407D-972F-F50585D8EC01}" WorkUnitID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="Martillo_acierta" ID="{AC2BBDBF-F0B6-4445-90D9-50DCCAEE42E0}"/>
-				<Event Name="Bubble" ID="{618B5800-29F1-49BB-A0C3-19026BBB16E1}"/>
+				<Event Name="Bubble" ID="{618B5800-29F1-49BB-A0C3-19026BBB16E1}">
+					<ChildrenList>
+						<Action Name="" ID="{47658F32-7652-489B-8195-171F8DEA509A}" ShortID="607531197">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Bubble" ID="{05C855E8-425A-4DD8-B336-B00B84955F47}" WorkUnitID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="Bubble_acierta" ID="{7099070D-3656-4E63-A491-D04ECD071351}"/>
-				<Event Name="Slap" ID="{13D4EA0E-B46B-49FA-88F8-EC4271BCBC2E}"/>
-				<Event Name="Slap_acierta" ID="{7DA425AE-F1AA-43CD-AC80-D8F20D8A4B1B}"/>
-				<Event Name="Surikan" ID="{F09BB3A5-6BB8-42D4-B9F0-C85DA8C19C2D}"/>
+				<Event Name="Slap" ID="{13D4EA0E-B46B-49FA-88F8-EC4271BCBC2E}">
+					<ChildrenList>
+						<Action Name="" ID="{71C0F99D-440D-401E-801D-53700A7E0282}" ShortID="755554032">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Slap" ID="{536379CE-47F1-4622-ABCF-A9FF36A84608}" WorkUnitID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Slap_acierta" ID="{7DA425AE-F1AA-43CD-AC80-D8F20D8A4B1B}">
+					<ChildrenList>
+						<Action Name="" ID="{F97BA6E5-66C2-4089-83B9-AC4409B5AE38}" ShortID="305953676">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Slap_acierta" ID="{8C46CB16-EA9A-4E03-A60C-B6B16A92C24A}" WorkUnitID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Surikan" ID="{F09BB3A5-6BB8-42D4-B9F0-C85DA8C19C2D}">
+					<ChildrenList>
+						<Action Name="" ID="{20C85F67-F92E-418B-A033-11E06D7C6EB6}" ShortID="460993579">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Surikan" ID="{924D85E3-3B00-485F-A37A-EF90CC405D2F}" WorkUnitID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{346A2BEA-320E-40A8-8571-13BB69A09C15}" ShortID="368037619">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Surikan2" ID="{5435A1B4-9D03-495F-87A7-529D8FBA8A47}" WorkUnitID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="Surikan_acierta" ID="{89E49150-2BC7-4267-87C8-8DB01609FA80}"/>
-				<Event Name="Bate" ID="{B2DFC5DF-1B06-4CFB-A132-6BEF7A4ACC1C}"/>
+				<Event Name="Bate" ID="{B2DFC5DF-1B06-4CFB-A132-6BEF7A4ACC1C}">
+					<ChildrenList>
+						<Action Name="" ID="{894F9455-C823-41D2-8100-37B760F5247F}" ShortID="212948709">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Bate" ID="{88774D5B-8483-47AD-AC42-F027085E37E5}" WorkUnitID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 				<Event Name="Bate_acierta" ID="{95C9E690-2EAD-48F5-8033-4B54F7F182E0}"/>
 				<Event Name="Surikan_vuelve" ID="{1812839D-5F71-407D-845C-B4EBB351CB45}"/>
 				<Folder Name="Efectos" ID="{1BF00BFE-40BF-4924-B553-D5D48154979E}" ShortID="67404209">
@@ -33,7 +150,17 @@
 						<Event Name="Arrastra" ID="{DED2D693-B0BA-4553-A6DD-D97899269931}"/>
 						<Event Name="Pajaritos" ID="{4C87B966-4B81-4963-9D10-A34E9A0A421C}"/>
 						<Event Name="Prende_fuego" ID="{47EBA2FB-134B-4BF3-A0F2-053822CE7A82}"/>
-						<Event Name="Congela" ID="{FC26E34E-AE59-4C09-BE4C-A93E951ECE82}"/>
+						<Event Name="Congela" ID="{FC26E34E-AE59-4C09-BE4C-A93E951ECE82}">
+							<ChildrenList>
+								<Action Name="" ID="{E8235462-2E72-47A0-AC41-AAA3C25AE66E}" ShortID="869561882">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Congela" ID="{737EDFBD-E5E7-4987-9173-3643967BEB75}" WorkUnitID="{0F105EAB-C487-44E8-A4DA-855385BF07B2}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 			</ChildrenList>
