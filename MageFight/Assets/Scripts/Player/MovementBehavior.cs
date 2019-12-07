@@ -61,17 +61,6 @@ public class MovementBehavior : MonoBehaviour {
 
     private ParticleSystem.EmissionModule flyEmission;
 
-    enum WizardStates
-    {
-        Idle,
-        Run,
-        Fly,
-        Fall,
-        InvokeSpell,
-        ThrowSpell,
-        Dead
-    }
-
     // Use this for initialization
     void Start () {
         initialGravityScale = rigidBody.gravityScale;
@@ -84,12 +73,11 @@ public class MovementBehavior : MonoBehaviour {
     void Update () {
         if (wizardBehavior.isAlive)
         {
-            GetInput();
+            VelocityCheck();
             if (canMove && !onPlayerRestoreHit)
             {
                 GeneralMovement();
             }
-            CheckRestoreOnPlayerHit();
             CheckOutbounds();
             TimersCheck();
         }
@@ -116,6 +104,15 @@ public class MovementBehavior : MonoBehaviour {
                 airDashTimer = 0;
             }
         }
+        if (onPlayerRestoreHit)
+        {
+            playerRestoreOnHitTimer += Time.deltaTime;
+            if (playerRestoreOnHitTimer >= playerRestoreOnHitTime)
+            {
+                playerRestoreOnHitTimer = 0;
+                onPlayerRestoreHit = false;
+            }
+        }
     }
 
     private void CheckOutbounds()
@@ -132,41 +129,28 @@ public class MovementBehavior : MonoBehaviour {
         SetCanMove(i == 1);
     }
 
-    private void CheckRestoreOnPlayerHit()
-    {
-        if (onPlayerRestoreHit)
-        {
-            playerRestoreOnHitTimer += Time.deltaTime;
-            if (playerRestoreOnHitTimer >= playerRestoreOnHitTime)
-            {
-                playerRestoreOnHitTimer = 0;
-                onPlayerRestoreHit = false;
-            }
-        }
-    }
-
     private void GeneralMovement()
     {
+        if (!onPlayerRestoreHit && !stuned)
+            rigidBody.velocity = canMove ? velocity : Vector2.zero;
+        rigidBody.gravityScale = flying ? 0 : initialGravityScale;
         RightFootRaycast = Physics2D.Raycast(rightFoot.transform.position, Vector2.down, 1.1f, floorLayer);
         LeftFootRaycast = Physics2D.Raycast(leftFoot.transform.position, Vector2.down, 1.1f, floorLayer);
         onFloor = RightFootRaycast || LeftFootRaycast;
         canJump = onFloor;
-        jumped = onFloor? false : true;
+        jumped = !onFloor;
         doubleJump = !doubleJump ? canJump : true;
         FlyAccelerationCheck();
         FlyStaminaCheck();
         GetAimDirection();
         JumpCheck();
         AirDash();
-        if (!onPlayerRestoreHit && !stuned)
-            rigidBody.velocity = canMove ? velocity : Vector2.zero;
         FacingDirectionCheck();
-        rigidBody.gravityScale = flying ? 0 : initialGravityScale;
     }
 
     private void AirDash()
     {
-        if (!isAirDashing && flying && flyStamina >=  airDashConsumption && GetJumpInput())
+        if (!isAirDashing && flying && flyStamina >= airDashConsumption && GetJumpInput())
         {
             isAirDashing = true;
             flyStamina -= airDashConsumption;
@@ -177,7 +161,7 @@ public class MovementBehavior : MonoBehaviour {
     }
 
 
-    private void GetInput()
+    private void VelocityCheck()
     {
         flying = GetFlyInput() && flyStamina > 0 && canFly;
         velocity.x = flying ? aimDirection.normalized.x * flyAccelerationIncrement * flySpeed * Time.deltaTime : GetXAxis() * floorSpeed * Time.deltaTime;
