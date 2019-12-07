@@ -390,6 +390,16 @@ PrefabInstance:
       propertyPath: flyMaxStamina
       value: 99999
       objectReference: {fileID: 0}
+    - target: {fileID: 4877554393673381721, guid: cf0a1077df27adc4c95e396e0ec2418b,
+        type: 3}
+      propertyPath: airDashVelocity
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4877554393673381721, guid: cf0a1077df27adc4c95e396e0ec2418b,
+        type: 3}
+      propertyPath: airDashBetweenTime
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf0a1077df27adc4c95e396e0ec2418b, type: 3}
 --- !u!1 &845759459 stripped
